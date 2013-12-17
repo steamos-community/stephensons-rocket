@@ -1,0 +1,91 @@
+   Skip Quicknav
+     * About Debian
+     * Getting Debian
+     * Support
+     * Developers' Corner
+
+   Debian bug tracking system / Debian BTS -- mail server reference card
+
+Mail servers' reference card
+
+   Full documentation of the mail servers is available on the WWW, in the
+   files bug-log-mailserver.txt and bug-maint-mailcontrol.txt or by
+   sending the word help to each mailserver.
+
+Synopsis of commands available at request@bugs.debian.org
+
+     * send bugnumber
+     * send-detail bugnumber
+     * index [full]
+     * index-summary by-package
+     * index-summary by-number
+     * index-maint
+     * index maint maintainer
+     * index-packages
+     * index packages package
+     * send-unmatched [this|0]
+     * send-unmatched last|-1
+     * send-unmatched old|-2
+     * getinfo filename (ftp.debian.org/debian/doc/*)
+     * help
+     * refcard
+     * thanks
+     * #... (comment)
+     * debug level
+
+Synopsis of extra commands available at control@bugs.debian.org
+
+     * reassign bugnumber package [ version ]
+     * severity bugnumber severity
+     * reopen bugnumber [ originator-address | = | ! ]
+     * found bugnumber [ version ]
+     * notfound bugnumber version
+     * submitter bugnumber originator-address | !
+     * forwarded bugnumber address
+     * notforwarded bugnumber
+     * owner bugnumber address | !
+     * noowner bugnumber
+     * retitle bugnumber new-title
+     * clone bugnumber NewID [ new IDs ... ]
+     * merge bugnumber bugnumber ...
+     * unmerge bugnumber
+     * forcemerge bugnumber bugnumber ...
+     * tag bugnumber [ + | - | = ] tag [ tag ... ]
+     * block bugnumber by bug ...
+     * unblock bugnumber by bug ...
+     * close bugnumber [ fixed-version ] (deprecated -- you must
+       separately tell originator why, see "Closing bug reports" instead)
+
+   reopen with = or no originator address leaves the originator as the
+   original submitter; ! sets it to you, the person doing the reopen.
+
+   Severities are critical, grave, serious, important, normal, minor,
+   wishlist, fixed.
+
+   Tags currently include patch, wontfix, moreinfo, unreproducible, help,
+   pending, security, upstream, confirmed, fixed, fixed-upstream,
+   fixed-in-experimental, d-i, ipv6, lfs, l10n, potato, woody, sarge,
+   sarge-ignore, etch, etch-ignore, lenny, lenny-ignore, squeeze,
+   squeeze-ignore, wheezy, wheezy-ignore, jessie, jessie-ignore, sid,
+   experimental.
+
+Synopsis of bug submission and followup addresses
+
+     * nnn[ -submit | ]
+     * nnn-maintonly
+     * nnn-quiet
+     * nnn-forwarded
+     * nnn-request
+     * nnn-submitter
+     * nnn-done
+     * nnn-close
+     * nnn-subscribe
+     __________________________________________________________________
+
+    Debian BTS administrators <owner@bugs.debian.org>
+
+   Debian bug tracking system
+   Copyright (c) 1999 Darren O. Benham, 1997, 2003 nCipher Corporation
+   Ltd, 1994-1997 Ian Jackson.
+     __________________________________________________________________
+

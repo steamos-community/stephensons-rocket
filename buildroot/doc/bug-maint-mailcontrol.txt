@@ -1,0 +1,471 @@
+   Skip Quicknav
+     * About Debian
+     * Getting Debian
+     * Support
+     * Developers' Corner
+
+   Debian bug tracking system / Debian BTS -- control server
+
+Introduction to the bug control and manipulation mailserver
+
+   Just as request@bugs.debian.org allows the retrieval of bug data and
+   documentation by email, control@bugs.debian.org allows bug reports to
+   be manipulated in various ways.
+
+   The control server works just like the request server, except that it
+   has some additional commands; in fact, it's the same program. The two
+   addresses are only separated to avoid users making mistakes and causing
+   problems while merely trying to request information.
+
+   Since the commands specific to the control server actually change the
+   status of a bug, a notification about processing the commands is sent
+   to the maintainer of the package(s) the changed bugs are assigned to.
+   Additionally the mail to the server and the resulting changes are
+   logged in the bug report and thereby available in the WWW pages.
+
+   Please see the introduction to the request server available on the
+   World Wide Web, in the file bug-log-mailserver.txt, or by sending help
+   to either mailserver, for details of the basics of operating the
+   mailservers and the common commands available when mailing either
+   address.
+
+   The reference card for the mailservers is available via the WWW, in
+   bug-mailserver-refcard.txt or by email using the refcard command.
+
+Commands available at the control mailserver
+
+   General Versioning Duplicates Misc.
+     * reassign
+     * severity
+     * tags
+     * retitle
+     * submitter
+     * affects
+     * summary
+     * outlook
+
+     * found | notfound
+     * fixed | notfixed
+     * reopen
+
+     * merge | unmerge
+     * forcemerge
+     * clone
+
+     * thanks
+     * #
+     * forwarded | notforwarded
+     * owner | noowner
+     * block | unblock
+     * archive | unarchive
+     * user | usertag | usercategory
+
+   reassign bugnumber package [ version ]
+          Records that bug #bugnumber is a bug in package. This can be
+          used to set the package if the user forgot the pseudo-header, or
+          to change an earlier assignment. No notifications are sent to
+          anyone (other than the usual information in the processing
+          transcript).
+
+          If you supply a version, the bug tracking system will note that
+          the bug affects that version of the newly-assigned package.
+
+          You can assign a bug to two packages at once by separating the
+          package names with a comma. However, you should only do this if
+          the bug can be fixed by a change to either package. If this is
+          not the case, you should clone the bug and reassign the clone to
+          the other package.
+
+   reopen bugnumber [ originator-address | = | ! ]
+          Reopens #bugnumber if it is closed.
+
+          By default, or if you specify =, the original submitter is still
+          as the originator of the report, so that they will get the ack
+          when it is closed again.
+
+          If you supply an originator-address the originator will be set
+          to the address you supply. If you wish to become the new
+          originator of the reopened report you can use the ! shorthand or
+          specify your own email address.
+
+          It is usually a good idea to tell the person who is about to be
+          recorded as the originator that you're reopening the report, so
+          that they will know to expect the ack which they'll get when it
+          is closed again.
+
+          If the bug is not closed then reopen won't do anything, not even
+          change the originator. To change the originator of an open bug
+          report, use the submitter command; note that this will inform
+          the original submitter of the change.
+
+          If the bug was recorded as being closed in a particular version
+          of a package but recurred in a later version, it is better to
+          use the found command instead.
+
+   found bugnumber [ version ]
+          Record that #bugnumber has been encountered in the given version
+          of the package to which it is assigned. version may be a fully
+          qualified version, of the form sourcepackagename/version.
+
+          The bug tracking system uses this information, in conjunction
+          with fixed versions recorded when closing bugs, to display lists
+          of bugs open in various versions of each package. It considers a
+          bug to be open when it has no fixed version, or when it has been
+          found more recently than it has been fixed.
+
+          If no version is given, then the list of fixed versions for the
+          bug is cleared. This is identical to the behaviour of reopen.
+          version may be a fully qualified version, of the form
+          sourcepackagename/version.
+
+          This command will only cause a bug to be marked as not done if
+          no version is specified, or if the version being marked found is
+          equal to or greater than the highest version marked fixed. (If
+          you are certain that you want the bug marked as not done, use
+          reopen in conjunction with found.)
+
+          This command was introduced in preference to reopen because it
+          was difficult to add a version to that command's syntax without
+          suffering ambiguity.
+
+   notfound bugnumber version
+          Remove the record that #bugnumber was encountered in the given
+          version of the package to which it is assigned. version may be a
+          fully qualified version, of the form sourcepackagename/version.
+
+          This differs from closing the bug at that version in that the
+          bug is not listed as fixed in that version either; no
+          information about that version will be known. It is intended for
+          fixing mistakes in the record of when a bug was found.
+
+   fixed bugnumber version
+          Indicate that bug #bugnumber was fixed in the given version of
+          the package to which it is assigned. version may be a fully
+          qualified version, of the form sourcepackagename/version.
+
+          This does not cause the bug to be marked as closed, it merely
+          adds another version in which the bug was fixed. Use the
+          bugnumber-done address to close a bug and mark it fixed in a
+          particular version.
+
+   notfixed bugnumber version
+          Remove the record that bug #bugnumber has been fixed in the
+          given version. version may be a fully qualified version, of the
+          form sourcepackagename/version.
+
+          This command is equivalent to found followed by notfound (the
+          found removes the fixed at a particular version, and notfound
+          removes the found) with the exception that the bug is not
+          reopened if the found version is greater than any existing fixed
+          version. It is intended for fixing mistakes in the record of
+          when a bug was fixed; in most cases, you actually want found,
+          not notfixed.
+
+   submitter bugnumber originator-address | !
+          Changes the originator of #bugnumber to originator-address.
+
+          If you wish to become the new originator of the report you can
+          use the ! shorthand or specify your own email address.
+
+          While the reopen command changes the originator of other bugs
+          merged with the one being reopened, submitter does not affect
+          merged bugs.
+
+   forwarded bugnumber address
+          Notes that bugnumber has been forwarded to the upstream
+          maintainer at address. This does not actually forward the
+          report. This can be used to change an existing incorrect
+          forwarded-to address, or to record a new one for a bug that
+          wasn't previously noted as having been forwarded. address should
+          generally be a URI, or possibly an email address. Using a URI
+          where possible allows tools to query a remote bug tracking
+          system (such as bugzilla) for a bug's status.
+
+          Example usage:
+
+      forwarded 12345 http://bugz.illa.foo/cgi/54321
+
+   notforwarded bugnumber
+          Forgets any idea that bugnumber has been forwarded to any
+          upstream maintainer. If the bug was not recorded as having been
+          forwarded then this will do nothing.
+
+   retitle bugnumber new-title
+          Changes the title of a bug report to that specified (the default
+          is the Subject mail header from the original report). Will also
+          change the titles of all bug reports which this bug is merged
+          with.
+
+   severity bugnumber severity
+          Set the severity level for bug report #bugnumber to severity. No
+          notification is sent to the user who reported the bug.
+
+          Severities are critical, grave, serious, important, normal,
+          minor, wishlist, fixed.
+
+          For their meanings please consult the general developers'
+          documentation for the bug system.
+
+   affects bugnumber [ + | - | = ] package [ package ... ]
+          Indicates that a bug affects another package. In the case where
+          bugnumber causes breakage in package even though the bug is
+          actually present in the package to which it is assigned, this
+          causes the bug to be listed by default in the package list of
+          package. This should generally be used where the bug is severe
+          enough to cause multiple reports from users to be assigned to
+          the wrong package. = sets the affects to the list of packages
+          given, and is the default action if no packages are given; -
+          removes the given packages from the affects list; + adds the
+          given packages to the affects list, and is the default if
+          packages are given.
+
+   summary bugnumber [message number | summary text]
+          Selects a message to use as a summary of a bug. The first
+          non-pseudoheader/non-control paragraph of that message is parsed
+          and set as the summary of the bug which is displayed on the top
+          of the bug report page. This is useful in cases where the
+          original report doesn't correctly describe the problem or the
+          bug has many messages which make it difficult to identify the
+          actual problem.
+
+          If message number is not given, clears the summary. message
+          number is the message number as listed in the bugreport cgi
+          script output; if a message number of 0 is given, the current
+          message is used (that is, the message which was sent to
+          control@bugs.debian.org which contains the summary control
+          command).
+
+          If message number is not numerical and not the empty string, it
+          is assumed to be the text to set the summary to.
+
+   outlook bugnumber [message number | outlook text]
+          Selects a message to use as the outlook for fixing a bug (or the
+          current status of fixing a bug). The first
+          non-pseudoheader/non-control paragraph of that message is parsed
+          and set as the outlook of the bug which is displayed on the top
+          of the bug report page. This is useful to coordinate with others
+          who are working on fixing this bug (for example, in an bug
+          squashing party).
+
+          If message number is not given, clears the outlook. message
+          number is the message number as listed in the bugreport cgi
+          script output; if a message number of 0 is given, the current
+          message is used (that is, the message which was sent to
+          control@bugs.debian.org which contains the outlook control
+          command).
+
+          If message number is not numerical and not the empty string, it
+          is assumed to be the text to set the outlook to.
+
+   clone bugnumber NewID [ new IDs ... ]
+          The clone control command allows you to duplicate a bug report.
+          It is useful in the case where a single report actually
+          indicates that multiple distinct bugs have occurred. "New IDs"
+          are negative numbers, separated by spaces, which may be used in
+          subsequent control commands to refer to the newly duplicated
+          bugs. A new report is generated for each new ID.
+
+          Example usage:
+
+          clone 12345 -1 -2
+          reassign -1 foo
+          retitle -1 foo: foo sucks
+          reassign -2 bar
+          retitle -2 bar: bar sucks when used with foo
+          severity -2 wishlist
+          clone 123456 -3
+          reassign -3 foo
+          retitle -3 foo: foo sucks
+          merge -1 -3
+
+   merge bugnumber bugnumber ...
+          Merges two or more bug reports. When reports are merged opening,
+          closing, marking or unmarking as forwarded and reassigning any
+          of the bugs to a new package will have an identical effect on
+          all of the merged reports.
+
+          Before bugs can be merged they must be in exactly the same
+          state: either all open or all closed, with the same forwarded-to
+          upstream author address or all not marked as forwarded, all
+          assigned to the same package or package(s) (an exact string
+          comparison is done on the package to which the bug is assigned),
+          and all of the same severity. If they don't start out in the
+          same state you should use reassign, reopen and so forth to make
+          sure that they are before using merge. Titles are not required
+          to match, and will not be affected by the merge. Tags are not
+          required to match, either, they will be joined.
+
+          If any of the bugs listed in a merge command is already merged
+          with another bug then all the reports merged with any of the
+          ones listed will all be merged together. Merger is like
+          equality: it is reflexive, transitive and symmetric.
+
+          Merging reports causes a note to appear on each report's logs;
+          on the WWW pages this is includes links to the other bugs.
+
+          Merged reports are all expired simultaneously, and only when all
+          of the reports each separately meet the criteria for expiry.
+
+   forcemerge bugnumber bugnumber ...
+          Forcibly merges two or more bug reports. The settings of the
+          first bug listed which must be equal in a normal merge are
+          assigned to the bugs listed next. To avoid typos erroneously
+          merging bugs, bugs must be in the same package. See the text
+          above for a description of what merging means.
+
+          Note that this makes it possible to close bugs by merging; you
+          are responsible for notifying submitters with an appropriate
+          close message if you do this.
+
+   unmerge bugnumber
+          Disconnects a bug report from any other reports with which it
+          may have been merged. If the report listed is merged with
+          several others then they are all left merged with each other;
+          only their associations with the bug explicitly named are
+          removed.
+
+          If many bug reports are merged and you wish to split them into
+          two separate groups of merged reports you must unmerge each
+          report in one of the new groups separately and then merge them
+          into the required new group.
+
+          You can only unmerge one report with each unmerge command; if
+          you want to disconnect more than one bug simply include several
+          unmerge commands in your message.
+
+   tags bugnumber [ + | - | = ] tag [ tag ... ] [ + | - | = tag ... ] ]
+          Sets tags for the bug report #bugnumber. No notification is sent
+          to the user who reported the bug. Setting the action to + means
+          to add each tag following, - means to remove each tag following,
+          and = means to set the following tags to the list provided.
+          Intervening +, -, or = change the action for the tags following.
+          The default action is adding.
+
+          Example usage:
+
+          # same as 'tags 123456 + patch'
+          tags 123456 patch
+
+          # same as 'tags 123456 + help security'
+          tags 123456 help security
+
+          # add 'fixed' and 'pending' tags
+          tags 123456 + fixed pending
+
+          # remove 'unreproducible' tag
+          tags 123456 - unreproducible
+
+          # set tags to exactly 'moreinfo' and 'unreproducible'
+          tags 123456 = moreinfo unreproducible
+
+          # remove the moreinfo tag and add a patch tag
+          tags 123456 - moreinfo + patch
+
+          Available tags currently include patch, wontfix, moreinfo,
+          unreproducible, help, pending, security, upstream, confirmed,
+          fixed, fixed-upstream, fixed-in-experimental, d-i, ipv6, lfs,
+          l10n, potato, woody, sarge, sarge-ignore, etch, etch-ignore,
+          lenny, lenny-ignore, squeeze, squeeze-ignore, wheezy,
+          wheezy-ignore, jessie, jessie-ignore, sid, experimental.
+
+          For their meanings please consult the general developers'
+          documentation for the bug system.
+
+   block bugnumber by bug ...
+          Note that the fix for the first bug is blocked by the other
+          listed bugs.
+
+   unblock bugnumber by bug ...
+          Note that the fix for the first bug is no longer blocked by the
+          other listed bugs.
+
+   close bugnumber [ fixed-version ] (deprecated)
+          Close bug report #bugnumber.
+
+          A notification is sent to the user who reported the bug, but (in
+          contrast to mailing bugnumber-done@bugs.debian.org) the text of
+          the mail which caused the bug to be closed is not included in
+          that notification. The maintainer who closes a report needs to
+          ensure, probably by sending a separate message, that the user
+          who reported the bug knows why it is being closed. The use of
+          this command is therefore deprecated. See the developer's
+          information about how to close a bug properly.
+
+          If you supply a fixed-version, the bug tracking system will note
+          that the bug was fixed in that version of the package.
+
+   package [ packagename ... ]
+          Limits the following commands so that they will only apply to
+          bugs filed against the listed packages. You can list one or more
+          packages. If you don't list any packages, the following commands
+          will apply to all bugs. You're encouraged to use this as a
+          safety feature in case you accidentally use the wrong bug
+          numbers.
+
+          Example usage:
+
+          package foo
+          reassign 123456 bar 1.0-1
+
+          package bar
+          retitle 123456 bar: bar sucks
+          severity 123456 normal
+
+          package
+          severity 234567 wishlist
+
+   owner bugnumber address | !
+          Sets address to be the "owner" of #bugnumber. The owner of a bug
+          claims responsibility for fixing it. This is useful to share out
+          work in cases where a package has a team of maintainers.
+
+          If you wish to become the owner of the bug yourself, you can use
+          the ! shorthand or specify your own email address.
+
+   noowner bugnumber
+          Forgets any idea that the bug has an owner other than the usual
+          maintainer. If the bug had no owner recorded then this will do
+          nothing.
+
+   archive bugnumber
+          Archives a bug that had been archived at some point in the past
+          but is currently not archived if the bug fulfills the
+          requirements for archival, ignoring time.
+
+   unarchive bugnumber
+          Unarchives a bug that was previously archived. Unarchival should
+          generally be coupled with reopen and found/fixed as appropriate.
+          Bugs that have been unarchived can be archived using archive
+          assuming the non-time based archival requirements are met. You
+          should not be using unarchive to make trivial changes to
+          archived bugs, such as changing the submitter; its primary
+          purpose is to allow for the reopening of bugs which have been
+          archived without the intervention of BTS administrators.
+
+   #...
+          One-line comment. The # must be at the start of the line. The
+          text of comments will be included in the acknowledgement sent to
+          the sender and to affected maintainers, so you can use this to
+          document the reasons for your commands.
+
+   quit
+   stop
+   thank
+   thanks
+   thankyou
+   thank you
+   --
+          On a line by itself, in any case, possibly followed by
+          whitespace, tells the control server to stop processing the
+          message; the remainder of the message can include explanations,
+          signatures or anything else, none of it will be detected by the
+          control server.
+     __________________________________________________________________
+
+    Debian BTS administrators <owner@bugs.debian.org>
+
+   Debian bug tracking system
+   Copyright (c) 1999 Darren O. Benham, 1997, 2003 nCipher Corporation
+   Ltd, 1994-1997 Ian Jackson.
+     __________________________________________________________________
+

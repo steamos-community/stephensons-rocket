@@ -1,0 +1,23 @@
+What's in /debian/doc?
+
+dedication/                 Dedications of Debian Releases
+
+--- General Documentation
+FAQ/                        Debian FAQ List in html, postscript, and plain text
+constitution.txt            Debian Constitution
+debian-manifesto            How it all started...  
+mailing-lists.txt           How to subscribe to the Debian mailing lists
+social-contract.txt         Debian Social Contract and Free Software Guidelines
+source-unpack.txt           How to unpack a Debian source package
+
+
+--- The Bug Tracking System for users
+bug-reporting.txt           How to report a bug in Debian
+bug-log-mailserver.txt      Introduction to the bug system request server 
+bug-log-access.txt          Accessing bug reports in the tracking system
+bug-mailserver-refcard.txt  Mail server's reference card     
+
+
+--- Debian Developer's Information
+bug-maint-info.txt          Developer's information re the bug system
+bug-maint-mailcontrol.txt   Introduction to the bug control mailserver

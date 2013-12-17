@@ -1,0 +1,69 @@
+/*
+
+Debian Installation Medium print media CSS
+to be used in conjuction the all media CSS file
+Created by: Kalle Söderman
+
+*/
+
+body {
+    margin: 0 1em 0 70px;
+    font: normal 10pt sans-serif;
+    color:black;
+    background-image:none;
+}
+.alt {
+    display:none;
+    }
+.section {
+    display:none;
+    }
+#logo {
+    z-index: 0;
+    }
+h1 {
+    z-index:100;
+    }
+em {
+    color: #666;
+    }
+code {
+    background-color: transparent;
+    border:0;
+    }
+tt a {
+    font-family: monospace;
+    background-color: transparent;
+    border:0;
+    }
+.toc li {
+    border-bottom: 0.5pt dotted black;
+    }
+#outer ul {
+    line-height:1.2em;
+    }
+#intro {
+    border-bottom: 1pt solid black
+    }
+#breadcrumbs {
+    font-weight:bold;
+    border-bottom: 1pt solid black;
+    }
+#fineprint, #breadcrumbs {
+    background: transparent;
+    }
+#fineprint {
+    color:black;
+    border-top:1px solid black;
+    }
+#fineprint p {
+    line-height:1.5em;
+    }
+p a:link {
+    background-image: url('../pics/dot_bw.gif');
+    background-repeat:repeat-x;
+    background-position:bottom left;
+    }
+a:link, a:visited, a:link:visited {
+    color:black;
+    }

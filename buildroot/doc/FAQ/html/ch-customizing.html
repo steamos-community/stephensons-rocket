@@ -1,0 +1,716 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>The Debian GNU/Linux FAQ - Customizing your installation of Debian GNU/Linux</title>
+
+<link href="index.en.html" rel="start">
+<link href="ch-kernel.en.html" rel="prev">
+<link href="ch-support.en.html" rel="next">
+<link href="index.en.html#contents" rel="contents">
+<link href="index.en.html#copyright" rel="copyright">
+<link href="ch-basic_defs.en.html" rel="chapter" title="1 Definitions and overview">
+<link href="ch-getting.en.html" rel="chapter" title="2 Getting and installing Debian GNU/Linux">
+<link href="ch-choosing.en.html" rel="chapter" title="3 Choosing a Debian distribution">
+<link href="ch-compat.en.html" rel="chapter" title="4 Compatibility issues">
+<link href="ch-software.en.html" rel="chapter" title="5 Software available in the Debian system">
+<link href="ch-ftparchives.en.html" rel="chapter" title="6 The Debian FTP archives">
+<link href="ch-pkg_basics.en.html" rel="chapter" title="7 Basics of the Debian package management system">
+<link href="ch-pkgtools.en.html" rel="chapter" title="8 The Debian package management tools">
+<link href="ch-uptodate.en.html" rel="chapter" title="9 Keeping your Debian system up-to-date">
+<link href="ch-kernel.en.html" rel="chapter" title="10 Debian and the kernel">
+<link href="ch-customizing.en.html" rel="chapter" title="11 Customizing your installation of Debian GNU/Linux">
+<link href="ch-support.en.html" rel="chapter" title="12 Getting support for Debian GNU/Linux">
+<link href="ch-contributing.en.html" rel="chapter" title="13 Contributing to the Debian Project">
+<link href="ch-redistrib.en.html" rel="chapter" title="14 Redistributing Debian GNU/Linux in a commercial product">
+<link href="ch-nexttime.en.html" rel="chapter" title="15 Changes expected in the next major release of Debian">
+<link href="ch-faqinfo.en.html" rel="chapter" title="16 General information about the FAQ">
+<link href="ch-basic_defs.en.html#s-whatisfaq" rel="section" title="1.1 What is this FAQ?">
+<link href="ch-basic_defs.en.html#s-whatisdebian" rel="section" title="1.2 What is Debian GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-linux" rel="section" title="1.3 OK, now I know what Debian is... what is Linux?!">
+<link href="ch-basic_defs.en.html#s-non-linux" rel="section" title="1.4 Does Debian just do GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-difference" rel="section" title="1.5 What is the difference between Debian GNU/Linux and other Linux distributions? Why should I choose Debian over some other distribution?">
+<link href="ch-basic_defs.en.html#s-gnu" rel="section" title="1.6 How does the Debian project fit in or compare with the Free Software Foundation's GNU project?">
+<link href="ch-basic_defs.en.html#s-pronunciation" rel="section" title="1.7 How does one pronounce Debian and what does this word mean?">
+<link href="ch-getting.en.html#s-version" rel="section" title="2.1 What is the latest version of Debian?">
+<link href="ch-getting.en.html#s-updatestable" rel="section" title="2.2 Are there package upgrades in `stable'?">
+<link href="ch-getting.en.html#s-boot-floppies" rel="section" title="2.3 Where/how can I get the Debian installation disks?">
+<link href="ch-getting.en.html#s-cdrom" rel="section" title="2.4 How do I install the Debian from CD-ROMs?">
+<link href="ch-getting.en.html#s-cdimage-symlinks" rel="section" title="2.5 Why does the official stable released CD-ROM contain symlinks for `frozen' and `unstable'? I thought this CD contains just `stable'!">
+<link href="ch-getting.en.html#s-remoteinstall" rel="section" title="2.6 Can I get and install Debian directly from a remote Internet site?">
+<link href="ch-getting.en.html#s-alternativebootinstaller" rel="section" title="2.7 Are there any alternative strategies for booting the system installer?">
+<link href="ch-choosing.en.html#s3.1" rel="section" title="3.1 Which Debian distribution (stable/testing/unstable) is better for me?">
+<link href="ch-choosing.en.html#s3.2" rel="section" title="3.2 But what about Knoppix, Linex, Ubuntu, and others?">
+<link href="ch-compat.en.html#s-arches" rel="section" title="4.1 On what hardware architectures/systems does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-kernels" rel="section" title="4.2 What kernels does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-otherdistribs" rel="section" title="4.3 How compatible is Debian with other distributions of Linux?">
+<link href="ch-compat.en.html#s-otherunices" rel="section" title="4.4 How source code compatible is Debian with other Unix systems?">
+<link href="ch-compat.en.html#s-otherpackages" rel="section" title="4.5 Can I use Debian packages (&quot;.deb&quot; files) on my Red Hat/Slackware/... Linux system? Can I use Red Hat packages (&quot;.rpm&quot; files) on my Debian GNU/Linux system?">
+<link href="ch-compat.en.html#s-non-debian-programs" rel="section" title="4.6 How should I install a non-Debian program?">
+<link href="ch-compat.en.html#s-termcap" rel="section" title="4.7 Why can't I compile programs that require libtermcap?">
+<link href="ch-compat.en.html#s-accelx" rel="section" title="4.8 Why can't I install AccelX?">
+<link href="ch-software.en.html#s-apps" rel="section" title="5.1 What types of applications and development software are available for Debian GNU/Linux?">
+<link href="ch-software.en.html#s-softwareauthors" rel="section" title="5.2 Who wrote all that software?">
+<link href="ch-software.en.html#s-pkglist" rel="section" title="5.3 How can I get a current list of programs that have been packaged for Debian?">
+<link href="ch-software.en.html#s-buildenv" rel="section" title="5.4 How can I install a developer's environment to build packages?">
+<link href="ch-software.en.html#s-missing" rel="section" title="5.5 What is missing from Debian GNU/Linux?">
+<link href="ch-software.en.html#s-no-devs" rel="section" title="5.6 Why do I get &quot;ld: cannot find -lfoo&quot; messages when compiling programs? Why aren't there any libfoo.so files in Debian library packages?">
+<link href="ch-software.en.html#s-java" rel="section" title="5.7 (How) Does Debian support Java?">
+<link href="ch-software.en.html#s-isitdebian" rel="section" title="5.8 How can I check that I am using a Debian system, and what version is it?">
+<link href="ch-software.en.html#s-nonenglish" rel="section" title="5.9 How does Debian support non-English languages?">
+<link href="ch-software.en.html#s-pine" rel="section" title="5.10 Where is pine?">
+<link href="ch-software.en.html#s-qmail" rel="section" title="5.11 Where is qmail/ezmlm/djbdns?">
+<link href="ch-software.en.html#s-flash" rel="section" title="5.12 Where is a player for Flash (SWF)?">
+<link href="ch-software.en.html#s-googleearth" rel="section" title="5.13 Where is Google Earth?">
+<link href="ch-software.en.html#s-voip" rel="section" title="5.14 Where is VoIP software?">
+<link href="ch-software.en.html#s-nonfreewireless" rel="section" title="5.15 I have a wireless network card which doesn't work with Linux. What should I do?">
+<link href="ch-ftparchives.en.html#s-dists" rel="section" title="6.1 How many Debian distributions are there?">
+<link href="ch-ftparchives.en.html#s-codenames" rel="section" title="6.2 What are all those names like etch, lenny, etc.?">
+<link href="ch-ftparchives.en.html#s-sid" rel="section" title="6.3 What about &quot;sid&quot;?">
+<link href="ch-ftparchives.en.html#s-stable" rel="section" title="6.4 What does the stable directory contain?">
+<link href="ch-ftparchives.en.html#s-testing" rel="section" title="6.5 What does the testing distribution contain?">
+<link href="ch-ftparchives.en.html#s-unstable" rel="section" title="6.6 What does the unstable distribution contain?">
+<link href="ch-ftparchives.en.html#s-dirtree" rel="section" title="6.7 What are all those directories at the Debian FTP archives?">
+<link href="ch-ftparchives.en.html#s-archsections" rel="section" title="6.8 What are all those directories inside dists/stable/main?">
+<link href="ch-ftparchives.en.html#s-source" rel="section" title="6.9 Where is the source code?">
+<link href="ch-ftparchives.en.html#s-pools" rel="section" title="6.10 What's in the pool directory?">
+<link href="ch-ftparchives.en.html#s-incoming" rel="section" title="6.11 What is &quot;incoming&quot;?">
+<link href="ch-ftparchives.en.html#s-ownrepository" rel="section" title="6.12 How do I set up my own apt-able repository?">
+<link href="ch-pkg_basics.en.html#s-package" rel="section" title="7.1 What is a Debian package?">
+<link href="ch-pkg_basics.en.html#s-deb-format" rel="section" title="7.2 What is the format of a Debian binary package?">
+<link href="ch-pkg_basics.en.html#s-pkgname" rel="section" title="7.3 Why are Debian package file names so long?">
+<link href="ch-pkg_basics.en.html#s-controlfile" rel="section" title="7.4 What is a Debian control file?">
+<link href="ch-pkg_basics.en.html#s-conffile" rel="section" title="7.5 What is a Debian conffile?">
+<link href="ch-pkg_basics.en.html#s-maintscripts" rel="section" title="7.6 What is a Debian preinst, postinst, prerm, and postrm script?">
+<link href="ch-pkg_basics.en.html#s-priority" rel="section" title="7.7 What is an Essential, Required, Important, Standard, Optional, or Extra package?">
+<link href="ch-pkg_basics.en.html#s-virtual" rel="section" title="7.8 What is a Virtual Package?">
+<link href="ch-pkg_basics.en.html#s-depends" rel="section" title="7.9 What is meant by saying that a package Depends, Recommends, Suggests, Conflicts, Replaces, Breaks or Provides another package?">
+<link href="ch-pkg_basics.en.html#s-pre-depends" rel="section" title="7.10 What is meant by Pre-Depends?">
+<link href="ch-pkg_basics.en.html#s-pkgstatus" rel="section" title="7.11 What is meant by unknown, install, remove, purge and hold in the package status?">
+<link href="ch-pkg_basics.en.html#s-puttingonhold" rel="section" title="7.12 How do I put a package on hold?">
+<link href="ch-pkg_basics.en.html#s-sourcepkgs" rel="section" title="7.13 How do I install a source package?">
+<link href="ch-pkg_basics.en.html#s-sourcebuild" rel="section" title="7.14 How do I build binary packages from a source package?">
+<link href="ch-pkg_basics.en.html#s-creatingdebs" rel="section" title="7.15 How do I create Debian packages myself?">
+<link href="ch-pkgtools.en.html#s-pkgprogs" rel="section" title="8.1 What programs does Debian provide for managing its packages?">
+<link href="ch-pkgtools.en.html#s-updaterunning" rel="section" title="8.2 Debian claims to be able to update a running program; how is this accomplished?">
+<link href="ch-pkgtools.en.html#s-whatpackages" rel="section" title="8.3 How can I tell what packages are already installed on a Debian system?">
+<link href="ch-pkgtools.en.html#s-listfiles" rel="section" title="8.4 How to display the files of a package installed?">
+<link href="ch-pkgtools.en.html#s-filesearch" rel="section" title="8.5 How can I find out what package produced a particular file?">
+<link href="ch-pkgtools.en.html#s-datapackages" rel="section" title="8.6 Why doesn't get `foo-data' removed when I uninstall `foo'? How do I make sure old unused library-packages get purged?">
+<link href="ch-uptodate.en.html#s-howtocurrent" rel="section" title="9.1 How can I keep my Debian system current?">
+<link href="ch-uptodate.en.html#s-upgradesingle" rel="section" title="9.2 Must I go into single user mode in order to upgrade a package?">
+<link href="ch-uptodate.en.html#s-savedebs" rel="section" title="9.3 Do I have to keep all those .deb archive files on my disk?">
+<link href="ch-uptodate.en.html#s-keepingalog" rel="section" title="9.4 How can I keep a log of the packages I added to the system? I'd like to know when which package upgrades and removals have occured!">
+<link href="ch-uptodate.en.html#s-autoupdate" rel="section" title="9.5 Can I automatically update the system?">
+<link href="ch-uptodate.en.html#s-aptproxy" rel="section" title="9.6 I have several machines how can I download the updates only one time?">
+<link href="ch-kernel.en.html#s-non-debian-kernel" rel="section" title="10.1 Can I install and compile a kernel without some Debian-specific tweaking?">
+<link href="ch-kernel.en.html#s-customkernel" rel="section" title="10.2 What tools does Debian provide to build custom kernels?">
+<link href="ch-kernel.en.html#s-custombootdisk" rel="section" title="10.3 How can I make a custom boot floppy?">
+<link href="ch-kernel.en.html#s-modules" rel="section" title="10.4 What special provisions does Debian provide to deal with modules?">
+<link href="ch-kernel.en.html#s-removeoldkernel" rel="section" title="10.5 Can I safely de-install an old kernel package, and if so, how?">
+<link href="ch-customizing.en.html#s-papersize" rel="section" title="11.1 How can I ensure that all programs use the same paper size?">
+<link href="ch-customizing.en.html#s-hardwareaccess" rel="section" title="11.2 How can I provide access to hardware peripherals, without compromising security?">
+<link href="ch-customizing.en.html#s-consolefont" rel="section" title="11.3 How do I load a console font on startup the Debian way?">
+<link href="ch-customizing.en.html#s-appdefaults" rel="section" title="11.4 How can I configure an X11 program's application defaults?">
+<link href="ch-customizing.en.html#s-booting" rel="section" title="11.5 Every distribution seems to have a different boot-up method. Tell me about Debian's.">
+<link href="ch-customizing.en.html#s-custombootscripts" rel="section" title="11.6 It looks as if Debian does not use rc.local to customize the boot process; what facilities are provided?">
+<link href="ch-customizing.en.html#s-interconffiles" rel="section" title="11.7 How does the package management system deal with packages that contain configuration files for other packages?">
+<link href="ch-customizing.en.html#s-divert" rel="section" title="11.8 How do I override a file installed by a package, so that a different version can be used instead?">
+<link href="ch-customizing.en.html#s-localpackages" rel="section" title="11.9 How can I have my locally-built package included in the list of available packages that the package management system knows about?">
+<link href="ch-customizing.en.html#s-diverse" rel="section" title="11.10 Some users like mawk, others like gawk; some like vim, others like elvis; some like trn, others like tin; how does Debian support diversity?">
+<link href="ch-support.en.html#s-debiandocs" rel="section" title="12.1 What other documentation exists on and for a Debian system?">
+<link href="ch-support.en.html#s-onlineresources" rel="section" title="12.2 Are there any on-line resources for discussing Debian?">
+<link href="ch-support.en.html#s-searchtools" rel="section" title="12.3 Is there a quick way to search for information on Debian GNU/Linux?">
+<link href="ch-support.en.html#s-buglogs" rel="section" title="12.4 Are there logs of known bugs?">
+<link href="ch-support.en.html#s-bugreport" rel="section" title="12.5 How do I report a bug in Debian?">
+<link href="ch-contributing.en.html#s-contrib" rel="section" title="13.1 How can I become a Debian software developer?">
+<link href="ch-contributing.en.html#s-contribresources" rel="section" title="13.2 How can I contribute resources to the Debian project?">
+<link href="ch-contributing.en.html#s-supportingorganizations" rel="section" title="13.3 How can I contribute financially to the Debian project?">
+<link href="ch-redistrib.en.html#s-sellcds" rel="section" title="14.1 Can I make and sell Debian CDs?">
+<link href="ch-redistrib.en.html#s-packagednonfree" rel="section" title="14.2 Can Debian be packaged with non-free software?">
+<link href="ch-redistrib.en.html#s-childistro" rel="section" title="14.3 I am making a special Linux distribution for a &quot;vertical market&quot;. Can I use Debian GNU/Linux for the guts of a Linux system and add my own applications on top of it?">
+<link href="ch-redistrib.en.html#s-commercialdebs" rel="section" title="14.4 Can I put my commercial program in a Debian &quot;package&quot; so that it installs effortlessly on any Debian system?">
+<link href="ch-nexttime.en.html#s-i18n" rel="section" title="15.1 Extended support for non-English users">
+<link href="ch-nexttime.en.html#s-dependencybasedboot" rel="section" title="15.2 Faster booting: Dependency based boot sequence">
+<link href="ch-nexttime.en.html#s-di" rel="section" title="15.3 Improvements in the Debian Installer">
+<link href="ch-nexttime.en.html#s-morearches" rel="section" title="15.4 More architectures">
+<link href="ch-nexttime.en.html#s-morekernels" rel="section" title="15.5 More kernels">
+<link href="ch-faqinfo.en.html#s-authors" rel="section" title="16.1 Authors">
+<link href="ch-faqinfo.en.html#s-feedback" rel="section" title="16.2 Feedback">
+<link href="ch-faqinfo.en.html#s-latest" rel="section" title="16.3 Availability">
+<link href="ch-faqinfo.en.html#s-docformat" rel="section" title="16.4 Document format">
+<link href="ch-choosing.en.html#s3.1.1" rel="subsection" title="3.1.1 You asked me to install stable, but in stable so and so hardware is not detected/working. What should I do?">
+<link href="ch-choosing.en.html#s3.1.2" rel="subsection" title="3.1.2 Will there be different versions of packages in different distributions?">
+<link href="ch-choosing.en.html#s3.1.3" rel="subsection" title="3.1.3 The stable distributions really contains outdated packages. Just look at Kde, Gnome, Xorg or even the kernel. They are very old. Why is it so?">
+<link href="ch-choosing.en.html#s3.1.4" rel="subsection" title="3.1.4 If I were to decide to change to another distribution, Can I do that?">
+<link href="ch-choosing.en.html#s3.1.5" rel="subsection" title="3.1.5 Could you tell me whether to install testing or unstable?">
+<link href="ch-choosing.en.html#s3.1.6" rel="subsection" title="3.1.6 You are talking about testing being broken. What do you mean by that?">
+<link href="ch-choosing.en.html#s3.1.7" rel="subsection" title="3.1.7 Why is it that testing could be broken for months? Wont the fixes introduced in unstable flow directly down into testing?">
+<link href="ch-choosing.en.html#s3.1.8" rel="subsection" title="3.1.8 From an administrator's point of view, Which distribution requires more attention?">
+<link href="ch-choosing.en.html#s3.1.9" rel="subsection" title="3.1.9 What happens when a new release is made?">
+<link href="ch-choosing.en.html#s3.1.10" rel="subsection" title="3.1.10 I have a working Desktop/cluster with Debian installed. How do I know which distribution I am running?">
+<link href="ch-choosing.en.html#s3.1.11" rel="subsection" title="3.1.11 I am currently tracking stable. Can I change to testing or unstable? If so, How?">
+<link href="ch-choosing.en.html#s3.1.12" rel="subsection" title="3.1.12 I am currently tracking testing (jessie). What will happen when a release is made? Will I still be tracking testing or will my machine be running the new stable distribution?">
+<link href="ch-choosing.en.html#s3.1.13" rel="subsection" title="3.1.13 I am still confused. What did you say I should install?">
+<link href="ch-choosing.en.html#s3.2.1" rel="subsection" title="3.2.1 I know that Knoppix/Linex/Ubuntu/... is Debian-based. So after installing it on the hard disk, can I use 'apt' package tools on it?">
+<link href="ch-choosing.en.html#s3.2.2" rel="subsection" title="3.2.2 I installed Knoppix/Linex/Ubuntu/... on my hard disk. Now I have a problem. What should I do?">
+<link href="ch-choosing.en.html#s3.2.3" rel="subsection" title="3.2.3 I'm using Knoppix/Linex/Ubuntu/... and now I want to use Debian. How do I migrate?">
+<link href="ch-ftparchives.en.html#s-oldcodenames" rel="subsection" title="6.2.1 Which other codenames have been used in the past?">
+<link href="ch-ftparchives.en.html#s-sourceforcodenames" rel="subsection" title="6.2.2 Where do these codenames come from?">
+<link href="ch-ftparchives.en.html#s-frozen" rel="subsection" title="6.5.1 What about &quot;testing&quot;? How is it `frozen'?">
+<link href="ch-pkgtools.en.html#s-dpkg" rel="subsection" title="8.1.1 dpkg">
+<link href="ch-pkgtools.en.html#s-apt-get" rel="subsection" title="8.1.2 APT">
+<link href="ch-pkgtools.en.html#s-aptitude" rel="subsection" title="8.1.3 aptitude">
+<link href="ch-pkgtools.en.html#s-synaptic" rel="subsection" title="8.1.4 synaptic">
+<link href="ch-pkgtools.en.html#s-tasksel" rel="subsection" title="8.1.5 tasksel">
+<link href="ch-pkgtools.en.html#s-dpkg-extra" rel="subsection" title="8.1.6 Other package management tools">
+<link href="ch-pkgtools.en.html#s-dselect" rel="subsection" title="8.1.6.1 dselect">
+<link href="ch-pkgtools.en.html#s-dpkg-deb" rel="subsection" title="8.1.6.2 dpkg-deb">
+<link href="ch-pkgtools.en.html#s-dpkg-split" rel="subsection" title="8.1.6.3 dpkg-split">
+<link href="ch-uptodate.en.html#s-aptitude-upgrade" rel="subsection" title="9.1.1 aptitude">
+<link href="ch-uptodate.en.html#s-apt" rel="subsection" title="9.1.2 apt-get, dselect and apt-cdrom">
+<link href="ch-uptodate.en.html#s-update_aptitude" rel="subsection" title="9.1.3 aptitude">
+<link href="ch-uptodate.en.html#s-mirror" rel="subsection" title="9.1.4 mirror">
+<link href="ch-uptodate.en.html#s-dpkg-mountable" rel="subsection" title="9.1.5 dpkg-mountable">
+<link href="ch-support.en.html#s12.2.1" rel="subsection" title="12.2.1 Mailing lists">
+<link href="ch-support.en.html#s-mailinglistconduct" rel="subsection" title="12.2.1.1 What is the code of conduct for the mailing lists?">
+<link href="ch-support.en.html#s12.2.2" rel="subsection" title="12.2.2 Web forums">
+<link href="ch-support.en.html#s12.2.3" rel="subsection" title="12.2.3 Wiki">
+<link href="ch-support.en.html#s12.2.4" rel="subsection" title="12.2.4 Maintainers">
+<link href="ch-support.en.html#s12.2.5" rel="subsection" title="12.2.5 Usenet newsgroups">
+<link href="ch-contributing.en.html#s-SPI" rel="subsection" title="13.3.1 Software in the Public Interest">
+<link href="ch-contributing.en.html#s-FSF" rel="subsection" title="13.3.2 Free Software Foundation">
+
+</head>
+
+<body>
+
+<p><a name="ch-customizing"></a></p>
+<hr>
+
+<p>
+[ <a href="ch-kernel.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ 11 ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-support.en.html">next</a> ]
+</p>
+
+<hr>
+
+<h1>
+The Debian GNU/Linux FAQ
+<br>Chapter 11 - Customizing your installation of Debian GNU/Linux
+</h1>
+
+<hr>
+
+<h2 id="s-papersize">11.1 How can I ensure that all programs use the same paper size?</h2>
+
+<p>
+Install the <code>libpaper1</code> package, and it will ask you for a
+system-wide default paper size.  This setting will be kept in the file
+<samp>/etc/papersize</samp>.
+</p>
+
+<p>
+Users can override the paper size setting using the <samp>PAPERSIZE</samp>
+environment variable.  For details, see the manual page
+<code>papersize(5)</code>.
+</p>
+
+<hr>
+
+<h2 id="s-hardwareaccess">11.2 How can I provide access to hardware peripherals, without compromising security?</h2>
+
+<p>
+Many device files in the <samp>/dev</samp> directory belong to some predefined
+groups.  For example, <samp>/dev/fd0</samp> belongs to the <samp>floppy</samp>
+group, and <samp>/dev/dsp</samp> belongs to the <samp>audio</samp> group.
+</p>
+
+<p>
+If you want a certain user to have access to one of these devices, just add the
+user to the group the device belongs to, i.e.  do:
+</p>
+
+<pre>
+     adduser user group
+</pre>
+
+<p>
+This way you won't have to change the file permissions on the device.
+</p>
+
+<p>
+If you do this from within a user's shell or a GUI environment you have to
+logout and login again to become an effective member of that group.  To check
+which groups you belong to run <samp>groups</samp>.
+</p>
+
+<p>
+Notice that, since the introduction of <samp>udev</samp> if you change the
+permissions of a hardware peripheral they might be be adjusted for some devices
+when the system starts, if this happens to the hardware peripherals you are
+instered in you will have to adjust the rules at <samp>/etc/udev</samp>.
+</p>
+
+<hr>
+
+<h2 id="s-consolefont">11.3 How do I load a console font on startup the Debian way?</h2>
+
+<p>
+The <code>kbd</code> and <code>console-tools</code> packages support this, edit
+<samp>/etc/kbd/config</samp> or <samp>/etc/console-tools/config</samp> files.
+</p>
+
+<hr>
+
+<h2 id="s-appdefaults">11.4 How can I configure an X11 program's application defaults?</h2>
+
+<p>
+Debian's X programs will install their application resource data in the
+<samp>/etc/X11/app-defaults/</samp> directory.  If you want to customize X
+applications globally, put your customizations in those files.  They are marked
+as configuration files, so their contents will be preserved during upgrades.
+</p>
+
+<hr>
+
+<h2 id="s-booting">11.5 Every distribution seems to have a different boot-up method. Tell me about Debian's.</h2>
+
+<p>
+Like all Unices, Debian boots up by executing the program <samp>init</samp>.
+The configuration file for <samp>init</samp> (which is
+<samp>/etc/inittab</samp>) specifies that the first script to be executed
+should be <samp>/etc/init.d/rcS</samp>.  This script runs all of the scripts in
+<samp>/etc/rcS.d/</samp> by sourcing or forking subprocess depending on their
+file extension to perform initialization such as to check and to mount file
+systems, to load modules, to start the network services, to set the clock, and
+to perform other initialization.  Then, for compatibility, it runs the files
+(except those with a `.'in the filename) in <samp>/etc/rc.boot/</samp> too.
+Any scripts in the latter directory are usually reserved for system
+administrator use, and using them in packages is deprecated.
+</p>
+
+<p>
+After completing the boot process, <samp>init</samp> executes all start scripts
+in a directory specified by the default runlevel (this runlevel is given by the
+entry for <samp>id</samp> in <samp>/etc/inittab</samp>).  Like most System V
+compatible Unices, Linux has 7 runlevels:
+</p>
+<ul>
+<li>
+<p>
+0 (halt the system),
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+1 (single-user mode),
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+2 through 5 (various multi-user modes), and
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+6 (reboot the system).
+</p>
+</li>
+</ul>
+
+<p>
+Debian systems come with id=2, which indicates that the default runlevel will
+be '2' when the multi-user state is entered, and the scripts in
+<samp>/etc/rc2.d/</samp> will be run.
+</p>
+
+<p>
+In fact, the scripts in any of the directories, <samp>/etc/rcN.d/</samp> are
+just symbolic links back to scripts in <samp>/etc/init.d/</samp>.  However, the
+<em>names</em> of the files in each of the <samp>/etc/rcN.d/</samp> directories
+are selected to indicate the <em>way</em> the scripts in
+<samp>/etc/init.d/</samp> will be run.  Specifically, before entering any
+runlevel, all the scripts beginning with 'K' are run; these scripts kill
+services.  Then all the scripts beginning with 'S' are run; these scripts start
+services.  The two-digit number following the 'K' or 'S' indicates the order in
+which the script is run.  Lower numbered scripts are executed first.
+</p>
+
+<p>
+This approach works because the scripts in <samp>/etc/init.d/</samp> all take
+an argument which can be either `start', `stop', `reload', `restart' or
+`force-reload' and will then do the task indicated by the argument.  These
+scripts can be used even after a system has been booted, to control various
+processes.
+</p>
+
+<p>
+For example, with the argument `reload' the command
+</p>
+
+<pre>
+     /etc/init.d/sendmail reload
+</pre>
+
+<p>
+sends the sendmail daemon a signal to reread its configuration file.  (BTW,
+Debian supplies <code>invoke-rc.d</code> as a wrapper for invoking the scripts
+in <samp>/etc/init.d/</samp>.)
+</p>
+
+<hr>
+
+<h2 id="s-custombootscripts">11.6 It looks as if Debian does not use <samp>rc.local</samp> to customize the boot process; what facilities are provided?</h2>
+
+<p>
+Suppose a system needs to execute script <samp>foo</samp> on start-up, or on
+entry to a particular (System V) runlevel.  Then the system administrator
+should:
+</p>
+<ul>
+<li>
+<p>
+Enter the script <samp>foo</samp> into the directory <samp>/etc/init.d/</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Run the Debian command <samp>update-rc.d</samp> with appropriate arguments, to
+specify which runlevels should start the service, and which runlevels should
+stop the service.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Consider rebooting the system to check that the service starts correctly
+(assuming that you've asked for it to be started in the default runlevel).
+Otherwise, manually start it by running `<samp>/etc/init.d/foo start</samp>'.
+</p>
+</li>
+</ul>
+
+<p>
+One might, for example, cause the script <samp>foo</samp> to execute at
+boot-up, by putting it in <samp>/etc/init.d/</samp> and running
+<samp>update-rc.d foo defaults 19</samp>.  The argument `<samp>defaults</samp>'
+refers to the default runlevels, which means (at least in absence of any LSB
+comment block to the contrary) to start the service in runlevels 2 through 5,
+and to stop the service in runlevels 0, 1 and 6.  (Any LSB Default-Start and
+Default-Stop directives in <samp>foo</samp> take precedence when using the
+sysv-rc version of update-rc.d, but are ignored by the current (v0.8.10)
+file-rc version of update-rc.d.) The argument `<samp>19</samp>' ensures that
+<samp>foo</samp> is called after all scripts whose number is less than 19 have
+completed, and before all scripts whose number is 20 or greater.
+</p>
+
+<hr>
+
+<h2 id="s-interconffiles">11.7 How does the package management system deal with packages that contain configuration files for other packages?</h2>
+
+<p>
+Some users wish to create, for example, a new server by installing a group of
+Debian packages and a locally generated package consisting of configuration
+files.  This is not generally a good idea, because <code>dpkg</code> will not
+know about those configuration files if they are in a different package, and
+may write conflicting configurations when one of the initial &quot;group&quot;
+of packages is upgraded.
+</p>
+
+<p>
+Instead, create a local package that modifies the configuration files of the
+&quot;group&quot; of Debian packages of interest.  Then <code>dpkg</code> and
+the rest of the package management system will see that the files have been
+modified by the local &quot;sysadmin&quot; and will not try to overwrite them
+when those packages are upgraded.
+</p>
+
+<hr>
+
+<h2 id="s-divert">11.8 How do I override a file installed by a package, so that a different version can be used instead?</h2>
+
+<p>
+Suppose a sysadmin or local user wishes to use a program
+&quot;login-local&quot; rather than the program &quot;login&quot; provided by
+the Debian <code>login</code> package.
+</p>
+
+<p>
+Do <strong>not</strong>:
+</p>
+<ul>
+<li>
+<p>
+Overwrite <samp>/bin/login</samp> with <samp>login-local</samp>.
+</p>
+</li>
+</ul>
+
+<p>
+The package management system will not know about this change, and will simply
+overwrite your custom <samp>/bin/login</samp> whenever <samp>login</samp> (or
+any package that provides <samp>/bin/login</samp>) is installed or updated.
+</p>
+
+<p>
+Rather, do
+</p>
+<ul>
+<li>
+<p>
+Execute:
+</p>
+
+<pre>
+     dpkg-divert --divert /bin/login.debian /bin/login
+</pre>
+
+<p>
+in order to cause all future installations of the Debian <code>login</code>
+package to write the file <samp>/bin/login</samp> to
+<samp>/bin/login.debian</samp> instead.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Then execute:
+</p>
+
+<pre>
+     cp login-local /bin/login
+</pre>
+
+<p>
+to move your own locally-built program into place.
+</p>
+</li>
+</ul>
+
+<p>
+Run <samp>dpkg-divert --list</samp> to see which diversions are currently
+active on your system.
+</p>
+
+<p>
+Details are given in the manual page <code>dpkg-divert(8)</code>.
+</p>
+
+<hr>
+
+<h2 id="s-localpackages">11.9 How can I have my locally-built package included in the list of available packages that the package management system knows about?</h2>
+
+<p>
+Execute the command:
+</p>
+
+<pre>
+     dpkg-scanpackages BIN_DIR OVERRIDE_FILE [PATHPREFIX] &gt; my_Packages
+</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li>
+<p>
+BIN-DIR is a directory where Debian archive files (which usually have an
+extension of &quot;.deb&quot;) are stored.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+OVERRIDE_FILE is a file that is edited by the distribution maintainers and is
+usually stored on a Debian FTP archive at <samp>indices/override.main.gz</samp>
+for the Debian packages in the &quot;main&quot; distribution.  You can ignore
+this for local packages.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+PATHPREFIX is an <em>optional</em> string that can be prepended to the
+<samp>my_Packages</samp> file being produced.
+</p>
+</li>
+</ul>
+
+<p>
+Once you have built the file <samp>my_Packages</samp>, tell the package
+management system about it by using the command:
+</p>
+
+<pre>
+     dpkg --merge-avail my_Packages
+</pre>
+
+<p>
+If you are using APT, you can add the local repository to your
+<code>sources.list(5)</code> file, too.
+</p>
+
+<hr>
+
+<h2 id="s-diverse">11.10 Some users like mawk, others like gawk; some like vim, others like elvis; some like trn, others like tin; how does Debian support diversity?</h2>
+
+<p>
+There are several cases where two packages provide two different versions of a
+program, both of which provide the same core functionality.  Users might prefer
+one over another out of habit, or because the user interface of one package is
+somehow more pleasing than the interface of another.  Other users on the same
+system might make a different choice.
+</p>
+
+<p>
+Debian uses a &quot;virtual&quot; package system to allow system administrators
+to choose (or let users choose) their favorite tools when there are two or more
+that provide the same basic functionality, yet satisfy package dependency
+requirements without specifying a particular package.
+</p>
+
+<p>
+For example, there might exist two different versions of newsreaders on a
+system.  The news server package might 'recommend' that there exist
+<em>some</em> news reader on the system, but the choice of <samp>tin</samp> or
+<samp>trn</samp> is left up to the individual user.  This is satisfied by
+having both the <code>tin</code> and <code>trn</code> packages provide the
+virtual package <code>news-reader</code>.  <em>Which</em> program is invoked is
+determined by a link pointing from a file with the virtual package name
+<samp>/etc/alternatives/news-reader</samp> to the selected file, e.g.,
+<samp>/usr/bin/trn</samp>.
+</p>
+
+<p>
+A single link is insufficient to support full use of an alternate program;
+normally, manual pages, and possibly other supporting files must be selected as
+well.  The Perl script <samp>update-alternatives</samp> provides a way of
+ensuring that all the files associated with a specified package are selected as
+a system default.
+</p>
+
+<p>
+For example, to check what executables provide `x-window-manager', run:
+</p>
+
+<pre>
+     update-alternatives --display x-window-manager
+</pre>
+
+<p>
+If you want to change it, run:
+</p>
+
+<pre>
+     update-alternatives --config x-window-manager
+</pre>
+
+<p>
+And follow the instructions on the screen (basically, press the number next to
+the entry you'd like better).
+</p>
+
+<p>
+If a package doesn't register itself as a window manager for some reason (file
+a bug if it's in error), or if you use a window manager from /usr/local
+directory, the selections on screen won't contain your preferred entry.  You
+can update the link through command line options, like this:
+</p>
+
+<pre>
+     update-alternatives --install /usr/bin/x-window-manager \
+       x-window-manager /usr/local/bin/wmaker-cvs 50
+</pre>
+
+<p>
+The first argument to `--install' option is the symlink that points to
+/etc/alternatives/NAME, where NAME is the second argument.  The third argument
+is the program to which /etc/alternatives/NAME should point to, and the fourth
+argument is the priority (larger value means the alternative will more probably
+get picked automatically).
+</p>
+
+<p>
+To remove an alternative you added, simply run:
+</p>
+
+<pre>
+     update-alternatives --remove x-window-manager /usr/local/bin/wmaker-cvs
+</pre>
+
+<hr>
+
+<p>
+[ <a href="ch-kernel.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ 11 ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-support.en.html">next</a> ]
+</p>
+
+<hr>
+
+<p>
+The Debian GNU/Linux FAQ
+</p>
+
+<address>
+version 5.0.2, 2 June 2013<br>
+<br>
+Authors are listed at <a href="ch-faqinfo.en.html#s-authors">Debian FAQ Authors</a><br>
+<br>
+</address>
+<hr>
+
+</body>
+
+</html>
+

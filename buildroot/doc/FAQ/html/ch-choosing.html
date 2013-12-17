@@ -1,0 +1,961 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>The Debian GNU/Linux FAQ - Choosing a Debian distribution</title>
+
+<link href="index.en.html" rel="start">
+<link href="ch-getting.en.html" rel="prev">
+<link href="ch-compat.en.html" rel="next">
+<link href="index.en.html#contents" rel="contents">
+<link href="index.en.html#copyright" rel="copyright">
+<link href="ch-basic_defs.en.html" rel="chapter" title="1 Definitions and overview">
+<link href="ch-getting.en.html" rel="chapter" title="2 Getting and installing Debian GNU/Linux">
+<link href="ch-choosing.en.html" rel="chapter" title="3 Choosing a Debian distribution">
+<link href="ch-compat.en.html" rel="chapter" title="4 Compatibility issues">
+<link href="ch-software.en.html" rel="chapter" title="5 Software available in the Debian system">
+<link href="ch-ftparchives.en.html" rel="chapter" title="6 The Debian FTP archives">
+<link href="ch-pkg_basics.en.html" rel="chapter" title="7 Basics of the Debian package management system">
+<link href="ch-pkgtools.en.html" rel="chapter" title="8 The Debian package management tools">
+<link href="ch-uptodate.en.html" rel="chapter" title="9 Keeping your Debian system up-to-date">
+<link href="ch-kernel.en.html" rel="chapter" title="10 Debian and the kernel">
+<link href="ch-customizing.en.html" rel="chapter" title="11 Customizing your installation of Debian GNU/Linux">
+<link href="ch-support.en.html" rel="chapter" title="12 Getting support for Debian GNU/Linux">
+<link href="ch-contributing.en.html" rel="chapter" title="13 Contributing to the Debian Project">
+<link href="ch-redistrib.en.html" rel="chapter" title="14 Redistributing Debian GNU/Linux in a commercial product">
+<link href="ch-nexttime.en.html" rel="chapter" title="15 Changes expected in the next major release of Debian">
+<link href="ch-faqinfo.en.html" rel="chapter" title="16 General information about the FAQ">
+<link href="ch-basic_defs.en.html#s-whatisfaq" rel="section" title="1.1 What is this FAQ?">
+<link href="ch-basic_defs.en.html#s-whatisdebian" rel="section" title="1.2 What is Debian GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-linux" rel="section" title="1.3 OK, now I know what Debian is... what is Linux?!">
+<link href="ch-basic_defs.en.html#s-non-linux" rel="section" title="1.4 Does Debian just do GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-difference" rel="section" title="1.5 What is the difference between Debian GNU/Linux and other Linux distributions? Why should I choose Debian over some other distribution?">
+<link href="ch-basic_defs.en.html#s-gnu" rel="section" title="1.6 How does the Debian project fit in or compare with the Free Software Foundation's GNU project?">
+<link href="ch-basic_defs.en.html#s-pronunciation" rel="section" title="1.7 How does one pronounce Debian and what does this word mean?">
+<link href="ch-getting.en.html#s-version" rel="section" title="2.1 What is the latest version of Debian?">
+<link href="ch-getting.en.html#s-updatestable" rel="section" title="2.2 Are there package upgrades in `stable'?">
+<link href="ch-getting.en.html#s-boot-floppies" rel="section" title="2.3 Where/how can I get the Debian installation disks?">
+<link href="ch-getting.en.html#s-cdrom" rel="section" title="2.4 How do I install the Debian from CD-ROMs?">
+<link href="ch-getting.en.html#s-cdimage-symlinks" rel="section" title="2.5 Why does the official stable released CD-ROM contain symlinks for `frozen' and `unstable'? I thought this CD contains just `stable'!">
+<link href="ch-getting.en.html#s-remoteinstall" rel="section" title="2.6 Can I get and install Debian directly from a remote Internet site?">
+<link href="ch-getting.en.html#s-alternativebootinstaller" rel="section" title="2.7 Are there any alternative strategies for booting the system installer?">
+<link href="ch-choosing.en.html#s3.1" rel="section" title="3.1 Which Debian distribution (stable/testing/unstable) is better for me?">
+<link href="ch-choosing.en.html#s3.2" rel="section" title="3.2 But what about Knoppix, Linex, Ubuntu, and others?">
+<link href="ch-compat.en.html#s-arches" rel="section" title="4.1 On what hardware architectures/systems does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-kernels" rel="section" title="4.2 What kernels does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-otherdistribs" rel="section" title="4.3 How compatible is Debian with other distributions of Linux?">
+<link href="ch-compat.en.html#s-otherunices" rel="section" title="4.4 How source code compatible is Debian with other Unix systems?">
+<link href="ch-compat.en.html#s-otherpackages" rel="section" title="4.5 Can I use Debian packages (&quot;.deb&quot; files) on my Red Hat/Slackware/... Linux system? Can I use Red Hat packages (&quot;.rpm&quot; files) on my Debian GNU/Linux system?">
+<link href="ch-compat.en.html#s-non-debian-programs" rel="section" title="4.6 How should I install a non-Debian program?">
+<link href="ch-compat.en.html#s-termcap" rel="section" title="4.7 Why can't I compile programs that require libtermcap?">
+<link href="ch-compat.en.html#s-accelx" rel="section" title="4.8 Why can't I install AccelX?">
+<link href="ch-software.en.html#s-apps" rel="section" title="5.1 What types of applications and development software are available for Debian GNU/Linux?">
+<link href="ch-software.en.html#s-softwareauthors" rel="section" title="5.2 Who wrote all that software?">
+<link href="ch-software.en.html#s-pkglist" rel="section" title="5.3 How can I get a current list of programs that have been packaged for Debian?">
+<link href="ch-software.en.html#s-buildenv" rel="section" title="5.4 How can I install a developer's environment to build packages?">
+<link href="ch-software.en.html#s-missing" rel="section" title="5.5 What is missing from Debian GNU/Linux?">
+<link href="ch-software.en.html#s-no-devs" rel="section" title="5.6 Why do I get &quot;ld: cannot find -lfoo&quot; messages when compiling programs? Why aren't there any libfoo.so files in Debian library packages?">
+<link href="ch-software.en.html#s-java" rel="section" title="5.7 (How) Does Debian support Java?">
+<link href="ch-software.en.html#s-isitdebian" rel="section" title="5.8 How can I check that I am using a Debian system, and what version is it?">
+<link href="ch-software.en.html#s-nonenglish" rel="section" title="5.9 How does Debian support non-English languages?">
+<link href="ch-software.en.html#s-pine" rel="section" title="5.10 Where is pine?">
+<link href="ch-software.en.html#s-qmail" rel="section" title="5.11 Where is qmail/ezmlm/djbdns?">
+<link href="ch-software.en.html#s-flash" rel="section" title="5.12 Where is a player for Flash (SWF)?">
+<link href="ch-software.en.html#s-googleearth" rel="section" title="5.13 Where is Google Earth?">
+<link href="ch-software.en.html#s-voip" rel="section" title="5.14 Where is VoIP software?">
+<link href="ch-software.en.html#s-nonfreewireless" rel="section" title="5.15 I have a wireless network card which doesn't work with Linux. What should I do?">
+<link href="ch-ftparchives.en.html#s-dists" rel="section" title="6.1 How many Debian distributions are there?">
+<link href="ch-ftparchives.en.html#s-codenames" rel="section" title="6.2 What are all those names like etch, lenny, etc.?">
+<link href="ch-ftparchives.en.html#s-sid" rel="section" title="6.3 What about &quot;sid&quot;?">
+<link href="ch-ftparchives.en.html#s-stable" rel="section" title="6.4 What does the stable directory contain?">
+<link href="ch-ftparchives.en.html#s-testing" rel="section" title="6.5 What does the testing distribution contain?">
+<link href="ch-ftparchives.en.html#s-unstable" rel="section" title="6.6 What does the unstable distribution contain?">
+<link href="ch-ftparchives.en.html#s-dirtree" rel="section" title="6.7 What are all those directories at the Debian FTP archives?">
+<link href="ch-ftparchives.en.html#s-archsections" rel="section" title="6.8 What are all those directories inside dists/stable/main?">
+<link href="ch-ftparchives.en.html#s-source" rel="section" title="6.9 Where is the source code?">
+<link href="ch-ftparchives.en.html#s-pools" rel="section" title="6.10 What's in the pool directory?">
+<link href="ch-ftparchives.en.html#s-incoming" rel="section" title="6.11 What is &quot;incoming&quot;?">
+<link href="ch-ftparchives.en.html#s-ownrepository" rel="section" title="6.12 How do I set up my own apt-able repository?">
+<link href="ch-pkg_basics.en.html#s-package" rel="section" title="7.1 What is a Debian package?">
+<link href="ch-pkg_basics.en.html#s-deb-format" rel="section" title="7.2 What is the format of a Debian binary package?">
+<link href="ch-pkg_basics.en.html#s-pkgname" rel="section" title="7.3 Why are Debian package file names so long?">
+<link href="ch-pkg_basics.en.html#s-controlfile" rel="section" title="7.4 What is a Debian control file?">
+<link href="ch-pkg_basics.en.html#s-conffile" rel="section" title="7.5 What is a Debian conffile?">
+<link href="ch-pkg_basics.en.html#s-maintscripts" rel="section" title="7.6 What is a Debian preinst, postinst, prerm, and postrm script?">
+<link href="ch-pkg_basics.en.html#s-priority" rel="section" title="7.7 What is an Essential, Required, Important, Standard, Optional, or Extra package?">
+<link href="ch-pkg_basics.en.html#s-virtual" rel="section" title="7.8 What is a Virtual Package?">
+<link href="ch-pkg_basics.en.html#s-depends" rel="section" title="7.9 What is meant by saying that a package Depends, Recommends, Suggests, Conflicts, Replaces, Breaks or Provides another package?">
+<link href="ch-pkg_basics.en.html#s-pre-depends" rel="section" title="7.10 What is meant by Pre-Depends?">
+<link href="ch-pkg_basics.en.html#s-pkgstatus" rel="section" title="7.11 What is meant by unknown, install, remove, purge and hold in the package status?">
+<link href="ch-pkg_basics.en.html#s-puttingonhold" rel="section" title="7.12 How do I put a package on hold?">
+<link href="ch-pkg_basics.en.html#s-sourcepkgs" rel="section" title="7.13 How do I install a source package?">
+<link href="ch-pkg_basics.en.html#s-sourcebuild" rel="section" title="7.14 How do I build binary packages from a source package?">
+<link href="ch-pkg_basics.en.html#s-creatingdebs" rel="section" title="7.15 How do I create Debian packages myself?">
+<link href="ch-pkgtools.en.html#s-pkgprogs" rel="section" title="8.1 What programs does Debian provide for managing its packages?">
+<link href="ch-pkgtools.en.html#s-updaterunning" rel="section" title="8.2 Debian claims to be able to update a running program; how is this accomplished?">
+<link href="ch-pkgtools.en.html#s-whatpackages" rel="section" title="8.3 How can I tell what packages are already installed on a Debian system?">
+<link href="ch-pkgtools.en.html#s-listfiles" rel="section" title="8.4 How to display the files of a package installed?">
+<link href="ch-pkgtools.en.html#s-filesearch" rel="section" title="8.5 How can I find out what package produced a particular file?">
+<link href="ch-pkgtools.en.html#s-datapackages" rel="section" title="8.6 Why doesn't get `foo-data' removed when I uninstall `foo'? How do I make sure old unused library-packages get purged?">
+<link href="ch-uptodate.en.html#s-howtocurrent" rel="section" title="9.1 How can I keep my Debian system current?">
+<link href="ch-uptodate.en.html#s-upgradesingle" rel="section" title="9.2 Must I go into single user mode in order to upgrade a package?">
+<link href="ch-uptodate.en.html#s-savedebs" rel="section" title="9.3 Do I have to keep all those .deb archive files on my disk?">
+<link href="ch-uptodate.en.html#s-keepingalog" rel="section" title="9.4 How can I keep a log of the packages I added to the system? I'd like to know when which package upgrades and removals have occured!">
+<link href="ch-uptodate.en.html#s-autoupdate" rel="section" title="9.5 Can I automatically update the system?">
+<link href="ch-uptodate.en.html#s-aptproxy" rel="section" title="9.6 I have several machines how can I download the updates only one time?">
+<link href="ch-kernel.en.html#s-non-debian-kernel" rel="section" title="10.1 Can I install and compile a kernel without some Debian-specific tweaking?">
+<link href="ch-kernel.en.html#s-customkernel" rel="section" title="10.2 What tools does Debian provide to build custom kernels?">
+<link href="ch-kernel.en.html#s-custombootdisk" rel="section" title="10.3 How can I make a custom boot floppy?">
+<link href="ch-kernel.en.html#s-modules" rel="section" title="10.4 What special provisions does Debian provide to deal with modules?">
+<link href="ch-kernel.en.html#s-removeoldkernel" rel="section" title="10.5 Can I safely de-install an old kernel package, and if so, how?">
+<link href="ch-customizing.en.html#s-papersize" rel="section" title="11.1 How can I ensure that all programs use the same paper size?">
+<link href="ch-customizing.en.html#s-hardwareaccess" rel="section" title="11.2 How can I provide access to hardware peripherals, without compromising security?">
+<link href="ch-customizing.en.html#s-consolefont" rel="section" title="11.3 How do I load a console font on startup the Debian way?">
+<link href="ch-customizing.en.html#s-appdefaults" rel="section" title="11.4 How can I configure an X11 program's application defaults?">
+<link href="ch-customizing.en.html#s-booting" rel="section" title="11.5 Every distribution seems to have a different boot-up method. Tell me about Debian's.">
+<link href="ch-customizing.en.html#s-custombootscripts" rel="section" title="11.6 It looks as if Debian does not use rc.local to customize the boot process; what facilities are provided?">
+<link href="ch-customizing.en.html#s-interconffiles" rel="section" title="11.7 How does the package management system deal with packages that contain configuration files for other packages?">
+<link href="ch-customizing.en.html#s-divert" rel="section" title="11.8 How do I override a file installed by a package, so that a different version can be used instead?">
+<link href="ch-customizing.en.html#s-localpackages" rel="section" title="11.9 How can I have my locally-built package included in the list of available packages that the package management system knows about?">
+<link href="ch-customizing.en.html#s-diverse" rel="section" title="11.10 Some users like mawk, others like gawk; some like vim, others like elvis; some like trn, others like tin; how does Debian support diversity?">
+<link href="ch-support.en.html#s-debiandocs" rel="section" title="12.1 What other documentation exists on and for a Debian system?">
+<link href="ch-support.en.html#s-onlineresources" rel="section" title="12.2 Are there any on-line resources for discussing Debian?">
+<link href="ch-support.en.html#s-searchtools" rel="section" title="12.3 Is there a quick way to search for information on Debian GNU/Linux?">
+<link href="ch-support.en.html#s-buglogs" rel="section" title="12.4 Are there logs of known bugs?">
+<link href="ch-support.en.html#s-bugreport" rel="section" title="12.5 How do I report a bug in Debian?">
+<link href="ch-contributing.en.html#s-contrib" rel="section" title="13.1 How can I become a Debian software developer?">
+<link href="ch-contributing.en.html#s-contribresources" rel="section" title="13.2 How can I contribute resources to the Debian project?">
+<link href="ch-contributing.en.html#s-supportingorganizations" rel="section" title="13.3 How can I contribute financially to the Debian project?">
+<link href="ch-redistrib.en.html#s-sellcds" rel="section" title="14.1 Can I make and sell Debian CDs?">
+<link href="ch-redistrib.en.html#s-packagednonfree" rel="section" title="14.2 Can Debian be packaged with non-free software?">
+<link href="ch-redistrib.en.html#s-childistro" rel="section" title="14.3 I am making a special Linux distribution for a &quot;vertical market&quot;. Can I use Debian GNU/Linux for the guts of a Linux system and add my own applications on top of it?">
+<link href="ch-redistrib.en.html#s-commercialdebs" rel="section" title="14.4 Can I put my commercial program in a Debian &quot;package&quot; so that it installs effortlessly on any Debian system?">
+<link href="ch-nexttime.en.html#s-i18n" rel="section" title="15.1 Extended support for non-English users">
+<link href="ch-nexttime.en.html#s-dependencybasedboot" rel="section" title="15.2 Faster booting: Dependency based boot sequence">
+<link href="ch-nexttime.en.html#s-di" rel="section" title="15.3 Improvements in the Debian Installer">
+<link href="ch-nexttime.en.html#s-morearches" rel="section" title="15.4 More architectures">
+<link href="ch-nexttime.en.html#s-morekernels" rel="section" title="15.5 More kernels">
+<link href="ch-faqinfo.en.html#s-authors" rel="section" title="16.1 Authors">
+<link href="ch-faqinfo.en.html#s-feedback" rel="section" title="16.2 Feedback">
+<link href="ch-faqinfo.en.html#s-latest" rel="section" title="16.3 Availability">
+<link href="ch-faqinfo.en.html#s-docformat" rel="section" title="16.4 Document format">
+<link href="ch-choosing.en.html#s3.1.1" rel="subsection" title="3.1.1 You asked me to install stable, but in stable so and so hardware is not detected/working. What should I do?">
+<link href="ch-choosing.en.html#s3.1.2" rel="subsection" title="3.1.2 Will there be different versions of packages in different distributions?">
+<link href="ch-choosing.en.html#s3.1.3" rel="subsection" title="3.1.3 The stable distributions really contains outdated packages. Just look at Kde, Gnome, Xorg or even the kernel. They are very old. Why is it so?">
+<link href="ch-choosing.en.html#s3.1.4" rel="subsection" title="3.1.4 If I were to decide to change to another distribution, Can I do that?">
+<link href="ch-choosing.en.html#s3.1.5" rel="subsection" title="3.1.5 Could you tell me whether to install testing or unstable?">
+<link href="ch-choosing.en.html#s3.1.6" rel="subsection" title="3.1.6 You are talking about testing being broken. What do you mean by that?">
+<link href="ch-choosing.en.html#s3.1.7" rel="subsection" title="3.1.7 Why is it that testing could be broken for months? Wont the fixes introduced in unstable flow directly down into testing?">
+<link href="ch-choosing.en.html#s3.1.8" rel="subsection" title="3.1.8 From an administrator's point of view, Which distribution requires more attention?">
+<link href="ch-choosing.en.html#s3.1.9" rel="subsection" title="3.1.9 What happens when a new release is made?">
+<link href="ch-choosing.en.html#s3.1.10" rel="subsection" title="3.1.10 I have a working Desktop/cluster with Debian installed. How do I know which distribution I am running?">
+<link href="ch-choosing.en.html#s3.1.11" rel="subsection" title="3.1.11 I am currently tracking stable. Can I change to testing or unstable? If so, How?">
+<link href="ch-choosing.en.html#s3.1.12" rel="subsection" title="3.1.12 I am currently tracking testing (jessie). What will happen when a release is made? Will I still be tracking testing or will my machine be running the new stable distribution?">
+<link href="ch-choosing.en.html#s3.1.13" rel="subsection" title="3.1.13 I am still confused. What did you say I should install?">
+<link href="ch-choosing.en.html#s3.2.1" rel="subsection" title="3.2.1 I know that Knoppix/Linex/Ubuntu/... is Debian-based. So after installing it on the hard disk, can I use 'apt' package tools on it?">
+<link href="ch-choosing.en.html#s3.2.2" rel="subsection" title="3.2.2 I installed Knoppix/Linex/Ubuntu/... on my hard disk. Now I have a problem. What should I do?">
+<link href="ch-choosing.en.html#s3.2.3" rel="subsection" title="3.2.3 I'm using Knoppix/Linex/Ubuntu/... and now I want to use Debian. How do I migrate?">
+<link href="ch-ftparchives.en.html#s-oldcodenames" rel="subsection" title="6.2.1 Which other codenames have been used in the past?">
+<link href="ch-ftparchives.en.html#s-sourceforcodenames" rel="subsection" title="6.2.2 Where do these codenames come from?">
+<link href="ch-ftparchives.en.html#s-frozen" rel="subsection" title="6.5.1 What about &quot;testing&quot;? How is it `frozen'?">
+<link href="ch-pkgtools.en.html#s-dpkg" rel="subsection" title="8.1.1 dpkg">
+<link href="ch-pkgtools.en.html#s-apt-get" rel="subsection" title="8.1.2 APT">
+<link href="ch-pkgtools.en.html#s-aptitude" rel="subsection" title="8.1.3 aptitude">
+<link href="ch-pkgtools.en.html#s-synaptic" rel="subsection" title="8.1.4 synaptic">
+<link href="ch-pkgtools.en.html#s-tasksel" rel="subsection" title="8.1.5 tasksel">
+<link href="ch-pkgtools.en.html#s-dpkg-extra" rel="subsection" title="8.1.6 Other package management tools">
+<link href="ch-pkgtools.en.html#s-dselect" rel="subsection" title="8.1.6.1 dselect">
+<link href="ch-pkgtools.en.html#s-dpkg-deb" rel="subsection" title="8.1.6.2 dpkg-deb">
+<link href="ch-pkgtools.en.html#s-dpkg-split" rel="subsection" title="8.1.6.3 dpkg-split">
+<link href="ch-uptodate.en.html#s-aptitude-upgrade" rel="subsection" title="9.1.1 aptitude">
+<link href="ch-uptodate.en.html#s-apt" rel="subsection" title="9.1.2 apt-get, dselect and apt-cdrom">
+<link href="ch-uptodate.en.html#s-update_aptitude" rel="subsection" title="9.1.3 aptitude">
+<link href="ch-uptodate.en.html#s-mirror" rel="subsection" title="9.1.4 mirror">
+<link href="ch-uptodate.en.html#s-dpkg-mountable" rel="subsection" title="9.1.5 dpkg-mountable">
+<link href="ch-support.en.html#s12.2.1" rel="subsection" title="12.2.1 Mailing lists">
+<link href="ch-support.en.html#s-mailinglistconduct" rel="subsection" title="12.2.1.1 What is the code of conduct for the mailing lists?">
+<link href="ch-support.en.html#s12.2.2" rel="subsection" title="12.2.2 Web forums">
+<link href="ch-support.en.html#s12.2.3" rel="subsection" title="12.2.3 Wiki">
+<link href="ch-support.en.html#s12.2.4" rel="subsection" title="12.2.4 Maintainers">
+<link href="ch-support.en.html#s12.2.5" rel="subsection" title="12.2.5 Usenet newsgroups">
+<link href="ch-contributing.en.html#s-SPI" rel="subsection" title="13.3.1 Software in the Public Interest">
+<link href="ch-contributing.en.html#s-FSF" rel="subsection" title="13.3.2 Free Software Foundation">
+
+</head>
+
+<body>
+
+<p><a name="ch-choosing"></a></p>
+<hr>
+
+<p>
+[ <a href="ch-getting.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ 3 ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-compat.en.html">next</a> ]
+</p>
+
+<hr>
+
+<h1>
+The Debian GNU/Linux FAQ
+<br>Chapter 3 - Choosing a Debian distribution
+</h1>
+
+<hr>
+
+<p>
+There are many different Debian distributions.  Choosing the proper Debian
+distribution is an important decision.  This section covers some information
+useful for users that want to make the choice best suited for their system and
+also answers possible questions that might be arising during the process.  It
+does not deal with &quot;why you should choose Debian&quot; but rather
+&quot;which distribution of Debian&quot;.
+</p>
+
+<p>
+For more information on the available distributions read <a
+href="ch-ftparchives.en.html#s-dists">How many Debian distributions are there?,
+Section 6.1</a>.
+</p>
+
+<hr>
+
+<h2 id="s3.1">3.1 Which Debian distribution (stable/testing/unstable) is better for me?</h2>
+
+<p>
+The answer is a bit complicated.  It really depends on what you intend to do.
+One solution would be to ask a friend who runs Debian.  But that does not mean
+that you cannot make an independent decision.  In fact, you should be able to
+decide once you complete reading this chapter.
+</p>
+<ul>
+<li>
+<p>
+If security or stability are at all important for you: install stable.  period.
+This is the most preferred way.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+If you are a new user installing to a desktop machine, start with stable.  Some
+of the software is quite old, but it's the least buggy environment to work in.
+You can easily switch to the more modern unstable once you are a little more
+confident.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+If you are a desktop user with some experience in Linux and does not mind
+facing the odd bug now and then, use unstable.  It has all the latest and
+greatest software, and bugs are usually fixed swiftly.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+If you are running a server, especially one that has strong stability
+requirements or is exposed to the Internet, install stable.  This is by far the
+strongest and safest choice.
+</p>
+</li>
+</ul>
+
+<p>
+The following questions (hopefully) provide more detail on these choices.
+After reading this whole FAQ, if you still could not make a decision, stick
+with the stable distribution.
+</p>
+
+<hr>
+
+<h3 id="s3.1.1">3.1.1 You asked me to install stable, but in stable so and so hardware is not detected/working. What should I do?</h3>
+
+<p>
+Try to search the web using a search engine and see if someone else is able to
+get it working in stable.  Most of the hardware should work fine with stable.
+But if you have some state-of-the-art, cutting edge hardware, it might not work
+with stable.  If this is the case, you might want to install/upgrade to
+unstable.
+</p>
+
+<p>
+For laptops, <code><a
+href="http://www.linux-on-laptops.com/">http://www.linux-on-laptops.com/</a></code>
+is a very good website to see if someone else is able to get it to work under
+Linux.  The website is not specific to Debian, but is nevertheless a tremendous
+resource.  I am not aware of any such website for desktops.
+</p>
+
+<p>
+Another option would be to ask in the debian-user mailing list by sending an
+email to debian-user@lists.debian.org .  Messages can be posted to the list
+even without subscribing.  The archives can be read through <code><a
+href="http://lists.debian.org/debian-user/">http://lists.debian.org/debian-user/</a></code>
+Information regarding subscribing to the list can be found at the location of
+archives.  You are strongly encourage to post your questions on the
+mailing-list than on <code><a
+href="http://www.debian.org/support">irc</a></code>.  The mailing-list messages
+are archived, so solution to your problem can help others with the same issue.
+</p>
+
+<hr>
+
+<h3 id="s3.1.2">3.1.2 Will there be different versions of packages in different distributions?</h3>
+
+<p>
+Yes.  Unstable has the most recent (latest) versions.  But the packages in
+unstable are not well tested and might have bugs.
+</p>
+
+<p>
+On the other hand, stable contains old versions of packages.  But this package
+is well tested and is less likely to have any bugs.
+</p>
+
+<p>
+The packages in testing fall between these two extremes.
+</p>
+
+<hr>
+
+<h3 id="s3.1.3">3.1.3 The stable distributions really contains outdated packages. Just look at Kde, Gnome, Xorg or even the kernel. They are very old. Why is it so?</h3>
+
+<p>
+Well, you might be correct.  The age of the packages at stable depends on when
+the last release was made.  Since there is typically over 1 year between
+releases you might find that stable contains old versions of packages.
+However, they have been tested in and out.  One can confidently say that the
+packages do not have any known severe bugs, security holes etc., in them.  The
+packages in stable integrate seamlessly with other stable packages.  These
+characteristics are very important for production servers which have to work 24
+hours a day, 7 days a week.
+</p>
+
+<p>
+On the other hand, packages in testing or unstable can have hidden bugs,
+security holes etc., Moreover, some packages in testing and unstable might not
+be working as intended.  Usually people working on a single desktop prefer
+having the latest and most modern set of packages.  Unstable is the solution
+for this group of people.
+</p>
+
+<p>
+As you can see, stability and novelty are two opposing ends of the spectrum.
+If stability is required: install stable distribution.  If you want to work
+with the latest packages, then install unstable.
+</p>
+
+<hr>
+
+<h3 id="s3.1.4">3.1.4 If I were to decide to change to another distribution, Can I do that?</h3>
+
+<p>
+Yes, but it is a one way process.  You can go from stable --&gt; testing --&gt;
+unstable.  But the reverse direction is not &quot;possible&quot;.  So better be
+sure if you are planning to install/upgrade to unstable.
+</p>
+
+<p>
+Actually, if you are an expert and if you are willing to spend some time and if
+you are real careful and if you know what you are doing, then it might be
+possible to go from unstable to testing and then to stable.  The installer
+scripts are not designed to do that.  So in the process, your configuration
+files might be lost and....
+</p>
+
+<hr>
+
+<h3 id="s3.1.5">3.1.5 Could you tell me whether to install testing or unstable?</h3>
+
+<p>
+This is a rather subjective issue.  There is no perfect answer but only a
+&quot;wise guess&quot; could be made while deciding between unstable and
+testing.  My personal order of preference is Stable, Unstable and Testing.  The
+issue is like this:
+</p>
+<ul>
+<li>
+<p>
+Stable is rock solid.  It does not break.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Testing breaks less often than Unstable.  But when it breaks, it takes a long
+time for things to get rectified.  Sometimes this could be days and it could be
+months at times.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Unstable changes a lot, and it can break at any point.  However, fixes get
+rectified in many occasions in a couple of days and it always has the latest
+releases of software packaged for Debian.
+</p>
+</li>
+</ul>
+
+<p>
+But there are times when tracking testing would be beneficial as opposed to
+unstable.  The author such situation due to the gcc transition from gcc3 to
+gcc4.  He was trying to install the <code>labplot</code> package on a machine
+tracking unstable and it could not be installed in unstable as some of its
+dependencies have undergone gcc4 transition and some have not.  But the package
+in testing was installable on a testing machine as the gcc4 transitioned
+packages had not &quot;trickled down&quot; to testing.
+</p>
+
+<hr>
+
+<h3 id="s3.1.6">3.1.6 You are talking about testing being broken. What do you mean by that?</h3>
+
+<p>
+Sometimes, a package might not be installable through package management tools.
+Sometimes, a package might not be available at all, maybe it was (temporarily)
+removed due to bugs or unmet dependencies.  Sometimes, a package installs but
+does not behave in the proper way.
+</p>
+
+<p>
+When these things happen, the distribution is said to be broken (at least for
+this package).
+</p>
+
+<hr>
+
+<h3 id="s3.1.7">3.1.7 Why is it that testing could be broken for months? Wont the fixes introduced in unstable flow directly down into testing?</h3>
+
+<p>
+The bug fixes and improvements introduced in the unstable distribution trickle
+down to testing after a certain number of days.  Let's say this threshold is 10
+days.  The packages in unstable go into testing only when there are no RC-bugs
+reported against them.  If there is a RC-bug filed against a package in
+unstable, it will not go into testing after the 10 days.
+</p>
+
+<p>
+The idea is that, if the package has any problems, it would be discovered by
+people using unstable and will be fixed before it enters testing.  This keeps
+the testing in an usable state for most period of the time.  Overall a
+brilliant concept, if you ask me.  But things are alwasy not so simple.
+Consider the following situation:
+</p>
+<ul>
+<li>
+<p>
+Imagine you are interested in package XYZ.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Let's assume that on June 10, the version in testing is XYZ-3.6 and in unstable
+it is XYZ-3.7
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+After 10 days, XYZ-3.7 from unstable migrates into testing.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+So on June 20, both testing and unstable have XYZ-3.7 in their repositories.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Let's say, The user of testing distribution sees that a new XYZ package is
+available and updates his XYZ-3.6 to XYZ-3.7
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Now on June 25, someone using testing or unstable discovers an RC bug in
+XYZ-3.7 and files it in the BTS.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+The maintainer of XYZ fixes this bug and uploads it to unstable say on June 30.
+Here it is assumed that it takes 5 days for the maintainer to fix the bug and
+upload the new version.  The number 5 should not be taken literally.  It could
+be less or more, depending upon the severity of the RC-bug at hand.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+This new version in unstable, XYZ-3.8 is scheduled to enter testing on July
+10th.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+But on July 5th some other person, discovers another RC-bug in XYZ-3.8
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Let's say the maintainer of XYZ fixes this new RC-bug and uploads new version
+of XYZ after 5 days.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+So on July 10, testing has XYZ-3.7 while unstable has XYZ-3.9
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+This new version XYZ-3.9 is now rescheduled to enter testing on July 20th.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Now since you are running testing, and since XYZ-3.7 is buggy, you could
+probably use XYZ only after July 20th.  That is you essentially ended up with a
+broken XYZ for about one month.
+</p>
+</li>
+</ul>
+
+<p>
+The situation can get much more complicated, if say, XYZ depends on 4 other
+packages.  This could in turn lead to unusable testing distribution for months.
+The above scenario which is artificially created by me, can occur in the real
+life.  But such occurrences are rare.
+</p>
+
+<hr>
+
+<h3 id="s3.1.8">3.1.8 From an administrator's point of view, Which distribution requires more attention?</h3>
+
+<p>
+One of the main reasons many people chose Debian over other Linux distributions
+is that it requires very little administration.  People want a system that just
+works.  In general one can say that, stable requires very little maintenance
+while testing and unstable require constant maintenance from the administrator.
+If you are running stable, all you need to worry about is, keeping track of
+security updates.  If you are running either testing or unstable it is a good
+idea to be aware of the new bugs discovered in the installed packages, new
+bugfixes/features introduced etc.
+</p>
+
+<hr>
+
+<h3 id="s3.1.9">3.1.9 What happens when a new release is made?</h3>
+
+<p>
+This question will not help you in choosing a Debian distribution.  But sooner
+or later you will face this question.
+</p>
+
+<p>
+The stable distribution is currently wheezy; The next stable distribution will
+be called as jessie.  Let's consider the particular case as to what happens
+when jessie is released as the new stable version.
+</p>
+<ul>
+<li>
+<p>
+oldstable = squeeze; stable = wheezy; testing = jessie; unstable = sid
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Unstable is always referred to as sid irrespective of whether a release is made
+or not.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+packages constantly migrate from sid to testing (i.e.  jessie).  But packages
+in stable (i.e.  wheezy) remain the same except for security updates.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+after sometime testing becomes frozen.  But it will still be called testing.
+At this point no new packages from unstable can migrate to testing unless they
+include release-critical (RC) bug fixes.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+When testing is frozen, all the new bugfixes introduced, have to be manualy
+checked by the members of the release team.  This is done to ensure that there
+wont be any unknown severe problems in the frozen testing.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+RC bugs in 'frozen testing' are reduced to zero.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+The 'frozen testing' with no rc-bugs will be released as the new stable
+version.  In our example, this new stable release will be called as jessie.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+At this stage oldstable = wheezy, stable = jessie.  The contents of stable and
+'frozen testing' are same at this point.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+A new testing is forked from the current unstable.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Packages start coming down from sid to testing and the Debian community will be
+working towards making the next stable release.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h3 id="s3.1.10">3.1.10 I have a working Desktop/cluster with Debian installed. How do I know which distribution I am running?</h3>
+
+<p>
+In most situations it is very easy to figure this out.  Take a look at the
+<code>/etc/apt/sources.list</code> file.  There will be an entry similar to
+this:
+</p>
+
+<pre>
+     deb http://ftp.us.debian.org/debian/ unstable main contrib
+</pre>
+
+<p>
+The third field ('unstable' in the above example) indicates the Debian
+distribution the system is currently tracking.
+</p>
+
+<p>
+You can also use <code>lsb_release</code> (available in the
+<code>lsb-release</code> package).  If you run this program in an unstable
+system you will get:
+</p>
+
+<pre>
+     $ lsb_release  -a
+     LSB Version:    core-2.0-noarch:core-3.0-noarch:core-3.1-noarch:core-2.0-ia32:core-3.0-ia32:core-3.1-ia32
+     Distributor ID: Debian
+     Description:    Debian GNU/Linux unstable (sid)
+     Release:    unstable
+     Codename:   sid
+</pre>
+
+<p>
+However, this is always not that easy.  Some systems might have
+<code>sources.list</code> files with multiple entries corresponding to
+different distributions.  This could happen if the administrator is tracking
+different packages from different Debian distributions.  This is frequently
+referred to as apt-pinning.  These systems might run a mixture of
+distributions.
+</p>
+
+<hr>
+
+<h3 id="s3.1.11">3.1.11 I am currently tracking stable. Can I change to testing or unstable? If so, How?</h3>
+
+<p>
+If you are currently running stable, then in the
+<code>/etc/apt/sources.list</code> file the third field will be either wheezy
+or stable.  You need to change this to the distribution you want to run.  If
+you want to run testing, then change the third field of
+<code>/etc/apt/sources.list</code> to testing.  If you want to run unstable,
+then change the third field to unstable.
+</p>
+
+<p>
+Currently testing is called jessie.  So, if you change the third field of
+<code>/etc/apt/sources.list</code> to jessie, then also you will be running
+testing.  But when jessie becomes stable, you will still be tracking jessie.
+</p>
+
+<p>
+Unstable is always called Sid.  So if you change the third field of
+<code>/etc/apt/sources.list</code> to sid, then you will be tracking unstable.
+</p>
+
+<p>
+Currently Debian offers security updates for testing but not for unstable, as
+fixes in unstable are directly made to the main archive.  So if you are running
+unstable make sure that you remove the lines relating to security updates in
+<code>/etc/apt/sources.list</code>.
+</p>
+
+<p>
+If there is a release notes document available for the distribution you are
+upgrading to (even though it has not yet been released) it would be wise to
+review it, as it might provide information on how you should upgrade to it.
+</p>
+
+<p>
+Nevertheless, once you make the above changes, you can run <code>aptitude
+update</code> and then install the packages that you want.  Notice that
+installing a package from a different distribution might automatically upgrade
+half of your system.  If you install individual packages you will end up with a
+system running mixed distributions.
+</p>
+
+<p>
+It might be best in some situations to just fully upgrade to the new
+distribution running <code>apt-get dist-upgrade</code>, <code>aptitude
+safe-upgrade</code> or <code>aptitude full-upgrade</code>.  Read apt's and
+aptitude's manual pages for more information.
+</p>
+
+<hr>
+
+<h3 id="s3.1.12">3.1.12 I am currently tracking testing (jessie). What will happen when a release is made? Will I still be tracking testing or will my machine be running the new stable distribution?</h3>
+
+<p>
+It depends on the entries in the <code>/etc/apt/sources.list</code> file.  If
+you are currently tracking testing, these entries are similar to either:
+</p>
+
+<pre>
+     deb http://ftp.us.debian.org/debian/ testing main
+</pre>
+
+<p>
+or
+</p>
+
+<pre>
+     deb http://ftp.us.debian.org/debian/ jessie main
+</pre>
+
+<p>
+If the third field in <code>/etc/apt/sources.list</code> is 'testing' then you
+will be tracking testing even after a release is made.  So after jessie is
+released, you will be running a new Debian distribution which will have a
+different codename.  Changes might not be apparent at first but will be evident
+as soon as new packages from unstable go over to the testing distribution.
+</p>
+
+<p>
+But if the third field contains 'jessie' then you will be tracking stable
+(since jessie will then be the new stable distribution).
+</p>
+
+<hr>
+
+<h3 id="s3.1.13">3.1.13 I am still confused. What did you say I should install?</h3>
+
+<p>
+If unsure, the best bet would be stable distribution.
+</p>
+
+<hr>
+
+<h2 id="s3.2">3.2 But what about Knoppix, Linex, Ubuntu, and others?</h2>
+
+<p>
+They are not Debian; they are <em>Debian based</em>.  Though there are many
+similarities and commonalities between them, there are also crucial
+differences.
+</p>
+
+<p>
+All these distributions have their own merits and are suited to some specific
+set of users.  For more information, read the information of <code><a
+href="http://www.debian.org/misc/children-distros">software distributions based
+on Debian</a></code> available at the Debian website.
+</p>
+
+<hr>
+
+<h3 id="s3.2.1">3.2.1 I know that Knoppix/Linex/Ubuntu/... is Debian-based. So after installing it on the hard disk, can I use 'apt' package tools on it?</h3>
+
+<p>
+These distributions are Debian based.  But they are not Debian.  You will be
+still able to use apt package tools by pointing the
+<code>/etc/apt/sources.list</code> file to these distributions' repositories.
+But then you are not running Debian, you are running a different distribution.
+They are not the same.
+</p>
+
+<p>
+In most situations if you stick with one distribution you should use that and
+not mix packages from other distributions.  Many common breakages arise due to
+people running a distribution and trying to install Debian packages from other
+distributions.  The fact that they use the same formatting and name (.deb) does
+not make them inmediately compatible.
+</p>
+
+<p>
+For example, Knoppix is a Linux distribution designed to be booted as a live CD
+where as Debian is designed to be installed on hard-disk.  Knoppix is great if
+you want to know whether a particular hardware works, or if you want to
+experience how a linux system 'feels' etc., Knoppix is good for demonstration
+purposes while Debian is designed to run 24/7.  Moreover the number of packages
+available, the number of architectures supported by Debian are far more greater
+than that of Knoppix.
+</p>
+
+<p>
+If you want Debian, it is best to install Debian from the get-go.  Although it
+is possible to install Debian through other distributions, such as Knoppix, the
+procedure calls for expertise.  If you are reading this FAQ, I would assume
+that you are new to both Debian and Knoppix.  In that case, save yourself a lot
+of trouble later and install Debian right at the beginning.
+</p>
+
+<hr>
+
+<h3 id="s3.2.2">3.2.2 I installed Knoppix/Linex/Ubuntu/... on my hard disk. Now I have a problem. What should I do?</h3>
+
+<p>
+You are advised not to use the Debian forums (either mailing lists or IRC) for
+help as people might advise you thinking that you are running a Debian system
+and the &quot;fixes&quot; they provide might not be suited to what you are
+running.  They might even worsen the problem you are facing.
+</p>
+
+<p>
+Use the forums of the specific distribution you are using first.  If you do not
+get help or the help you get does not fix your problem you might want to try
+asking in Debian forums, but keep the advise of the previous paragraph in mind.
+</p>
+
+<hr>
+
+<h3 id="s3.2.3">3.2.3 I'm using Knoppix/Linex/Ubuntu/... and now I want to use Debian. How do I migrate?</h3>
+
+<p>
+Consider the change from a Debian-based distribution to Debian just like a
+change from one operating system to another one.  You should make a backup of
+all your data and reinstall the operating system from scratch.  You should not
+attempt to &quot;upgrade&quot; to Debian using the package management tools as
+you might end up with an unusable system.
+</p>
+
+<p>
+If all your user data (i.e.  your <code>/home</code>) is under a separate
+partition migrating to Debian is actually quite simple, you just have to tell
+the installation system to mount (but not reformat) that partition when
+reinstalling.  Making backups of your data, as well as your previous system's
+configuration (i.e.  <code>/etc/</code> and, maybe, <code>/var/</code>) is
+still encouraged.
+</p>
+
+<hr>
+
+<p>
+[ <a href="ch-getting.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ 3 ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-compat.en.html">next</a> ]
+</p>
+
+<hr>
+
+<p>
+The Debian GNU/Linux FAQ
+</p>
+
+<address>
+version 5.0.2, 2 June 2013<br>
+<br>
+Authors are listed at <a href="ch-faqinfo.en.html#s-authors">Debian FAQ Authors</a><br>
+<br>
+</address>
+<hr>
+
+</body>
+
+</html>
+

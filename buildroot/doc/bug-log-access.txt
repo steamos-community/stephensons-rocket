@@ -1,0 +1,62 @@
+   Skip Quicknav
+     * About Debian
+     * Getting Debian
+     * Support
+     * Developers' Corner
+
+   Debian bug tracking system / Debian BTS -- access methods
+
+Methods of accessing the bug tracking system logs
+
+Accessing active bug reports
+
+   Each message received at or sent by the bug processing system is logged
+   and made available in a number of ways.
+
+   The primary access method is to use the web pages. See the forms on the
+   main BTS page at http://bugs.debian.org/
+
+   There is a mailserver which can send bug reports as plain text on
+   request. To use it send the word help as the sole contents of an email
+   to request@bugs.debian.org (the Subject of the message is ignored), or
+   read the instructions on the World Wide Web or in the file
+   bug-log-mailserver.txt.
+
+Accessing archived bug reports
+
+   Each closed bug report is archived 28 days after the last message
+   relating to it is received and filed. This means that it is no longer
+   possible to access it or change anything about it using the control and
+   service bots. However, the reports are still accessible for viewing.
+
+   You can search the bug report archive using the WWW forms at
+   http://bugs.debian.org/, simply select the "archived bugs" option.
+
+   Note that it doesn't contain the oldest closed bug reports, only those
+   after #40000, approximately.
+
+Accessing the raw bug data
+
+   If you need to get hold of the raw data used by the bug tracking
+   system, you can mirror it using rsync from bugs-mirror.debian.org. The
+   relevant modules are bts-spool-db (for the active bug spool),
+   bts-spool-archive (for bugs that have been closed for a while and thus
+   archived), and bts-spool-index (for the bug index files).
+
+   At the time of writing, the active spool is about 2.5GB and the
+   archived spool is about 10GB. If you only need a sample for testing
+   purposes, please consider downloading only part of the active spool
+   rather than the whole thing.
+
+   Please do not rely on *.status files in the bug spools, as they are
+   obsolete, for compatibility purposes only, and will be removed at some
+   point in the future. Use the *.summary files instead.
+     __________________________________________________________________
+
+    Debian BTS administrators <owner@bugs.debian.org>
+
+   Debian bug tracking system
+   Copyright (c) 1999 Darren O. Benham, 1997, 2003 nCipher Corporation
+   Ltd, 1994-1997 Ian Jackson.
+     __________________________________________________________________
+

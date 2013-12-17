@@ -1,0 +1,1922 @@
+                  Introduction to the Debian mailing lists
+                  ========================================
+
+  Debian is developed through distributed development all
+  around the world. Therefore, email is the preferred way to discuss
+  various items. Much of the conversation between Debian developers
+  and users is managed through several mailing lists.  
+
+  There are many world-open mailing lists, meaning anyone can read
+  everything that is posted, and participate in the discussions. Everyone is
+  encouraged to help development of Debian and to spread the word of free
+  software.  There are also a few lists which are only open to official Debian
+  developers; please don't interpret this as closed development, it sometimes
+  doesn't make much sense discussing internal topics with non-developers.
+
+  All original Debian mailing lists run on a special server, using an
+  automatic mail processing software called SmartList.  This server is called
+  lists.debian.org.  All submission, subscription and unsubscription messages
+  have to be sent to a particular address at this host.
+
+  The language used on all lists is English, unless stated otherwise.
+  There are some user lists for other languages available.
+
+Subscription / Unsubscription
+-----------------------------
+
+  Anyone is able to subscribe/unsubscribe on their own to any mailing list,
+  presuming the subscription policy for a particular list is `open'.
+
+  The requests for subscription or unsubscription can be sent to a special
+  control address, which is slightly different from the list address.
+  Subscription or unsubscription messages should NOT be sent to the address
+  of the mailing list itself.
+
+  To subscribe or unsubscribe from a mailing list, please send mail to
+
+        <listname>-REQUEST@lists.debian.org
+
+  with the word `subscribe' or `unsubscribe' as subject.
+
+  Please remember the -REQUEST part of the address.
+
+  As part of the subscription process, the list software will send you an
+  email to which you must reply in order to finish subscribing.  This is a
+  security measure to keep people from subscribing others to the lists without
+  their permission.
+
+  If you need to contact a human listmaster, direct your mail to
+  listmaster@lists.debian.org . To find out who is responsible for the
+  lists, take a look at http://www.debian.org/intro/organization
+
+User lists
+
+  There are several user based mailing lists where developers and
+  users can get in contact to discuss and solve problems.
+
+  debian-announce@lists.debian.org
+
+      Description : Major news and very important changes in the project
+                    are announced here.
+      Moderated   : yes
+      Subscription: open
+
+  debian-backports-announce@lists.debian.org
+
+      Description : Announcements relating to the debian-backports project include security related announcements
+      Moderated   : yes
+      Subscription: open
+
+  debian-backports@lists.debian.org
+
+      Description : Discussion about the debian-backports archive
+      Moderated   : no
+      Subscription: open
+
+  debian-chinese-big5@lists.debian.org
+
+      Description : Debian Chinese Project: Chinese localization (l10n),
+                    documentation and web site translation, user support
+                    etc.
+
+                    Posts may be in English or Big5-encoded Chinese.
+                    All posts are automatically converted to GB encoding
+                    and cross-posted to the debian-chinese-gb mailing list.
+
+                    If you would rather read and post in GB-encoded
+                    Chinese, please subscribe to debian-chinese-gb instead.
+      Language    : Chinese
+      Moderated   : subscribers
+      Subscription: open
+
+  debian-chinese-gb@lists.debian.org
+
+      Description : Debian Chinese Project: Chinese localization (l10n)
+                    issues, documentation and web site translation, user
+                    support etc.
+
+                    Posts may be in English or GB-encoded Chinese.
+                    All posts are automatically converted to Big5 encoding
+                    and cross-posted to the debian-chinese-big5 mailing list.
+
+                    If you would rather read and post in Big5-encoded
+                    Chinese, please subscribe to debian-chinese-big5 instead.
+      Language    : Chinese
+      Moderated   : subscribers
+      Subscription: open
+
+  debian-edu-announce@lists.debian.org
+
+      Description : Announcements regarding Skolelinux/debian-edu
+      Moderated   : yes
+      Subscription: open
+
+  debian-enterprise@lists.debian.org
+
+      Description : Discussions about special needs in enterprise 
+                    environments and ways to fulfill those needs.
+      Moderated   : no
+      Subscription: open
+
+  debian-esperanto@lists.debian.org
+
+      Description : Debian users who speak Esperanto.
+      Language    : Esperanto
+      Moderated   : no
+      Subscription: open
+
+  debian-firewall@lists.debian.org
+
+      Description : Discussion of implementation and maintenance of
+                    firewalls using Debian. Both basic issues and new
+                    more exotic developments are discussed here.
+      Moderated   : no
+      Subscription: open
+
+  debian-infrastructure-announce@lists.debian.org
+
+      Description : This list covers announcements about changes in the (public and
+                    private) Debian infrastructure including services the Debian
+                    project directly or indirectly provides.  
+      Moderated   : signed
+      Subscription: open
+
+  debian-isp@lists.debian.org
+
+      Description : Discussion about issues and problems specific to
+                    Internet Service Providers (ISPs for short) that
+                    use Debian.
+      Moderated   : no
+      Subscription: open
+
+  debian-italian@lists.debian.org
+
+      Description : Support for Debian users that speak Italian.
+                    (High-volume mailing list.)
+      Language    : Italian
+      Moderated   : no
+      Subscription: open
+
+  debian-japanese@lists.debian.org
+
+      Description : This list covers Japanese localization and translation related
+                    requests or questions, and conversations about Debian
+                    and Japanese.
+
+                    This list is set as Language-Team for PO files and also a contact
+                    point of translation team, for those who do not understand Japanese.
+
+                    The official language is English (and Japanese).
+
+                    For native Japanese speakers, Debian JP Project provides
+                    several mailing lists discussing the Debian system in
+                    Japanese, see http://www.debian.or.jp/community/ml/.
+                    General public lists are: -users, -devel, -www and -doc.
+                    Their purposes are the same as the namesakes on lists.debian.org.
+      Language    : English/Japanese
+      Moderated   : no
+      Subscription: open
+
+  debian-kde@lists.debian.org
+
+      Description : Discussions related to KDE in Debian.
+                    Those developing KDE-based packages are
+                    encouraged to use this to discuss issues
+                    and share their experience.
+      Moderated   : no
+      Subscription: open
+
+  debian-laptop@lists.debian.org
+
+      Description : Installing, updating and using laptops with Debian.
+                    Suggestions on special packaging, complaints, etc.
+                    are welcome.
+      Moderated   : no
+      Subscription: open
+
+  debian-news-french@lists.debian.org
+
+      Description : News about Debian for users speaking French.
+      Language    : French
+      Moderated   : yes
+      Subscription: open
+
+  debian-news-german@lists.debian.org
+
+      Description : News about Debian for users speaking German.
+      Language    : German
+      Moderated   : yes
+      Subscription: open
+
+  debian-news-italian@lists.debian.org
+
+      Description : Releases, news, internationalization efforts and
+                    other related news about Debian for Italian-speaking users.
+      Language    : Italian
+      Moderated   : yes
+      Subscription: open
+
+  debian-news-portuguese@lists.debian.org
+
+      Description : Releases, news, internationalization efforts and other
+                    related news about Debian for users speaking Portuguese.
+      Language    : Portuguese
+      Moderated   : yes
+      Subscription: open
+
+  debian-news-spanish@lists.debian.org
+
+      Description : Releases, news, internationalization efforts and
+                    other related news about Debian for Spanish-speaking users.
+      Language    : Spanish
+      Moderated   : yes
+      Subscription: open
+
+  debian-news@lists.debian.org
+
+      Description : General news about the distribution and the project.
+
+                    The current events and news about Debian are
+                    summarized in the Debian Weekly News, a newsletter
+                    regularly posted on this list.
+      Moderated   : yes
+      Subscription: open
+
+  debian-photo@lists.debian.org
+
+      Description : Using software in Debian for photography, and discussion about problems,
+                    challenges and opportunities related to that. All parts of the
+                    photographic process are on topic: controlling the camera, transferring
+                    pictures to the computer, managing, editing, converting, printing,
+                    uploading, displaying, etc.
+                    .        
+                    For bandwidth and disk space reasons, it is not, however, appropriate
+                    to send images to the list. Put them on a web site and include the URL
+                    in a mail sent to the list instead.
+      Moderated   : no
+      Subscription: open
+
+  debian-research@lists.debian.org
+
+      Description : This list's goal is to gather those interested in Debian from an
+                    academic perspective. 
+      Moderated   : no
+      Subscription: open
+
+  debian-russian@lists.debian.org
+
+      Description : Support for Debian users that speak Russian, 
+                    and Russian localization issues: translating
+                    "po" files, coordinating patches for Debian
+                    packages to work with the Russian language.
+      Language    : Russian
+      Moderated   : no
+      Subscription: open
+
+  debian-security-announce@lists.debian.org
+
+      Description : The security team informs the users about security
+                    problems by posting security advisories about
+                    Debian packages on this list.
+      Moderated   : yes
+      Subscription: open
+
+  debian-security@lists.debian.org
+
+      Description : Discussion about security issues, including
+                    cryptographic issues, that are of interest to
+                    all parts of the Debian community.
+
+                    Please note that this is NOT an announcement
+                    mailing list. If you're looking for security
+                    advisories from Debian, subscribe to
+                    debian-security-announce instead.
+      Moderated   : no
+      Subscription: open
+
+  debian-stable-announce@lists.debian.org
+
+      Description : Updates to stable packages will be announced on this list.
+      Moderated   : yes
+      Subscription: open
+
+  debian-testing-security-announce@lists.debian.org
+
+      Description : The testing-security team informs users about security problems by 
+                    posting summaries about fixed packages in Debian testing on this list.
+      Moderated   : yes
+      Subscription: open
+
+  debian-user-catalan@lists.debian.org
+
+      Description : Support for Debian users that speak Catalan.
+      Language    : Catalan
+      Moderated   : no
+      Subscription: open
+
+  debian-user-danish@lists.debian.org
+
+      Description : Support for Debian users who speak Danish.
+      Language    : Danish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-dutch@lists.debian.org
+
+      Description : Support for Debian users that speak Dutch
+      Language    : Dutch
+      Moderated   : no
+      Subscription: open
+
+  debian-user-finnish@lists.debian.org
+
+      Description : Support for Debian users who speak Finnish.
+      Language    : Finnish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-french@lists.debian.org
+
+      Description : Support for Debian users that speak French.
+                    (High-volume mailing list.)
+      Language    : French
+      Moderated   : no
+      Subscription: open
+
+  debian-user-german@lists.debian.org
+
+      Description : Support for Debian users that speak German.
+                    (High-volume mailing list.)
+      Language    : German
+      Moderated   : no
+      Subscription: open
+
+  debian-user-greek@lists.debian.org
+
+      Description : Support for Debian users that speak Greek.
+      Moderated   : no
+      Subscription: open
+
+  debian-user-hungarian
+
+      Description : Support for Debian users that speak Hungarian.
+      Language    : Hungarian
+      Subscription: http://lists.linux.hu/mailman/listinfo/debian
+
+  debian-user-icelandic@lists.debian.org
+
+      Description : Support for Debian users that speak Icelandic.
+      Moderated   : no
+      Subscription: open
+
+  debian-user-indonesian@lists.debian.org
+
+      Description : Support for Debian users who speak Indonesian.
+      Language    : Indonesian
+      Moderated   : no
+      Subscription: open
+
+  debian-user-polish@lists.debian.org
+
+      Description : Support for Debian users that speak Polish.
+      Language    : Polish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-portuguese@lists.debian.org
+
+      Description : Support for Debian users who speak Portuguese.
+                    (High-volume mailing list.)
+      Language    : Portuguese (both European and Brazilian, and other dialects are welcome)
+      Moderated   : no
+      Subscription: open
+
+  debian-user-slovenian@lists.debian.org
+
+      Description : Support for Debian users that speak Slovenian.
+      Language    : Slovenian
+      Moderated   : no
+      Subscription: open
+
+  debian-user-spanish@lists.debian.org
+
+      Description : Support for Debian users that speak Spanish.
+                    (High-volume mailing list.)
+      Language    : Spanish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-swedish@lists.debian.org
+
+      Description : Support for Debian users that speak Swedish.
+      Language    : Swedish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-tamil@lists.debian.org
+
+      Description : Mailing list to discuss Tamil localisation efforts for Debian and to coordinate 
+                    Tamil localisation activities. You can also get Debian support in Tamil here.
+      Language    : Tamil
+      Moderated   : no
+      Subscription: open
+
+  debian-user-turkish@lists.debian.org
+
+      Description : Support for Debian users that speak Turkish.
+      Language    : Turkish
+      Moderated   : no
+      Subscription: open
+
+  debian-user-ukrainian@lists.debian.org
+
+      Description : Support for Debian users who speak Ukrainian.
+      Language    : Ukrainian
+      Moderated   : no
+      Subscription: open
+
+  debian-user-vietnamese@lists.debian.org
+
+      Description : Support for Debian users that speak Vietnamese, and discussions on translations
+      Language    : Vietnamese
+      Moderated   : no
+      Subscription: open
+
+  debian-user@lists.debian.org
+
+      Description : Support for Debian users who speak English.
+                    (High-volume mailing list.)
+      Digest      : debian-user-digest@lists.debian.org
+      Moderated   : no
+      Subscription: open
+
+Development lists
+
+  There are several lists on which developers and experienced
+  users discuss more technical issues.  In addition, there are some
+  announcement lists to help experienced users keep track of
+  development.
+
+  debian-accessibility@lists.debian.org
+
+      Description : User and Developer list for accessibility-related issues.
+      Moderated   : no
+      Subscription: open
+
+  debian-ada@lists.debian.org
+
+      Description : Discussion of Ada in Debian.
+
+                    This list is intended for:
+                    - discussion of the Debian Policy for Ada
+                    - release coordination among Ada packages in Debian
+                    - packaging advice
+                    - general help for Ada programmers using the Debian packages
+
+                    You can find the Debian Policy for Ada at 
+                    http://people.debian.org/~lbrenta/debian-ada-policy.html
+      Moderated   : no
+      Subscription: open
+
+  debian-apache@lists.debian.org
+
+      Description : Maintenance of the Apache HTTP server and related
+                    packages in Debian: code changes, reproducing bugs,
+                    talking to upstream etc.
+
+                    It is neither for submitting bug reports (please
+                    use the BTS for that), nor for support requests.
+      Moderated   : no
+      Subscription: open
+
+  debian-beowulf@lists.debian.org
+
+      Description : Discussion about Beowulf systems running Debian.
+      Moderated   : no
+      Subscription: open
+
+  debian-blends@lists.debian.org
+
+      Description : Debian Pure Blends (formerly known as Custom Debian Distributions)
+                    provide support for special user interests. They implement a new
+                    approach to cover interests of specialised users, who might be 
+                    children, lawyers, medical staff, visually impaired people, etc.
+                    Of late, several Debian Pure Blends have evolved. The common goal 
+                    of those is to make installation and administration of computers 
+                    for their target users as easy as possible, and to serve in the
+                    role as the missing link between software developers and users
+                    well.
+                    
+                    You can get more information at
+                    http://blends.alioth.debian.org/blends/
+      Moderated   : no
+      Subscription: open
+
+  debian-boot@lists.debian.org
+
+      Description : Discussion and maintenance of the Debian
+                    installation system.
+      Moderated   : no
+      Subscription: open
+
+  debian-cd@lists.debian.org
+
+      Description : Creating Debian CD sets, official and unofficial.
+      Moderated   : no
+      Subscription: open
+
+  debian-cli@lists.debian.org
+
+      Description : This list is about using and/or developing for the Common Language
+                    Infrastructure (CLI).
+                    If you want to develop software or create Debian packages
+                    that uses Mono, GNU Portable.NET or LLVM VMKit then you are right on this
+                    mailing list.
+                    If you are writing software in C#, VB.NET, Boo, Nemerle or other
+                    CLI based/enabled programming languages then you are also welcome on this list.
+      Moderated   : no
+      Subscription: open
+
+  debian-cloud@lists.debian.org
+
+      Description : Discussions about using Debian on public or private clouds.
+
+                    Both development topics for people preparing Debian images for cloud
+                    environments and user topics for people benefiting from such work are
+                    welcome.
+      Moderated   : no
+      Subscription: open
+
+  debian-cross@lists.debian.org
+
+      Description : The list discusses
+
+                    - How to cross-build packages within Debian
+
+                    - Infrastructure needed to cross-build packages. This may include
+                      discussion about additional tags for cross-building, running
+                      cross-build daemons, etc.
+
+                    - How to use cross-builds to bootstrap Debian ports.
+      Moderated   : no
+      Subscription: open
+
+  debian-ctte-private@lists.debian.org
+
+      Description : Private communication between tech committee members.
+      Moderated   : yes
+      Subscription: Debian Technical Committee only
+
+  debian-ctte@lists.debian.org
+
+      Description : Public meeting, business and announcements of the Debian
+                    Technical Committee
+      Moderated   : subscribers
+      Subscription: open
+
+  debian-dak@lists.debian.org
+
+      Description : Discussion about the Debian Archive Software, consisting of dak for the
+                    archive and the buildd related parts wanna-build/sbuild.
+      Moderated   : no
+      Subscription: open
+
+  debian-debbugs-cvs@lists.debian.org
+
+      Description : CVS commit messages when modifications are done to
+                    debbugs
+      Moderated   : yes
+      Subscription: open
+
+  debian-debbugs@lists.debian.org
+
+      Description : Discussion and development of debbugs, the Debian
+                    Bug Tracking System software.
+      Moderated   : no
+      Subscription: open
+
+  debian-desktop@lists.debian.org
+
+      Description : Discussion about the Debian Desktop sub-project,
+                    the integration of the various desktop-related
+                    packages, bug reports, questions and patches.
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-announce@lists.debian.org
+
+      Description : Announcements of development issues like policy changes,
+                    important release issues &c.
+      Moderated   : signed
+      Subscription: open
+
+  debian-devel-austrian
+
+      Description : Discussion among the Debian developers in Austria.
+      Language    : (mostly) German
+      Subscription: https://www.gibraltar.at/mailman/listinfo/debian-at
+
+  debian-devel-french@lists.debian.org
+
+      Description : This is the list used to discuss development
+                    issues in French.
+      Language    : French
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-games@lists.debian.org
+
+      Description : Development and packaging discussion for games and game-related software in Debian.
+                    Identification of potential new games suitable for Debian. Discussion about
+                    infrastructure issues covering a wider range of games (e.g. multiplayer issues).
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-italian@lists.debian.org
+
+      Description : Discussion on development issues in Italian.
+      Language    : Italian
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-portuguese@lists.debian.org
+
+      Description : This is the list used by Portuguese developers
+                    (or wannabes) to discuss development issues.
+      Language    : Portuguese
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-spanish@lists.debian.org
+
+      Description : This is the list used by Spanish developers
+                    (or wannabes) to discuss issues besides
+                    translation: provide help for new Spanish
+                    developers, arrange key-signing meetings, arrange
+                    work in booths on different shows, share experience
+                    etc.
+      Language    : Spanish
+      Moderated   : no
+      Subscription: open
+
+  debian-devel@lists.debian.org
+
+      Description : Discussion about technical development topics.
+                    (High-volume mailing list.)
+      Digest      : debian-devel-digest@lists.debian.org
+      Moderated   : no
+      Subscription: open
+
+  debian-doc@lists.debian.org
+
+      Description : Debian Documentation Project: anything related
+                    to documentation in Debian is on topic here.
+      Moderated   : no
+      Subscription: open
+
+  debian-dpkg-bugs@lists.debian.org
+
+      Description : Email sent by the bug tracking system regarding
+                    the dpkg packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-dpkg-cvs@lists.debian.org
+
+      Description : The CVS commit messages from the dpkg CVS tree.
+      Moderated   : yes
+      Subscription: open
+
+  debian-dpkg@lists.debian.org
+
+      Description : Discussions and maintenance of dpkg, the basis of
+                    the Debian packaging system.
+      Moderated   : no
+      Subscription: open
+
+  debian-edu-french@lists.debian.org
+
+      Description : Discussions in french between all educational Debian-based projects.
+                    This list should ease the collaboration between the projects themselves
+                    and between Debian and those projects.
+      Moderated   : no
+      Subscription: open
+
+  debian-edu@lists.debian.org
+
+      Description : Making Debian the best distribution in the
+                    education landscape.
+      Moderated   : no
+      Subscription: open
+
+  debian-emacsen@lists.debian.org
+
+      Description : Discussion of all things related to the several
+                    Debian Emacs packages and their add-ons.
+      Moderated   : no
+      Subscription: open
+
+  debian-email@lists.debian.org
+
+      Description : A generic "grab-bag" list for Debian related
+                    correspondence such as contacting upstream authors
+                    about licenses, bugs etc, or discussing the project
+                    with others where it might be useful to have the
+                    discussion archived somewhere.
+
+                    This list is archived internally on a Debian Project
+                    machine, only developers have access to the archive.
+      Moderated   : no
+      Subscription: developers only
+
+  debian-embedded@lists.debian.org
+
+      Description : Discussion about improving Debian for use with
+                    embedded systems, including building cross-compiler
+                    toolchains, cross-compiling packages, creating and
+                    updating system images, using alternate libraries,
+                    compile-time configuration of packages, etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-flash@lists.debian.org
+
+      Description : For discussion of issues relating to the development and use of Debian for
+                    Flash development and viewing of Flash content. For general discussion of Flash
+                    related free software, please visit the osflash community: http://osflash.org
+      Moderated   : no
+      Subscription: open
+
+  debian-gcc@lists.debian.org
+
+      Description : Discussion on Debian packaging of GCC, the
+                    GNU compiler collection: bug reports, porting
+                    issues, any kind of questions or patches.
+      Moderated   : no
+      Subscription: open
+
+  debian-gis@lists.debian.org
+
+      Description : Discussion about Geographical Information Systems (GIS) in Debian. For more
+                    information about the Debian GIS Blend see 
+
+                    http://wiki.debian.org/DebianGis
+      Moderated   : no
+      Subscription: open
+
+  debian-glibc@lists.debian.org
+
+      Description : Discussion on Debian packaging of the GNU C Library,
+                    the most important library on Debian systems.
+      Moderated   : no
+      Subscription: open
+
+  debian-gtk-gnome@lists.debian.org
+
+      Description : Discussion and coordination among maintainers of
+                    Debian's GTK+, GNOME and dependent or related
+                    packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-hams@lists.debian.org
+
+      Description : Support for HAMRadio within Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-haskell@lists.debian.org
+
+      Description : Discussion of issues related to Haskell on Debian systems, with an
+                    emphasis towards coordinating Haskell packaging standards.  Relevant
+                    for anyone packaging Haskell compilers, libraries, or programs on
+                    Debian.
+      Moderated   : no
+      Subscription: open
+
+  debian-ipv6@lists.debian.org
+
+      Description : Discussions on the use of Debian in an IPv6 network
+                    and implementing IPv6 support in Debian packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-java@lists.debian.org
+
+      Description : Discussion about the packaging and use in Debian of VMs
+                    and compilers for the Java(tm) language, and programs
+                    written on it.
+      Moderated   : no
+      Subscription: open
+
+  debian-jr@lists.debian.org
+
+      Description : Discussion and working on making Debian the sort
+                    of operating system that children will want to use.
+
+                    The Debian Jr. Project web page is at
+                    http://www.debian.org/devel/debian-jr/
+      Moderated   : no
+      Subscription: open
+
+  debian-kernel-maint@lists.debian.org
+
+      Description : Discussion and development of Debian kernel packaging,
+                    for the kernel team and other developers.
+      Moderated   : no
+      Subscription: open
+
+  debian-kernel@lists.debian.org
+
+      Description : Kernels used with Debian (Linux, Hurd, etc.), available
+                    patches and flavors, packaging issues, bug reports,
+                    porting issues, automated tools, and any other
+                    questions or patches that are kernel-related. Mostly
+                    bug reporting is done here.
+      Moderated   : no
+      Subscription: open
+
+  debian-knoppix@lists.debian.org
+
+      Description : Development of the Debian-based live CD/DVD takes place.  As it is mainly a
+                    development list, user questions are best placed on the debian-user list.
+      Moderated   : no
+      Subscription: open
+
+  debian-lex@lists.debian.org
+
+      Description : Discussion on developing Debian into an operating
+                    system that is particularly well fit for the
+                    requirements for legal offices. The goal of
+                    Debian-Lex is a complete system for all tasks in
+                    legal practice which is built completely on free
+                    software.
+      Moderated   : no
+      Subscription: open
+
+  debian-lint-maint@lists.debian.org
+
+      Description : The maintenance of Debian "lint" tools like lintian or linda
+                    is discussed on this list. This may or may not be limited to
+                    bug reports regarding the checks.
+      Moderated   : no
+      Subscription: open
+
+  debian-live@lists.debian.org
+
+      Description : Development of the Debian Live systems (i.e. live cds).
+      Moderated   : no
+      Subscription: open
+
+  debian-lsb@lists.debian.org
+
+      Description : Discussion and coordination of efforts towards ensuring
+                    Debian meets the requirements of the Linux Standard Base.
+      Moderated   : no
+      Subscription: open
+
+  debian-med@lists.debian.org
+
+      Description : Discussion on providing a free operating system
+                    for medical care.
+
+                    The Debian-Med Project web page is at
+                    http://www.debian.org/devel/debian-med/
+      Moderated   : no
+      Subscription: open
+
+  debian-mentors@lists.debian.org
+
+      Description : Newbie Debian developers can seek help with
+                    packaging and other developer-related issues here.
+
+                    This list is not meant for users' questions,
+                    but for new maintainers'!
+      Moderated   : no
+      Subscription: open
+
+  debian-mobile@lists.debian.org
+
+      Description : Discussions around packaging suitable mobile interfaces to
+                    Debian. Mobile systems have a user-interface different than the traditional
+                    'keyboard-mouse' pair, can be battery-powered, have a generally small form
+                    factor and/or only allow few elements on a given screen.
+      Moderated   : no
+      Subscription: open
+
+  debian-multimedia@lists.debian.org
+
+      Description : Discussion about the development of applications
+                    that produce multimedia content, handling multimedia
+                    data, supporting multimedia hardware etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-ocaml-maint@lists.debian.org
+
+      Description : Packaging of Objective Caml programs and libraries.
+                    (http://pauillac.inria.fr/caml/)
+      Moderated   : no
+      Subscription: open
+
+  debian-openoffice@lists.debian.org
+
+      Description : Coordination of the maintenance of the OpenOffice
+                    and LibreOffice packages in Debian.
+      Moderated   : no
+      Subscription: open
+
+  debian-perl@lists.debian.org
+
+      Description : The list is dedicated to coordinate the work of various
+                    perl package maintainer and to write a kind of perl
+                    sub-policy.
+      Moderated   : no
+      Subscription: open
+
+  debian-policy@lists.debian.org
+
+      Description : Discussion and editing of the Debian Policy Manual.
+      Moderated   : no
+      Subscription: open
+
+  debian-printing@lists.debian.org
+
+      Description : Discussion of issues related to printing on Debian systems.  This
+                    covers all aspects of printing, from spoolers, to RIPs and printer
+                    drivers.  The list is used for coordination of development,
+                    integration and bugfixing of printing packages between package
+                    maintainers.  User printing and printing setup questions are also
+                    on topic.
+      Moderated   : no
+      Subscription: open
+
+  debian-private@lists.debian.org
+
+      Description : Private discussions among developers: only for
+                    issues that may not be discussed on public lists.
+
+                    Anything sent there should be treated as sensitive
+                    and not to be spread to other lists; thus
+                    cross-posting between it and an open list defeats
+                    the purpose of this list.
+
+                    This list is archived internally on a Debian Project
+                    machine, only developers have access to the archive.
+      Moderated   : no
+      Subscription: developers only
+
+  debian-python@lists.debian.org
+
+      Description : Discussion of issues related to Python on Debian
+                    systems with a stress on packaging standards. Therefore
+                    relevant for maintainers of Python related packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-qa-packages@lists.debian.org
+
+      Description : Bug reports against orphaned packages and discussions
+                    about fixing them.
+      Moderated   : no
+      Subscription: open
+
+  debian-qa@lists.debian.org
+
+      Description : Quality assurance is important for a distribution. This
+                    list addresses this quality.
+      Moderated   : no
+      Subscription: open
+
+  debian-qt-kde@lists.debian.org
+
+      Description : Discussion and coordination among maintainers of
+                    Debian's Qt, KDE and dependent or related packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-release@lists.debian.org
+
+      Description : Coordination of Debian releases issues such as testing migrations, transitions
+                    and removals.
+                    
+                    This list should not be considered a discussion list; discussions related to
+                    releases issues should be held on more appropriate lists such as debian-devel,
+                    debian-legal or debian-project.
+      Moderated   : no
+      Subscription: open
+
+  debian-ruby@lists.debian.org
+
+      Description : Discussion of issues related to Ruby on Debian systems
+                    with a stress on packaging standards. Therefore
+                    relevant for maintainers of Ruby related packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-science@lists.debian.org
+
+      Description : Discussion of issues relating to the use of Debian for science research,
+                    including useful packages, particular problems faced by scientists using
+                    Debian, how to make Debian more useful to scientists, etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-security-tracker@lists.debian.org
+
+      Description : Discussion about topics that are relevant about the
+                    Debian Security Tracker, e.g. feature improvements,
+                    bugreports about incorrect data entries or server
+                    updates.
+      Moderated   : no
+      Subscription: open
+
+  debian-sgml@lists.debian.org
+
+      Description : Discussion of issues related to SGML on Debian systems
+                    with a stress on proper integration of tools, packaging
+                    standards and the writing of documentation for SGML
+                    users. Therefore relevant for maintainers of SGML
+                    related packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-ssh@lists.debian.org
+
+      Description : Maintenance of the OpenSSH packages for Debian.
+                    It exists to facilitate coordination of ssh
+                    maintenance (talking to upstream, reproducing bugs,
+                    hacking on the code, etc.).
+
+                    It is *not* the place to mail bug reports
+                    (use the BTS for that), nor support requests.
+      Moderated   : no
+      Subscription: open
+
+  debian-testing@lists.debian.org
+
+      Description : Finding problems with the next Debian release:
+                    testing the installation and the upgrade process.
+      Moderated   : no
+      Subscription: open
+
+  debian-tex-maint@lists.debian.org
+
+      Description : Coordination of the maintenance of Debian TeX
+                    and related packages.
+
+                    It is not meant for user support; for that, please
+                    use debian-user or one of the general TeX mailing
+                    lists or news groups.
+      Moderated   : no
+      Subscription: open
+
+  debian-toolchain@lists.debian.org
+
+      Description : Discussion about the Debian toolchain: compilers,
+                    assemblers, linkers and such. New releases for
+                    many of these tools are coordinated here.
+      Moderated   : no
+      Subscription: open
+
+  debian-upstream@lists.debian.org
+
+      Description : A contact point for upstream software developers who want to get in touch with
+                    Debian, whether the software is already packaged for Debian or not.
+      Moderated   : no
+      Subscription: open
+
+  debian-wb-team@lists.debian.org
+
+      Description : Primary contact address for the wanna-build maintainers.
+                    Requests about this piece of infrastructure should
+                    be sent here. Discussions directly concerning wanna-build.
+      Moderated   : yes
+      Subscription: open
+
+  debian-webapps@lists.debian.org
+
+      Description : This list is used to coordinate the maintenance of web application packages.
+      Moderated   : no
+      Subscription: open
+
+  debian-wnpp@lists.debian.org
+
+      Description : Orphaning and adopting packages which is done through
+                    the `wnpp' BTS pseudo-package is recorded on this
+                    list. Additionally, discussion about particular bugs
+                    and the WNPP web pages is held here.
+      Moderated   : no
+      Subscription: open
+
+  debian-www-cvs@lists.debian.org
+
+      Description : CVS commit logs for the Debian web pages in the
+                    webwml CVS tree.
+      Moderated   : yes
+      Subscription: open
+
+  debian-www@lists.debian.org
+
+      Description : Design, structure and translation of Debian
+                    web pages. All important changes to the web
+                    site are announced here as well.
+      Moderated   : no
+      Subscription: open
+
+  debian-x@lists.debian.org
+
+      Description : Discussion about the X Window System within Debian.
+                    This is not a user support list; this list is
+                    intended for those who deal with the source code and with the bugreports.
+      Moderated   : no
+      Subscription: open
+
+  deity@lists.debian.org
+
+      Description : Debian has a friendly frontend to
+                    its package maintenance system. Its codename is deity
+                    (now known as APT) and its development is discussed
+                    here. The -digest is open to everyone.
+      Moderated   : no
+      Subscription: open
+
+  package-sponsorship-requests@lists.debian.org
+
+      Description : Track upload requests for packages about
+                    to be sponsored into Debian archive.
+
+                    This list is also the owner of the sponsorship-requests
+                    pseudo package - all control mails will arrive on this list.
+      Moderated   : no
+      Subscription: open
+
+Internationalization and Translations
+
+  These lists cover issues like localization, translation and support for
+  users that don't speak English.
+
+  debian-i18n@lists.debian.org
+
+      Description : Internationalization (i18n) of the distribution is
+                    discussed here.
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-arabic@lists.debian.org
+
+      Description : Discussing Arabic localization issues, mainly
+                    translating Debian docs and programs to Arabic.
+      Language    : Arabic
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-basque@lists.debian.org
+
+      Description : Discussing Basque localization issues, mainly translating Debian
+                    docs and programs to Basque.
+      Language    : Basque
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-belarusian@lists.debian.org
+
+      Description : Discussing Belarusian localization issues, mainly
+                    translating Debian docs and programs to Belarusian.
+      Language    : Belarusian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-catalan@lists.debian.org
+
+      Description : Discussing Catalan localization issues, mainly
+                    translating Debian docs and programs to Catalan.
+      Language    : Catalan
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-chinese@lists.debian.org
+
+      Description : Discussing Chinese localization issues, mainly translating Debian
+                    docs and programs to Chinese.
+      Language    : Chinese
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-czech@lists.debian.org
+
+      Description : Discussion forum for the translators of
+                    Debian-specific packages and documentation to the Czech language.
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-danish@lists.debian.org
+
+      Description : Discussing Danish localization issues, mainly
+                    translating Debian docs and programs to Danish.
+      Language    : Danish
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-dutch@lists.debian.org
+
+      Description : Discussion forum for the translators of Debian-specific
+                    packages and documentation to the Dutch language.
+      Language    : Dutch
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-english@lists.debian.org
+
+      Description : Discussing English localization issues, mainly
+                    translating Debian docs and programs to English.
+      Language    : English
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-esperanto@lists.debian.org
+
+      Description : Discussing Esperanto localization issues, mainly
+                    translating Debian docs and programs to Esperanto.
+      Language    : Esperanto
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-finnish@lists.debian.org
+
+      Description : Discussing Finnish localization issues, mainly
+                    translating Debian docs and programs to Finnish.
+      Language    : Finnish
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-french@lists.debian.org
+
+      Description : Discussion forum for the translators of Debian-specific
+                    packages and documentation to the French language.
+      Language    : French
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-galician@lists.debian.org
+
+      Description : Discussing Galician localization issues, mainly translating Debian docs and
+                    programs to Galician.
+      Language    : Galician
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-german@lists.debian.org
+
+      Description : Discussing German localization issues, mainly
+                    translating Debian docs and programs to German.
+      Language    : German
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-greek@lists.debian.org
+
+      Description : Discussion on Greek localization issues, mainly
+                    translating Debian docs and programs to Greek.
+      Language    : Greek
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-hungarian@lists.debian.org
+
+      Description : Discussing Hungarian localization issues, mainly
+                    translating Debian docs and programs to Hungarian.
+      Language    : Hungarian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-indonesian@lists.debian.org
+
+      Description : Discussing Indonesian localization issues, mainly translating Debian docs and
+                    website into Indonesian, improving Indonesian environment support in Debian.
+      Language    : Indonesian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-italian@lists.debian.org
+
+      Description : Italian localization efforts within Debian.
+      Language    : Italian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-kannada@lists.debian.org
+
+      Description : Debian Kannada (kn_IN) localization, documentation and web site translation,
+                    user support, user-developers coordination
+      Language    : Kannada
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-korean@lists.debian.org
+
+      Description : Discussion forum for the translators of Debian-specific packages and
+                    documentation to the Korean language.
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-malayalam@lists.debian.org
+
+      Description : Discussion forum for the translators of Debian-specific packages and
+                    documentation to the Malayalam language.
+      Language    : Malayalam
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-persian@lists.debian.org
+
+      Description : Discussing Persian/Farsi localization issues, mainly translating
+                    Debian docs and programs to Persian/Farsi.
+      Language    : Persian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-polish@lists.debian.org
+
+      Description : Polish localization issues, mainly translating Debian
+                    web pages, documentation and programs to Polish.
+      Language    : Polish
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-portuguese@lists.debian.org
+
+      Description : Portuguese localization issues such as translating
+                    the documentation and programs.
+      Language    : Portuguese
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-romanian@lists.debian.org
+
+      Description : Discussing Romanian localization issues, mainly
+                    translating Debian docs and programs to Romanian.
+
+                    This list is currently also used for support and general discussions
+                    among Romanian users.
+      Language    : Romanian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-russian@lists.debian.org
+
+      Description : Discussing Russian localization issues, mainly
+                    translating Debian docs and programs to Russian.
+      Language    : Russian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-serbian@lists.debian.org
+
+      Description : Discussing Serbian localization issues, mainly translating Debian docs and
+                    programs to Serbian.
+      Language    : Serbian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-sicilian@lists.debian.org
+
+      Description : Sicilian localization issues within Debian.
+      Language    : Sicilian
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-slovak@lists.debian.org
+
+      Description : Discussing Slovak localization issues, mainly translating Debian docs and
+                    programs to Slovak.
+      Language    : Slovak
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-spanish@lists.debian.org
+
+      Description : Discussing Spanish localization issues, mainly
+                    translating Debian docs and programs to Spanish.
+      Language    : Spanish
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-swedish@lists.debian.org
+
+      Description : Discussion forum for translators of Debian-specific packages
+                    and documentation for the Swedish language.
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-turkish@lists.debian.org
+
+      Description : Discussing Turkish localization issues, mainly
+                    translating Debian docs and website into Turkish,
+                    improving Turkish environment support in Debian.
+      Language    : Turkish
+      Moderated   : no
+      Subscription: open
+
+  debian-l10n-vietnamese@lists.debian.org
+
+      Description : This is the Debian localization list for Vietnamese localization announcements
+                    and translation status checks, discussions between Vietnamese translators and
+                    questions from Vietnamese community users with language-related issues.
+      Language    : Vietnamese
+      Moderated   : no
+      Subscription: open
+
+Ports to non-i386 Linux architectures and to non-Linux kernels
+
+  Debian GNU/Linux is ported to several other types of computers, and there
+  are also efforts to create Debian systems on kernels other than Linux.
+
+  debian-68k@lists.debian.org
+
+      Description : Discussions on the m68k port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-alpha@lists.debian.org
+
+      Description : Discussion on the Alpha port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-amd64@lists.debian.org
+
+      Description : Porting Debian to AMD x86-64 architecture.
+      Moderated   : no
+      Subscription: open
+
+  debian-arm@lists.debian.org
+
+      Description : Discussion on the ARM port for Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-bsd@lists.debian.org
+
+      Description : Porting Debian to BSD (all *BSD variants).
+      Moderated   : no
+      Subscription: open
+
+  debian-hppa@lists.debian.org
+
+      Description : Discussions on the PA-RISC port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-hurd@lists.debian.org
+
+      Description : Debian port of the GNU Hurd operating system.
+      Moderated   : no
+      Subscription: open
+
+  debian-ia64@lists.debian.org
+
+      Description : Discussions on the intel IA64 (aka Itanium, Merced)
+                    port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-interix@lists.debian.org
+
+      Description : Discussion on the Interix port of Debian/GNU.
+                    For more information see: http://www.debian-interix.net/
+      Moderated   : no
+      Subscription: open
+
+  debian-mips@lists.debian.org
+
+      Description : Discussions on the MIPS port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-powerpc@lists.debian.org
+
+      Description : Discussion on the PowerPC port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-s390@lists.debian.org
+
+      Description : Discussions on the IBM S/390 port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-sparc@lists.debian.org
+
+      Description : Discussions on the SPARC port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-superh@lists.debian.org
+
+      Description : Discussions on the SuperH port of Debian GNU/Linux.
+      Moderated   : no
+      Subscription: open
+
+  debian-win32@lists.debian.org
+
+      Description : Porting the Debian distribution to Win32 systems
+                    (Debian GNU/Win32).
+      Moderated   : no
+      Subscription: open
+
+The Bug Tracking System
+
+  The Debian bug tracking system is open to the public, and it produces
+  a lot of email. Some of this might be of interest to developers or even
+  users, so it is distributed through these (high-volume) mailing lists.
+
+  debian-bugs-closed@lists.debian.org
+
+      Description : Messages that close Debian bug reports.
+      Moderated   : yes
+      Subscription: open
+
+  debian-bugs-dist@lists.debian.org
+
+      Description : All submitted bug reports as well as further information
+                    on them are distributed here.
+      Moderated   : yes
+      Subscription: open
+
+  debian-bugs-forwarded@lists.debian.org
+
+      Description : Mails in which Debian maintainers forward bugs
+                    to their upstream authors.
+      Moderated   : yes
+      Subscription: open
+
+  debian-bugs-rc@lists.debian.org
+
+      Description : All mail regarding release-critical bugs is
+                    copied to this mailing list.
+
+                    See http://bugs.debian.org/release-critical/
+                    for more information.
+      Moderated   : yes
+      Subscription: open
+
+Miscellaneous Debian lists
+
+  There are several mailing lists which discuss topics that are
+  not directly related to developing or using Debian, and there
+  are some that don't necessarily have a clear distinction
+  between developers and users in the intended audience.
+
+  debian-admin@lists.debian.org
+
+      Description : This is our internal list used for administering the
+                    Debian machine park.
+      Moderated   : no
+      Subscription: closed
+
+  debian-backports-changes@lists.debian.org
+
+      Description : Changes to the "debian-backports" distribution are announced
+                    here. This includes queued and dak mail.
+      Moderated   : yes
+      Subscription: open
+
+  debian-changes@lists.debian.org
+
+      Description : Changes to the releases are announced here. This
+                    includes security upgrades as well as important
+                    bugfixes.
+      Digest      : debian-changes-digest@lists.debian.org
+      Moderated   : yes
+      Subscription: open
+
+  debian-companies@lists.debian.org
+
+      Description : Discussions about the needs of companies that contribute to, offer
+                    support for, or have other strategic interests in Debian.
+
+                    List participation is restricted to representatives of companies that
+                    offer Debian-specific support or services and that are determined to
+                    contribute to Debian.
+
+                    As an approximation of the above, subscription requests will be
+                    verified against the following criteria:
+
+                    - the requested subscription address should be a company address
+                    (i.e. its domain name should correspond to a company website)
+
+                    - the company should advertise on its website Debian-related support
+                    or services, mentioning the Debian name or logo, and linking back to
+                    the Debian website (please provide a link to that page in your
+                    subscription request)
+
+                    - at least 2 Debian project members (AKA Debian Developer) should be
+                    working for the company (please name them in your request)
+
+                    - preferably, the person requesting subscription should be able to
+                    speak as a company representative, at least for the topics of
+                    interest of the mailing list
+
+                    List participation can be requested by a mail to listmaster@debian.org. The
+                    mail has to include all needed information and has to be signed by a debian
+                    developer with a key in the debian keyring.
+      Moderated   : no
+      Subscription: closed
+
+  debian-consultants@lists.debian.org
+
+      Description : Communication among Debian consultants. See at the bottom of the
+                    consultants page (http://www.debian.org/consultants/#policy) for how
+                    to add/update entries to this page.
+      Moderated   : no
+      Subscription: open
+
+  debian-curiosa@lists.debian.org
+
+      Description : Funny thing from and with the project, funny quotes,
+                    discussions irc communication and fortune cookies.
+                    Some kind of (de.)alt.netdigest for Debian-related stuff.
+      Moderated   : no
+      Subscription: open
+
+  debian-devel-changes@lists.debian.org
+
+      Description : Notices about uploaded packages for the unstable
+                    distribution, from developers, buildds and katie,
+                    the archive sentinel.
+                    (High-volume mailing list.)
+      Moderated   : yes
+      Subscription: open
+
+  debian-dug-by@lists.debian.org
+
+      Description : Discussion list for the Debian community in Belarus without being tied to a
+                    particular group in order to link all groups and individuals in the country
+                    and facilitate the coordination of local events.
+      Moderated   : no
+      Subscription: open
+
+  debian-dug-ie@lists.debian.org
+
+      Description : Discussion list for the Debian community in Ireland without being tied to a
+                    particular group in order to link all groups and individuals in the country and
+                    facilitate the coordination of local events.
+
+                    See also http://wiki.debian.org/LocalGroups/DebianIreland
+      Moderated   : no
+      Subscription: open
+
+  debian-dug-in@lists.debian.org
+
+      Description : Discussion list for the Debian community in India without being tied to a
+                    particular group in order to link all groups and individuals in the country and
+                    facilitate the coordination of local events.
+      Moderated   : no
+      Subscription: open
+
+  debian-dug-mx@lists.debian.org
+
+      Description : Discussion list for the Debian community in Mexico without being tied to a
+                    particular group in order to link all groups and individuals in the country and
+                    facilitate the coordination of local events.
+      Moderated   : no
+      Subscription: open
+
+  debian-dug-quebec@lists.debian.org
+
+      Description : Discussion list for the Québécois community without being tied to a
+                    particular group in order to link all groups and individuals in the
+                    province and facilitate the coordination of local events. Support
+                    requests are OK but posting to debian-user and debian-user-french
+                    instead is encouraged unless your message is specific to Quebec. See:
+                    http://wiki.debian.org/fr/FrenchLists
+
+                    Other resources and information on how to contribute to Debian in Quebec
+                    are available at http://wiki.debian.org/LocalGroups/DebianQuebec
+      Moderated   : no
+      Subscription: open
+
+  debian-events-eu@lists.debian.org
+
+      Description : Discussions and organizational stuff about booths for
+                    Debian at european exhibitions.
+      Moderated   : no
+      Subscription: open
+
+  debian-events-ha@lists.debian.org
+
+      Description : Mailing list for announcements and events organization
+                    with Debian affiliation in Hispanic America.
+      Moderated   : no
+      Subscription: open
+
+  debian-events-na@lists.debian.org
+
+      Description : Discussions and organizational stuff about booths and
+                    presentations for Debian at North American exhibitions.
+      Moderated   : no
+      Subscription: open
+
+  debian-events-nl@lists.debian.org
+
+      Description : Announcements of small meetings and keysigning parties of Dutch
+                    Debian Developers and other discussions of interest mainly for
+                    Debian people in the Netherlands. Posts in both Dutch and English
+                    are common.
+      Moderated   : no
+      Subscription: open
+
+  debian-experimental-changes@lists.debian.org
+
+      Description : Notices about uploaded packages for the experimental distribution, from
+                    developers, buildds and dak, the Debian Archive Kit
+      Moderated   : yes
+      Subscription: open
+
+  debian-jobs@lists.debian.org
+
+      Description : Job postings can be published on this list in
+                    order to make them public to members of the Debian
+                    community.  While the jobs do not necessarily have
+                    to involve the use of Debian, it is encouraged that
+                    they do.  Jobs can be about the development of
+                    proprietary system, but jobs involving free software
+                    (either development or system administration) are
+                    preferred.  Please include information such as
+                    location and remuneration if appropriate.  The list
+                    is moderated; it is also an open list - job postings
+                    which have to be kept private should be sent to
+                    leader@debian.org who will distribute them.
+      Moderated   : yes
+      Subscription: open
+
+  debian-legal@lists.debian.org
+
+      Description : Discussions about legality issues such as
+                    copyrights, patents etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-mirrors-announce@lists.debian.org
+
+      Description : Important changes to the FTP archive are announced here.
+                    These are mainly useful to maintainers of Debian
+                    mirrors.
+      Moderated   : signed
+      Subscription: open
+
+  debian-mirrors@lists.debian.org
+
+      Description : Discussions relating to the Debian mirror network,
+                    and the maintenance of mirrors.
+      Moderated   : no
+      Subscription: open
+
+  debian-newmaint@lists.debian.org
+
+      Description : Discussion about the Debian New Member process,
+                    application manager reports etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-project@lists.debian.org
+
+      Description : Discussion about non-technical topics related
+                    to the Debian Project.
+      Moderated   : no
+      Subscription: open
+
+  debian-publicity@lists.debian.org
+
+      Description : Coordination of all the work related to the external
+                    communication of Debian: drafting new announces,
+                    collecting important information that Debian should relay
+                    to its community, improving the infrastructure offered to
+                    people who want to create Debian booth, etc.
+      Moderated   : no
+      Subscription: open
+
+  debian-services-admin@lists.debian.org
+
+      Description : Point of contact for issues with services, such as web services, mail
+                    gateways or command line tools, deployed on Debian infrastructure.
+
+                    It is intended as a reasonably low-traffic list where everyone who's
+                    working on any such services hangs out.
+
+                    The list can also provide help to people who would like to deploy their
+                    services on Debian machines.
+      Moderated   : no
+      Subscription: open
+
+  debian-snapshot@lists.debian.org
+
+      Description : This list covers discussion and maintenance of the snapshot.debian.org archive
+                    as well as the development of enhancements of this service.
+      Moderated   : no
+      Subscription: open
+
+  debian-sprints@lists.debian.org
+
+      Description : Discussion and coordination for Debian Sprints. Sprints allow sets of
+                    developers to physically meet up to make Debian better.
+      Moderated   : no
+      Subscription: open
+
+  debian-testing-changes@lists.debian.org
+
+      Description : Changes to the "testing" distribution are announced
+                    here. This includes various bugfixes.
+      Moderated   : yes
+      Subscription: open
+
+  debian-vote@lists.debian.org
+
+      Description : Proposals, discussions and announcements related to
+                    Official Debian Votes.
+      Moderated   : no
+      Subscription: open
+
+  debian-women@lists.debian.org
+
+      Description : Debian users and developers who wish to involve more
+                    women in the Debian project. For discussion and
+                    sharing of ideas as well as project collaboration.
+      Moderated   : no
+      Subscription: open
+
+  whitelist@lists.debian.org
+
+      Description : This is a special pseudo-mailing list to which
+                    people can subscribe to prove they are not
+                    spammers.
+
+                    This allows one to avoid the restrictions imposed
+                    on non-subscriber posts to other mailing lists,
+                    in particular the mailing lists that allow posts
+                    only from subscribers.
+      Moderated   : yes
+      Subscription: open
+
+Other
+
+
+  debian-derivatives@lists.debian.org
+
+      Description : front-desk for developers of Debian-based distributions
+      Moderated   : no
+      Subscription: open
+
+Lists hosted for other projects
+
+  Our list server provides mailing list facilities for other free
+  projects as well.
+
+  other-cdwrite@lists.debian.org
+
+      Description : cdwrite mailing list
+      Moderated   : no
+      Subscription: open
+
+  other-sart@lists.debian.org
+
+      Description : Discussions and announcements about SART,
+                    a free raytracer that uses Guile extension
+                    language and is distributed under GPL. 
+
+                    The SART website is at
+                    http://petra.zesoi.fer.hr/~silovic/sart/
+      Moderated   : no
+      Subscription: open
+
+
+Debian mailing list advertising policy
+--------------------------------------
+
+  This policy is intended to fight mailing-list "spamming".
+
+  The Debian mailing lists accept commercial advertising for payment. The fee
+  for advertisments is a donation of USD 1000 or more to "Software in the
+  Public Interest" (SPI).  One donation per advertisement, please.  If you
+  prefer to pay in arrears, simply post your advertisement to the list, and
+  the list operator will bill you USD 1999.  The list operator will donate
+  this amount, minus the expense of collecting it, to SPI.  Please note that
+  the lists are distributed automatically -- messages are generally not read
+  or checked in any way before they are distributed.
+
+  The act of posting an advertisement indicates your willingness to
+    * accept responsibility for the fee,
+    * indemnify the list operator against any legal claims from you or
+        others in connection with your advertisement, and
+    * pay any legal and business expenses incurred in collecting late payment.
+  Our liability to you is limited to a good-faith effort to deliver your
+  message.
+
+  Reduced rates and/or waiver of fee are available for Debian-related
+  advertisements. You must consult the list operator in advance of posting for
+  any reduction or fee waiver.
+
+-- 
+Online HTML version of this document is available at
+	http://www.debian.org/MailingLists/subscribe

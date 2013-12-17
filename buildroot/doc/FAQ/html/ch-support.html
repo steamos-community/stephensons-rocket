@@ -1,0 +1,679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>The Debian GNU/Linux FAQ - Getting support for Debian GNU/Linux</title>
+
+<link href="index.en.html" rel="start">
+<link href="ch-customizing.en.html" rel="prev">
+<link href="ch-contributing.en.html" rel="next">
+<link href="index.en.html#contents" rel="contents">
+<link href="index.en.html#copyright" rel="copyright">
+<link href="ch-basic_defs.en.html" rel="chapter" title="1 Definitions and overview">
+<link href="ch-getting.en.html" rel="chapter" title="2 Getting and installing Debian GNU/Linux">
+<link href="ch-choosing.en.html" rel="chapter" title="3 Choosing a Debian distribution">
+<link href="ch-compat.en.html" rel="chapter" title="4 Compatibility issues">
+<link href="ch-software.en.html" rel="chapter" title="5 Software available in the Debian system">
+<link href="ch-ftparchives.en.html" rel="chapter" title="6 The Debian FTP archives">
+<link href="ch-pkg_basics.en.html" rel="chapter" title="7 Basics of the Debian package management system">
+<link href="ch-pkgtools.en.html" rel="chapter" title="8 The Debian package management tools">
+<link href="ch-uptodate.en.html" rel="chapter" title="9 Keeping your Debian system up-to-date">
+<link href="ch-kernel.en.html" rel="chapter" title="10 Debian and the kernel">
+<link href="ch-customizing.en.html" rel="chapter" title="11 Customizing your installation of Debian GNU/Linux">
+<link href="ch-support.en.html" rel="chapter" title="12 Getting support for Debian GNU/Linux">
+<link href="ch-contributing.en.html" rel="chapter" title="13 Contributing to the Debian Project">
+<link href="ch-redistrib.en.html" rel="chapter" title="14 Redistributing Debian GNU/Linux in a commercial product">
+<link href="ch-nexttime.en.html" rel="chapter" title="15 Changes expected in the next major release of Debian">
+<link href="ch-faqinfo.en.html" rel="chapter" title="16 General information about the FAQ">
+<link href="ch-basic_defs.en.html#s-whatisfaq" rel="section" title="1.1 What is this FAQ?">
+<link href="ch-basic_defs.en.html#s-whatisdebian" rel="section" title="1.2 What is Debian GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-linux" rel="section" title="1.3 OK, now I know what Debian is... what is Linux?!">
+<link href="ch-basic_defs.en.html#s-non-linux" rel="section" title="1.4 Does Debian just do GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-difference" rel="section" title="1.5 What is the difference between Debian GNU/Linux and other Linux distributions? Why should I choose Debian over some other distribution?">
+<link href="ch-basic_defs.en.html#s-gnu" rel="section" title="1.6 How does the Debian project fit in or compare with the Free Software Foundation's GNU project?">
+<link href="ch-basic_defs.en.html#s-pronunciation" rel="section" title="1.7 How does one pronounce Debian and what does this word mean?">
+<link href="ch-getting.en.html#s-version" rel="section" title="2.1 What is the latest version of Debian?">
+<link href="ch-getting.en.html#s-updatestable" rel="section" title="2.2 Are there package upgrades in `stable'?">
+<link href="ch-getting.en.html#s-boot-floppies" rel="section" title="2.3 Where/how can I get the Debian installation disks?">
+<link href="ch-getting.en.html#s-cdrom" rel="section" title="2.4 How do I install the Debian from CD-ROMs?">
+<link href="ch-getting.en.html#s-cdimage-symlinks" rel="section" title="2.5 Why does the official stable released CD-ROM contain symlinks for `frozen' and `unstable'? I thought this CD contains just `stable'!">
+<link href="ch-getting.en.html#s-remoteinstall" rel="section" title="2.6 Can I get and install Debian directly from a remote Internet site?">
+<link href="ch-getting.en.html#s-alternativebootinstaller" rel="section" title="2.7 Are there any alternative strategies for booting the system installer?">
+<link href="ch-choosing.en.html#s3.1" rel="section" title="3.1 Which Debian distribution (stable/testing/unstable) is better for me?">
+<link href="ch-choosing.en.html#s3.2" rel="section" title="3.2 But what about Knoppix, Linex, Ubuntu, and others?">
+<link href="ch-compat.en.html#s-arches" rel="section" title="4.1 On what hardware architectures/systems does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-kernels" rel="section" title="4.2 What kernels does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-otherdistribs" rel="section" title="4.3 How compatible is Debian with other distributions of Linux?">
+<link href="ch-compat.en.html#s-otherunices" rel="section" title="4.4 How source code compatible is Debian with other Unix systems?">
+<link href="ch-compat.en.html#s-otherpackages" rel="section" title="4.5 Can I use Debian packages (&quot;.deb&quot; files) on my Red Hat/Slackware/... Linux system? Can I use Red Hat packages (&quot;.rpm&quot; files) on my Debian GNU/Linux system?">
+<link href="ch-compat.en.html#s-non-debian-programs" rel="section" title="4.6 How should I install a non-Debian program?">
+<link href="ch-compat.en.html#s-termcap" rel="section" title="4.7 Why can't I compile programs that require libtermcap?">
+<link href="ch-compat.en.html#s-accelx" rel="section" title="4.8 Why can't I install AccelX?">
+<link href="ch-software.en.html#s-apps" rel="section" title="5.1 What types of applications and development software are available for Debian GNU/Linux?">
+<link href="ch-software.en.html#s-softwareauthors" rel="section" title="5.2 Who wrote all that software?">
+<link href="ch-software.en.html#s-pkglist" rel="section" title="5.3 How can I get a current list of programs that have been packaged for Debian?">
+<link href="ch-software.en.html#s-buildenv" rel="section" title="5.4 How can I install a developer's environment to build packages?">
+<link href="ch-software.en.html#s-missing" rel="section" title="5.5 What is missing from Debian GNU/Linux?">
+<link href="ch-software.en.html#s-no-devs" rel="section" title="5.6 Why do I get &quot;ld: cannot find -lfoo&quot; messages when compiling programs? Why aren't there any libfoo.so files in Debian library packages?">
+<link href="ch-software.en.html#s-java" rel="section" title="5.7 (How) Does Debian support Java?">
+<link href="ch-software.en.html#s-isitdebian" rel="section" title="5.8 How can I check that I am using a Debian system, and what version is it?">
+<link href="ch-software.en.html#s-nonenglish" rel="section" title="5.9 How does Debian support non-English languages?">
+<link href="ch-software.en.html#s-pine" rel="section" title="5.10 Where is pine?">
+<link href="ch-software.en.html#s-qmail" rel="section" title="5.11 Where is qmail/ezmlm/djbdns?">
+<link href="ch-software.en.html#s-flash" rel="section" title="5.12 Where is a player for Flash (SWF)?">
+<link href="ch-software.en.html#s-googleearth" rel="section" title="5.13 Where is Google Earth?">
+<link href="ch-software.en.html#s-voip" rel="section" title="5.14 Where is VoIP software?">
+<link href="ch-software.en.html#s-nonfreewireless" rel="section" title="5.15 I have a wireless network card which doesn't work with Linux. What should I do?">
+<link href="ch-ftparchives.en.html#s-dists" rel="section" title="6.1 How many Debian distributions are there?">
+<link href="ch-ftparchives.en.html#s-codenames" rel="section" title="6.2 What are all those names like etch, lenny, etc.?">
+<link href="ch-ftparchives.en.html#s-sid" rel="section" title="6.3 What about &quot;sid&quot;?">
+<link href="ch-ftparchives.en.html#s-stable" rel="section" title="6.4 What does the stable directory contain?">
+<link href="ch-ftparchives.en.html#s-testing" rel="section" title="6.5 What does the testing distribution contain?">
+<link href="ch-ftparchives.en.html#s-unstable" rel="section" title="6.6 What does the unstable distribution contain?">
+<link href="ch-ftparchives.en.html#s-dirtree" rel="section" title="6.7 What are all those directories at the Debian FTP archives?">
+<link href="ch-ftparchives.en.html#s-archsections" rel="section" title="6.8 What are all those directories inside dists/stable/main?">
+<link href="ch-ftparchives.en.html#s-source" rel="section" title="6.9 Where is the source code?">
+<link href="ch-ftparchives.en.html#s-pools" rel="section" title="6.10 What's in the pool directory?">
+<link href="ch-ftparchives.en.html#s-incoming" rel="section" title="6.11 What is &quot;incoming&quot;?">
+<link href="ch-ftparchives.en.html#s-ownrepository" rel="section" title="6.12 How do I set up my own apt-able repository?">
+<link href="ch-pkg_basics.en.html#s-package" rel="section" title="7.1 What is a Debian package?">
+<link href="ch-pkg_basics.en.html#s-deb-format" rel="section" title="7.2 What is the format of a Debian binary package?">
+<link href="ch-pkg_basics.en.html#s-pkgname" rel="section" title="7.3 Why are Debian package file names so long?">
+<link href="ch-pkg_basics.en.html#s-controlfile" rel="section" title="7.4 What is a Debian control file?">
+<link href="ch-pkg_basics.en.html#s-conffile" rel="section" title="7.5 What is a Debian conffile?">
+<link href="ch-pkg_basics.en.html#s-maintscripts" rel="section" title="7.6 What is a Debian preinst, postinst, prerm, and postrm script?">
+<link href="ch-pkg_basics.en.html#s-priority" rel="section" title="7.7 What is an Essential, Required, Important, Standard, Optional, or Extra package?">
+<link href="ch-pkg_basics.en.html#s-virtual" rel="section" title="7.8 What is a Virtual Package?">
+<link href="ch-pkg_basics.en.html#s-depends" rel="section" title="7.9 What is meant by saying that a package Depends, Recommends, Suggests, Conflicts, Replaces, Breaks or Provides another package?">
+<link href="ch-pkg_basics.en.html#s-pre-depends" rel="section" title="7.10 What is meant by Pre-Depends?">
+<link href="ch-pkg_basics.en.html#s-pkgstatus" rel="section" title="7.11 What is meant by unknown, install, remove, purge and hold in the package status?">
+<link href="ch-pkg_basics.en.html#s-puttingonhold" rel="section" title="7.12 How do I put a package on hold?">
+<link href="ch-pkg_basics.en.html#s-sourcepkgs" rel="section" title="7.13 How do I install a source package?">
+<link href="ch-pkg_basics.en.html#s-sourcebuild" rel="section" title="7.14 How do I build binary packages from a source package?">
+<link href="ch-pkg_basics.en.html#s-creatingdebs" rel="section" title="7.15 How do I create Debian packages myself?">
+<link href="ch-pkgtools.en.html#s-pkgprogs" rel="section" title="8.1 What programs does Debian provide for managing its packages?">
+<link href="ch-pkgtools.en.html#s-updaterunning" rel="section" title="8.2 Debian claims to be able to update a running program; how is this accomplished?">
+<link href="ch-pkgtools.en.html#s-whatpackages" rel="section" title="8.3 How can I tell what packages are already installed on a Debian system?">
+<link href="ch-pkgtools.en.html#s-listfiles" rel="section" title="8.4 How to display the files of a package installed?">
+<link href="ch-pkgtools.en.html#s-filesearch" rel="section" title="8.5 How can I find out what package produced a particular file?">
+<link href="ch-pkgtools.en.html#s-datapackages" rel="section" title="8.6 Why doesn't get `foo-data' removed when I uninstall `foo'? How do I make sure old unused library-packages get purged?">
+<link href="ch-uptodate.en.html#s-howtocurrent" rel="section" title="9.1 How can I keep my Debian system current?">
+<link href="ch-uptodate.en.html#s-upgradesingle" rel="section" title="9.2 Must I go into single user mode in order to upgrade a package?">
+<link href="ch-uptodate.en.html#s-savedebs" rel="section" title="9.3 Do I have to keep all those .deb archive files on my disk?">
+<link href="ch-uptodate.en.html#s-keepingalog" rel="section" title="9.4 How can I keep a log of the packages I added to the system? I'd like to know when which package upgrades and removals have occured!">
+<link href="ch-uptodate.en.html#s-autoupdate" rel="section" title="9.5 Can I automatically update the system?">
+<link href="ch-uptodate.en.html#s-aptproxy" rel="section" title="9.6 I have several machines how can I download the updates only one time?">
+<link href="ch-kernel.en.html#s-non-debian-kernel" rel="section" title="10.1 Can I install and compile a kernel without some Debian-specific tweaking?">
+<link href="ch-kernel.en.html#s-customkernel" rel="section" title="10.2 What tools does Debian provide to build custom kernels?">
+<link href="ch-kernel.en.html#s-custombootdisk" rel="section" title="10.3 How can I make a custom boot floppy?">
+<link href="ch-kernel.en.html#s-modules" rel="section" title="10.4 What special provisions does Debian provide to deal with modules?">
+<link href="ch-kernel.en.html#s-removeoldkernel" rel="section" title="10.5 Can I safely de-install an old kernel package, and if so, how?">
+<link href="ch-customizing.en.html#s-papersize" rel="section" title="11.1 How can I ensure that all programs use the same paper size?">
+<link href="ch-customizing.en.html#s-hardwareaccess" rel="section" title="11.2 How can I provide access to hardware peripherals, without compromising security?">
+<link href="ch-customizing.en.html#s-consolefont" rel="section" title="11.3 How do I load a console font on startup the Debian way?">
+<link href="ch-customizing.en.html#s-appdefaults" rel="section" title="11.4 How can I configure an X11 program's application defaults?">
+<link href="ch-customizing.en.html#s-booting" rel="section" title="11.5 Every distribution seems to have a different boot-up method. Tell me about Debian's.">
+<link href="ch-customizing.en.html#s-custombootscripts" rel="section" title="11.6 It looks as if Debian does not use rc.local to customize the boot process; what facilities are provided?">
+<link href="ch-customizing.en.html#s-interconffiles" rel="section" title="11.7 How does the package management system deal with packages that contain configuration files for other packages?">
+<link href="ch-customizing.en.html#s-divert" rel="section" title="11.8 How do I override a file installed by a package, so that a different version can be used instead?">
+<link href="ch-customizing.en.html#s-localpackages" rel="section" title="11.9 How can I have my locally-built package included in the list of available packages that the package management system knows about?">
+<link href="ch-customizing.en.html#s-diverse" rel="section" title="11.10 Some users like mawk, others like gawk; some like vim, others like elvis; some like trn, others like tin; how does Debian support diversity?">
+<link href="ch-support.en.html#s-debiandocs" rel="section" title="12.1 What other documentation exists on and for a Debian system?">
+<link href="ch-support.en.html#s-onlineresources" rel="section" title="12.2 Are there any on-line resources for discussing Debian?">
+<link href="ch-support.en.html#s-searchtools" rel="section" title="12.3 Is there a quick way to search for information on Debian GNU/Linux?">
+<link href="ch-support.en.html#s-buglogs" rel="section" title="12.4 Are there logs of known bugs?">
+<link href="ch-support.en.html#s-bugreport" rel="section" title="12.5 How do I report a bug in Debian?">
+<link href="ch-contributing.en.html#s-contrib" rel="section" title="13.1 How can I become a Debian software developer?">
+<link href="ch-contributing.en.html#s-contribresources" rel="section" title="13.2 How can I contribute resources to the Debian project?">
+<link href="ch-contributing.en.html#s-supportingorganizations" rel="section" title="13.3 How can I contribute financially to the Debian project?">
+<link href="ch-redistrib.en.html#s-sellcds" rel="section" title="14.1 Can I make and sell Debian CDs?">
+<link href="ch-redistrib.en.html#s-packagednonfree" rel="section" title="14.2 Can Debian be packaged with non-free software?">
+<link href="ch-redistrib.en.html#s-childistro" rel="section" title="14.3 I am making a special Linux distribution for a &quot;vertical market&quot;. Can I use Debian GNU/Linux for the guts of a Linux system and add my own applications on top of it?">
+<link href="ch-redistrib.en.html#s-commercialdebs" rel="section" title="14.4 Can I put my commercial program in a Debian &quot;package&quot; so that it installs effortlessly on any Debian system?">
+<link href="ch-nexttime.en.html#s-i18n" rel="section" title="15.1 Extended support for non-English users">
+<link href="ch-nexttime.en.html#s-dependencybasedboot" rel="section" title="15.2 Faster booting: Dependency based boot sequence">
+<link href="ch-nexttime.en.html#s-di" rel="section" title="15.3 Improvements in the Debian Installer">
+<link href="ch-nexttime.en.html#s-morearches" rel="section" title="15.4 More architectures">
+<link href="ch-nexttime.en.html#s-morekernels" rel="section" title="15.5 More kernels">
+<link href="ch-faqinfo.en.html#s-authors" rel="section" title="16.1 Authors">
+<link href="ch-faqinfo.en.html#s-feedback" rel="section" title="16.2 Feedback">
+<link href="ch-faqinfo.en.html#s-latest" rel="section" title="16.3 Availability">
+<link href="ch-faqinfo.en.html#s-docformat" rel="section" title="16.4 Document format">
+<link href="ch-choosing.en.html#s3.1.1" rel="subsection" title="3.1.1 You asked me to install stable, but in stable so and so hardware is not detected/working. What should I do?">
+<link href="ch-choosing.en.html#s3.1.2" rel="subsection" title="3.1.2 Will there be different versions of packages in different distributions?">
+<link href="ch-choosing.en.html#s3.1.3" rel="subsection" title="3.1.3 The stable distributions really contains outdated packages. Just look at Kde, Gnome, Xorg or even the kernel. They are very old. Why is it so?">
+<link href="ch-choosing.en.html#s3.1.4" rel="subsection" title="3.1.4 If I were to decide to change to another distribution, Can I do that?">
+<link href="ch-choosing.en.html#s3.1.5" rel="subsection" title="3.1.5 Could you tell me whether to install testing or unstable?">
+<link href="ch-choosing.en.html#s3.1.6" rel="subsection" title="3.1.6 You are talking about testing being broken. What do you mean by that?">
+<link href="ch-choosing.en.html#s3.1.7" rel="subsection" title="3.1.7 Why is it that testing could be broken for months? Wont the fixes introduced in unstable flow directly down into testing?">
+<link href="ch-choosing.en.html#s3.1.8" rel="subsection" title="3.1.8 From an administrator's point of view, Which distribution requires more attention?">
+<link href="ch-choosing.en.html#s3.1.9" rel="subsection" title="3.1.9 What happens when a new release is made?">
+<link href="ch-choosing.en.html#s3.1.10" rel="subsection" title="3.1.10 I have a working Desktop/cluster with Debian installed. How do I know which distribution I am running?">
+<link href="ch-choosing.en.html#s3.1.11" rel="subsection" title="3.1.11 I am currently tracking stable. Can I change to testing or unstable? If so, How?">
+<link href="ch-choosing.en.html#s3.1.12" rel="subsection" title="3.1.12 I am currently tracking testing (jessie). What will happen when a release is made? Will I still be tracking testing or will my machine be running the new stable distribution?">
+<link href="ch-choosing.en.html#s3.1.13" rel="subsection" title="3.1.13 I am still confused. What did you say I should install?">
+<link href="ch-choosing.en.html#s3.2.1" rel="subsection" title="3.2.1 I know that Knoppix/Linex/Ubuntu/... is Debian-based. So after installing it on the hard disk, can I use 'apt' package tools on it?">
+<link href="ch-choosing.en.html#s3.2.2" rel="subsection" title="3.2.2 I installed Knoppix/Linex/Ubuntu/... on my hard disk. Now I have a problem. What should I do?">
+<link href="ch-choosing.en.html#s3.2.3" rel="subsection" title="3.2.3 I'm using Knoppix/Linex/Ubuntu/... and now I want to use Debian. How do I migrate?">
+<link href="ch-ftparchives.en.html#s-oldcodenames" rel="subsection" title="6.2.1 Which other codenames have been used in the past?">
+<link href="ch-ftparchives.en.html#s-sourceforcodenames" rel="subsection" title="6.2.2 Where do these codenames come from?">
+<link href="ch-ftparchives.en.html#s-frozen" rel="subsection" title="6.5.1 What about &quot;testing&quot;? How is it `frozen'?">
+<link href="ch-pkgtools.en.html#s-dpkg" rel="subsection" title="8.1.1 dpkg">
+<link href="ch-pkgtools.en.html#s-apt-get" rel="subsection" title="8.1.2 APT">
+<link href="ch-pkgtools.en.html#s-aptitude" rel="subsection" title="8.1.3 aptitude">
+<link href="ch-pkgtools.en.html#s-synaptic" rel="subsection" title="8.1.4 synaptic">
+<link href="ch-pkgtools.en.html#s-tasksel" rel="subsection" title="8.1.5 tasksel">
+<link href="ch-pkgtools.en.html#s-dpkg-extra" rel="subsection" title="8.1.6 Other package management tools">
+<link href="ch-pkgtools.en.html#s-dselect" rel="subsection" title="8.1.6.1 dselect">
+<link href="ch-pkgtools.en.html#s-dpkg-deb" rel="subsection" title="8.1.6.2 dpkg-deb">
+<link href="ch-pkgtools.en.html#s-dpkg-split" rel="subsection" title="8.1.6.3 dpkg-split">
+<link href="ch-uptodate.en.html#s-aptitude-upgrade" rel="subsection" title="9.1.1 aptitude">
+<link href="ch-uptodate.en.html#s-apt" rel="subsection" title="9.1.2 apt-get, dselect and apt-cdrom">
+<link href="ch-uptodate.en.html#s-update_aptitude" rel="subsection" title="9.1.3 aptitude">
+<link href="ch-uptodate.en.html#s-mirror" rel="subsection" title="9.1.4 mirror">
+<link href="ch-uptodate.en.html#s-dpkg-mountable" rel="subsection" title="9.1.5 dpkg-mountable">
+<link href="ch-support.en.html#s12.2.1" rel="subsection" title="12.2.1 Mailing lists">
+<link href="ch-support.en.html#s-mailinglistconduct" rel="subsection" title="12.2.1.1 What is the code of conduct for the mailing lists?">
+<link href="ch-support.en.html#s12.2.2" rel="subsection" title="12.2.2 Web forums">
+<link href="ch-support.en.html#s12.2.3" rel="subsection" title="12.2.3 Wiki">
+<link href="ch-support.en.html#s12.2.4" rel="subsection" title="12.2.4 Maintainers">
+<link href="ch-support.en.html#s12.2.5" rel="subsection" title="12.2.5 Usenet newsgroups">
+<link href="ch-contributing.en.html#s-SPI" rel="subsection" title="13.3.1 Software in the Public Interest">
+<link href="ch-contributing.en.html#s-FSF" rel="subsection" title="13.3.2 Free Software Foundation">
+
+</head>
+
+<body>
+
+<p><a name="ch-support"></a></p>
+<hr>
+
+<p>
+[ <a href="ch-customizing.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ 12 ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-contributing.en.html">next</a> ]
+</p>
+
+<hr>
+
+<h1>
+The Debian GNU/Linux FAQ
+<br>Chapter 12 - Getting support for Debian GNU/Linux
+</h1>
+
+<hr>
+
+<h2 id="s-debiandocs">12.1 What other documentation exists on and for a Debian system?</h2>
+<ul>
+<li>
+<p>
+Installation instructions for the current release: see <code><a
+href="http://www.debian.org/releases/stable/installmanual">http://www.debian.org/releases/stable/installmanual</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+The Debian GNU/Linux reference covers many aspects of system administration
+through shell-command examples.  Basic tutorials, tips, and other information
+are provided for many different topics ranging from system administration to
+programming.
+</p>
+
+<p>
+Get it from the <code>debian-reference</code> package, or at <code><a
+href="http://www.debian.org/doc/user-manuals#quick-reference">http://www.debian.org/doc/user-manuals#quick-reference</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+The Debian Policy manual documents the policy requirements for the
+distribution, i.e.  the structure and contents of the Debian archive, several
+design issues of the operating system etc.  It also includes the technical
+requirements that each package must satisfy to be included in the distribution,
+and documents the basic technical aspects of Debian binary and source packages.
+</p>
+
+<p>
+Get it from the <code>debian-policy</code> package, or at <code><a
+href="http://www.debian.org/doc/devel-manuals#policy">http://www.debian.org/doc/devel-manuals#policy</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Documentation developed by the Debian Documentation Project.  It is available
+at <code><a
+href="http://www.debian.org/doc/">http://www.debian.org/doc/</a></code> and
+includes user guides, administration guides and security guides for the Debian
+GNU/Linux operating system.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Documentation on installed Debian packages: Most packages have files that are
+unpacked into <samp>/usr/share/doc/PACKAGE</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Documentation on the Linux project: The Debian package <code>doc-linux</code>
+installs all of the most recent versions of the HOWTOs and mini-HOWTOs from the
+<code><a href="http://www.tldp.org/">Linux Documentation Project</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Unix-style `man' pages: Most commands have manual pages written in the style of
+the original Unix 'man' files.  For instance, to see the manual page for the
+command `ls', execute <samp>man ls</samp>.  Execute <samp>man man</samp> for
+more information on finding and viewing manual pages.
+</p>
+
+<p>
+New Debian users should note that the 'man' pages of many general system
+commands are not available until they install these packages:
+</p>
+<ul>
+<li>
+<p>
+<samp>man-db</samp>, which contains the <samp>man</samp> program itself, and
+other programs for manipulating the manual pages.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<samp>manpages</samp>, which contains the system manual pages.  (see <a
+href="ch-software.en.html#s-nonenglish">How does Debian support non-English
+languages?, Section 5.9</a>).
+</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+GNU-style `info' pages: User documentation for many commands, particularly GNU
+tools, is available not in `man' pages, but in `info' files which can be read
+by the GNU tool <samp>info</samp>, by running <samp>M-x info</samp> within GNU
+Emacs, or with some other Info page viewer.
+</p>
+
+<p>
+Its main advantage over the original `man' pages are that it is a hypertext
+system.  It does <em>not</em> require the WWW, however; <samp>info</samp> can
+be run from a plain text console.  It was designed by Richard Stallman and
+preceded the WWW.
+</p>
+</li>
+</ul>
+
+<p>
+Note that you may access a lot of documentation on your system by using a WWW
+browser, through `dwww', `dhelp' or `doccentral' commands, found in respective
+packages, or by using `yelp'.
+</p>
+
+<hr>
+
+<h2 id="s-onlineresources">12.2 Are there any on-line resources for discussing Debian?</h2>
+
+<p>
+Yes.  In fact, the main method of support Debian provides to our users is by
+the way of e-mail.  We'll give some details on that, and mention some other
+useful resources.  Even more resources are listed at the <code><a
+href="http://www.debian.org/support">Debian Support webpage</a></code>.
+</p>
+
+<hr>
+
+<h3 id="s12.2.1">12.2.1 Mailing lists</h3>
+
+<p>
+There are a lot of <code><a
+href="http://www.debian.org/MailingLists/">Debian-related mailing
+lists</a></code>.
+</p>
+
+<p>
+On a system with the <code>doc-debian</code> package installed there is a
+complete list of mailing lists in
+<code>/usr/share/doc/debian/mailing-lists.txt</code>.
+</p>
+
+<p>
+Debian mailing lists are named following the pattern
+debian-<var>list-subject</var>.  Examples are debian-announce, debian-user,
+debian-news.  To subscribe to any list debian-<var>list-subject</var>, send
+mail to debian-<var>list-subject</var>-request@lists.debian.org with the word
+&quot;subscribe&quot; in the Subject: header.  Be sure to remember to add
+<em>-request</em> to the e-mail address when using this method to subscribe or
+unsubscribe.  Otherwise your e-mail will go to the list itself, which could be
+embarrassing or annoying, depending on your point of view.
+</p>
+
+<p>
+You can subscribe to mailing lists using the <code><a
+href="http://www.debian.org/MailingLists/subscribe">WWW form</a></code>.  You
+can also un-subscribe using a <code><a
+href="http://www.debian.org/MailingLists/unsubscribe">WWW form</a></code>.
+</p>
+
+<p>
+The list manager's e-mail address is <code><a
+href="mailto:listmaster@lists.debian.org">mailto:listmaster@lists.debian.org</a></code>,
+in case you have any trouble.
+</p>
+
+<p>
+The mailing lists are public forums.  All e-mails sent to the lists are also
+copied to the public archive, for anybody (even non-subscribers) to browse or
+search.  Please make sure you never send any confidential or unlicensed
+material to the lists.  This includes things like e-mail addresses.  Of
+particular note is the fact that spammers have been known to abuse e-mail
+addresses posted to our mailing lists.  See the <code><a
+href="http://www.debian.org/MailingLists/#disclaimer">Mailing Lists Privacy
+policy</a></code> for more information.
+</p>
+
+<p>
+Archives of the Debian mailing lists are available via WWW at <code><a
+href="http://lists.debian.org/">http://lists.debian.org/</a></code>.
+</p>
+
+<hr>
+
+<h4 id="s-mailinglistconduct">12.2.1.1 What is the code of conduct for the mailing lists?</h4>
+
+<p>
+When using the Debian mailing lists, please follow these rules:
+</p>
+<ul>
+<li>
+<p>
+Do not send spam.  See the <code><a
+href="http://www.debian.org/MailingLists/#ads">Debian mailing list advertising
+policy</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Do not flame; it is not polite.  The people developing Debian are all
+volunteers, donating their time, energy and money in an attempt to bring the
+Debian project together.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Do not use foul language; besides, some people receive the lists via packet
+radio, where swearing is illegal.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Make sure that you are using the proper list.  <em>Never</em> post your
+(un)subscription requests to the mailing list itself[<a
+href="footnotes.en.html#f6" name="fr6">6</a>]
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+See section <a href="#s-bugreport">How do I report a bug in Debian?, Section
+12.5</a> for notes on reporting bugs.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h3 id="s12.2.2">12.2.2 Web forums</h3>
+
+<p>
+<code><a href="http://debianhelp.org/">debianHELP</a></code> and <code><a
+href="http://forums.debian.net/">Debian User Forums</a></code> are web forums
+on which you can submit questions about Debian and have them answered by other
+users.  (These are not officially part of the Debian project.)
+</p>
+
+<hr>
+
+<h3 id="s12.2.3">12.2.3 Wiki</h3>
+
+<p>
+Solutions to common problems, howto's, guides, tips and other documentation can
+be found at the constantly changing <code><a
+href="http://wiki.debian.org/">Debian Wiki</a></code>.
+</p>
+
+<hr>
+
+<h3 id="s12.2.4">12.2.4 Maintainers</h3>
+
+<p>
+Users can address questions to individual package maintainers using e-mail.  To
+reach a maintainer of a package called xyz, send e-mail to
+<em>xyz@packages.debian.org</em>.
+</p>
+
+<hr>
+
+<h3 id="s12.2.5">12.2.5 Usenet newsgroups</h3>
+
+<p>
+Users should post non-Debian-specific questions to one of the Linux USENET
+groups, which are named comp.os.linux.* or linux.*.  There are several lists of
+Linux Usenet newsgroups and other related resources on the WWW, e.g.  on the
+<code><a href="http://www.linux.org/docs/usenet.html">Linux Online</a></code>
+and <code><a
+href="http://www.linuxjournal.com/helpdesk.php">LinuxJournal</a></code> sites.
+</p>
+
+<hr>
+
+<h2 id="s-searchtools">12.3 Is there a quick way to search for information on Debian GNU/Linux?</h2>
+
+<p>
+There is a variety of search engines that serve documentation related to
+Debian:
+</p>
+<ul>
+<li>
+<p>
+<code><a href="http://search.debian.org/">Debian WWW search site</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<code><a href="http://groups.google.com/">Google Groups</a></code>: a search
+engine for newsgroups.
+</p>
+
+<p>
+For example, to find out what experiences people have had with finding drivers
+for Promise controllers under Debian, try searching on the phrase <samp>Promise
+Linux driver</samp>.  This will show you all the postings that contain these
+strings, i.e.  those where people discussed these topics.  If you add
+<samp>Debian</samp> to those search strings, you'll also get the postings
+specifically related to Debian.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Any of the common web spidering engines, such as <code><a
+href="http://www.altavista.com/">AltaVista</a></code> or <code><a
+href="http://www.google.com/">Google</a></code>, as long as you use the right
+search terms.
+</p>
+
+<p>
+For example, searching on the string &quot;cgi-perl&quot; gives a more detailed
+explanation of this package than the brief description field in its control
+file.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h2 id="s-buglogs">12.4 Are there logs of known bugs?</h2>
+
+<p>
+Reports on unsolved (and closed) issues are publicly available: Debian
+promissed to do so by stating &quot;We will not hide problems&quot; in the
+<code><a href="http://www.debian.org/social_contract">Debian Social
+Contract</a></code>.
+</p>
+
+<p>
+The Debian GNU/Linux distribution has a bug tracking system (BTS) which files
+details of bugs reported by users and developers.  Each bug is given a number,
+and is kept on file.  Once it has been dealt with, it is marked as such.
+</p>
+
+<p>
+Copies of this information are available at <code><a
+href="http://www.debian.org/Bugs/">http://www.debian.org/Bugs/</a></code>.
+</p>
+
+<p>
+A mail server provides access to the bug tracking system database via e-mail.
+In order to get the instructions, send an e-mail to request@bugs.debian.org
+with &quot;help&quot; in the body.
+</p>
+
+<hr>
+
+<h2 id="s-bugreport">12.5 How do I report a bug in Debian?</h2>
+
+<p>
+If you have found a bug in Debian, please read the instructions for reporting a
+bug in Debian.  These instructions can be obtained in one of several ways:
+</p>
+<ul>
+<li>
+<p>
+From the WWW.  A copy of the instructions is shown at <code><a
+href="http://www.debian.org/Bugs/Reporting">http://www.debian.org/Bugs/Reporting</a></code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+On any Debian system with the <code>doc-debian</code> package installed.  The
+instructions are in the file
+<code>/usr/share/doc/debian/bug-reporting.txt</code>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+By anonymous FTP.  Debian mirror sites contain the instructions in the file
+<samp>doc/bug-reporting.txt</samp>.
+</p>
+</li>
+</ul>
+
+<p>
+You can use the package <code>reportbug</code> that will guide you through the
+reporting process and mail the message to the proper address, with some extra
+details about your system added automatically.  It will also show you a list of
+bugs already reported to the package you are reporting against in case your bug
+has been reported previously, so that you can add additional information to the
+existing bug report.
+</p>
+
+<p>
+Expect to get an automatic acknowledgement of your bug report.  It will also be
+automatically given a bug tracking number, entered into the bug log and
+forwarded to the debian-bugs-dist mailing list.
+</p>
+
+<hr>
+
+<p>
+[ <a href="ch-customizing.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ <a href="ch-pkgtools.en.html">8</a> ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ 12 ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-contributing.en.html">next</a> ]
+</p>
+
+<hr>
+
+<p>
+The Debian GNU/Linux FAQ
+</p>
+
+<address>
+version 5.0.2, 2 June 2013<br>
+<br>
+Authors are listed at <a href="ch-faqinfo.en.html#s-authors">Debian FAQ Authors</a><br>
+<br>
+</address>
+<hr>
+
+</body>
+
+</html>
+

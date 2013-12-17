@@ -1,0 +1,95 @@
+Package: nvidia-support
+Priority: optional
+Section: contrib/misc
+Installed-Size: 84
+Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Architecture: i386
+Version: 20130816+1+bsos12
+Depends: debconf (>= 0.5) | debconf-2.0
+Filename: pool/contrib/n/nvidia-support/nvidia-support_20130816+1+bsos12_i386.deb
+Size: 19894
+MD5sum: b66d47ae768bc3dca69b29c6dd72f5c9
+SHA1: 4de842dbfd5ce3383c1c82ecc10458904cc76a71
+SHA256: 2bffc0f13193ab428415fbd299dfe1c00375b41167a144dd737e4e740692c75f
+SHA512: 1584220578fa880f975cb11e3656861a400d4d7a7e7b80d617af873807e1f4e274b3128988e44c4aab95fb96070f1d0d3dcf7005d3c0a4b06be9540d123d4fd8
+Description: NVIDIA binary graphics driver support files
+ This package contains support files needed for all current and legacy
+ versions of the non-free NVIDIA graphics drivers. These include scripts
+ used for warning about a mismatching version of the kernel module or for
+ creating a minimal xorg.conf to enable the NVIDIA driver.
+Multi-Arch: foreign
+
+Package: nvidia-kernel-common
+Priority: optional
+Section: contrib/kernel
+Installed-Size: 81
+Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Architecture: i386
+Source: nvidia-support
+Version: 20130816+1+bsos12
+Depends: kmod, glx-alternative-nvidia (>= 0.3)
+Pre-Depends: dpkg (>= 1.15.7.2)
+Filename: pool/contrib/n/nvidia-support/nvidia-kernel-common_20130816+1+bsos12_i386.deb
+Size: 11176
+MD5sum: 450c845357ee091d21dad6d0d5e44f5c
+SHA1: 6edab7bc8b69ae21ff15425760e201fb1680a59b
+SHA256: 4cecfa21280ff5a937d7fa608a86117bb41fbd4ebce79b6718f3938d3eb9e6bb
+SHA512: e68d6a0c61b3e918a73e4ea527127797c9b9442bb85823b5e1b66601d584d4bd2ffd380b1121e292d5c8db2efdebeb2b04d8014a3322d8e56a07f63a3ecd7780
+Description: NVIDIA binary kernel module support files
+ This package contains support files used for any version of the NVIDIA
+ kernel module. It sets up udev and ConsoleKit rules, ensures the NVIDIA
+ control device is created, associates the NVIDIA card with the correct
+ kernel module, and performs any other tasks required for the module to
+ work properly.
+
+Package: nvidia-installer-cleanup
+Priority: optional
+Section: contrib/misc
+Installed-Size: 72
+Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
+Architecture: i386
+Source: nvidia-support
+Version: 20130816+1+bsos12
+Depends: debconf (>= 0.5) | debconf-2.0
+Conflicts: cuda-repo-ubuntu1204, nvidia-current, nvidia-current-updates, nvidia-driver-binary
+Filename: pool/contrib/n/nvidia-support/nvidia-installer-cleanup_20130816+1+bsos12_i386.deb
+Size: 17782
+MD5sum: 47ef9d1701970029b9cce95cbd1bc62d
+SHA1: 3951825bcbeb6fdf2f257345a9f9b9f52fff426d
+SHA256: 04798ef57607319f1d07c76aa11510872086fa55ff1be9ab7b580b376a4e2421
+SHA512: 9bc8a6a4bdf8fbac3986e55516f71b2d6563a204ef7ec9e001ad1d8922e743931065584665456208dbb214c49b236573f6e173130b0ec97a3ee21f2d93f7bd9a
+Description: cleanup after driver installation with the nvidia-installer
+ This package ensures that no remnants of the non-free NVIDIA graphics
+ drivers that were installed with the nvidia-installer remain on the
+ system. Such an installation conflicts with the packaged drivers.
+ .
+ Furthermore using the nvidia-installer to install a new version of the
+ drivers is prevented as long as this package is installed.
+Multi-Arch: foreign
+
+Package: virtualbox-guest-dkms
+Priority: optional
+Section: contrib/kernel
+Installed-Size: 3255
+Maintainer: Debian Virtualbox Team <pkg-virtualbox-devel@lists.alioth.debian.org>
+Architecture: all
+Source: virtualbox
+Version: 4.2.16-dfsg-3~bpo70+1
+Depends: dkms (>= 2.1.0.0), virtualbox-guest-utils (>= 4.2.16-dfsg-3~bpo70+1)
+Pre-Depends: dpkg (>= 1.15.6~)
+Filename: pool/contrib/v/virtualbox/virtualbox-guest-dkms_4.2.16-dfsg-3~bpo70+1_all.deb
+Size: 451052
+MD5sum: 2726dfa864f02a8be3ea8ac4c2daa207
+SHA1: a71eef2c8b0eab822c8b11e6377b9e4b6ac2845c
+SHA256: b11765dff0701e0220e5c1780a468f3007b90795d3651493e07890bc2aab989a
+SHA512: 8e3b35b452972695a77bcf613c264263dd32b8c14b14cabea33d9446ea949929b773b427aa3157865981ed77b7ea0af2db2ee197573bd67906bb74d28edbbe2b
+Description: x86 virtualization solution - guest addition module source for dkms
+ VirtualBox is a free x86 virtualization solution allowing a wide range
+ of x86 operating systems such as Windows, DOS, BSD or Linux to run on a
+ Linux system.
+ .
+ This package provides the source code for the virtualbox guest addition kernel
+ modules to be build with dkms. Kernel sources or headers are required to
+ compile these modules.
+Homepage: http://www.virtualbox.org/
+

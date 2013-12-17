@@ -1,0 +1,294 @@
+/*
+
+Debian Installation Medium CSS
+Created by: Kalle Söderman
+
+*/
+
+
+
+
+html {
+    height:100%;
+    }
+body {
+    margin: 0px 10px 0 70px;
+    font: normal 16px sans-serif;
+    background-color: white;
+    background-image:url('../pics/gradient.png');
+    background-position: top left;
+    background-repeat: repeat-x;
+    color:black;
+}
+
+/* --------------- Main Divs --------------- */
+
+#header {
+    margin:0;
+    padding:0;
+}
+#upperheader {
+    margin:0;
+    padding:0;
+}
+#logo {
+    position:absolute;
+    top:0;
+    left:0;
+}
+#intro {
+    border-bottom:1px solid #c70036;
+}
+#mirrors #intro {
+    margin:0;
+    padding:0;
+}
+#intro #splash {
+    margin-top:70px;
+    margin-bottom: 0px;
+    text-align:center;
+}
+#debian-img {
+    margin-top:10px;
+    clear:both;
+    display:block;
+}
+
+#intro p,.intro {
+    margin-bottom: 0.75em;
+    padding:0;
+    line-height:1.2em;
+    text-align: left;
+    font-size:118%;
+}
+.alt {
+    float:right;
+}
+.toc {
+    font-size: 0.73em;
+    list-style:none;
+    margin: 0 0 1em 0;
+    line-height:1.5em;
+}
+#mirrors .toc {
+    border-top: 1px solid #d3d6df;
+}
+.toc li {
+    border-bottom: 1px solid #d3d6df;
+    padding:3px 3px 3px 3px;
+}
+#maincol {
+    clear:both;
+}
+.clr {
+    border-top:1px solid black;
+}
+#footer {
+    margin:0;
+
+    clear:both;
+}
+
+#maincol ul, #mailheader {
+    text-indent:0;
+    list-style-position:outside;
+    margin:0.5em 0 1em 0;
+    padding:0;
+}
+ul {
+    list-style-position:outside;
+    margin:0.5em 0 1em 0;
+
+    padding:0;
+}
+ul ul, ul ul ul, ul ul ul ul {
+    padding-left:1em;
+}
+
+#breadcrumbs {
+    font-size:0.68em;
+    margin:0 0 0 0;	
+    padding:0.25em;
+    background-color: #f2f3f7;
+    border-bottom: 1px solid #e2e3e7;
+    text-transform:lowercase;
+}
+.hidecss {
+    display:none;
+}
+#fineprint {
+    font-size:0.68em;
+    color: #333;
+    margin:2em 0 0 0;	
+    padding:0.25em;
+    background-color: #f2f3f7;
+    border-top: 1px solid #e2e3e7;
+    text-transform:lowercase;
+}
+#fineprint p {
+    margin:0;
+    line-height:1em;
+}
+.nonvisual {
+    display:none;
+}
+.clear {clear:both}
+#clear {
+    clear:both;
+}
+
+/* --------------- Images --------------- */
+
+img {border:0;}
+
+
+
+/* --------------- Typography --------------- */
+#intro h1 {
+    margin:0;
+    line-height:0.8em;
+}
+dd {
+    margin: 0 0 1em 1em;
+}
+.section {
+    font-family:monospace;
+    font-size: 0.9em;
+    position:absolute;
+    top: 0px;
+    left:70px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background-color: #c70036;
+    line-height: 20px;
+    color:white;
+    padding: 0 5px 0 5px;
+    margin:0;
+}
+.section em {
+    font-style:normal;
+    color:white;
+}
+strong {
+    font-weight:bold;
+}
+
+p {
+    margin: 0.1em 0 0.4em 0;	
+    line-height:1.5em;
+}
+em {
+    color: #666;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+h1 {
+    font-size: 218%; margin:0.5em 0 0.5em 0;
+}
+h2 {
+    font-size: 164%; margin: 1em 0 0.25em 0;
+}
+h3 {
+    font-size: 145%;
+}
+h4 {
+    font-size: 118%;
+}
+blockquote {
+    margin: 0;
+}
+hr {
+    background-color:#cdcdcd;
+    height:1px;
+    border:0;
+    display:none;
+}
+pre {
+    font-family: monospace;
+    font-size: 0.73em;
+    line-height:1.5em;
+}
+
+th {
+    text-align:left;
+}
+blockquote {
+    margin-left: 1em;
+    font-size:0.73em;
+}
+code {
+    background-color: #f2f3f7;
+    border: 1px solid #e2e3e7;
+    padding: 0 0.25em 0 0.25em;
+    text-decoration:none;
+}
+
+tt a {
+    background-color: #fffede;
+    border: 1px solid #eae9cb;
+    padding: 0 0.25em 0 0.25em;
+    text-decoration:none;
+}
+tt a:hover {
+    background-color:transparent;
+    border-color:transparent;
+}
+
+dt {
+    font-weight:bold;
+    margin:0;
+}
+dd {
+    margin-left:1em;
+}
+#mirrors h1 {
+    margin-top:70px;
+    padding: 0.25em 0 0 0;
+    border-top: 1px solid #c70036;
+}
+#mirrors pre {
+    font-size:0.75em;
+}
+#mirrors td, #mirrors th {
+    font-size:0.73em;
+    padding-right:1em;
+}
+#mirrors code {
+    background:transparent;
+    border:none;
+}
+/*--------------- Small Type Group -------------*/
+
+.small, #footer,#news, #security,.planet #sidebar, .planet .date, .wikitoc, .wiki #sidebar, .wiki #pageinfo.info, .wiki #spotlight {
+    font-size:0.73em;
+}
+
+
+
+/* --------------------- Links ---------------------- */
+
+a:link {
+    color: #0035c7;
+    text-decoration:none;
+}
+
+a:link:hover {
+    text-decoration: underline;
+    color: #2e00c7;
+}
+a:visited {
+    text-decoration:none;
+    color: #0035c7;
+}
+a:visited:hover {
+    text-decoration:underline;
+}
+a:link:active {
+    color: #c70036;
+    background-color:transparent;
+}
+
+
+

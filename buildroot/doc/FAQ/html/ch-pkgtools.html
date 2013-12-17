@@ -1,0 +1,1184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html>
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<title>The Debian GNU/Linux FAQ - The Debian package management tools</title>
+
+<link href="index.en.html" rel="start">
+<link href="ch-pkg_basics.en.html" rel="prev">
+<link href="ch-uptodate.en.html" rel="next">
+<link href="index.en.html#contents" rel="contents">
+<link href="index.en.html#copyright" rel="copyright">
+<link href="ch-basic_defs.en.html" rel="chapter" title="1 Definitions and overview">
+<link href="ch-getting.en.html" rel="chapter" title="2 Getting and installing Debian GNU/Linux">
+<link href="ch-choosing.en.html" rel="chapter" title="3 Choosing a Debian distribution">
+<link href="ch-compat.en.html" rel="chapter" title="4 Compatibility issues">
+<link href="ch-software.en.html" rel="chapter" title="5 Software available in the Debian system">
+<link href="ch-ftparchives.en.html" rel="chapter" title="6 The Debian FTP archives">
+<link href="ch-pkg_basics.en.html" rel="chapter" title="7 Basics of the Debian package management system">
+<link href="ch-pkgtools.en.html" rel="chapter" title="8 The Debian package management tools">
+<link href="ch-uptodate.en.html" rel="chapter" title="9 Keeping your Debian system up-to-date">
+<link href="ch-kernel.en.html" rel="chapter" title="10 Debian and the kernel">
+<link href="ch-customizing.en.html" rel="chapter" title="11 Customizing your installation of Debian GNU/Linux">
+<link href="ch-support.en.html" rel="chapter" title="12 Getting support for Debian GNU/Linux">
+<link href="ch-contributing.en.html" rel="chapter" title="13 Contributing to the Debian Project">
+<link href="ch-redistrib.en.html" rel="chapter" title="14 Redistributing Debian GNU/Linux in a commercial product">
+<link href="ch-nexttime.en.html" rel="chapter" title="15 Changes expected in the next major release of Debian">
+<link href="ch-faqinfo.en.html" rel="chapter" title="16 General information about the FAQ">
+<link href="ch-basic_defs.en.html#s-whatisfaq" rel="section" title="1.1 What is this FAQ?">
+<link href="ch-basic_defs.en.html#s-whatisdebian" rel="section" title="1.2 What is Debian GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-linux" rel="section" title="1.3 OK, now I know what Debian is... what is Linux?!">
+<link href="ch-basic_defs.en.html#s-non-linux" rel="section" title="1.4 Does Debian just do GNU/Linux?">
+<link href="ch-basic_defs.en.html#s-difference" rel="section" title="1.5 What is the difference between Debian GNU/Linux and other Linux distributions? Why should I choose Debian over some other distribution?">
+<link href="ch-basic_defs.en.html#s-gnu" rel="section" title="1.6 How does the Debian project fit in or compare with the Free Software Foundation's GNU project?">
+<link href="ch-basic_defs.en.html#s-pronunciation" rel="section" title="1.7 How does one pronounce Debian and what does this word mean?">
+<link href="ch-getting.en.html#s-version" rel="section" title="2.1 What is the latest version of Debian?">
+<link href="ch-getting.en.html#s-updatestable" rel="section" title="2.2 Are there package upgrades in `stable'?">
+<link href="ch-getting.en.html#s-boot-floppies" rel="section" title="2.3 Where/how can I get the Debian installation disks?">
+<link href="ch-getting.en.html#s-cdrom" rel="section" title="2.4 How do I install the Debian from CD-ROMs?">
+<link href="ch-getting.en.html#s-cdimage-symlinks" rel="section" title="2.5 Why does the official stable released CD-ROM contain symlinks for `frozen' and `unstable'? I thought this CD contains just `stable'!">
+<link href="ch-getting.en.html#s-remoteinstall" rel="section" title="2.6 Can I get and install Debian directly from a remote Internet site?">
+<link href="ch-getting.en.html#s-alternativebootinstaller" rel="section" title="2.7 Are there any alternative strategies for booting the system installer?">
+<link href="ch-choosing.en.html#s3.1" rel="section" title="3.1 Which Debian distribution (stable/testing/unstable) is better for me?">
+<link href="ch-choosing.en.html#s3.2" rel="section" title="3.2 But what about Knoppix, Linex, Ubuntu, and others?">
+<link href="ch-compat.en.html#s-arches" rel="section" title="4.1 On what hardware architectures/systems does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-kernels" rel="section" title="4.2 What kernels does Debian GNU/Linux run?">
+<link href="ch-compat.en.html#s-otherdistribs" rel="section" title="4.3 How compatible is Debian with other distributions of Linux?">
+<link href="ch-compat.en.html#s-otherunices" rel="section" title="4.4 How source code compatible is Debian with other Unix systems?">
+<link href="ch-compat.en.html#s-otherpackages" rel="section" title="4.5 Can I use Debian packages (&quot;.deb&quot; files) on my Red Hat/Slackware/... Linux system? Can I use Red Hat packages (&quot;.rpm&quot; files) on my Debian GNU/Linux system?">
+<link href="ch-compat.en.html#s-non-debian-programs" rel="section" title="4.6 How should I install a non-Debian program?">
+<link href="ch-compat.en.html#s-termcap" rel="section" title="4.7 Why can't I compile programs that require libtermcap?">
+<link href="ch-compat.en.html#s-accelx" rel="section" title="4.8 Why can't I install AccelX?">
+<link href="ch-software.en.html#s-apps" rel="section" title="5.1 What types of applications and development software are available for Debian GNU/Linux?">
+<link href="ch-software.en.html#s-softwareauthors" rel="section" title="5.2 Who wrote all that software?">
+<link href="ch-software.en.html#s-pkglist" rel="section" title="5.3 How can I get a current list of programs that have been packaged for Debian?">
+<link href="ch-software.en.html#s-buildenv" rel="section" title="5.4 How can I install a developer's environment to build packages?">
+<link href="ch-software.en.html#s-missing" rel="section" title="5.5 What is missing from Debian GNU/Linux?">
+<link href="ch-software.en.html#s-no-devs" rel="section" title="5.6 Why do I get &quot;ld: cannot find -lfoo&quot; messages when compiling programs? Why aren't there any libfoo.so files in Debian library packages?">
+<link href="ch-software.en.html#s-java" rel="section" title="5.7 (How) Does Debian support Java?">
+<link href="ch-software.en.html#s-isitdebian" rel="section" title="5.8 How can I check that I am using a Debian system, and what version is it?">
+<link href="ch-software.en.html#s-nonenglish" rel="section" title="5.9 How does Debian support non-English languages?">
+<link href="ch-software.en.html#s-pine" rel="section" title="5.10 Where is pine?">
+<link href="ch-software.en.html#s-qmail" rel="section" title="5.11 Where is qmail/ezmlm/djbdns?">
+<link href="ch-software.en.html#s-flash" rel="section" title="5.12 Where is a player for Flash (SWF)?">
+<link href="ch-software.en.html#s-googleearth" rel="section" title="5.13 Where is Google Earth?">
+<link href="ch-software.en.html#s-voip" rel="section" title="5.14 Where is VoIP software?">
+<link href="ch-software.en.html#s-nonfreewireless" rel="section" title="5.15 I have a wireless network card which doesn't work with Linux. What should I do?">
+<link href="ch-ftparchives.en.html#s-dists" rel="section" title="6.1 How many Debian distributions are there?">
+<link href="ch-ftparchives.en.html#s-codenames" rel="section" title="6.2 What are all those names like etch, lenny, etc.?">
+<link href="ch-ftparchives.en.html#s-sid" rel="section" title="6.3 What about &quot;sid&quot;?">
+<link href="ch-ftparchives.en.html#s-stable" rel="section" title="6.4 What does the stable directory contain?">
+<link href="ch-ftparchives.en.html#s-testing" rel="section" title="6.5 What does the testing distribution contain?">
+<link href="ch-ftparchives.en.html#s-unstable" rel="section" title="6.6 What does the unstable distribution contain?">
+<link href="ch-ftparchives.en.html#s-dirtree" rel="section" title="6.7 What are all those directories at the Debian FTP archives?">
+<link href="ch-ftparchives.en.html#s-archsections" rel="section" title="6.8 What are all those directories inside dists/stable/main?">
+<link href="ch-ftparchives.en.html#s-source" rel="section" title="6.9 Where is the source code?">
+<link href="ch-ftparchives.en.html#s-pools" rel="section" title="6.10 What's in the pool directory?">
+<link href="ch-ftparchives.en.html#s-incoming" rel="section" title="6.11 What is &quot;incoming&quot;?">
+<link href="ch-ftparchives.en.html#s-ownrepository" rel="section" title="6.12 How do I set up my own apt-able repository?">
+<link href="ch-pkg_basics.en.html#s-package" rel="section" title="7.1 What is a Debian package?">
+<link href="ch-pkg_basics.en.html#s-deb-format" rel="section" title="7.2 What is the format of a Debian binary package?">
+<link href="ch-pkg_basics.en.html#s-pkgname" rel="section" title="7.3 Why are Debian package file names so long?">
+<link href="ch-pkg_basics.en.html#s-controlfile" rel="section" title="7.4 What is a Debian control file?">
+<link href="ch-pkg_basics.en.html#s-conffile" rel="section" title="7.5 What is a Debian conffile?">
+<link href="ch-pkg_basics.en.html#s-maintscripts" rel="section" title="7.6 What is a Debian preinst, postinst, prerm, and postrm script?">
+<link href="ch-pkg_basics.en.html#s-priority" rel="section" title="7.7 What is an Essential, Required, Important, Standard, Optional, or Extra package?">
+<link href="ch-pkg_basics.en.html#s-virtual" rel="section" title="7.8 What is a Virtual Package?">
+<link href="ch-pkg_basics.en.html#s-depends" rel="section" title="7.9 What is meant by saying that a package Depends, Recommends, Suggests, Conflicts, Replaces, Breaks or Provides another package?">
+<link href="ch-pkg_basics.en.html#s-pre-depends" rel="section" title="7.10 What is meant by Pre-Depends?">
+<link href="ch-pkg_basics.en.html#s-pkgstatus" rel="section" title="7.11 What is meant by unknown, install, remove, purge and hold in the package status?">
+<link href="ch-pkg_basics.en.html#s-puttingonhold" rel="section" title="7.12 How do I put a package on hold?">
+<link href="ch-pkg_basics.en.html#s-sourcepkgs" rel="section" title="7.13 How do I install a source package?">
+<link href="ch-pkg_basics.en.html#s-sourcebuild" rel="section" title="7.14 How do I build binary packages from a source package?">
+<link href="ch-pkg_basics.en.html#s-creatingdebs" rel="section" title="7.15 How do I create Debian packages myself?">
+<link href="ch-pkgtools.en.html#s-pkgprogs" rel="section" title="8.1 What programs does Debian provide for managing its packages?">
+<link href="ch-pkgtools.en.html#s-updaterunning" rel="section" title="8.2 Debian claims to be able to update a running program; how is this accomplished?">
+<link href="ch-pkgtools.en.html#s-whatpackages" rel="section" title="8.3 How can I tell what packages are already installed on a Debian system?">
+<link href="ch-pkgtools.en.html#s-listfiles" rel="section" title="8.4 How to display the files of a package installed?">
+<link href="ch-pkgtools.en.html#s-filesearch" rel="section" title="8.5 How can I find out what package produced a particular file?">
+<link href="ch-pkgtools.en.html#s-datapackages" rel="section" title="8.6 Why doesn't get `foo-data' removed when I uninstall `foo'? How do I make sure old unused library-packages get purged?">
+<link href="ch-uptodate.en.html#s-howtocurrent" rel="section" title="9.1 How can I keep my Debian system current?">
+<link href="ch-uptodate.en.html#s-upgradesingle" rel="section" title="9.2 Must I go into single user mode in order to upgrade a package?">
+<link href="ch-uptodate.en.html#s-savedebs" rel="section" title="9.3 Do I have to keep all those .deb archive files on my disk?">
+<link href="ch-uptodate.en.html#s-keepingalog" rel="section" title="9.4 How can I keep a log of the packages I added to the system? I'd like to know when which package upgrades and removals have occured!">
+<link href="ch-uptodate.en.html#s-autoupdate" rel="section" title="9.5 Can I automatically update the system?">
+<link href="ch-uptodate.en.html#s-aptproxy" rel="section" title="9.6 I have several machines how can I download the updates only one time?">
+<link href="ch-kernel.en.html#s-non-debian-kernel" rel="section" title="10.1 Can I install and compile a kernel without some Debian-specific tweaking?">
+<link href="ch-kernel.en.html#s-customkernel" rel="section" title="10.2 What tools does Debian provide to build custom kernels?">
+<link href="ch-kernel.en.html#s-custombootdisk" rel="section" title="10.3 How can I make a custom boot floppy?">
+<link href="ch-kernel.en.html#s-modules" rel="section" title="10.4 What special provisions does Debian provide to deal with modules?">
+<link href="ch-kernel.en.html#s-removeoldkernel" rel="section" title="10.5 Can I safely de-install an old kernel package, and if so, how?">
+<link href="ch-customizing.en.html#s-papersize" rel="section" title="11.1 How can I ensure that all programs use the same paper size?">
+<link href="ch-customizing.en.html#s-hardwareaccess" rel="section" title="11.2 How can I provide access to hardware peripherals, without compromising security?">
+<link href="ch-customizing.en.html#s-consolefont" rel="section" title="11.3 How do I load a console font on startup the Debian way?">
+<link href="ch-customizing.en.html#s-appdefaults" rel="section" title="11.4 How can I configure an X11 program's application defaults?">
+<link href="ch-customizing.en.html#s-booting" rel="section" title="11.5 Every distribution seems to have a different boot-up method. Tell me about Debian's.">
+<link href="ch-customizing.en.html#s-custombootscripts" rel="section" title="11.6 It looks as if Debian does not use rc.local to customize the boot process; what facilities are provided?">
+<link href="ch-customizing.en.html#s-interconffiles" rel="section" title="11.7 How does the package management system deal with packages that contain configuration files for other packages?">
+<link href="ch-customizing.en.html#s-divert" rel="section" title="11.8 How do I override a file installed by a package, so that a different version can be used instead?">
+<link href="ch-customizing.en.html#s-localpackages" rel="section" title="11.9 How can I have my locally-built package included in the list of available packages that the package management system knows about?">
+<link href="ch-customizing.en.html#s-diverse" rel="section" title="11.10 Some users like mawk, others like gawk; some like vim, others like elvis; some like trn, others like tin; how does Debian support diversity?">
+<link href="ch-support.en.html#s-debiandocs" rel="section" title="12.1 What other documentation exists on and for a Debian system?">
+<link href="ch-support.en.html#s-onlineresources" rel="section" title="12.2 Are there any on-line resources for discussing Debian?">
+<link href="ch-support.en.html#s-searchtools" rel="section" title="12.3 Is there a quick way to search for information on Debian GNU/Linux?">
+<link href="ch-support.en.html#s-buglogs" rel="section" title="12.4 Are there logs of known bugs?">
+<link href="ch-support.en.html#s-bugreport" rel="section" title="12.5 How do I report a bug in Debian?">
+<link href="ch-contributing.en.html#s-contrib" rel="section" title="13.1 How can I become a Debian software developer?">
+<link href="ch-contributing.en.html#s-contribresources" rel="section" title="13.2 How can I contribute resources to the Debian project?">
+<link href="ch-contributing.en.html#s-supportingorganizations" rel="section" title="13.3 How can I contribute financially to the Debian project?">
+<link href="ch-redistrib.en.html#s-sellcds" rel="section" title="14.1 Can I make and sell Debian CDs?">
+<link href="ch-redistrib.en.html#s-packagednonfree" rel="section" title="14.2 Can Debian be packaged with non-free software?">
+<link href="ch-redistrib.en.html#s-childistro" rel="section" title="14.3 I am making a special Linux distribution for a &quot;vertical market&quot;. Can I use Debian GNU/Linux for the guts of a Linux system and add my own applications on top of it?">
+<link href="ch-redistrib.en.html#s-commercialdebs" rel="section" title="14.4 Can I put my commercial program in a Debian &quot;package&quot; so that it installs effortlessly on any Debian system?">
+<link href="ch-nexttime.en.html#s-i18n" rel="section" title="15.1 Extended support for non-English users">
+<link href="ch-nexttime.en.html#s-dependencybasedboot" rel="section" title="15.2 Faster booting: Dependency based boot sequence">
+<link href="ch-nexttime.en.html#s-di" rel="section" title="15.3 Improvements in the Debian Installer">
+<link href="ch-nexttime.en.html#s-morearches" rel="section" title="15.4 More architectures">
+<link href="ch-nexttime.en.html#s-morekernels" rel="section" title="15.5 More kernels">
+<link href="ch-faqinfo.en.html#s-authors" rel="section" title="16.1 Authors">
+<link href="ch-faqinfo.en.html#s-feedback" rel="section" title="16.2 Feedback">
+<link href="ch-faqinfo.en.html#s-latest" rel="section" title="16.3 Availability">
+<link href="ch-faqinfo.en.html#s-docformat" rel="section" title="16.4 Document format">
+<link href="ch-choosing.en.html#s3.1.1" rel="subsection" title="3.1.1 You asked me to install stable, but in stable so and so hardware is not detected/working. What should I do?">
+<link href="ch-choosing.en.html#s3.1.2" rel="subsection" title="3.1.2 Will there be different versions of packages in different distributions?">
+<link href="ch-choosing.en.html#s3.1.3" rel="subsection" title="3.1.3 The stable distributions really contains outdated packages. Just look at Kde, Gnome, Xorg or even the kernel. They are very old. Why is it so?">
+<link href="ch-choosing.en.html#s3.1.4" rel="subsection" title="3.1.4 If I were to decide to change to another distribution, Can I do that?">
+<link href="ch-choosing.en.html#s3.1.5" rel="subsection" title="3.1.5 Could you tell me whether to install testing or unstable?">
+<link href="ch-choosing.en.html#s3.1.6" rel="subsection" title="3.1.6 You are talking about testing being broken. What do you mean by that?">
+<link href="ch-choosing.en.html#s3.1.7" rel="subsection" title="3.1.7 Why is it that testing could be broken for months? Wont the fixes introduced in unstable flow directly down into testing?">
+<link href="ch-choosing.en.html#s3.1.8" rel="subsection" title="3.1.8 From an administrator's point of view, Which distribution requires more attention?">
+<link href="ch-choosing.en.html#s3.1.9" rel="subsection" title="3.1.9 What happens when a new release is made?">
+<link href="ch-choosing.en.html#s3.1.10" rel="subsection" title="3.1.10 I have a working Desktop/cluster with Debian installed. How do I know which distribution I am running?">
+<link href="ch-choosing.en.html#s3.1.11" rel="subsection" title="3.1.11 I am currently tracking stable. Can I change to testing or unstable? If so, How?">
+<link href="ch-choosing.en.html#s3.1.12" rel="subsection" title="3.1.12 I am currently tracking testing (jessie). What will happen when a release is made? Will I still be tracking testing or will my machine be running the new stable distribution?">
+<link href="ch-choosing.en.html#s3.1.13" rel="subsection" title="3.1.13 I am still confused. What did you say I should install?">
+<link href="ch-choosing.en.html#s3.2.1" rel="subsection" title="3.2.1 I know that Knoppix/Linex/Ubuntu/... is Debian-based. So after installing it on the hard disk, can I use 'apt' package tools on it?">
+<link href="ch-choosing.en.html#s3.2.2" rel="subsection" title="3.2.2 I installed Knoppix/Linex/Ubuntu/... on my hard disk. Now I have a problem. What should I do?">
+<link href="ch-choosing.en.html#s3.2.3" rel="subsection" title="3.2.3 I'm using Knoppix/Linex/Ubuntu/... and now I want to use Debian. How do I migrate?">
+<link href="ch-ftparchives.en.html#s-oldcodenames" rel="subsection" title="6.2.1 Which other codenames have been used in the past?">
+<link href="ch-ftparchives.en.html#s-sourceforcodenames" rel="subsection" title="6.2.2 Where do these codenames come from?">
+<link href="ch-ftparchives.en.html#s-frozen" rel="subsection" title="6.5.1 What about &quot;testing&quot;? How is it `frozen'?">
+<link href="ch-pkgtools.en.html#s-dpkg" rel="subsection" title="8.1.1 dpkg">
+<link href="ch-pkgtools.en.html#s-apt-get" rel="subsection" title="8.1.2 APT">
+<link href="ch-pkgtools.en.html#s-aptitude" rel="subsection" title="8.1.3 aptitude">
+<link href="ch-pkgtools.en.html#s-synaptic" rel="subsection" title="8.1.4 synaptic">
+<link href="ch-pkgtools.en.html#s-tasksel" rel="subsection" title="8.1.5 tasksel">
+<link href="ch-pkgtools.en.html#s-dpkg-extra" rel="subsection" title="8.1.6 Other package management tools">
+<link href="ch-pkgtools.en.html#s-dselect" rel="subsection" title="8.1.6.1 dselect">
+<link href="ch-pkgtools.en.html#s-dpkg-deb" rel="subsection" title="8.1.6.2 dpkg-deb">
+<link href="ch-pkgtools.en.html#s-dpkg-split" rel="subsection" title="8.1.6.3 dpkg-split">
+<link href="ch-uptodate.en.html#s-aptitude-upgrade" rel="subsection" title="9.1.1 aptitude">
+<link href="ch-uptodate.en.html#s-apt" rel="subsection" title="9.1.2 apt-get, dselect and apt-cdrom">
+<link href="ch-uptodate.en.html#s-update_aptitude" rel="subsection" title="9.1.3 aptitude">
+<link href="ch-uptodate.en.html#s-mirror" rel="subsection" title="9.1.4 mirror">
+<link href="ch-uptodate.en.html#s-dpkg-mountable" rel="subsection" title="9.1.5 dpkg-mountable">
+<link href="ch-support.en.html#s12.2.1" rel="subsection" title="12.2.1 Mailing lists">
+<link href="ch-support.en.html#s-mailinglistconduct" rel="subsection" title="12.2.1.1 What is the code of conduct for the mailing lists?">
+<link href="ch-support.en.html#s12.2.2" rel="subsection" title="12.2.2 Web forums">
+<link href="ch-support.en.html#s12.2.3" rel="subsection" title="12.2.3 Wiki">
+<link href="ch-support.en.html#s12.2.4" rel="subsection" title="12.2.4 Maintainers">
+<link href="ch-support.en.html#s12.2.5" rel="subsection" title="12.2.5 Usenet newsgroups">
+<link href="ch-contributing.en.html#s-SPI" rel="subsection" title="13.3.1 Software in the Public Interest">
+<link href="ch-contributing.en.html#s-FSF" rel="subsection" title="13.3.2 Free Software Foundation">
+
+</head>
+
+<body>
+
+<p><a name="ch-pkgtools"></a></p>
+<hr>
+
+<p>
+[ <a href="ch-pkg_basics.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ 8 ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-uptodate.en.html">next</a> ]
+</p>
+
+<hr>
+
+<h1>
+The Debian GNU/Linux FAQ
+<br>Chapter 8 - The Debian package management tools
+</h1>
+
+<hr>
+
+<h2 id="s-pkgprogs">8.1 What programs does Debian provide for managing its packages?</h2>
+
+<p>
+There are multiple tools that are used to manage Debian packages, from graphic
+or text-based interfaces to the low level tools used to install packages.  All
+the available tools rely on the lower level tools to properly work and are
+presented here in decreasing complexity level.
+</p>
+
+<p>
+It is important to understand that the higher level package management tools
+such as <code>aptitude</code> or <code>dselect</code> rely on <code>apt</code>
+which, itself, relies on <code>dpkg</code> to manage the packages in the
+system.
+</p>
+
+<p>
+See <code><a
+href="http://www.debian.org/doc/manuals/debian-reference/ch02.en.html">Chapter
+2.  Debian package management</a></code> of the <code><a
+href="http://www.debian.org/doc/manuals/debian-reference/">Debian
+reference</a></code> for more information about the Debian package management
+utilities.  This document is available in various languages and formats, see
+<code><a href="http://www.debian.org/doc/user-manuals#quick-reference">the
+Debian Reference entry on the DDP Users' Manuals overview</a></code>.
+</p>
+
+<hr>
+
+<h3 id="s-dpkg">8.1.1 dpkg</h3>
+
+<p>
+This is the main package management program.  <code>dpkg</code> can be invoked
+with many options.  Some common uses are:
+</p>
+<ul>
+<li>
+<p>
+Find out all the options: <samp>dpkg --help</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Print out the control file (and other information) for a specified package:
+<samp>dpkg --info foo_VVV-RRR.deb</samp>
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Install a package (including unpacking and configuring) onto the file system of
+the hard disk: <samp>dpkg --install foo_VVV-RRR.deb</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Unpack (but do not configure) a Debian archive into the file system of the hard
+disk: <samp>dpkg --unpack foo_VVV-RRR.deb</samp>.  Note that this operation
+does <em>not</em> necessarily leave the package in a usable state; some files
+may need further customization to run properly.  This command removes any
+already-installed version of the program and runs the preinst (see <a
+href="ch-pkg_basics.en.html#s-maintscripts">What is a Debian preinst, postinst,
+prerm, and postrm script?, Section 7.6</a>) script associated with the package.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Configure a package that already has been unpacked: <samp>dpkg --configure
+foo</samp>.  Among other things, this action runs the postinst (see <a
+href="ch-pkg_basics.en.html#s-maintscripts">What is a Debian preinst, postinst,
+prerm, and postrm script?, Section 7.6</a>) script associated with the package.
+It also updates the files listed in the <samp>conffiles</samp> for this
+package.  Notice that the 'configure' operation takes as its argument a package
+name (e.g., foo), <em>not</em> the name of a Debian archive file (e.g.,
+foo_VVV-RRR.deb).
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Extract a single file named &quot;blurf&quot; (or a group of files named
+&quot;blurf*&quot; from a Debian archive: <samp>dpkg --fsys-tarfile
+foo_VVV-RRR.deb | tar -xf - blurf*</samp>
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Remove a package (but not its configuration files): <samp>dpkg --remove
+foo</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Remove a package (including its configuration files): <samp>dpkg --purge
+foo</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+List the installation status of packages containing the string (or regular
+expression) &quot;foo*&quot;: <samp>dpkg --list 'foo*'</samp>.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h3 id="s-apt-get">8.1.2 APT</h3>
+
+<p>
+APT is the <em>Advanced Package Tool</em> and provides the <code>apt-get</code>
+program.  <code>apt-get</code> provides a simple way to retrieve and install
+packages from multiple sources using the command line.  Unlike
+<code>dpkg</code>, <code>apt-get</code> does not understand .deb files, it
+works with the packages proper name and can only install .deb archives from a
+source specified in <code>/etc/apt/sources.list</code>.  <code>apt-get</code>
+will call <code>dpkg</code> directly after downloading the .deb archives[<a
+href="footnotes.en.html#f5" name="fr5">5</a>] from the configured sources.
+</p>
+
+<p>
+Some common ways to use <code>apt-get</code> are:
+</p>
+<ul>
+<li>
+<p>
+To update the list of package known by your system, you can run:
+</p>
+
+<pre>
+     apt-get update
+</pre>
+
+<p>
+(you should execute this regularly to update your package lists)
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To upgrade all the packages on your system (without installing extra packages
+or removing packages), run:
+</p>
+
+<pre>
+     apt-get upgrade
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To install the <var>foo</var> package and all its dependencies, run:
+</p>
+
+<pre>
+     apt-get install foo
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To remove the foo package from your system, run:
+</p>
+
+<pre>
+     apt-get remove foo
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To remove the foo package and its configuration files from your system, run:
+</p>
+
+<pre>
+     apt-get --purge remove foo
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To upgrade all the packages on your system, and, if needed for a package
+upgrade, installing extra packages or removing packages, run:
+</p>
+
+<pre>
+     apt-get dist-upgrade
+</pre>
+
+<p>
+(The command <samp>upgrade</samp> keeps a package at its installed obsolete
+version if upgrading would need an extra package to be installed, for a new
+dependency to be satisfied.  The <samp>dist-upgrade</samp> command is less
+conservative.)
+</p>
+</li>
+</ul>
+
+<p>
+Note that you must be logged in as root to perform any commands that modify the
+system packages.
+</p>
+
+<p>
+Note that <code>apt-get</code> now installs recommended packages as default and
+is the preferred program for package management from console to perform system
+installation and major system upgrades for its robustness.
+</p>
+
+<p>
+The apt tool suite also includes the <code>apt-cache</code> tool to query the
+package lists.  You can use it to find packages providing specific
+functionality through simple text or regular expression queries and through
+queries of dependencies in the package management system.  Some common ways to
+use <code>apt-cache</code> are:
+</p>
+<ul>
+<li>
+<p>
+To find packages whose description contain <var>word</var>:
+</p>
+
+<pre>
+     apt-cache search <var>word</var>
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To print the detailed information of a package:
+</p>
+
+<pre>
+     apt-cache show <var>package</var>
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To print the packages a given package depends on:
+</p>
+
+<pre>
+     apt-cache depends <var>package</var>
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+To print detailed information of the versions available for a package and the
+packages that reverse-depends on it:
+</p>
+
+<pre>
+     apt-cache showpkg <var>package</var>
+</pre>
+</li>
+</ul>
+
+<p>
+For more information, install the <code>apt</code> package and read
+<code>apt-get(8)</code>, <code>sources.list(5)</code> and install the
+<code>apt-doc</code> package and read
+<code>/usr/share/doc/apt-doc/guide.html/index.html</code>.
+</p>
+
+<hr>
+
+<h3 id="s-aptitude">8.1.3 aptitude</h3>
+
+<p>
+<code>aptitude</code> is a package manager for Debian GNU/Linux systems that
+provides a frontend to the apt package management infrastructure.
+<code>aptitude</code> is a text-based interface using the curses library, it
+can be used to perform management tasks in a fast and easy way.
+</p>
+
+<p>
+<code>aptitude</code> provides the functionality of <code>dselect</code> and
+<code>apt-get</code>, as well as many additional features not found in either
+program:
+</p>
+<ul>
+<li>
+<p>
+<code>aptitude</code> offers easy access to all versions of a package.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<code>aptitude</code> makes it easy to keep track of obsolete software by
+listing it under &quot;Obsolete and Locally Created Packages&quot;.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<code>aptitude</code> includes a fairly powerful system for searching
+particular packages and limiting the package display.  Users familiar with
+<code>mutt</code> will pick up quickly, as <code>mutt</code> was the
+inspiration for the expression syntax.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<code>aptitude</code> can be used to install the predefined tasks available.
+For more information see <a href="#s-tasksel">tasksel, Section 8.1.5</a>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<code>aptitude</code> in full screen mode has <code>su</code> functionality
+embedded and can be run by a normal user.  It will call <code>su</code> (and
+ask for the root password, if any) when you really need administrative
+privileges
+</p>
+</li>
+</ul>
+
+<p>
+You can use <code>aptitude</code> through a visual interface (simply run
+<samp>aptitude</samp>) or directly from the command line.  The command line
+syntax used is very similar to the one used in <code>apt-get</code>.  For
+example, to install the <var>foo</var> package, you can run <samp>aptitude
+install <var>foo</var></samp>.
+</p>
+
+<p>
+Note that <code>aptitude</code> is the preferred program for daily package
+management from console.
+</p>
+
+<p>
+For more informations, read the manual page <code>aptitude(8)</code> and
+install the <code>aptitude-doc</code> package.
+</p>
+
+<hr>
+
+<h3 id="s-synaptic">8.1.4 synaptic</h3>
+
+<p>
+<code>synaptic</code> is a graphical package manager.  It enables you to
+install, upgrade and remove software packages in a user friendly way.  Next to
+all features offered by aptitude, it also has a feature for editing the list of
+used repositories, and supports browsing all available documentation related to
+a package.  See the <code><a href="http://www.nongnu.org/synaptic/">Synaptic
+Website</a></code> for more information.
+</p>
+
+<hr>
+
+<h3 id="s-tasksel">8.1.5 tasksel</h3>
+
+<p>
+When you want to perform a specific task it might be difficult to find the
+appropiate suite of packages that fill your need.  The Debian developers have
+defined <samp>tasks</samp>, a task is a collection of several individual Debian
+packages all related to a specific activity.  Tasks can be installed through
+the <code>tasksel</code> program or through <code>aptitude</code>.
+</p>
+
+<p>
+The Debian installer will typically install automaticaly the task associated
+with a standard system and a desktop environment.  The specific desktop
+environment installed will depend on the CD/DVD media used, most commonly it
+will be the GNOME desktop (<samp>gnome-desktop</samp> task).  Also, depending
+on your selections throughout the installation process, tasks might be
+automatically installed in your system.  For example, if you selected a
+language, the task associated with it will be installed automatically too and
+if you are running in a laptop system the installer recognises the
+<samp>laptop</samp> task will be installed too.
+</p>
+
+<hr>
+
+<h3 id="s-dpkg-extra">8.1.6 Other package management tools</h3>
+
+<hr>
+
+<h4 id="s-dselect">8.1.6.1 dselect</h4>
+
+<p>
+This program is a menu-driven interface to the Debian package management
+system.  For woody and earlier releases, this was the main package management
+interface for for first-time installations, but currently users are encouraged
+to use <code>aptitude</code> instead.  Some users might feel more comfortable
+using <code>aptitude</code> and it is also recommended over
+<code>dselect</code> for large-scale upgrades.  For more information on
+<code>aptitude</code> please see <a href="#s-aptitude">aptitude, Section
+8.1.3</a>.
+</p>
+
+<p>
+<code>dselect</code> can:
+</p>
+<ul>
+<li>
+<p>
+guide the user as he/she chooses among packages to install or remove, ensuring
+that no packages are installed that conflict with one another, and that all
+packages required to make each package work properly are installed;
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+warn the user about inconsistencies or incompatibilities in their selections;
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+determine the order in which the packages must be installed;
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+automatically perform the installation or removal; and
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+guide the user through whatever configuration process are required for each
+package.
+</p>
+</li>
+</ul>
+
+<p>
+<code>dselect</code> begins by presenting the user with a menu of 7 items, each
+of which is a specific action.  The user can select one of the actions by using
+the arrow keys to move the highlighter bar, then pressing the
+<em>&lt;enter&gt;</em> key to select the highlighted action.
+</p>
+
+<p>
+What the user sees next depends on the action he selected.  If he selects any
+option but <samp>Access</samp> or <samp>Select</samp>, then
+<code>dselect</code> will simply proceed to execute the specified action: e.g.,
+if the user selected the action <samp>Remove</samp>, then dselect would proceed
+to remove all of the files selected for removal when the user last chose the
+<samp>Select</samp> action.
+</p>
+
+<p>
+Both the <samp>Access</samp> menu item and the <samp>Select</samp> menu item
+lead to additional menus.  In both cases, the menus are presented as split
+screens; the top screen gives a scrollable list of choices, while the bottom
+screen gives a brief explanation (&quot;info&quot;) for each choice.
+</p>
+
+<p>
+Extensive on-line help is available, use the '?'  key to get to a help screen
+at any time.
+</p>
+
+<p>
+The order in which the actions are presented in the first <code>dselect</code>
+menu represents the order in which a user would normally choose
+<code>dselect</code> to install packages.  However, a user can pick any of the
+main menu choices as often as needed (including not at all, depending on what
+one wants to do).
+</p>
+<ul>
+<li>
+<p>
+Begin by choosing an <strong>Access Method</strong>.  This is the method by
+which the user plans on accessing Debian packages; e.g., some users have Debian
+packages available on CD-ROM, while others plan to fetch them using anonymous
+FTP.  The selected &quot;Access Method&quot; is stored after
+<code>dselect</code> exits, so if it does not change, then this option need not
+be invoked again.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Then <strong>Update</strong> the list of available packages.  To do this,
+<code>dselect</code> reads the file &quot;Packages.gz&quot; which should be
+included in the top level of the directory where the Debian packages to be
+installed are stored.  (But if it is not there, <code>dselect</code> will offer
+to make it for you.)
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<strong>Select</strong> specific packages for installation on his system.
+After choosing this menu item, the user is first presented with a full screen
+of help (unless the `--expert' command line option was used).  Once the user
+exits the Help screen, he sees the split-screen menu for choosing packages to
+install (or remove).
+</p>
+
+<p>
+The top part of the screen is a relatively narrow window into the list of
+Debian's 37400 packages; the bottom part of the screen contains description of
+the package or group of packages which are highlighted above.
+</p>
+
+<p>
+One can specify which packages should be operated on by highlighting a package
+name or the label for a group of packages.  After that, you can select
+packages:
+</p>
+<dl>
+<dt>to be installed:</dt>
+<dd>
+<p>
+This is accomplished by pressing the `+' key.
+</p>
+</dd>
+</dl>
+<dl>
+<dt>to be deleted:</dt>
+<dd>
+<p>
+Packages can be deleted two ways:
+</p>
+<ul>
+<li>
+<p>
+removed: this removes most of the files associated with the package, but
+preserves the files listed as configuration files (see <a
+href="ch-pkg_basics.en.html#s-conffile">What is a Debian conffile?, Section
+7.5</a>) and package configuration information.  This is done by pressing the
+`-' key.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+purged: this removes <em>every</em> file that is part of the package.  This is
+done by pressing the `_' key.
+</p>
+</li>
+</ul>
+
+<p>
+Note that it's not possible to remove &quot;All Packages&quot;.  If you try
+that, your system will instead be reduced to the initial installed base
+packages.
+</p>
+</dd>
+</dl>
+<dl>
+<dt>to be put &quot;on hold&quot;</dt>
+<dd>
+<p>
+This is done by pressing `=', and it effectively tells <code>dselect</code> not
+to upgrade a package even if the version currently installed on your system is
+not as recent as the version that is available in the Debian repository you are
+using (this was specified when you set the <strong>Access Method</strong>, and
+acquired when you used <strong>Update</strong>).
+</p>
+
+<p>
+Just like you can put a package on hold, you can reverse such setting by
+pressing `:'.  That tells <code>dselect</code> that the package(s) may be
+upgraded if a newer version is available.  This is the default setting.
+</p>
+</dd>
+</dl>
+
+<p>
+You can select a different order in which the packages are presented, by using
+the `o' key to cycle between various options for sorting the packages.  The
+default order is to present packages by Priority; within each priority,
+packages are presented in order of the directory (a.k.a.  section) of the
+archive in which they are stored.  Given this sort order, some packages in
+section A (say) may be presented first, followed by some packages in section B,
+followed by more packages (of lower priority) in section A.
+</p>
+
+<p>
+You can also expand meanings of the labels at the top of the screen, by using
+the `v' (verbose) key.  This action pushes much of the text that formerly fit
+onto the display off to the right.  To see it, press the right arrow; to scroll
+back to the left, press the left arrow.
+</p>
+
+<p>
+If you select a package for installation or removal, e.g.,
+<code>foo.deb</code>, and that package depends on (or recommends) another
+package, e.g., <code>blurf.deb</code>, then <code>dselect</code> will place the
+you in a sub-screen of the main selection screen.  There you can choose among
+the related packages, accepting the suggested actions (to install or not), or
+rejecting them.  To do the latter, press Shift-D; to return to the former,
+press Shift-U.  In any case, you can save your selections and return to the
+main selection screen by pressing Shift-Q.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Users returning to the main menu can then select the &quot;Install&quot; menu
+item to unpack and configure the selected packages.  Alternatively, users
+wishing to remove files can choose the &quot;Remove&quot; menu item.  At any
+point, users can choose &quot;Quit&quot; to exit dselect; users' selections are
+preserved by <code>dselect</code>.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h4 id="s-dpkg-deb">8.1.6.2 dpkg-deb</h4>
+
+<p>
+This program manipulates Debian archive(<samp>.deb</samp>) files.  Some common
+uses are:
+</p>
+<ul>
+<li>
+<p>
+Find out all the options: <samp>dpkg-deb --help</samp>.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Determine what files are contained in a Debian archive file: <samp>dpkg-deb
+--contents foo_VVV-RRR.deb</samp>)
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Extract the files contained in a named Debian archive into a user specified
+directory: <samp>dpkg-deb --extract foo_VVV-RRR.deb tmp</samp> extracts each of
+the files in <samp>foo_VVV-RRR.deb</samp> into the directory <samp>tmp/</samp>.
+This is convenient for examining the contents of a package in a localized
+directory, without installing the package into the root file system.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Extract the control information files from a package: <samp>dpkg-deb --control
+foo_VVV-RRR.deb tmp</samp>.
+</p>
+</li>
+</ul>
+
+<p>
+Note that any packages that were merely unpacked using <samp>dpkg-deb
+--extract</samp> will be incorrectly installed, you should use <samp>dpkg
+--install</samp> instead.
+</p>
+
+<p>
+More information is given in the manual page <code>dpkg-deb(1)</code>.
+</p>
+
+<hr>
+
+<h4 id="s-dpkg-split">8.1.6.3 dpkg-split</h4>
+
+<p>
+This program splits large package into smaller files (e.g., for writing onto a
+set of floppy disks), and can also be used to merge a set of split files back
+into a single file.  It can only be used on a Debian system (i.e.  a system
+containing the <code>dpkg</code> package), since it calls the program
+<samp>dpkg-deb</samp> to parse the debian package file into its component
+records.
+</p>
+
+<p>
+For example, to split a big .deb file into N parts,
+</p>
+<ul>
+<li>
+<p>
+Execute the command <samp>dpkg-split --split foo.deb</samp>.  This will produce
+N files each of approximately 460 KBytes long in the current directory.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Copy those N files to floppy disks.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Copy the contents of the floppy disks onto the hard disk of your choice on the
+other machine.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+Join those part-files together using <samp>dpkg-split --join
+&quot;foo*&quot;</samp>.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h2 id="s-updaterunning">8.2 Debian claims to be able to update a running program; how is this accomplished?</h2>
+
+<p>
+The kernel (file system) in Debian GNU/Linux systems supports replacing files
+even while they're being used.
+</p>
+
+<p>
+We also provide a program called <code>start-stop-daemon</code> which is used
+to start daemons at boot time or to stop daemons when the runlevel is changed
+(e.g., from multi-user to single-user or to halt).  The same program is used by
+installation scripts when a new package containing a daemon is installed, to
+stop running daemons, and restart them as necessary.
+</p>
+
+<hr>
+
+<h2 id="s-whatpackages">8.3 How can I tell what packages are already installed on a Debian system?</h2>
+
+<p>
+To learn the status of all the packages installed on a Debian system, execute
+the command
+</p>
+
+<pre>
+     dpkg --list
+</pre>
+
+<p>
+This prints out a one-line summary for each package, giving a 2-letter status
+symbol (explained in the header), the package name, the version which is
+<em>installed</em>, and a brief description.
+</p>
+
+<p>
+To learn the status of packages whose names match the string any pattern
+beginning with &quot;foo&quot; by executing the command:
+</p>
+
+<pre>
+     dpkg --list 'foo*'
+</pre>
+
+<p>
+To get a more verbose report for a particular package, execute the command:
+</p>
+
+<pre>
+     dpkg --status packagename
+</pre>
+
+<hr>
+
+<h2 id="s-listfiles">8.4 How to display the files of a package installed?</h2>
+
+<p>
+To list all the files provided by the installed package <samp>foo</samp>
+execute the command
+</p>
+
+<pre>
+     dpkg --listfiles foo
+</pre>
+
+<p>
+Note that the files created by the installation scripts aren't displayed.
+</p>
+
+<hr>
+
+<h2 id="s-filesearch">8.5 How can I find out what package produced a particular file?</h2>
+
+<p>
+To identify the package that produced the file named <samp>foo</samp> execute
+either:
+</p>
+<ul>
+<li>
+<p>
+<samp>dpkg --search filename</samp>
+</p>
+
+<p>
+This searches for <samp>filename</samp> in installed packages.  (This is
+(currently) equivalent to searching all of the files having the file extension
+of <samp>.list</samp> in the directory <samp>/var/lib/dpkg/info/</samp>, and
+adjusting the output to print the names of all the packages containing it, and
+diversions.)
+</p>
+
+<p>
+A faster alternative to this is the <code>dlocate</code> tool.
+</p>
+
+<pre>
+     dlocate -S  filename
+</pre>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<samp>zgrep foo Contents-ARCH.gz</samp>
+</p>
+
+<p>
+This searches for files which contain the substring <samp>foo</samp> in their
+full path names.  The files <samp>Contents-ARCH.gz</samp> (where ARCH
+represents the wanted architecture) reside in the major package directories
+(main, non-free, contrib) at a Debian FTP site (i.e.  under
+<samp>/debian/dists/wheezy</samp>).  A <samp>Contents</samp> file refers only
+to the packages in the subdirectory tree where it resides.  Therefore, a user
+might have to search more than one <samp>Contents</samp> files to find the
+package containing the file <samp>foo</samp>.
+</p>
+
+<p>
+This method has the advantage over <samp>dpkg --search</samp> in that it will
+find files in packages that are not currently installed on your system.
+</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>
+<samp>apt-file search <var>foo</var></samp>
+</p>
+
+<p>
+If you install the <code>apt-file</code>, similar to the above, it searches
+files which contain the substring or regular expression <samp>foo</samp> in
+their full path names.  The advantage over the sample above is that there is no
+need to retrieve the <samp>Contents-ARCH.gz</samp> files as it will do this
+automatically for all the sources defined in <code>/etc/apt/sources.list</code>
+when you run (as root) <samp>apt-file update</samp>.
+</p>
+</li>
+</ul>
+
+<hr>
+
+<h2 id="s-datapackages">8.6 Why doesn't get `foo-data' removed when I uninstall `foo'? How do I make sure old unused library-packages get purged?</h2>
+
+<p>
+Some packages are split in program (`foo') and data (`foo-data') (or in `foo'
+and `foo-doc').  This is true for many games, multimedia applications and
+dictionaries in Debian and has been introduced since some users might want to
+access the raw data without installing the program or because the program can
+be run without the data itself, making it optional.
+</p>
+
+<p>
+Similar situations occur when dealing with libraries: generally these get
+installed since packages containing applications depend on them.  When the
+application-package is purged, the library-package might stay on the system.
+Or: when the application-package no longer depends upon e.g.  libdb4.2, but
+upon libdb4.3, the libdb4.2 package might stay when the application-package is
+upgraded.
+</p>
+
+<p>
+In these cases, `foo-data' doesn't depend on `foo', so when you remove the
+`foo' package it will not get automatically removed by most package management
+tools.  The same holds true for the library packages.  This is necessary to
+avoid circular dependencies.  If you use <code>aptitude</code> (see <a
+href="#s-aptitude">aptitude, Section 8.1.3</a>) as your package management tool
+it will, however, track automatically installed packages and remove them when
+no packages remain that need them in your system.
+</p>
+
+<hr>
+
+<p>
+[ <a href="ch-pkg_basics.en.html">previous</a> ]
+[ <a href="index.en.html#contents">Contents</a> ]
+[ <a href="ch-basic_defs.en.html">1</a> ]
+[ <a href="ch-getting.en.html">2</a> ]
+[ <a href="ch-choosing.en.html">3</a> ]
+[ <a href="ch-compat.en.html">4</a> ]
+[ <a href="ch-software.en.html">5</a> ]
+[ <a href="ch-ftparchives.en.html">6</a> ]
+[ <a href="ch-pkg_basics.en.html">7</a> ]
+[ 8 ]
+[ <a href="ch-uptodate.en.html">9</a> ]
+[ <a href="ch-kernel.en.html">10</a> ]
+[ <a href="ch-customizing.en.html">11</a> ]
+[ <a href="ch-support.en.html">12</a> ]
+[ <a href="ch-contributing.en.html">13</a> ]
+[ <a href="ch-redistrib.en.html">14</a> ]
+[ <a href="ch-nexttime.en.html">15</a> ]
+[ <a href="ch-faqinfo.en.html">16</a> ]
+[ <a href="ch-uptodate.en.html">next</a> ]
+</p>
+
+<hr>
+
+<p>
+The Debian GNU/Linux FAQ
+</p>
+
+<address>
+version 5.0.2, 2 June 2013<br>
+<br>
+Authors are listed at <a href="ch-faqinfo.en.html#s-authors">Debian FAQ Authors</a><br>
+<br>
+</address>
+<hr>
+
+</body>
+
+</html>
+

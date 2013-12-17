@@ -1,0 +1,228 @@
+   Skip Quicknav
+     * About Debian
+     * Getting Debian
+     * Support
+     * Developers' Corner
+
+   Debian bug tracking system / Debian BTS - request server
+
+Introduction to the bug system request server
+
+   There is a mailserver which can send the bug reports and indices as
+   plain text on request.
+
+   To use it you send a mail message to request@bugs.debian.org. The
+   Subject of the message is ignored, except for generating the Subject of
+   the reply.
+
+   The body you send should be a series of commands, one per line. You'll
+   receive a reply which looks like a transcript of your message being
+   interpreted, with a response to each command. No notifications are sent
+   to anyone for the commands listed here and the mail isn't logged
+   anywhere publicly available.
+
+   Any text on a line starting with a hash sign # is ignored; the server
+   will stop processing when it finds a line with a control terminator (
+   quit, thank you, or two hyphens are common examples). It will also stop
+   if it encounters too many unrecognised or badly-formatted commands. If
+   no commands are successfully handled it will send the help text for the
+   server.
+
+Commands available
+
+   send bugnumber
+   send-detail bugnumber
+          Requests the transcript for the bug report in question.
+          send-detail sends all of the "boring" messages in the transcript
+          as well, such as the various auto-acks.
+
+   index [full]
+   index-summary by-package
+   index-summary by-number
+          Request the full index (with full details, and including done
+          and forwarded reports), or the summary sorted by package or by
+          number, respectively.
+
+   index-maint
+          Requests the index page giving the list of maintainers with bugs
+          (open and recently-closed) in the tracking system.
+
+   index maint maintainer
+          Requests the index pages of bugs in the system for the
+          maintainer maintainer. The search term is an exact match. The
+          bug index will be sent in a separate message.
+
+   index-packages
+          Requests the index page giving the list of packages with bugs
+          (open and recently-closed) in the tracking system.
+
+   index packages package
+          Requests the index pages of bugs in the system for the package
+          package. The search term is an exact match. The bug index will
+          be sent in a separate message.
+
+   send-unmatched [this|0]
+   send-unmatched last|-1
+   send-unmatched old|-2
+          Requests logs of messages not matched to a particular bug
+          report, for this week, last week and the week before. (Each week
+          ends on a Wednesday.)
+
+   getinfo filename
+          Request a file containing information about package(s) and or
+          maintainer(s) - the files available are:
+
+        maintainers
+                The unified list of packages' maintainers, as used by the
+                tracking system. This is derived from information in the
+                Packages files, override files and pseudo-packages files.
+
+        override.distribution
+        override.distribution.non-free
+        override.distribution.contrib
+        override.experimental
+                Information about the priorities and sections of packages
+                and overriding values for the maintainers. This
+                information is used by the process which generates the
+                Packages files in the FTP archive. Information is
+                available for each of the main distribution trees
+                available, by their codewords.
+
+        pseudo-packages.description
+        pseudo-packages.maintainers
+                List of descriptions and maintainers respectively for
+                pseudo-packages.
+
+   refcard
+          Requests that the mailservers' reference card be sent in plain
+          ASCII.
+
+   user address
+          Sets address to be the "user" of all usertag commands that
+          follow.
+
+   usertag bugnumber [ + | - | = ] tag [ tag ... ]
+          Allows to define tags on a per-user basis. The usertag command
+          works just like the regular tag command, except that you get to
+          make up whatever tags you like. By default, the address in the
+          From: or Reply-To: header of your mail will be used to set the
+          user of the usertag.
+
+   usercategory category-name [ [hidden] ]
+          Adds, updates or removes a usercategory. By default the user
+          category is visible, if the optional argument [hidden] is
+          specified then it will not be visible, but still be available to
+          be referenced from other user category definitions.
+
+          This command is somewhat special, as when adding or updating a
+          user category it requires a body following immediately after the
+          command. If the body is empty the user category will get removed
+          instead. The body is composed of lines starting with any number
+          of spaces. Each category should start with a line with *, and
+          optionally it can be followed by several selection lines
+          starting with +. The complete format is as follows:
+
+          * category-name-1
+          * Category Title 2 [ [selection-prefix] ]
+           + Selection Title 1 [ [ order: ] selection-1 ]
+           + Selection Title 2 [ [ order: ] selection-2 ]
+           + Default Selection Title [ [ order: ] ]
+          * category-name-3
+          The category-names appearing in the command and in the body are
+          used to make references between them, to avoid unnecessary
+          inlining. The Category Titles are used in the package report
+          summary.
+
+          The optional selection-prefix is prefixed to every selection on
+          each entry in the category section. The first selection which
+          matches gets the bug shown under it. The optional order
+          parameter specifies the position when showing the selected
+          entries, this is useful when using a match that selects a
+          superset of the previous ones but that needs to be shown before
+          them.
+
+          The category-name normal has the special meaning of being the
+          default view, so by replacing it with a different user category
+          for the pkgname@packages.debian.org user one can change the
+          default classification for a package.
+
+          Example usage:
+
+    usercategory dpkg-program [hidden]
+     * Program
+       + dpkg-deb [tag=dpkg-deb]
+       + dpkg-query [tag=dpkg-query]
+       + dselect [package=dselect]
+
+    usercategory new-status [hidden]
+     * Status [pending=]
+       + Outstanding with Patch Available [0:pending+tag=patch]
+       + Outstanding and Confirmed [1:pending+tag=confirmed]
+       + Outstanding and More Information Needed [pending+tag=moreinfo]
+       + Outstanding and Forwarded [pending+tag=forwarded]
+       + Outstanding but Will Not Fix [pending+tag=wontfix]
+       + Outstanding and Unclassified [2:pending]
+       + From other Branch [absent]
+       + Pending Upload [pending-fixed]
+       + Fixed in NMU [fixed]
+       + Resolved [done]
+       + Unknown Pending Status []
+
+    # Change default view
+    usercategory normal
+      * new-status
+      * severity
+
+    usercategory old-normal
+      * status
+      * severity
+      * classification
+
+   help
+          Requests that this help document be sent by email in plain
+          ASCII.
+
+   quit
+   stop
+   thank
+   thanks
+   thankyou
+   thank you
+   --
+          Stops processing at this point of the message. After this you
+          may include any text you like, and it will be ignored. You can
+          use this to include longer comments than are suitable for #, for
+          example for the benefit of human readers of your message
+          (reading it via the tracking system logs or due to a CC or BCC).
+
+   #...
+          One-line comment. The # must be at the start of the line.
+
+   debug level
+          Sets the debugging level to level, which should be a nonnegative
+          integer. 0 is no debugging; 1 is usually sufficient. The
+          debugging output appears in the transcript. It is not likely to
+          be useful to general users of the bug system.
+
+   There is a reference card for the mailservers, available via the WWW,
+   in bug-mailserver-refcard.txt or by email using the refcard command
+   (see above).
+
+   If you wish to manipulate bug reports you should use the
+   control@bugs.debian.org address, which understands a superset of the
+   commands listed above. This is described in another document, available
+   on the WWW, in the file bug-maint-mailcontrol.txt, or by sending help
+   to control@bugs.
+
+   In case you are reading this as a plain text file or via email: an HTML
+   version is available via the bug system main contents page
+   http://www.debian.org/Bugs/.
+     __________________________________________________________________
+
+    Debian BTS administrators <owner@bugs.debian.org>
+
+   Debian bug tracking system
+   Copyright (c) 1999 Darren O. Benham, 1997, 2003 nCipher Corporation
+   Ltd, 1994-1997 Ian Jackson.
+     __________________________________________________________________
+
