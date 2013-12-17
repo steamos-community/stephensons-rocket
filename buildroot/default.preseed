@@ -145,6 +145,7 @@ d-i partman-auto/expert_recipe string                         \
       boot-root ::                                            \
               512 512 512 fat16                               \
                       $primary{ }                             \
+                      $iflabel{ gpt }                         \
                       method{ efi }                           \
                       label { boot }                          \
                       format{ }                               \
