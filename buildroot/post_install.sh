@@ -57,25 +57,57 @@ GRUB_GFXMODE=1280x800-24
 EOF
 
 # Add system partition backup/restore to the boot menu
-cat - >> /target/etc/grub.d/40_custom << EOF
+cat - >> /target/etc/grub.d/35_clonezilla << BLARG
+#!/bin/sh
+cat <<EOF
 menuentry "Capture System Partition"{
   search --set -f /live-hd/vmlinuz
+EOF
+if test -d /sys/firmware/efi; then
+  cat <<EOF
   fakebios
   linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda3 /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -sc -p true saveparts steambox sda2" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia   live-media-path=/live-hd bootfrom=/dev/sda4 toram=filesystem.squashfs
+EOF
+else
+cat <<EOF
+  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda5 /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -sc -p true saveparts steambox sda1" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia   live-media-path=/live-hd bootfrom=/dev/sda6 toram=filesystem.squashfs
+EOF
+fi
+cat <<EOF
   initrd /live-hd/initrd.img
 }
 menuentry "Restore System Partition"{
   search --set -f /live-hd/vmlinuz
+EOF
+if test -d /sys/firmware/efi; then
+cat <<EOF
   fakebios
   linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda3 /home/partimag" ocs_live_run="ocs-sr -e1 auto -e2 -r -j2 -k -p reboot restoreparts steambox sda2" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia   live-media-path=/live-hd bootfrom=/dev/sda4 toram=filesystem.squashfs
+EOF
+else
+cat <<EOF
+  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda5 /home/partimag" ocs_live_run="ocs-sr -e1 auto -e2 -r -j2 -k -p reboot restoreparts steambox sda1" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia   live-media-path=/live-hd bootfrom=/dev/sda6 toram=filesystem.squashfs
+EOF
+fi
+cat <<EOF
   initrd /live-hd/initrd.img
 }
 menuentry "Clonezilla live"{
   search --set -f /live-hd/vmlinuz
+EOF
+if test -d /sys/firmware/efi; then
+cat <<EOF
   fakebios
   linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda3 /home/partimag" ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia  nosplash  live-media-path=/live-hd bootfrom=/dev/sda4 toram=filesystem.squashfs
+EOF
+else
+cat <<EOF
+  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount /dev/sda5 /home/partimag" ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no vga=791 ip=frommedia  nosplash  live-media-path=/live-hd bootfrom=/dev/sda6 toram=filesystem.squashfs
+EOF
+fi
+cat <<EOF
   initrd /live-hd/initrd.img
 }
 EOF
-
-
+BLARG
+chmod a+x /target/etc/grub.d/35_clonezilla
