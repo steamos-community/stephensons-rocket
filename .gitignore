@@ -3,3 +3,4 @@
 *.iso
 buildroot/*
 SteamOSInstaller.zip
+md5sum.txt
