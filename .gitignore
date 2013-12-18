@@ -1,3 +1,6 @@
 # make your own goddamn ISO.
 
-yeolde.iso
+*.iso
+buildroot/*
+SteamOSInstaller.zip
+md5sum.txt

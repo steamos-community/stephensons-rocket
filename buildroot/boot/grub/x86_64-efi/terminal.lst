@@ -1,6 +1,0 @@
-iat_keyboard: at_keyboard
-iserial: serial
-iserial_*: serial
-ogfxterm: gfxterm
-oserial: serial
-oserial_*: serial
