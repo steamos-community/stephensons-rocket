@@ -107,12 +107,14 @@ d-i preseed/late_command string /cdrom/post_install.sh
 # This makes partman automatically partition without confirmation, provided
 # that you told it what to do using one of the methods above.
 d-i partman-md/confirm boolean true
-d-i partman-auto/disk string /dev/sda
 d-i partman/default_filesystem string ext4
 d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
+
+#Commands to run right before paritioning starts
+d-i partman/early_command string debconf-set partman-auto/disk "$(list-devices disk | head -n1)"
 
 ## Partitioning example
 # In addition, you'll need to specify the method to use.
