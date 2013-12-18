@@ -34,7 +34,9 @@ d-i mirror/http/proxy string
 #d-i mirror/udeb/suite string main
 
 ## Create root account
-d-i passwd/root-login boolean false
+d-i passwd/root-login boolean true
+d-i passwd/root-password password yeOlde
+d-i passwd/root-password-again password yeOlde
 
 # To create a normal user account.
 d-i passwd/user-fullname string SteamOS Desktop
