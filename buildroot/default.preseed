@@ -10,10 +10,10 @@ d-i console-setup/ask_detect boolean false
 d-i keymap select us
 
 ### Network configuration
-#Enable network configuration
-d-i netcfg/choose_interface select auto
-d-i netcfg/disable_dhcp boolean false
-d-i netcfg/enable boolean true
+# Disable network configuration entirely. This is useful for cdrom
+# installations on non-networked devices where the network questions,
+# warning and long timeouts are a nuisance.
+d-i netcfg/enable boolean false
 # Disable that annoying WEP key dialog.
 d-i netcfg/wireless_wep string
 d-i   hw-detect/load_firmware boolean false
