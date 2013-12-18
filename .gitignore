@@ -1,6 +1,6 @@
 # make your own goddamn ISO.
 
 *.iso
-buildroot/*
+buildroot/*.*
 SteamOSInstaller.zip
 md5sum.txt
