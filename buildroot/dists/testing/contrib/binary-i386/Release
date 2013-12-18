@@ -1,6 +1,0 @@
-Archive: stable
-Component: contrib
-Origin: Valve Software LLC
-Label: SteamOS
-Architecture: i386
-Description: SteamOS distribution based on Debian 7.1 Wheezy
