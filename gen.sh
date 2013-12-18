@@ -18,6 +18,11 @@ for dep in ${deps}; do
 	fi
 done
 
+#Make sure our BUILD dir exists
+if [ ! -d ${BUILD} ]; then
+	mkdir -p ${BUILD}
+fi
+
 #Download SteamOSInstaller.zip
 steaminstallfile="SteamOSInstaller.zip"
 steaminstallerurl="http://repo.steampowered.com/download/${steaminstallfile}"
