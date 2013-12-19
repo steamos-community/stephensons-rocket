@@ -162,6 +162,22 @@ while getopts "hrb" OPTION; do
         esac
 done
 
+#Copy over the rest of our modified files
+yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
+for file in ${yeoldfiles}; do
+	echo "Copying ${file} into ${BUILD}"
+	cp -pfr ${file} ${BUILD}
+done
+
+#Generate default.preseed
+echo "Generating default.preseed"
+cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
+cat default.stub >> ${BUILD}/default.preseed
+
+#Generate our new repos
+echo "Generating Packages.."
+apt-ftparchive generate ${APTCONF}
+apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
 #Check dependencies
 deps

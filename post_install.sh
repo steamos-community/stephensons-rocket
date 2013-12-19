@@ -39,6 +39,11 @@ chmod +x /target/home/desktop/post_logon.sh
 #
 # Boot splash screen and GRUB configuration
 #
+if test `/target/bin/grep -A10000 "### BEGIN /etc/grub.d/30_os-prober ###" /target/boot/grub/grub.cfg | /target/bin/grep -B10000 "### END /etc/grub.d/30_os-prober ###" | wc -l` -gt 4; then
+ISDUALBOOT=Y
+else
+ISDUALBOOT=N
+fi
 cat - > /target/etc/default/grub << EOF
 # If you change this file, run 'update-grub' afterwards to update
 # /boot/grub/grub.cfg.
@@ -47,7 +52,13 @@ cat - > /target/etc/default/grub << EOF
 
 GRUB_DEFAULT=saved
 GRUB_HIDDEN_TIMEOUT_QUIET=true
-GRUB_TIMEOUT=1
+EOF
+if test "${ISDUALBOOT}" = N; then
+echo "GRUB_TIMEOUT=1" >> /target/etc/default/grub
+else
+echo "GRUB_TIMEOUT=5" >> /target/etc/default/grub
+fi
+cat - >> /target/etc/default/grub << EOF
 GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
@@ -58,7 +69,7 @@ EOF
 
 # Add system partition backup/restore to the boot menu
 RECOVERYPARTITION=`mount | grep "/target/boot/recovery " | cut -f1 -d' '`
-ROOTPARTITION=`mount | grep "/target " | cut -f1 -d' ' | cut -f3 -d'/'`
+ROOTPARTITION=`mount | grep "/target " | cut -f1 -d' ' | cut -f3- -d'/'`
 SWAPPARTITION=`tail -1 /proc/swaps | cut -f1 -d' '`
 if test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
 if test -d /sys/firmware/efi/; then

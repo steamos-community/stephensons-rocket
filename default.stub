@@ -1,14 +1,3 @@
-### Localization
-# Preseeding only locale sets language, country and locale.
-d-i debian-installer/locale string en_US
-
-# Keyboard selection.
-# Disable automatic (interactive) keymap detection.
-d-i console-setup/ask_detect boolean false
-# Keyboard selection.
-# keymap is an alias for keyboard-configuration/xkb-keymap
-d-i keymap select us
-
 ### Network configuration
 # Disable network configuration entirely. This is useful for cdrom
 # installations on non-networked devices where the network questions,
@@ -18,90 +7,6 @@ d-i netcfg/enable boolean false
 d-i netcfg/wireless_wep string
 d-i   hw-detect/load_firmware boolean false
 hw-detect hw-detect/load_firmware boolean false
-d-i netcfg/get_hostname string steamos
-
-### Mirror settings
-# If you select ftp, the mirror/country string does not need to be set.
-#d-i mirror/protocol string ftp
-d-i mirror/country string manual
-d-i mirror/http/hostname string steamos-repo.valvesoftware.com
-d-i mirror/http/directory string /SteamOS
-d-i mirror/http/proxy string
-
-# Suite to install.
-#d-i mirror/suite string main
-# Suite to use for loading installer components (optional).
-#d-i mirror/udeb/suite string main
-
-## Create root account
-d-i passwd/root-login boolean false
-
-# To create a normal user account.
-d-i passwd/user-fullname string SteamOS Desktop
-d-i passwd/username string desktop
-# User's password, either encrypted or in clear text
-# d-i passwd/user-password-crypted password \$1\$CAe/kArK\$dTflLRhLU4U73lBWvrTnw.
-d-i passwd/user-password password desktop
-d-i passwd/user-password-again password desktop
-d-i passwd/auto-login boolean true
-# The installer will warn about weak passwords. If you are sure you know
-# what you're doing and want to override it, uncomment this.
-d-i user-setup/allow-password-weak boolean true
-
-# You may set this to any valid setting for $TZ; see the contents of
-# /usr/share/zoneinfo/ for valid values.
-d-i time/zone string America/Los_Angeles
-
-# Controls whether to use NTP to set the clock during the install
-d-i clock-setup/ntp boolean true
-
-### Apt setup
-# You can choose to install non-free and contrib software.
-d-i apt-setup/non-free boolean true
-d-i apt-setup/contrib boolean true
-# Uncomment this if you don't want to use a network mirror.
-
-d-i apt-setup/multiarch string i386
-d-i apt-setup/use_mirror boolean false
-d-i apt-setup/no_mirror boolean true
-# Select which update services to use; define the mirrors to be used.
-# Values shown below are the normal defaults.
-d-i apt-setup/services-select string
-#d-i apt-setup/security_host string security.debian.org
-#d-i apt-setup/volatile_host string volatile.debian.org
-
-# Additional repositories, local[0-9] available
-d-i apt-setup/local0/repository string http://repo.steampowered.com/steamos alchemist main contrib non-free
-d-i apt-setup/local0/comment string internal SteamOS repo
-# Enable deb-src lines
-d-i apt-setup/local0/source boolean true
-# URL to the public key of the local repository; you must provide a key or
-# apt will complain about the unauthenticated repository and so the
-# sources.list line will be left commented out
-#d-i apt-setup/local0/key string http://local.server/key
-
-# By default the installer requires that repositories be authenticated
-# using a known gpg key. This setting can be used to disable that
-# authentication. Warning: Insecure, not recommended.
-# d-i debian-installer/allow_unauthenticated boolean true
-
-# Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 virtualbox-guest-x11 virtualbox-guest-dkms
-
-# Whether to upgrade packages after debootstrap.
-# Allowed values: none, safe-upgrade, full-upgrade
-d-i pkgsel/upgrade select none
-
-# Some versions of the installer can report back on what software you have
-# installed, and what software you use. The default is not to report back,
-# but sending reports helps the project determine what software is most
-# popular and include it on CDs.
-popularity-contest popularity-contest/participate boolean false
-
-#d-i finish-install/reboot_in_progress note
-
-d-i preseed/late_command string /cdrom/post_install.sh
-
 
 ### Partitioning
 # This makes partman automatically partition without confirmation, provided
