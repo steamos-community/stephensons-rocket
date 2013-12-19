@@ -12,11 +12,10 @@ Ye Olde SteamOSe is for you.
 
 Improvements
 ============
-SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS
-SteamOS requires a USB Stick to install. Ye Olde SteamOSe works from a DVD or a USB Stick
-SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box
-SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games)
-SteamOS running in VMWare Workstation 10
+* SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS
+* SteamOS requires a USB Stick to install. Ye Olde SteamOSe works from a DVD or a USB Stick
+* SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box
+* SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games)
 
 Planned improvements
 ====================
