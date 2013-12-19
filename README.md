@@ -37,7 +37,8 @@ Make sure to replace X in /dev/sdX with the right character to point to your USB
 
 Known issues
 ============
-Possible issue with firmware loading on Realtek network cards
+* Possible issue with firmware loading on Realtek network cards.
+* 3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.
 
 How can I help?
 ===============
