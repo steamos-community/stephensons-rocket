@@ -60,7 +60,7 @@
 
 <p>To get started, download the torrent above.</p>
 
-<p>Otherwise, clone this repo, fix gen.sh for your paths, and run it.</p>
+<p>Otherwise, clone this repo, and run gen.sh.</p>
 
 <p>This ISO file will work if burned, or dd'd to a USB stick. Don't use UNetbootin, which is an evil tool of the Devil.</p>
 
@@ -70,9 +70,11 @@
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known issues</h2>
 
 <ul>
-<li>Recovery partition capture totally breaks on VMWare right now, seemingly an issue with the Clonezilla initrd's VMWare driver. Just restart the VM if it freezes after running the post_login.sh script.</li>
+<li>Possible issue with firmware loading on Realtek network cards.</li>
 <li>3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="how-can-i-help" class="anchor" href="#how-can-i-help"><span class="octicon octicon-link"></span></a>How can I help?</h2>
 
 <p>Test it and report back to #steamos on Freenode</p>
