@@ -67,11 +67,16 @@ else
 fi
 
 #Copy over the rest of our modified files
-yeoldfiles="default.preseed isolinux post_install.sh"
+yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
 for file in ${yeoldfiles}; do
 	echo "Copying ${file} into ${BUILD}"
 	cp -pfr ${file} ${BUILD}
 done
+
+#Generate default.preseed
+echo "Generating default.preseed"
+cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
+cat default.stub >> ${BUILD}/default.preseed
 
 #Generate our new repos
 echo "Generating Packages.."
