@@ -95,10 +95,11 @@ if [ -f ${ISOPATH}/${ISONAME} ]; then
 	rm -f "${ISOPATH}/${ISONAME}"
 fi
 
+echo "Building ${ISOPATH}/${ISONAME} ..."
 xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
 	-V 'Ye Olde SteamOSe 1.0b1a1' -o ${ISOPATH}/${ISONAME} \
 	-J -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
-	-J -joliet-long -cache-inodes -b isolinux/isolinux.bin \
+	-joliet-long -b isolinux/isolinux.bin \
 	-c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
 	-boot-info-table -eltorito-alt-boot -e boot/grub/efi.img \
-	-no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus $BUILD
+	-no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus ${BUILD}
