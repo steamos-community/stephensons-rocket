@@ -66,13 +66,15 @@ extract ( ) {
 beta ( ) {
 	#Change a few things for a beta build
 	DISTNAME="${DISTNAME}_beta"
-	ISONAME="yeolde-beta.iso"	
+	ISONAME="yeolde-beta.iso"
 	APTCONF="./ftparchive/apt-ftparchive-beta.conf"
-	
-	echo "Mirroring alchemist_beta into ${BUILD}, please wait..."
+	wgetlogfile="./alchemist_beta-downlaod.log"
+
+	echo "Mirroring alchemist_beta into ${BUILD}, see log file ${wgetlogfile} for progress"
+	echo "Downloading, please wait..."
 	mirrordirs="steamos/dists/alchemist_beta steamos/pool"
 	for dir in ${mirrordirs}; do
-		wget -q -m -np -nH --cut-dirs=1 -R index.html* -P ${BUILD} ${UPSTREAMURL}/${dir}
+		wget -m -np -nH --cut-dirs=1 -o ${wgetlogfile} -R index.html* -P ${BUILD} ${UPSTREAMURL}/${dir}
 	done
 
 	echo "Copying beta into ${BUILD}"
