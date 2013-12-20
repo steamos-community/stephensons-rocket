@@ -1,7 +1,7 @@
 #!/bin/sh
 BUILD=./buildroot
 APTCONF="./ftparchive/apt-ftparchive.conf"
-DIST="alchemist"
+DISTNAME="alchemist"
 ISOPATH="."
 ISONAME="yeolde.iso"
 UPSTREAMURL="http://repo.steampowered.com"
@@ -65,14 +65,14 @@ extract ( ) {
 
 beta ( ) {
 	#Change a few things for a beta build
-	DIST="${DISTNAME}_beta"
+	DISTNAME="${DISTNAME}_beta"
 	ISONAME="yeolde-beta.iso"	
 	APTCONF="./ftparchive/apt-ftparchive-beta.conf"
 	
 	echo "Mirroring alchemist_beta into ${BUILD}, please wait..."
 	mirrordirs="steamos/dists/alchemist_beta steamos/pool"
 	for dir in ${mirrordirs}; do
-		wget -q -m -np -nH --cut-dirs=1 -E -R *.html -P ${BUILD} ${UPSTREAMURL}/${dir}
+		wget -q -m -np -nH --cut-dirs=1 -R index.html* -P ${BUILD} ${UPSTREAMURL}/${dir}
 	done
 
 	echo "Copying beta into ${BUILD}"
@@ -99,19 +99,23 @@ create ( ) {
 		echo "Error copying ${pooldir} to ${BUILD}"
 		exit 1
 	fi
-
 	#Copy over the rest of our modified files
-	yeoldfiles="default.preseed isolinux post_install.sh"
+	yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
 	for file in ${yeoldfiles}; do
 		echo "Copying ${file} into ${BUILD}"
 		cp -pfr ${file} ${BUILD}
 	done
 
+	#Generate default.preseed
+	echo "Generating default.preseed"
+	cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
+	cat default.stub >> ${BUILD}/default.preseed
+
 	#Generate our new repos
 	echo "Generating Packages.."
 	apt-ftparchive generate ${APTCONF}
-	echo "Genereating Release for ${DIST}"
-	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DIST} > ${BUILD}/dists/${DIST}/Release
+	echo "Genereating Release for ${DISTNAME}"
+	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
 	#Replace testing with alchemist
 	testingdir="${BUILD}/dists/testing"
@@ -119,7 +123,7 @@ create ( ) {
 	if [ -d ${testingdir} ]; then
 		rm -fr "${testingdir}"
 		mkdir -p ${testingdir}
-		rsync -a ${BUILD}/dists/${DIST}/ ${testingdir}/
+		rsync -a ${BUILD}/dists/${DISTNAME}/ ${testingdir}/
 	fi
 
 	#gpg --default-key "0E1FAD0C" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
@@ -162,22 +166,6 @@ while getopts "hrb" OPTION; do
         esac
 done
 
-#Copy over the rest of our modified files
-yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
-for file in ${yeoldfiles}; do
-	echo "Copying ${file} into ${BUILD}"
-	cp -pfr ${file} ${BUILD}
-done
-
-#Generate default.preseed
-echo "Generating default.preseed"
-cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
-cat default.stub >> ${BUILD}/default.preseed
-
-#Generate our new repos
-echo "Generating Packages.."
-apt-ftparchive generate ${APTCONF}
-apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
 #Check dependencies
 deps
