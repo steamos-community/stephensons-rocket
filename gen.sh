@@ -48,7 +48,7 @@ fi
 
 #Copy over updated and added debs
 #First remove uneeded debs
-debstoremove="pool/main/x/xserver-xorg-video-vmware/xserver-xorg-video-vmware_12.0.2-1+bsos6_amd64.deb"
+debstoremove=""
 for debremove in ${debstoremove}; do
 	if [ -f ${BUILD}/${debstoremove} ]; then
 		echo "Removing ${BUILD}/${debstoremove}..."
@@ -102,7 +102,7 @@ fi
 
 echo "Building ${ISOPATH}/${ISONAME} ..."
 xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
-	-V 'Ye Olde SteamOSe 1.0b1a1' -o ${ISOPATH}/${ISONAME} \
+	-V 'Ye Olde SteamOSe Beta 2013-12-19' -o ${ISOPATH}/${ISONAME} \
 	-J -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
 	-joliet-long -b isolinux/isolinux.bin \
 	-c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
