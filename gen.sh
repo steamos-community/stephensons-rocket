@@ -8,6 +8,7 @@ ISOPATH="."
 ISONAME="yeolde.iso"
 ISOVNAME="Olde SteamOSe Beta 2013-12-19"
 UPSTREAMURL="http://repo.steampowered.com"
+STEAMINSTALLFILE="SteamOSInstaller.zip"
 
 #Show how to use gen.sh
 usage ( )
@@ -15,6 +16,7 @@ usage ( )
 	cat <<EOF
 	$0 [OPTION]
 	-h                Print this message
+	-d		  Re-Download ${STEAMINSTALLFILE}
 EOF
 }
 
@@ -44,25 +46,25 @@ rebuild ( ) {
 #Extract the upstream SteamOSInstaller.zip from repo.steampowered.com
 extract ( ) {
 	#Download SteamOSInstaller.zip
-	steaminstallfile="SteamOSInstaller.zip"
-	steaminstallerurl="${UPSTREAMURL}/download/${steaminstallfile}"
-	if [ ! -f ${steaminstallfile} ]; then
+	steaminstallerurl="${UPSTREAMURL}/download/${STEAMINSTALLFILE}"
+	#Download if the zip doesn't exist or the -d flag was passed
+	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
-		if wget -N ${steaminstallerurl}; then
+		if wget -O ${STEAMINSTALLFILE} ${steaminstallerurl}; then
 			:
 		else
 			echo "Error downloading ${steaminstallerurl}!"
 			exit 1
 		fi
 	else
-		echo "Using existing ${steaminstallfile}"
+		echo "Using existing ${STEAMINSTALLFILE}"
 	fi
 
 	#Unzip SteamOSInstaller.zip into BUILD
-	if unzip -uo ${steaminstallfile} -d ${BUILD}; then
+	if unzip -uo ${STEAMINSTALLFILE} -d ${BUILD}; then
 		:
 	else
-		echo "Error unzipping ${steaminstallfile} into ${BUILD}!"
+		echo "Error unzipping ${STEAMINSTALLFILE} into ${BUILD}!"
 		exit 1
 	fi
 }
@@ -144,11 +146,14 @@ create ( ) {
 }
 
 #Setup command line arguments
-while getopts "hr" OPTION; do
+while getopts "hd" OPTION; do
         case ${OPTION} in
         h)
                 usage
                 exit 1
+        ;;
+        d)
+                redownload="1"
         ;;
         *)
                 echo "${OPTION} - Unrecongnized option"
