@@ -64,7 +64,29 @@
 
 <p>Otherwise, clone this repo, and run gen.sh.</p>
 
-<p>This ISO file will work if burned, or dd'd to a USB stick. Don't use UNetbootin, which is an evil tool of the Devil.</p>
+<h4>Installing from a DVD</h4>
+
+<p>Just burn the ISO to a blank DVD from your favourite tool, and boot it.</p>
+
+<h4>Installing from USB (Mac)</h4>
+
+<p>Open a Terminal window from the Utilities section of Applications.</p>
+
+<p>Type &quot;diskutil list&quot; to get a list of devices - one of them will be your USB stick (e.g. /dev/disk2). Follow the Linux instructions below, with this /dev/diskX entry instead of /dev/sdX</p>
+
+<h4>Installing from USB (Linux)</h4>
+
+<p>As root (e.g. use &quot;sudo&quot;) run &quot;dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX&quot; - sdX should be the USB stick device (check &quot;dmesg&quot; immediately after plugging it in, you should see the device. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.</p>
+
+<h4>Installing from USB (Windows)</h4>
+
+<p>TODO</p>
+
+<h4>Once the installer is up...</h4>
+
+<p>Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.</p>
+
+<p>For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented <a href="https://github.com/directhex/steamos-installer/wiki/Power-User-install"></a>on the Wiki</a>.</p>
 
 <p>Beyond that, just follow Valve's instructions from <a href="http://store.steampowered.com/steamos/buildyourown">their site</a> - Ye Olde SteamOSe should behave <i>exactly</i> like the real SteamOS, except it works on more systems</p>
 
