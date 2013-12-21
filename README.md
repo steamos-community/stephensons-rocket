@@ -18,6 +18,8 @@ Improvements
 * SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games)
 * SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems
 
+![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
+
 Planned improvements
 ====================
 * Support for LVM, MD RAID, LUKS encryption
@@ -57,6 +59,8 @@ Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks ar
 Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.
 
 Finally run "./dd bs=1M if=ye<TAB> of=/dev/sdX" - you won't get a progress bar, but it should only take about 5 minutes.
+
+![dd on Windows](http://i.imgur.com/Vg4sJWM.png)
 
 I wish these instructions were easier, but every non-GNU tool I tried on Windows to do this failed!
 
