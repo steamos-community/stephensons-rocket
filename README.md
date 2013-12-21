@@ -22,20 +22,51 @@ Planned improvements
 ====================
 * Support for LVM, MD RAID, LUKS encryption
 * More firmware for various devices (wired & wireless) out of the box
+* Add NTFS installer modules (allow Windows partition resizing)
 
 How to install?
 ===============
 A DVD image is always available via BitTorrent at http://directhex.github.io/steamos-installer/
 
-Otherwise, clone this repo, and run gen.sh. This yeolde.iso file will work if burned, or dd'd to a USB stick. Beyond that, just follow Valve's instructions from http://store.steampowered.com/steamos/buildyourown
+To get started, download the torrent.
 
-You can write to your USB stick using the following command:
+Otherwise, clone this repo, and run gen.sh.
 
-```
-sudo dd bs=4M if=yeoldesteamos-1.0beta1alpha1.iso of=/dev/sdX
-```
+Installing from a DVD
+---------------------
+Just burn the ISO to a blank DVD from your favourite tool, and boot it.
 
-Make sure to replace X in /dev/sdX with the right character to point to your USB drive (you can use for example dmesg to figure out which devices where mounted recently).
+Installing from USB (Mac)
+-------------------------
+Open a Terminal window from the Utilities section of Applications.
+
+Type "diskutil list" to get a list of devices - one of them will be your USB stick (e.g. /dev/disk2). Follow the Linux instructions below, with this /dev/diskX entry instead of /dev/sdX
+
+Installing from USB (Linux)
+---------------------------
+As root (e.g. use "sudo") run "dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX" - sdX should be the USB stick device (check "dmesg" immediately after plugging it in, you should see the device. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.
+
+Installing from USB (Windows)
+-----------------------------
+Download this bundle and extract it to an empty folder. Copy or move your Ye Olde SteamOSe ISO to this folder too.
+
+Right click the "bash.exe" file, and click "Run as Administrator". This will give you a minimal UNIX shell.
+
+Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks are the available devices. Take note of the entries starting "sd", e.g. "sda5" - these are your existing partitions.
+
+Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.
+
+Finally run "./dd bs=1M if=ye<TAB> of=/dev/sdX" - you won't get a progress bar, but it should only take about 5 minutes.
+
+I wish these instructions were easier, but every non-GNU tool I tried on Windows to do this failed!
+
+Once the installer is up...
+---------------------------
+Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.
+
+For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented on the Wiki.
+
+Beyond that, just follow Valve's instructions from their site - Ye Olde SteamOSe should behave exactly like the real SteamOS, except it works on more systems
 
 Known issues
 ============
