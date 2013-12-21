@@ -83,7 +83,15 @@
 
 <h4>Installing from USB (Windows)</h4>
 
-<p>TODO</p>
+<p>Download <a href="http://retro.apebox.org/cygwin-dd.zip">this bundle</a> and extract it to an empty folder. Copy or move your Ye Olde SteamOSe ISO to this folder too.</p>
+
+<p>Right click the "bash.exe" file, and click "Run as Administrator". This will give you a minimal UNIX shell.</p>
+
+<p>Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks are the available devices. Take note of the entries starting "sd", e.g. "sda5" - these are your existing partitions.</p>
+
+<p>Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.</p>
+
+<p>Finally run "./dd bs=1M if=ye&lt;TAB&gt; of=/dev/sdX" - you won't get a progress bar, but it should only take a couple of minutes.</p>
 
 <h4>Once the installer is up...</h4>
 
