@@ -53,18 +53,55 @@
 <ul>
 <li>Support for LVM, MD RAID, LUKS encryption</li>
 <li>More firmware for various devices (wired & wireless) out of the box</li>
+<li>Add NTFS installer modules (allow Windows partition resizing)</li>
 </ul><h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
 
-<h3><a href="magnet:?xt=urn:btih:b1efce9ea21632084db51c6e5fe922ce0849b17c&dn=yeoldesteamos-1.0beta1alpha1.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
+<h3>Latest release: 2013-12-19 beta 1 (released 2013-12-21)</h3>
 
-<h3><a href="http://retro.apebox.org/yeoldesteamos-1.0beta1alpha1.iso.torrent">Torrent</a></h3>
+<h3><a href="magnet:?xt=urn:btih:cb211f1a12c537dda0c3ba82360191f7c446106b&dn=yeoldesteamos-20131219-beta1.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
+
+<h3><a href="http://retro.apebox.org/yeoldesteamos-20131219-beta1.iso.torrent">Torrent</a></h3>
 
 <p>To get started, download the torrent above.</p>
 
 <p>Otherwise, clone this repo, and run gen.sh.</p>
 
-<p>This ISO file will work if burned, or dd'd to a USB stick. Don't use UNetbootin, which is an evil tool of the Devil.</p>
+<h4>Installing from a DVD</h4>
+
+<p>Just burn the ISO to a blank DVD from your favourite tool, and boot it.</p>
+
+<h4>Installing from USB (Mac)</h4>
+
+<p>Open a Terminal window from the Utilities section of Applications.</p>
+
+<p>Type &quot;diskutil list&quot; to get a list of devices - one of them will be your USB stick (e.g. /dev/disk2). Follow the Linux instructions below, with this /dev/diskX entry instead of /dev/sdX</p>
+
+<h4>Installing from USB (Linux)</h4>
+
+<p>As root (e.g. use &quot;sudo&quot;) run &quot;dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX&quot; - sdX should be the USB stick device (check &quot;dmesg&quot; immediately after plugging it in, you should see the device. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.</p>
+
+<h4>Installing from USB (Windows)</h4>
+
+<p>Download <a href="http://retro.apebox.org/cygwin-dd.zip">this bundle</a> and extract it to an empty folder. Copy or move your Ye Olde SteamOSe ISO to this folder too.</p>
+
+<p>Right click the "bash.exe" file, and click "Run as Administrator". This will give you a minimal UNIX shell.</p>
+
+<p>Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks are the available devices. Take note of the entries starting "sd", e.g. "sda5" - these are your existing partitions.</p>
+
+<p>Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.</p>
+
+<p>Finally run "./dd bs=1M if=ye&lt;TAB&gt; of=/dev/sdX" - you won't get a progress bar, but it should only take about 5 minutes.</p>
+
+<p><img src="http://i.imgur.com/Vg4sJWM.png" alt="Using dd to image on Windows"></p>
+
+<p>I wish these instructions were easier, but every non-GNU tool I tried on Windows to do this failed!</p>
+
+<h4>Once the installer is up...</h4>
+
+<p>Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.</p>
+
+<p>For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented <a href="https://github.com/directhex/steamos-installer/wiki/Power-User-install">on the Wiki</a>.</p>
 
 <p>Beyond that, just follow Valve's instructions from <a href="http://store.steampowered.com/steamos/buildyourown">their site</a> - Ye Olde SteamOSe should behave <i>exactly</i> like the real SteamOS, except it works on more systems</p>
 
@@ -82,6 +119,30 @@
 <p>Test it and report back to #steamos on Freenode</p>
 
 <p>Or support me by donating - VMWare Workstation is a whopping £190, so when the 30 day trial expires, I stop testing with it. Donate via <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=888397">PayPal</a>, <a href="http://steamcommunity.com/id/directhex/wishlist">Steam</a>, or <a href="http://www.amazon.co.uk/wishlist/LN9AGFCAGAHR">Amazon</a></p>
+
+<h2>Version History</h2>
+
+<ul>
+  <li>
+    <h4>2013-12-19 beta 1</h4>
+    <ul>
+      <li>Added "Power User" mode, with dual-boot support</li>
+      <li>Major Github layout changes</li>
+      <li>Rebased against 2013-12-19 Valve release (newer packages including Mesa 10)</li>
+      <li>Fixed crasher in recovery partition stuff on some drivers (e.g. VMware)</li>
+    </ul>
+  </li>
+  <li>
+    <h4>1.0 beta 1 alpha 1</h4>
+    <ul>
+      <li>First release</li>
+      <li>Added virtualbox guest drivers</li>
+      <li>Added GRUB BIOS packages</li>
+      <li>Added patched VMware driver with 3D support</li>
+      <li>Made an Isohybrid installer with BIOS support (ISOLINUX files from Wheezy installer)</li>
+    </ul>
+  </li>
+</ul>
       </section>
     </div>
 
