@@ -82,4 +82,4 @@ How can I help?
 ===============
 Test it and report back to #steamos on Freenode
 
-Or support me by donating - VMWare Workstation is a whopping £190, so when the 30 day trial expires, I stop testing with it. Donate via PayPal, Steam, or Amazon
+Or support me by donating - Donate via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=888397), [Steam](http://steamcommunity.com/id/directhex/wishlist), or [Amazon](http://www.amazon.co.uk/wishlist/LN9AGFCAGAHR). Donations will be used to help with testing - wifi adapters, hard disks, graphics cards, etc.
