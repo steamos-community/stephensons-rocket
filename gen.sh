@@ -50,6 +50,7 @@ fi
 #TODO: delete entirely needless binary packages too, maybe we can fit on a CD
 echo "Deleting 32-bit garbage from ${BUILD}..."
 find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
+find ${BUILD} -name "*_i386.deb" | egrep -v "(\/eglibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.7\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/)" | xargs rm -f
 rm -fr "${BUILD}/install.386"
 
 #Copy over updated and added debs
