@@ -1,6 +1,7 @@
 #!/bin/sh
 BUILD=./buildroot
 APTCONF=./ftparchive/apt-ftparchive.conf
+APTUDEBCONF=./ftparchive/apt-ftparchive-udeb.conf
 DISTNAME=alchemist
 ISOPATH="."
 ISONAME="yeolde.iso"
@@ -52,6 +53,7 @@ echo "Deleting 32-bit garbage from ${BUILD}..."
 find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
 find ${BUILD} -name "*_i386.deb" | egrep -v "(\/eglibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.7\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/)" | xargs rm -f
 rm -fr "${BUILD}/install.386"
+rm -fr "${BUILD}/dists/*/main/debian-installer/binary-i386/"
 
 #Copy over updated and added debs
 #First remove uneeded debs
@@ -88,6 +90,7 @@ cat default.stub >> ${BUILD}/default.preseed
 #Generate our new repos
 echo "Generating Packages.."
 apt-ftparchive generate ${APTCONF}
+apt-ftparchive generate ${APTUDEBCONF}
 apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
 #Replace testing with alchemist
