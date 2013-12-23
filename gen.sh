@@ -46,6 +46,12 @@ else
 	exit 1
 fi
 
+#Delete 32-bit udebs and d-i, as SteamOS is 64-bit only
+#TODO: delete entirely needless binary packages too, maybe we can fit on a CD
+echo "Deleting 32-bit garbage from ${BUILD}..."
+find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
+rm -fr "${BUILD}/install.386"
+
 #Copy over updated and added debs
 #First remove uneeded debs
 debstoremove=""
