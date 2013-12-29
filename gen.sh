@@ -57,11 +57,11 @@ rm -fr "${BUILD}/dists/*/main/debian-installer/binary-i386/"
 
 #Copy over updated and added debs
 #First remove uneeded debs
-debstoremove="pool/non-free/f/firmware-nonfree/firmware-linux-nonfree_0.36+wheezy.1+bsos12_all.deb pool/non-free/f/firmware-nonfree/firmware-realtek_0.36+wheezy.1+bsos12_all.deb"
+debstoremove="pool/non-free/f/firmware-nonfree/firmware-linux-nonfree_0.36+wheezy.1+bsos12_all.deb pool/non-free/f/firmware-nonfree/firmware-realtek_0.36+wheezy.1+bsos12_all.deb pool/main/d/debootstrap/debootstrap_1.0.54.steamos+bsos6_all.deb pool/main/d/debootstrap/debootstrap-udeb_1.0.54.steamos+bsos6_all.udeb"
 for debremove in ${debstoremove}; do
-	if [ -f ${BUILD}/${debstoremove} ]; then
-		echo "Removing ${BUILD}/${debstoremove}..."
-		rm -fr "${BUILD}/${debstoremove}"
+	if [ -f ${BUILD}/${debremove} ]; then
+		echo "Removing ${BUILD}/${debremove}..."
+		rm -fr "${BUILD}/${debremove}"
 	fi
 done
 
