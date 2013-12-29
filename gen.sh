@@ -57,13 +57,17 @@ rm -fr "${BUILD}/dists/*/main/debian-installer/binary-i386/"
 
 #Copy over updated and added debs
 #First remove uneeded debs
-debstoremove=""
+debstoremove="pool/non-free/f/firmware-nonfree/firmware-linux-nonfree_0.36+wheezy.1+bsos12_all.deb pool/non-free/f/firmware-nonfree/firmware-realtek_0.36+wheezy.1+bsos12_all.deb"
 for debremove in ${debstoremove}; do
 	if [ -f ${BUILD}/${debstoremove} ]; then
 		echo "Removing ${BUILD}/${debstoremove}..."
 		rm -fr "${BUILD}/${debstoremove}"
 	fi
 done
+
+#Delete all firmware from /firmware/
+echo "Removing bundled firmware"
+rm -f ${BUILD}/firmware/*
 
 #Rsync over our local pool dir
 pooldir="./pool"
@@ -74,6 +78,12 @@ else
 	echo "Error copying ${pooldir} to ${BUILD}"
 	exit 1
 fi
+
+#Symlink all firmware
+for firmware in `cat firmware.txt`; do
+	echo "Symlinking ${firmware} into /firmware/ folder"
+	ln -s ../${firmware} ${BUILD}/firmware/`basename ${firmware}`
+done
 
 #Copy over the rest of our modified files
 yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
