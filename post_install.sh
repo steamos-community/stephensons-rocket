@@ -2,7 +2,8 @@
 # script runs after debian installer has done its thing
 
 chroot /target adduser --gecos "" --disabled-password steam
-chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth steam
+chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
+chroot /target usermod -a -G pulse-access desktop
 echo "steam:steam" | chroot /target chpasswd
 cp -r /cdrom/recovery /target/boot > /target/var/log/post_install.log
 mv /target/boot/recovery/live /target/boot/recovery/live-hd
