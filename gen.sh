@@ -2,6 +2,7 @@
 BUILD=./buildroot
 APTCONF=./ftparchive/apt-ftparchive.conf
 APTUDEBCONF=./ftparchive/apt-ftparchive-udeb.conf
+CACHEDIR=./cache
 DISTNAME=alchemist
 ISOPATH="."
 ISONAME="yeolde.iso"
@@ -99,6 +100,7 @@ cat default.stub >> ${BUILD}/default.preseed
 
 #Generate our new repos
 echo "Generating Packages.."
+mkdir -p ${CACHEDIR}
 apt-ftparchive generate ${APTCONF}
 apt-ftparchive generate ${APTUDEBCONF}
 apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
