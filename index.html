@@ -40,28 +40,29 @@
 <a name="improvements" class="anchor" href="#improvements"><span class="octicon octicon-link"></span></a>Improvements</h2>
 
 <ul>
-<li>SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS</li>
-<li>SteamOS requires a USB Stick to install. Ye Olde SteamOSe works from a DVD or a USB Stick</li>
-<li>SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box</li>
-<li>SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games)</li>
-<li>SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems</li>
+<li>SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS.</li>
+<li>SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.</li>
+<li>SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.</li>
+<li>SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games).</li>
+<li>SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems.</li>
+<li>SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.</li>
+<li>SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.</li>
+<li>SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.</li>
 </ul><p><img src="http://i.imgur.com/a3jnZ6r.png" alt="SteamOS running in VMWare Workstation 10"></p>
 
 <h2>
 <a name="planned-improvements" class="anchor" href="#planned-improvements"><span class="octicon octicon-link"></span></a>Planned improvements</h2>
 
 <ul>
-<li>Support for LVM, MD RAID, LUKS encryption</li>
-<li>More firmware for various devices (wired & wireless) out of the box</li>
-<li>Add NTFS installer modules (allow Windows partition resizing)</li>
+<li>Support for LVM, MD RAID, LUKS encryption.</li>
 </ul><h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
 
-<h3>Latest release: 2013-12-19 beta 1 (released 2013-12-21)</h3>
+<h3>Latest release: 2013-12-19 beta 2 (released 2014-01-05)</h3>
 
-<h3><a href="magnet:?xt=urn:btih:cb211f1a12c537dda0c3ba82360191f7c446106b&dn=yeoldesteamos-20131219-beta1.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
+<h3><a href="magnet:?xt=urn:btih:d477fa46779600d162e49bc95de02cc2a34ad535&dn=yeoldesteamos-20131219-beta2.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
 
-<h3><a href="http://retro.apebox.org/yeoldesteamos-20131219-beta1.iso.torrent">Torrent</a></h3>
+<h3><a href="http://retro.apebox.org/yeoldesteamos-20131219-beta2.iso.torrent">Torrent</a></h3>
 
 <p>To get started, download the torrent above.</p>
 
@@ -83,19 +84,7 @@
 
 <h4>Installing from USB (Windows)</h4>
 
-<p>Download <a href="http://retro.apebox.org/cygwin-dd.zip">this bundle</a> and extract it to an empty folder. Copy or move your Ye Olde SteamOSe ISO to this folder too.</p>
-
-<p>Right click the "bash.exe" file, and click "Run as Administrator". This will give you a minimal UNIX shell.</p>
-
-<p>Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks are the available devices. Take note of the entries starting "sd", e.g. "sda5" - these are your existing partitions.</p>
-
-<p>Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.</p>
-
-<p>Finally run "./dd bs=1M if=ye&lt;TAB&gt; of=/dev/sdX" - you won't get a progress bar, but it should only take about 5 minutes.</p>
-
-<p><img src="http://i.imgur.com/Vg4sJWM.png" alt="Using dd to image on Windows"></p>
-
-<p>I wish these instructions were easier, but every non-GNU tool I tried on Windows to do this failed!</p>
+<p>Download <a href="http://sourceforge.net/projects/win32diskimager/">Win32 Disk Imager</a> and use it to copy the .iso to your USB stick (1GB minimum size).</p>
 
 <h4>Once the installer is up...</h4>
 
@@ -109,9 +98,8 @@
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known issues</h2>
 
 <ul>
-<li>Possible issue with firmware loading on Realtek network cards.</li>
 <li>3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.</li>
-<li>No audio in non-HDMI systems.</li>
+<li>Sound card selection, volume levels, etc, must be set with pavucontrol, not the GNOME volume slider.</li>
 </ul>
 
 <h2>
@@ -124,6 +112,18 @@
 <h2>Version History</h2>
 
 <ul>
+  <li>
+    <h4>2013-12-19 beta 2</h4>
+    <ul>
+      <li>Fixed regression in audio between first and second releases (added steam and desktop users to pulse-access group)</li>
+      <li>Modified Pulse config to not force a specific sound card, and to restore card volume on boot</li>
+      <li>Shipped a replacement debootstrap, which will not fail at random on users' systems when generating their own image</li>
+      <li>Included all non-Free firmware from Debian Wheezy</li>
+      <li>Added ntfsprogs-udeb to allow NTFS resizing in the installer</li>
+      <li>Deleted unneeded 32-bit installer files, freeing about 300MB from the image size</li>
+      <li>Include pavucontrol in the installaton</li>
+    </ul>
+  </li>
   <li>
     <h4>2013-12-19 beta 1</h4>
     <ul>
