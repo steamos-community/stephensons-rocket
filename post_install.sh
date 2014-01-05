@@ -14,6 +14,8 @@ cp /target/etc/skel/.imageversion /target/home/steam/.imageversion
 
 sed -i 's/^set-card-profile/#&/' /target/etc/pulse/system.pa
 sed -i 's/^set-default-sink/#&/' /target/etc/pulse/system.pa
+sed -i 's/^load-module module-device-restore$/#&/' /target/etc/pulse/system.pa
+sed -i 's/^# mode.$/&\nload-module module-stream-restore\nload-module module-device-restore\nload-module module-switch-on-port-available/' /target/etc/pulse/system.pa
 
 #
 # Add post-logon configuration script
