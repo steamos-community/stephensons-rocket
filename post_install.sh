@@ -10,6 +10,11 @@ mv /target/boot/recovery/live /target/boot/recovery/live-hd
 chroot /target date > /target/etc/skel/.imageversion
 cp /target/etc/skel/.imageversion /target/home/steam/.imageversion
 
+# Pulse /o\
+
+sed -i 's/^set-card-profile/#&/' /target/etc/pulse/system.pa
+sed -i 's/^set-default-sink/#&/' /target/etc/pulse/system.pa
+
 #
 # Add post-logon configuration script
 #
