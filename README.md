@@ -12,19 +12,21 @@ Ye Olde SteamOSe is for you.
 
 Improvements
 ============
-* SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS
-* SteamOS requires a USB Stick to install. Ye Olde SteamOSe works from a DVD or a USB Stick
-* SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box
-* SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games)
-* SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems
+* SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS.
+* SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.
+* SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.
+* SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games).
+* SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems.
+* SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.
+* SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.
+* SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.
+
 
 ![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
 
 Planned improvements
 ====================
 * Support for LVM, MD RAID, LUKS encryption
-* More firmware for various devices (wired & wireless) out of the box
-* Add NTFS installer modules (allow Windows partition resizing)
 
 How to install?
 ===============
@@ -50,19 +52,7 @@ As root (e.g. use "sudo") run "dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX" - sd
 
 Installing from USB (Windows)
 -----------------------------
-Download this bundle and extract it to an empty folder. Copy or move your Ye Olde SteamOSe ISO to this folder too.
-
-Right click the "bash.exe" file, and click "Run as Administrator". This will give you a minimal UNIX shell.
-
-Before plugging in your USB stick, type "./ls /dev" to see what Cygwin thinks are the available devices. Take note of the entries starting "sd", e.g. "sda5" - these are your existing partitions.
-
-Now plug in your USB stick, and run "./ls /dev" again - you should see new sd entries, e.g. "sdb" and "sdb1" - the entry without the number is your USB stick device.
-
-Finally run "./dd bs=1M if=ye<TAB> of=/dev/sdX" - you won't get a progress bar, but it should only take about 5 minutes.
-
-![dd on Windows](http://i.imgur.com/Vg4sJWM.png)
-
-I wish these instructions were easier, but every non-GNU tool I tried on Windows to do this failed!
+Download Win32 Disk Imager and use it to copy the .iso to your USB stick (1GB minimum size).</p>
 
 Once the installer is up...
 ---------------------------
@@ -74,9 +64,8 @@ Beyond that, just follow Valve's instructions from their site - Ye Olde SteamOSe
 
 Known issues
 ============
-* Possible issue with firmware loading on Realtek network cards.
 * 3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.
-* No audio on non-HDMI systems
+* Sound card selection, volume levels, etc, must be set with pavucontrol, not the GNOME volume slider.
 
 How can I help?
 ===============
