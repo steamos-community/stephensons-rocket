@@ -122,7 +122,7 @@ fi
 
 echo "Building ${ISOPATH}/${ISONAME} ..."
 xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
-	-V 'Ye Olde SteamOSe Beta2 2013-12-19' -o ${ISOPATH}/${ISONAME} \
+	-V 'YeOldeSteamOSe 2013-12-19 Beta2' -o ${ISOPATH}/${ISONAME} \
 	-J -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
 	-joliet-long -b isolinux/isolinux.bin \
 	-c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
