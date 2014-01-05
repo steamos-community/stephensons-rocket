@@ -60,7 +60,7 @@ Pick the "Automatic Install" option to wipe the first hard disk in your system a
 
 For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented on the Wiki.
 
-Beyond that, just follow Valve's instructions from their site - Ye Olde SteamOSe should behave exactly like the real SteamOS, except it works on more systems
+Beyond that, just follow [Valve's instructions from their site](http://store.steampowered.com/steamos/buildyourown), steps 7 onwards under "Custom Installation" - Ye Olde SteamOSe should behave exactly like the real SteamOS, except it works on more systems
 
 Known issues
 ============
