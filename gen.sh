@@ -7,7 +7,7 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="yeolde.iso"
-ISOVNAME="YeOldeSteamOSe 2013-12-19 Beta2"
+ISOVNAME="YeOldeSteamOSe 2014-01-08 Beta1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSInstaller.zip"
 
