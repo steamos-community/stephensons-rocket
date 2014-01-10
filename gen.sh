@@ -7,7 +7,7 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="yeolde.iso"
-ISOVNAME="YeOldeSteamOSe 2014-01-08 Beta1"
+ISOVNAME="YeOldeSteamOSe Rel.4 20140108u1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSInstaller.zip"
 
@@ -34,6 +34,10 @@ deps ( ) {
 			exit 1
 		fi
 	done
+	if test "`expr length \"$ISOVNAME\"`" -gt "32"; then
+		echo "Volume ID is more than 32 characters: ${ISOVNAME}"
+		exit 1
+	fi
 }
 
 #Remove the ${BUILD} directory to start from scratch
