@@ -1,7 +1,8 @@
 #!/bin/sh
 #Basic variables
 BUILD="./buildroot"
-APTUDEBCONF="./ftparchive/apt-ftparchive.conf"
+APTCONF="./ftparchive/apt-ftparchive.conf"
+APTUDEBCONF="./ftparchive/apt-ftparchive-udeb.conf"
 DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
@@ -129,9 +130,15 @@ create ( ) {
 	cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
 	cat default.stub >> ${BUILD}/default.preseed
 
+	#Make sure ${CACHEDIR} exists
+	if [ ! -d ${CACHEDIR} ]; then
+		mkdir -p ${CACHEDIR}
+	fi
+
 	#Generate our new repos
 	echo "Generating Packages.."
 	apt-ftparchive generate ${APTCONF}
+	apt-ftparchive generate ${APTUDEBCONF}
 	echo "Genereating Release for ${DISTNAME}"
 	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
@@ -193,11 +200,6 @@ rebuild
 #Make sure ${BUILD} exists
 if [ ! -d ${BUILD} ]; then
 	mkdir -p ${BUILD}
-fi
-
-#Make sure ${CACHEDIR} exists
-if [ ! -d ${CACHEDIR} ]; then
-	mkdir -p ${CACHEDIR}
 fi
 
 #Download and extract the SteamOSInstaller.zip
