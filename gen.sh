@@ -112,6 +112,9 @@ create ( ) {
 		exit 1
 	fi
 
+	#Fix miscellaneous Valve fuckups
+	rm -f ${BUILD}/pool/non-free/f/fglrx-driver/*9.4*
+
 	#Symlink all firmware
         for firmware in `cat firmware.txt`; do
                 echo "Symlinking ${firmware} into /firmware/ folder"
