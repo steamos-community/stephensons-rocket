@@ -79,7 +79,8 @@ EOF
 RECOVERYPARTITION=`mount | grep "/target/boot/recovery " | cut -f1 -d' '`
 ROOTPARTITION=`mount | grep "/target " | cut -f1 -d' ' | cut -f3- -d'/'`
 SWAPPARTITION=`tail -1 /proc/swaps | cut -f1 -d' '`
-if test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
+ISNONBASICPARTITIONS=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "md"`
+if test -z "${ISNONBASICPARTITIONS}" && test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
 if test -d /sys/firmware/efi/; then
 ISEFI=Y
 else
@@ -117,6 +118,8 @@ cat - >> /target/etc/grub.d/40_custom << EOF
   initrd /live-hd/initrd.img
 }
 EOF
-else
+elif test -n "${ISNONBASICPARTITIONS}"; then
+echo "One or more of /, /boot/recovery, or swap is on mdraid. Disabling recovery partition support"
+else 
 echo "Missing one of /, /boot/recovery, or swap. Disabling recovery partition support"
 fi
