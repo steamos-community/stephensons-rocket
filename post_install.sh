@@ -79,8 +79,9 @@ EOF
 RECOVERYPARTITION=`mount | grep "/target/boot/recovery " | cut -f1 -d' '`
 ROOTPARTITION=`mount | grep "/target " | cut -f1 -d' ' | cut -f3- -d'/'`
 SWAPPARTITION=`tail -1 /proc/swaps | cut -f1 -d' '`
-ISNONBASICPARTITIONS=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "md"`
-if test -z "${ISNONBASICPARTITIONS}" && test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
+ISMDRAID=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "md"`
+ISLVM=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "mapper"`
+if test -z "${ISMDRAID}" && test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
 if test -d /sys/firmware/efi/; then
 ISEFI=Y
 else
@@ -118,8 +119,10 @@ cat - >> /target/etc/grub.d/40_custom << EOF
   initrd /live-hd/initrd.img
 }
 EOF
-elif test -n "${ISNONBASICPARTITIONS}"; then
+elif test -n "${ISMDRAID}"; then
 echo "One or more of /, /boot/recovery, or swap is on mdraid. Disabling recovery partition support"
+elif test -n "${ISLVM}"; then
+echo "One or more of /, /boot/recovery, or swap is on LVM. Disabling recovery partition support"
 else 
 echo "Missing one of /, /boot/recovery, or swap. Disabling recovery partition support"
 fi
