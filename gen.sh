@@ -1,12 +1,12 @@
 #!/bin/sh
-
 #Basic variables
 BUILD="./buildroot"
-APTCONF="./ftparchive/apt-ftparchive.conf"
+APTUDEBCONF="./ftparchive/apt-ftparchive.conf"
 DISTNAME="alchemist"
+CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="yeolde.iso"
-ISOVNAME="Olde SteamOSe Beta 2013-12-19"
+ISOVNAME="YeOldeSteamOSe 2013-12-19 Beta2"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSInstaller.zip"
 
@@ -78,15 +78,28 @@ extract ( ) {
 #	Generate md5sums
 #	Build ISO
 create ( ) {
+
+	#Delete 32-bit udebs and d-i, as SteamOS is 64-bit only
+	#TODO: delete entirely needless binary packages too, maybe we can fit on a CD
+	echo "Deleting 32-bit garbage from ${BUILD}..."
+	find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
+	find ${BUILD} -name "*_i386.deb" | egrep -v "(\/eglibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.7\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/)" | xargs rm -f
+	rm -fr "${BUILD}/install.386"
+	rm -fr "${BUILD}/dists/*/main/debian-installer/binary-i386/"
+
 	#Copy over updated and added debs
 	#First remove uneeded debs
-	debstoremove=""
+	debstoremove="pool/non-free/f/firmware-nonfree/firmware-linux-nonfree_0.36+wheezy.1+bsos12_all.deb pool/non-free/f/firmware-nonfree/firmware-realtek_0.36+wheezy.1+bsos12_all.deb pool/main/d/debootstrap/debootstrap_1.0.54.steamos+bsos6_all.deb pool/main/d/debootstrap/debootstrap-udeb_1.0.54.steamos+bsos6_all.udeb"
 	for debremove in ${debstoremove}; do
-		if [ -f ${BUILD}/${debstoremove} ]; then
-			echo "Removing ${BUILD}/${debstoremove}..."
-			rm -fr "${BUILD}/${debstoremove}"
+		if [ -f ${BUILD}/${debremove} ]; then
+			echo "Removing ${BUILD}/${debremove}..."
+			rm -fr "${BUILD}/${debremove}"
 		fi
 	done
+
+	#Delete all firmware from /firmware/
+	echo "Removing bundled firmware"
+        rm -f ${BUILD}/firmware/*
 
 	#Rsync over our local pool dir
 	pooldir="./pool"
@@ -97,6 +110,13 @@ create ( ) {
 		echo "Error copying ${pooldir} to ${BUILD}"
 		exit 1
 	fi
+
+	#Symlink all firmware
+        for firmware in `cat firmware.txt`; do
+                echo "Symlinking ${firmware} into /firmware/ folder"
+                ln -s ../${firmware} ${BUILD}/firmware/`basename ${firmware}`
+        done
+
 	#Copy over the rest of our modified files
 	yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
 	for file in ${yeoldfiles}; do
@@ -131,6 +151,7 @@ create ( ) {
 
 	#Remove old ISO
 	if [ -f ${ISOPATH}/${ISONAME} ]; then
+		echo "Removing old ISO ${ISOPATH}/${ISONAME}"
 		rm -f "${ISOPATH}/${ISONAME}"
 	fi
 
@@ -172,6 +193,11 @@ rebuild
 #Make sure ${BUILD} exists
 if [ ! -d ${BUILD} ]; then
 	mkdir -p ${BUILD}
+fi
+
+#Make sure ${CACHEDIR} exists
+if [ ! -d ${CACHEDIR} ]; then
+	mkdir -p ${CACHEDIR}
 fi
 
 #Download and extract the SteamOSInstaller.zip

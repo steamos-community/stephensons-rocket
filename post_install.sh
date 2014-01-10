@@ -2,12 +2,20 @@
 # script runs after debian installer has done its thing
 
 chroot /target adduser --gecos "" --disabled-password steam
-chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth steam
+chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
+chroot /target usermod -a -G pulse-access desktop
 echo "steam:steam" | chroot /target chpasswd
 cp -r /cdrom/recovery /target/boot > /target/var/log/post_install.log
 mv /target/boot/recovery/live /target/boot/recovery/live-hd
 chroot /target date > /target/etc/skel/.imageversion
 cp /target/etc/skel/.imageversion /target/home/steam/.imageversion
+
+# Pulse /o\
+
+sed -i 's/^set-card-profile/#&/' /target/etc/pulse/system.pa
+sed -i 's/^set-default-sink/#&/' /target/etc/pulse/system.pa
+sed -i 's/^load-module module-device-restore$/#&/' /target/etc/pulse/system.pa
+sed -i 's/^# mode.$/&\nload-module module-stream-restore\nload-module module-device-restore\nload-module module-switch-on-port-available/' /target/etc/pulse/system.pa
 
 #
 # Add post-logon configuration script
