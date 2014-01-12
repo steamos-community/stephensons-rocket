@@ -20,13 +20,13 @@ Improvements
 * SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.
 * SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.
 * SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.
-
+* SteamOS only supports basic partitions. Ye Olde SteamOSe supports LVM and software RAID.
 
 ![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
 
 Planned improvements
 ====================
-* Support for LVM, MD RAID, LUKS encryption
+* Clean up audio support to remove unmute step.
 
 How to install?
 ===============
@@ -72,3 +72,11 @@ How can I help?
 Test it and report back to #steamos on Freenode
 
 Or support me by donating - Donate via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=888397), [Steam](http://steamcommunity.com/id/directhex/wishlist), or [Amazon](http://www.amazon.co.uk/wishlist/LN9AGFCAGAHR). Donations will be used to help with testing - wifi adapters, hard disks, graphics cards, etc.
+
+Special thanks
+==============
+Michael Waltz (ecliptik) for his continued contributions.
+
+Anonymized benefactors for their sponsorship (~400 day VMware key; £30; 1 month reddit Gold; Shoot Many Robots game).
+
+Various Valve engineers for their help.
