@@ -16,7 +16,7 @@ Improvements
 * SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.
 * SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.
 * SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games).
-* SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot on non-LVM non-RAID systems.
+* SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot.
 * SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.
 * SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.
 * SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.
