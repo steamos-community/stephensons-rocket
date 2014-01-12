@@ -1,0 +1,7 @@
+# make your own goddamn ISO.
+
+*.iso
+buildroot
+SteamOSInstaller.zip
+cache
+
