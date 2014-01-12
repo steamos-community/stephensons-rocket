@@ -48,21 +48,22 @@
 <li>SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.</li>
 <li>SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.</li>
 <li>SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.</li>
+<li>SteamOS only supports basic partitions. Ye Olde SteamOSe supports LVM and software RAID.</lI>
 </ul><p><img src="http://i.imgur.com/a3jnZ6r.png" alt="SteamOS running in VMWare Workstation 10"></p>
 
 <h2>
 <a name="planned-improvements" class="anchor" href="#planned-improvements"><span class="octicon octicon-link"></span></a>Planned improvements</h2>
 
 <ul>
-<li>Support for LVM, MD RAID, LUKS encryption.</li>
+<li>Clean up audio support to remove unmute step.</li>
 </ul><h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
 
-<h3>Latest release: 2013-12-19 beta 2 (released 2014-01-05)</h3>
+<h3>Latest release: Release4 (2014-01-08u1) (released 2014-01-12)</h3>
 
-<h3><a href="magnet:?xt=urn:btih:d477fa46779600d162e49bc95de02cc2a34ad535&dn=yeoldesteamos-20131219-beta2.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
+<h3><a href="magnet:?xt=urn:btih:5be21a7a4f4b919e13f65eef113a8bc97e037ad0&dn=yeoldesteamos-release4-20140108u1.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
 
-<h3><a href="http://retro.apebox.org/yeoldesteamos-20131219-beta2.iso.torrent">Torrent</a></h3>
+<h3><a href="http://retro.apebox.org/yeoldesteamos-release4-20140108u1.iso.torrent">Torrent</a></h3>
 
 <p>To get started, download the torrent above.</p>
 
@@ -113,6 +114,14 @@
 
 <ul>
   <li>
+    <h4>Release4 (20140108u1)</h4>
+    <ul>
+      <li>Rebase against Valve 2014-01-08 release</li>
+      <li>Added support for Logical Volume Management (disables recovery partition if used for /, /boot/recovery, or swap)</li>
+      <li>Added support for md software RAID (disables recovery partition if used for /, /boot/recovery, or swap; may also support FakeRAID but untested!)</li>
+    </ul>
+  </li>
+  <li>
     <h4>2013-12-19 beta 2</h4>
     <ul>
       <li>Fixed regression in audio between first and second releases (added steam and desktop users to pulse-access group)</li>
@@ -144,6 +153,10 @@
     </ul>
   </li>
 </ul>
+<h2>Special thanks</h2>
+<p>Michael Waltz (ecliptik) for his continued contributions.</p>
+<p>Anonymized benefactors for their sponsorship (~400 day VMware key; £30; 1 month reddit Gold; Shoot Many Robots game).</p>
+<p>Various Valve engineers for their help.</p>
       </section>
     </div>
 
