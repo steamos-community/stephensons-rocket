@@ -11,7 +11,6 @@ Ye Olde SteamOSe is for you.
 
 # Improvements
 
-
 - SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS.
 - SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.
 - SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.
@@ -34,7 +33,7 @@ A DVD image is always available via BitTorrent at http://directhex.github.io/ste
 
 To get started, download the torrent.
 
-Otherwise, clone this repo, and run gen.sh.
+Otherwise, clone this repo, and run `./gen.sh`.
 
 ## Installing from a DVD
 
@@ -72,7 +71,7 @@ Beyond that, just follow [Valve's instructions from their site](http://store.ste
 
 ## Updating
 
-Before you generate a new image you need to ensure that your pull is up to date:
+Before you generate a new image you need to ensure that your pull is up to date as things change quickly:
 
 - `git pull` in the steamos-installer directory will ensure you have the latest code.
 - `./gen.sh -d` will ensure that you download the latest SteamInstaller.zip
