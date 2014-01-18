@@ -10,7 +10,7 @@ d-i console-setup/ask_detect boolean false
 d-i keymap select us
 
 d-i netcfg/get_hostname string steamos
-d-i netcfg/get_domain string 
+d-i netcfg/get_domain string
 
 ### Mirror settings
 # If you select ftp, the mirror/country string does not need to be set.
@@ -92,6 +92,6 @@ popularity-contest popularity-contest/participate boolean false
 
 #d-i finish-install/reboot_in_progress note
 
-d-i preseed/late_command string /cdrom/post_install.sh
+d-i preseed/late_command string /bin/sh /cdrom/post_install.sh
 
 d-i tasksel/first multiselect standard, desktop
