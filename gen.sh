@@ -38,6 +38,17 @@ deps ( ) {
 		echo "Volume ID is more than 32 characters: ${ISOVNAME}"
 		exit 1
 	fi
+
+	#Check xorriso version is compatible, must be 1.2.4 or higher
+	xorrisover=`xorriso --version 2>&1 | egrep -e "^xorriso version" | awk '{print $4}'`
+	reqxorrisover=1.2.3
+	compare=`awk 'BEGIN{ print "'${reqxorrisover}'"<"'${xorrisover}'" }'`
+	if [ "${compare}" -eq 1 ]; then
+		echo "PASS: xorriso version ${xorrisover} supports required functions."
+	else
+		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version 1.2.4 or higher."
+		exit
+	fi
 }
 
 #Remove the ${BUILD} directory to start from scratch
