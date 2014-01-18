@@ -47,7 +47,7 @@ deps ( ) {
 		echo "PASS: xorriso version ${xorrisover} supports required functions."
 	else
 		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version 1.2.4 or higher."
-		exit
+		exit 1
 	fi
 }
 
