@@ -10,6 +10,8 @@ ISONAME="yeolde.iso"
 ISOVNAME="YeOldeSteamOSe Rel.4 20140108u1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSInstaller.zip"
+MD5SUMFILE="MD5SUMS"
+KNOWNINSTALLER="b011b03eef9e332e49314a05a219f33c"
 
 #Show how to use gen.sh
 usage ( )
@@ -70,6 +72,23 @@ extract ( ) {
 		:
 	else
 		echo "Error unzipping ${STEAMINSTALLFILE} into ${BUILD}!"
+		exit 1
+	fi
+}
+
+verify ( ) {
+	#Does this installer look familiar?
+	upstreaminstallermd5sum=` wget --quiet -O- ${UPSTREAMURL}/download/${MD5SUMFILE} | grep SteamOSInstaller.zip$ | cut -f1 -d' '`
+	localinstallermd5sum=`md5sum ${STEAMINSTALLFILE} | cut -f1 -d' '`
+	if test "${localinstallermd5sum}" = "${KNOWNINSTALLER}"; then
+		echo "Downloaded installer matches this version of gen.sh"
+	elif test "${upstreaminstallermd5sum}" = "${KNOWNINSTALLER}"; then
+		echo "Local installer is missing or obsolete"
+		echo "Upstream version matches expectations, forcing update"
+		redownload="1"
+	else
+		echo "ERROR! Local installer and remote installer both unknown" >&2
+		echo "ERROR! Please update gen.sh to support unknown ${STEAMINSTALLFILE}" >&2
 		exit 1
 	fi
 }
@@ -208,6 +227,9 @@ rebuild
 if [ ! -d ${BUILD} ]; then
 	mkdir -p ${BUILD}
 fi
+
+#Verify we have an expected installer
+verify
 
 #Download and extract the SteamOSInstaller.zip
 extract
