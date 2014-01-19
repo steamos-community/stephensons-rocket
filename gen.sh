@@ -45,7 +45,7 @@ deps ( ) {
 	if dpkg --compare-versions ${xorrisover} ge ${reqxorrisover} >/dev/null 2>&1; then
 		echo "PASS: xorriso version ${xorrisover} supports required functions."
 	else
-		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version 1.2.4 or higher."
+		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version ${reqxorrisover} or higher."
 		exit 1
 	fi
 }
