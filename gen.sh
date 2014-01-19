@@ -41,9 +41,8 @@ deps ( ) {
 
 	#Check xorriso version is compatible, must be 1.2.4 or higher
 	xorrisover=`xorriso --version 2>&1 | egrep -e "^xorriso version" | awk '{print $4}'`
-	reqxorrisover=1.2.3
-	compare=`awk 'BEGIN{ print "'${reqxorrisover}'"<"'${xorrisover}'" }'`
-	if [ "${compare}" -eq 1 ]; then
+	reqxorrisover=1.2.4
+	if dpkg --compare-versions ${xorrisover} ge ${reqxorrisover} >/dev/null 2>&1; then
 		echo "PASS: xorriso version ${xorrisover} supports required functions."
 	else
 		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version 1.2.4 or higher."
