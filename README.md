@@ -90,5 +90,5 @@ Or support me by donating - Donate via [PayPal](https://www.paypal.com/cgi-bin/w
 # Special Thanks
 
 - Michael Waltz (ecliptik) for his continued contributions.
-- Anonymized benefactors for their sponsorship (~400 day VMware key; £30; 1 month reddit Gold; Shoot Many Robots game).
+- Anonymized benefactors for their sponsorship (~400 day VMware key; £60; 1 month reddit Gold; Shoot Many Robots game).
 - Various Valve engineers for their help.
