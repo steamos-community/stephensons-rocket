@@ -12,6 +12,8 @@ d-i keymap select us
 d-i netcfg/get_hostname string steamos
 d-i netcfg/get_domain string
 
+d-i disk-detect/dmraid/enable boolean true
+
 ### Mirror settings
 # If you select ftp, the mirror/country string does not need to be set.
 #d-i mirror/protocol string ftp
