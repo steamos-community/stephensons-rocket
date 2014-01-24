@@ -96,4 +96,4 @@ popularity-contest popularity-contest/participate boolean false
 
 d-i preseed/late_command string /bin/sh /cdrom/post_install.sh
 
-d-i tasksel/first multiselect standard, desktop
+tasksel tasksel/first multiselect standard, desktop
