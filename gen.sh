@@ -6,8 +6,8 @@ APTUDEBCONF="./ftparchive/apt-ftparchive-udeb.conf"
 DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
-ISONAME="yeolde.iso"
-ISOVNAME="YeOldeSteamOSe Rel.4 20140108u1"
+ISONAME="rocket.iso"
+ISOVNAME="Stephensons Rocket 93plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
@@ -124,10 +124,10 @@ verify ( ) {
 	fi
 }
 
-#Configure YeOlde installer by:
+#Configure Rocket installer by:
 #	Removing uneeded debs
 #	Copy over modified/updated debs
-#	Copy over YeOlde files
+#	Copy over Rocket files
 #	Re-generate pressed files
 #	Re-build the cdrom installer package repositories
 #	Generate md5sums
