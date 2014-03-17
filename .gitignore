@@ -2,6 +2,7 @@
 
 *.iso
 buildroot
-SteamOSInstaller.zip
 cache
+archive-mirror
+source-packages
 
