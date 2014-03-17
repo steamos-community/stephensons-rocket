@@ -194,15 +194,6 @@ create ( ) {
 	echo "Genereating Release for ${DISTNAME}"
 	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
 
-	#Replace testing with alchemist
-	testingdir="${BUILD}/dists/testing"
-	echo "Replacing ${testingdir} ..."
-	if [ -d ${testingdir} ]; then
-		rm -fr "${testingdir}"
-		mkdir -p ${testingdir}
-		rsync -a ${BUILD}/dists/${DISTNAME}/ ${testingdir}/
-	fi
-
 	#gpg --default-key "0E1FAD0C" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
 	cd ${BUILD}
 	find . -type f -print0 | xargs -0 md5sum > md5sum.txt
