@@ -135,7 +135,6 @@ verify ( ) {
 create ( ) {
 
 	#Delete 32-bit udebs and d-i, as SteamOS is 64-bit only
-	#TODO: delete entirely needless binary packages too, maybe we can fit on a CD
 	echo "Deleting 32-bit garbage from ${BUILD}..."
 	find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
 	find ${BUILD} -name "*_i386.deb" | egrep -v "(\/eglibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.7\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/)" | xargs rm -f
@@ -167,7 +166,7 @@ create ( ) {
 	fi
 
 	#Fix miscellaneous Valve fuckups
-	rm -f ${BUILD}/pool/non-free/f/fglrx-driver/*9.4*
+	#rm -f ${BUILD}/pool/non-free/f/fglrx-driver/*9.4*
 
 	#Symlink all firmware
         for firmware in `cat firmware.txt`; do
