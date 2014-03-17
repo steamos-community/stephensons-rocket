@@ -9,9 +9,9 @@ ISOPATH="."
 ISONAME="yeolde.iso"
 ISOVNAME="YeOldeSteamOSe Rel.4 20140108u1"
 UPSTREAMURL="http://repo.steampowered.com"
-STEAMINSTALLFILE="SteamOSInstaller.zip"
+STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="b011b03eef9e332e49314a05a219f33c"
+KNOWNINSTALLER="7a502c258043afa9a18360988c82cc02"
 REPODIR="/home/directhex/Scratch/steamos/"
 
 #Show how to use gen.sh
@@ -27,7 +27,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget unzip"
+	deps="apt-utils xorriso syslinux rsync wget unzip p7zip-full"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
@@ -98,17 +98,18 @@ extract ( ) {
 	fi
 
 	#Unzip SteamOSInstaller.zip into BUILD
-	if unzip -uo ${STEAMINSTALLFILE} -d ${BUILD}; then
+	if 7z x ${STEAMINSTALLFILE} -o${BUILD}; then
 		:
 	else
 		echo "Error unzipping ${STEAMINSTALLFILE} into ${BUILD}!"
 		exit 1
 	fi
+	rm -fr ${BUILD}/\[BOOT\]
 }
 
 verify ( ) {
 	#Does this installer look familiar?
-	upstreaminstallermd5sum=` wget --quiet -O- ${UPSTREAMURL}/download/${MD5SUMFILE} | grep SteamOSInstaller.zip$ | cut -f1 -d' '`
+	upstreaminstallermd5sum=` wget --quiet -O- ${UPSTREAMURL}/download/${MD5SUMFILE} | grep SteamOSDVD.iso$ | cut -f1 -d' '`
 	localinstallermd5sum=`md5sum ${STEAMINSTALLFILE} | cut -f1 -d' '`
 	if test "${localinstallermd5sum}" = "${KNOWNINSTALLER}"; then
 		echo "Downloaded installer matches this version of gen.sh"
@@ -175,16 +176,11 @@ create ( ) {
         done
 
 	#Copy over the rest of our modified files
-	yeoldfiles="poweruser.preseed boot isolinux post_install.sh"
-	for file in ${yeoldfiles}; do
+	rocketfiles="default.preseed post_install.sh"
+	for file in ${rocketfiles}; do
 		echo "Copying ${file} into ${BUILD}"
 		cp -pfr ${file} ${BUILD}
 	done
-
-	#Generate default.preseed
-	echo "Generating default.preseed"
-	cp -pfr ${BUILD}/poweruser.preseed ${BUILD}/default.preseed
-	cat default.stub >> ${BUILD}/default.preseed
 
 	#Make sure ${CACHEDIR} exists
 	if [ ! -d ${CACHEDIR} ]; then

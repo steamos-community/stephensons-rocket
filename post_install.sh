@@ -4,45 +4,55 @@
 chroot /target adduser --gecos "" --disabled-password steam
 chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
 chroot /target usermod -a -G pulse-access desktop
-echo "steam:steam" | chroot /target chpasswd
+chroot /target /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam
 cp -r /cdrom/recovery /target/boot > /target/var/log/post_install.log
 mv /target/boot/recovery/live /target/boot/recovery/live-hd
 chroot /target date > /target/etc/skel/.imageversion
 cp /target/etc/skel/.imageversion /target/home/steam/.imageversion
 
-# Pulse /o\
-
-sed -i 's/^set-card-profile/#&/' /target/etc/pulse/system.pa
-sed -i 's/^set-default-sink/#&/' /target/etc/pulse/system.pa
-sed -i 's/^load-module module-device-restore$/#&/' /target/etc/pulse/system.pa
-sed -i 's/^# mode.$/&\nload-module module-stream-restore\nload-module module-device-restore\nload-module module-switch-on-port-available/' /target/etc/pulse/system.pa
-
 #
 # Add post-logon configuration script
 #
-cat - > /target/home/desktop/post_logon.sh << 'EOF'
+cat - > /target/usr/bin/post_logon.sh << 'EOF'
 #! /bin/bash
 if [[ "$UID" -ne "0" ]]
 then
-  sudo /home/desktop/post_logon.sh
+  steam
+  sudo /usr/bin/post_logon.sh
   exit
 fi
-# Enable desktop shortcuts for the GNOME desktop, including return to steam
-gsettings set org.gnome.desktop.background show-desktop-icons true
 /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam -s steamos
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User.SetXSession string:gnome
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1001 org.freedesktop.Accounts.User.SetXSession string:steamos
 for i in `sudo dkms status | cut -d, -f1-2 | tr , / | tr -d ' '`; do sudo dkms remove $i --all; done
-passwd --delete steam
 plymouth-set-default-theme -R steamos
 update-grub
 grub-set-default 0
 # boot into recovery partition on the next boot
 grub-reboot "Capture System Partition"
 passwd --delete desktop
-rm /home/desktop/post_logon.sh && reboot
+rm /etc/sudoers.d/post_logon
+rm /usr/bin/post_logon.sh && reboot
+rm /home/steam/.config/autostart/post_logon.desktop
 EOF
-chmod +x /target/home/desktop/post_logon.sh
+chmod +x /target/usr/bin/post_logon.sh
+
+#
+# Enable anyone to sudo the post logon script
+#
+echo ALL ALL=NOPASSWD: /usr/bin/post_logon.sh > /target/etc/sudoers.d/post_logon
+
+#
+# Set post logon to run at the first logon
+#
+cat - > /target/home/steam/.config/autostart/post_logon.desktop << 'EOF'
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/post_logon.sh
+X-GNOME-Autostart-enabled=true
+Name=postlogon
+EOF
+
 
 #
 # Boot splash screen and GRUB configuration
@@ -60,13 +70,6 @@ cat - > /target/etc/default/grub << EOF
 
 GRUB_DEFAULT=saved
 GRUB_HIDDEN_TIMEOUT_QUIET=true
-EOF
-if test "${ISDUALBOOT}" = N; then
-echo "GRUB_TIMEOUT=1" >> /target/etc/default/grub
-else
-echo "GRUB_TIMEOUT=5" >> /target/etc/default/grub
-fi
-cat - >> /target/etc/default/grub << EOF
 GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
@@ -74,6 +77,13 @@ GRUB_BACKGROUND=/usr/share/plymouth/themes/steamos/steam.png
 GRUB_DISABLE_LINUX_RECOVERY="true"
 GRUB_GFXMODE=1280x800-24
 EOF
+if test "${ISDUALBOOT}" = N; then
+echo "GRUB_TIMEOUT=0" >> /target/etc/default/grub
+echo "GRUB_HIDDEN_TIMEOUT=1" >> /target/etc/default/grub
+else
+echo "GRUB_TIMEOUT=5" >> /target/etc/default/grub
+fi
+
 
 # Add system partition backup/restore to the boot menu
 RECOVERYPARTITION=`mount | grep "/target/boot/recovery " | cut -f1 -d' '`
@@ -81,7 +91,7 @@ ROOTPARTITION=`mount | grep "/target " | cut -f1 -d' ' | cut -f3- -d'/'`
 SWAPPARTITION=`tail -1 /proc/swaps | cut -f1 -d' '`
 ISMDRAID=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "md"`
 ISLVM=`echo "${RECOVERYPARTITION} ${ROOTPARTITION} ${SWAPPARTITION}" | grep "mapper"`
-if test -z "${ISMDRAID}" && test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
+if test -z "${ISLVM}" && test -z "${ISMDRAID}" && test -n "${RECOVERYPARTITION}" && test -n "${ROOTPARTITION}" && test -n "${SWAPPARTITION}"; then
 if test -d /sys/firmware/efi/; then
 ISEFI=Y
 else
@@ -123,6 +133,6 @@ elif test -n "${ISMDRAID}"; then
 echo "One or more of /, /boot/recovery, or swap is on mdraid. Disabling recovery partition support"
 elif test -n "${ISLVM}"; then
 echo "One or more of /, /boot/recovery, or swap is on LVM. Disabling recovery partition support"
-else 
+else
 echo "Missing one of /, /boot/recovery, or swap. Disabling recovery partition support"
 fi
