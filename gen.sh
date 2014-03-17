@@ -12,6 +12,7 @@ UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSInstaller.zip"
 MD5SUMFILE="MD5SUMS"
 KNOWNINSTALLER="b011b03eef9e332e49314a05a219f33c"
+REPODIR="/home/directhex/Scratch/steamos/"
 
 #Show how to use gen.sh
 usage ( )
@@ -58,6 +59,25 @@ rebuild ( ) {
 		echo "Building ${BUILD} from scratch"
 		rm -fr "${BUILD}"
 	fi
+}
+
+#Report on obsolete packages
+obsoletereport ( ) {
+	echo "Reporting on packages which are older in ${BUILD} than ${REPODIR}"
+	cd ${BUILD}/pool/
+	for i in */*/*/*.*deb
+		do PKGNAME=`basename $i | cut -f1 -d'_'`
+		ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
+		PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
+		DEBTYPE=`basename $i | sed 's/.*\.//g'`
+		NEWPKGVER=`if [ -e ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} ]; then basename ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | cut -f2 -d'_'; else echo NOTFOUND; fi`
+		if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
+			then if [ "x${NEWPKGVER}" != "xNOTFOUND" ]
+				then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+			fi
+		fi
+	done
+	cd -
 }
 
 #Extract the upstream SteamOSInstaller.zip from repo.steampowered.com
@@ -244,5 +264,8 @@ verify
 #Download and extract the SteamOSInstaller.zip
 extract
 
-#Build everything for YeOlde installer
+#Report on packages where newer is in the archive
+obsoletereport
+
+#Build everything for Rocket installer
 create

@@ -5,6 +5,7 @@ buildroot
 SteamOSInstaller.zip
 SteamOSInstaller.zip.bak
 cache
+archive-mirror
 source-packages/*/
 *.build
 *.changes
