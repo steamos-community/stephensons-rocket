@@ -4,11 +4,11 @@
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ye Olde SteamOSe : a modified SteamOS installer, with support for older and virtualized computers" />
+    <meta name="description" content="Stephenson's Rocket : a modified SteamOS installer, with wider support for older and more complex computers" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Ye Olde SteamOSe</title>
+    <title>Stephenson's Rocket</title>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -29,9 +29,9 @@
     <div id="header_wrap" class="outer">
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/directhex/steamos-installer">View on GitHub</a>
-
-          <h1 id="project_title">Ye Olde SteamOSe</h1>
-          <h2 id="project_tagline">a modified SteamOS installer, with support for older and virtualized computers</h2>
+          <img src="images/rocket.jpg" width="531" height="371" />
+          <h1 id="project_title">Stephenson's Rocket</h1>
+          <h2 id="project_tagline">a modified SteamOS installer, with wider support for older and more complex computers</h2>
 
         </header>
     </div>
@@ -40,42 +40,40 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h2>
-<a name="the-future-is-here-but-its-a-bit-new-isnt-it" class="anchor" href="#the-future-is-here-but-its-a-bit-new-isnt-it"><span class="octicon octicon-link"></span></a>The future is here, but it's a bit new isn't it?</h2>
+<a name="TAFKAYOS" class="anchor" href="#TAFKAYOS"><span class="octicon octicon-link"></span></a>The Artist Formerly Known As Ye Olde SteamOSe</h2>
 
 <p>SteamOS is now shipping, in beta form at least, and it's all cool and stuff.</p>
 
-<p>But what about those of us without a modern, UEFI-based computer spare?</p>
+<p>Valve have now integrated most of the improvements from Ye Olde SteamOSe, such as BIOS and DVD support, into their installer. You can download it from <a href="http://repo.steampowered.com/download/SteamOSDVD.iso">here</a>.</p>
 
-<p>Ye Olde SteamOSe is for you.</p>
+<p>Stephenson's Rocket replaces the Ye Olde SteamOSe project by building back on Valve's installer with bug fixes and improvements - especially hardware support.</p>
+
+<p>This kind of collaborative development demonstrates the power of Open Source - and remember, you can contribute to Stephenson's Rocket too! Click "View on GitHub" at the top of the screen to get started, and watch the development tutorial video linked below!</p>
 
 <h2>
 <a name="improvements" class="anchor" href="#improvements"><span class="octicon octicon-link"></span></a>Improvements</h2>
 
 <ul>
-<li>SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS.</li>
-<li>SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.</li>
-<li>SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.</li>
-<li>SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games).</li>
-<li>SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot.</li>
-<li>SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.</li>
-<li>SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.</li>
-<li>SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.</li>
-<li>SteamOS only supports basic partitions. Ye Olde SteamOSe supports LVM and software RAID.</lI>
+<li>SteamOS only supports Realtek networking, or firmware-free networking. Stephenson's Rocket supports everything a modern Linux does, including WiFi.</li>
+<li>SteamOS monopolizes drives. Stephenson's Rocket can resize NTFS partitions.</li>
+<li>SteamOS only supports basic partitions. Stephenson's Rocket supports LVM and RAID.</li>
+<li>SteamOS requires a Radeon 5000 or newer for ATI users. Stephenson's Rocket will use the Open Source driver instead on older cards.</li>
+<li>SteamOS is only updated when Valve have time. Stephenson's Rocket comes with the tools to update it with the latest stuff yourself!</li>
 </ul><p><img src="http://i.imgur.com/a3jnZ6r.png" alt="SteamOS running in VMWare Workstation 10"></p>
 
 <h2>
 <a name="planned-improvements" class="anchor" href="#planned-improvements"><span class="octicon octicon-link"></span></a>Planned improvements</h2>
 
 <ul>
-<li>Clean up audio support to remove unmute step.</li>
+<li>Support NVIDIA cards no longer supported in current nvidia-glx driver.</li>
 </ul><h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
 
-<h3>Latest release: Release4 (2014-01-08u1) (released 2014-01-12)</h3>
+<h3>Latest release: 1.0 93plus1 (released 2014-03-19)</h3>
 
 <h3><a href="magnet:?xt=urn:btih:5be21a7a4f4b919e13f65eef113a8bc97e037ad0&dn=yeoldesteamos-release4-20140108u1.iso&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce">Magnet</a></h3>
 
-<h3><a href="http://retro.apebox.org/yeoldesteamos-release4-20140108u1.iso.torrent">Torrent</a></h3>
+<h3><a href="http://retro.apebox.org/stephensonsrocket-93plus1.iso.torrent">Torrent</a></h3>
 
 <p>To get started, download the torrent above.</p>
 
@@ -93,7 +91,7 @@
 
 <h4>Installing from USB (Linux)</h4>
 
-<p>As root (e.g. use &quot;sudo&quot;) run &quot;dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX&quot; - sdX should be the USB stick device (check &quot;dmesg&quot; immediately after plugging it in, you should see the device. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.</p>
+<p>As root (e.g. use &quot;sudo&quot;) run &quot;dd bs=1M if=/path/to/rocket.iso of=/dev/sdX&quot; - sdX should be the USB stick device (check &quot;dmesg&quot; immediately after plugging it in, you should see the device. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.</p>
 
 <h4>Installing from USB (Windows)</h4>
 
@@ -105,16 +103,15 @@
 
 <p><iframe width="560" height="315" src="//www.youtube.com/embed/iiidu3jHWLQ" frameborder="0" allowfullscreen></iframe></p>
 
-<p>For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented <a href="https://github.com/directhex/steamos-installer/wiki/Power-User-install">on the Wiki</a>.</p>
+<p>For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" option. Use of this mode is documented in the support video above.</p>
 
-<p>Beyond that, just follow Valve's instructions from <a href="http://store.steampowered.com/steamos/buildyourown">their site</a> - Ye Olde SteamOSe should behave <i>exactly</i> like the real SteamOS, except it works on more systems</p>
+<p>Beyond that, just follow Valve's instructions from <a href="http://store.steampowered.com/steamos/buildyourown">their site</a> - Stephenson's Rocket should behave <i>exactly</i> like the real SteamOS, except it works on more systems</p>
 
 <h2>
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known issues</h2>
 
 <ul>
 <li>3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.</li>
-<li>Sound card selection, volume levels, etc, must be set with pavucontrol, not the GNOME volume slider.</li>
 </ul>
 
 <h2>
@@ -127,6 +124,15 @@
 <h2>Version History</h2>
 
 <ul>
+  <li>
+    <h4>1.0 93plus1</h4>
+    <ul>
+      <li>Rebase against Valve 2014-02-17 ISO combined with updatelevel 93 packages from alchemist_beta (Rocket GitHub issue <a href="https://github.com/directhex/steamos-installer/issues/29">29</a>, <a href="https://github.com/directhex/steamos-installer/issues/30">30</a>, <a href="https://github.com/directhex/steamos-installer/issues/33">33</a>)</li>
+      <li>Added support for dmraid (software RAID; tested on Intel only)</li>
+      <li>Added support for ATI cards not supported by proprietary fglrx driver. Tested on Radeon 4550</li>
+      <li>Include patched partman-target.udeb (Valve GitHub issue <a href="https://github.com/ValveSoftware/SteamOS/issues/161">161</a>)</li>
+    </ul>
+  </li>
   <li>
     <h4>Release4 (20140108u1)</h4>
     <ul>
@@ -142,7 +148,7 @@
       <li>Modified Pulse config to not force a specific sound card, and to restore card volume on boot</li>
       <li>Shipped a replacement debootstrap, which will not fail at random on users' systems when generating their own image</li>
       <li>Included all non-Free firmware from Debian Wheezy</li>
-      <li>Added ntfsprogs-udeb to allow NTFS resizing in the installer</li>
+      <li>Added ntfsprogs-udeb to allow NTFS resizing in the installer (Valve GitHub issue <a href="https://github.com/ValveSoftware/SteamOS/issues/88">88</a>)</li>
       <li>Deleted unneeded 32-bit installer files, freeing about 300MB from the image size</li>
       <li>Include pavucontrol in the installaton</li>
     </ul>
@@ -177,7 +183,8 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Ye Olde SteamOSe maintained by <a href="https://github.com/directhex">directhex</a></p>
+        <p class="copyright">Stephenson's Rocket maintained by <a href="https://github.com/directhex">directhex</a></p>
+        <p class="copyright">Rocket illustration copyright expired, from <a href="http://commons.wikimedia.org/wiki/File:Stephenson%27s_Rocket_drawing.jpg">Wikimedia Commons</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
