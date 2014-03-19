@@ -1,31 +1,30 @@
 # steamos-installer
 
-Ye Olde SteamOSe - a modified SteamOS installer, with support for older and virtualized computers
+Stephenson's Rocket - a modified SteamOS installer, with wider support for more complex computers
 
-The future is here, but it's a bit new isn't it?
+# The Artist Formerly Known As Ye Olde SteamOSe
+
 SteamOS is now shipping, in beta form at least, and it's all cool and stuff.
 
-But what about those of us without a modern, UEFI-based computer spare?
+Valve have now integrated most of the improvements from Ye Olde SteamOSe, such as BIOS and DVD support, into their installer. You can download it from [here](http://repo.steampowered.com/download/SteamOSDVD.iso).
 
-Ye Olde SteamOSe is for you.
+Stephenson's Rocket replaces the Ye Olde SteamOSe project by building back on Valve's installer with bug fixes and improvements - especially hardware support.
+
+This kind of collaborative development demonstrates the power of Open Source - and remember, you can contribute to Stephenson's Rocket too! Click "View on GitHub" at the top of the screen to get started, and watch the development tutorial video linked below!
 
 # Improvements
 
-- SteamOS requires UEFI. Ye Olde SteamOSe works with UEFI or BIOS.
-- SteamOS requires a 2GB USB Stick to install. Ye Olde SteamOSe works from a DVD or a 1GB USB Stick.
-- SteamOS requires a real computer. Ye Olde SteamOSe has 3D acceleration on VMWare and Virtualbox, out of the box.
-- SteamOS says it needs 500GB of disk space, but that's a lie. Ye Olde SteamOSe requires the same amount of space as SteamOS really does - 40.5GB minimum (of that 10GB and any more available is for games).
-- SteamOS takes over your PC. Ye Olde SteamOSe supports dual-boot.
-- SteamOS only supports Realtek networking, or firmware-free networking. Ye Olde SteamOSe supports everything a modern Linux does, including WiFi.
-- SteamOS monopolizes drives. Ye Olde SteamOSe can resize NTFS partitions.
-- SteamOS only outputs to HDMI audio. Ye Olde SteamOSe supports almost any sound card with a couple of clicks.
-- SteamOS only supports basic partitions. Ye Olde SteamOSe supports LVM and software RAID.
+- SteamOS only supports Realtek networking, or firmware-free networking. Stephenson's Rocket supports everything a modern Linux does, including WiFi.
+- SteamOS monopolizes drives. Stephenson's Rocket can resize NTFS partitions.
+- SteamOS only supports basic partitions. Stephenson's Rocket supports LVM and RAID.
+- SteamOS requires a Radeon 5000 or newer for ATI users. Stephenson's Rocket will use the Open Source driver instead on older cards.
+- SteamOS is only updated when Valve have time. Stephenson's Rocket comes with the tools to update it with the latest stuff yourself!
 
 ![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
 
 # Planned improvements
 
-- Clean up audio support to remove unmute step.
+- Support NVIDIA cards no longer supported in current nvidia-glx driver.
 
 # How to install?
 
@@ -53,7 +52,7 @@ Plug in the USB stick and run `dmesg`; look for a line similar to this:
 
 In this case, `sdc` is the device name for the USB stick you just inserted. Now we put the installer on the stick, as root (e.g. use `sudo`) run 
 
-    dd bs=1M if=/path/to/yeolde.iso of=/dev/sdX 
+    dd bs=1M if=/path/to/rocket.iso of=/dev/sdX 
     
 sdX should be the USB stick device from the information you received from `dmesg`. Be sure to use sdX, not sdX1 or sdX2. Then boot into the stick.
 
@@ -65,21 +64,20 @@ Download [Win32 Disk Imager](http://sourceforge.net/projects/win32diskimager/) a
 
 Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.
 
-For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" or "Power User" options - thse are documented on the Wiki.
+For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" option. Use of this mode is documented in the support video [here](YT).
 
-Beyond that, just follow [Valve's instructions from their site](http://store.steampowered.com/steamos/buildyourown), steps 7 onwards under "Custom Installation" - Ye Olde SteamOSe should behave exactly like the real SteamOS, except it works on more systems.
+Beyond that, just follow Valve's instructions from [their site](http://store.steampowered.com/steamos/buildyourown) - Stephenson's Rocket should behave exactly like the real SteamOS, except it works on more systems
 
 ## Updating
 
 Before you generate a new image you need to ensure that your pull is up to date as things change quickly:
 
 - `git pull` in the steamos-installer directory will ensure you have the latest code.
-- `./gen.sh -d` will ensure that you download the latest SteamInstaller.zip
+- `./gen.sh -d` will ensure that you download the latest SteamOSDVD.iso
 
 # Known issues and workarounds
 
 - 3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.
-- Sound card selection, volume levels, etc, must be set with pavucontrol, not the GNOME volume slider.
 
 # How can I help?
 
@@ -90,5 +88,8 @@ Or support me by donating - Donate via [PayPal](https://www.paypal.com/cgi-bin/w
 # Special Thanks
 
 - Michael Waltz (ecliptik) for his continued contributions.
-- Anonymized benefactors for their sponsorship (~400 day VMware key; £60; 1 month reddit Gold; Shoot Many Robots game).
+- Anonymized benefactors for their sponsorship (~400 day VMware key; £60; 1 month reddit Gold; Shoot Many Robots game; Civ5 gold upgrade).
 - Various Valve engineers for their help.
+- steam-scene.com for awarding the top prize in their SteamOS modding contest to Ye Olde SteamOSe
+- Valve Software for their kind donation of a Steam Controller prototype
+- Collabora Ltd for their kind donation of 2 x 500GB hard disks for testing
