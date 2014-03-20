@@ -1,6 +1,14 @@
 #! /bin/sh
 # script runs after debian installer has done its thing
 
+#Fix dmraid
+if test -x /sbin/dmraid
+then
+  for i in `dmraid -c -s`
+    do sed -ir "s#(/dev/mapper/${i})p([0-9]+\s)#\1\2#" /etc/fstab
+  done
+fi
+
 chroot /target adduser --gecos "" --disabled-password steam
 chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
 chroot /target usermod -a -G pulse-access desktop

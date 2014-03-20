@@ -175,7 +175,7 @@ create ( ) {
         done
 
 	#Copy over the rest of our modified files
-	rocketfiles="post_install.sh boot isolinux"
+	rocketfiles="default.preseed post_install.sh boot isolinux"
 	for file in ${rocketfiles}; do
 		echo "Copying ${file} into ${BUILD}"
 		cp -pfr ${file} ${BUILD}
