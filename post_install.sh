@@ -5,7 +5,7 @@
 if test -x /sbin/dmraid
 then
   for i in `dmraid -c -s`
-    do sed -ir "s#(/dev/mapper/${i})p([0-9]+\s)#\1\2#" /etc/fstab
+    do sed -ir "s#(/dev/mapper/${i})p([0-9]+\s)#\1\2#" /target/etc/fstab
   done
 fi
 
