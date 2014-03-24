@@ -66,6 +66,7 @@
 
 <ul>
 <li>Support NVIDIA cards no longer supported in current nvidia-glx driver.</li>
+<li>Support NVIDIA cards using the new 2014 Maxwell architecture, including the GTX 750 series, with the 334.21 driver.</li>
 </ul><h2>
 <a name="how-to-install" class="anchor" href="#how-to-install"><span class="octicon octicon-link"></span></a>How to install?</h2>
 
@@ -112,12 +113,14 @@
 
 <ul>
 <li>3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.</li>
+<li>Crashes and strange behaviours on NVIDIA Maxwell cards with certain OpenGL games and applications. This requires an update to the lastest driver to fix, which has not yet been packaged for APT.</li>
+  
 </ul>
 
 <h2>
 <a name="how-can-i-help" class="anchor" href="#how-can-i-help"><span class="octicon octicon-link"></span></a>How can I help?</h2>
 
-<p>Test it and report back to #steamos on Freenode</p>
+<p>Test it and report back to #steamos on Freenode.</p>
 
 <p>Or support me by donating - Donate via <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=888397">PayPal</a>, <a href="http://steamcommunity.com/id/directhex/wishlist">Steam</a>, or <a href="http://www.amazon.co.uk/wishlist/LN9AGFCAGAHR">Amazon</a>. Donations will be used to help with testing - wifi adapters, hard disks, graphics cards, etc.</p>
 
@@ -150,7 +153,7 @@
       <li>Included all non-Free firmware from Debian Wheezy</li>
       <li>Added ntfsprogs-udeb to allow NTFS resizing in the installer (Valve GitHub issue <a href="https://github.com/ValveSoftware/SteamOS/issues/88">88</a>)</li>
       <li>Deleted unneeded 32-bit installer files, freeing about 300MB from the image size</li>
-      <li>Include pavucontrol in the installaton</li>
+      <li>Include pavucontrol in the installation</li>
     </ul>
   </li>
   <li>
@@ -173,7 +176,7 @@
     </ul>
   </li>
 </ul>
-<h2>Special thanks</h2>
+<h2>Special thanks:</h2>
 <p>Michael Waltz (ecliptik) for his continued contributions.</p>
 <p>Anonymized benefactors for their sponsorship (~400 day VMware key; £60; 1 month reddit Gold; Shoot Many Robots game; Civ5 gold upgrade).</p>
 <p>Various Valve engineers for their help.</p>
