@@ -25,6 +25,7 @@ This kind of collaborative development demonstrates the power of Open Source - a
 # Planned improvements
 
 - Support NVIDIA cards no longer supported in current nvidia-glx driver.
+- Support NVIDIA cards using the new 2014 Maxwell architecture, including the GTX 750 series, with the 334.21 driver.
 
 # How to install?
 
@@ -42,7 +43,7 @@ Just burn the ISO to a blank DVD from your favourite tool, and boot it.
 
 Open a Terminal window from the Utilities section of Applications.
 
-Type `diskutil list` to get a list of devices - one of them will be your USB stick (e.g. `/dev/disk2`). Follow the Linux instructions below, with this `/dev/diskX` entry instead of `/dev/sdX`
+Type `diskutil list` to get a list of devices - one of them will be your USB stick (e.g. `/dev/disk2`). Follow the Linux instructions below, with this `/dev/rdiskX` entry instead of `/dev/sdX`
 
 ## Installing from USB (Linux)
 
@@ -78,6 +79,7 @@ Before you generate a new image you need to ensure that your pull is up to date 
 # Known issues and workarounds
 
 - 3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.
+- Crashes and strange behaviours on NVIDIA Maxwell cards with certain OpenGL games and applications. This requires an update to the lastest driver to fix, which has not yet been packaged for APT.
 
 # How can I help?
 
