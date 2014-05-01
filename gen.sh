@@ -7,7 +7,7 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 96plus1"
+ISOVNAME="Stephensons Rocket 98plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
@@ -144,7 +144,7 @@ create ( ) {
 
 	#Copy over updated and added debs
 	#First remove uneeded debs
-	debstoremove="pool/main/s/steamos-base-files/steamos-base-files_2.20+bsos1_all.deb pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/lvm2_2.02.95-8_amd64.deb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb"
+	debstoremove="pool/main/s/steamos-base-files/steamos-base-files_2.20+bsos1_all.deb pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/lvm2_2.02.95-8_amd64.deb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb pool/main/f/file/file_5.11-2+deb7u2+bsos1_amd64.deb pool/main/f/file/libmagic1_5.11-2+deb7u2+bsos1_amd64.deb pool/main/c/curl/curl_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/c/curl/libcurl3-gnutls_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/c/curl/libcurl3_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/s/steamos-updatelevel/steamos-updatelevel_96_all.deb pool/main/s/steamos-compositor/steamos-compositor_1.17.3+bsos1_amd64.deb pool/main/o/openssl/libcrypto1.0.0-udeb_1.0.1e-2+deb7u4+bsos1_amd64.udeb pool/main/o/openssl/libssl1.0.0_1.0.1e-2+deb7u4+bsos1_amd64.deb pool/main/o/openssh/openssh-client_6.0p1-4+bsos6_amd64.deb pool/main/o/openssh/openssh-server_6.0p1-4+bsos6_amd64.deb pool/main/o/openssh/openssh-client-udeb_6.0p1-4+bsos6_amd64.udeb pool/main/o/openssh/openssh-server-udeb_6.0p1-4+bsos6_amd64.udeb"
 	for debremove in ${debstoremove}; do
 		if [ -f ${BUILD}/${debremove} ]; then
 			echo "Removing ${BUILD}/${debremove}..."
@@ -165,9 +165,6 @@ create ( ) {
 		echo "Error copying ${pooldir} to ${BUILD}"
 		exit 1
 	fi
-
-	#Fix miscellaneous Valve fuckups
-	#rm -f ${BUILD}/pool/non-free/f/fglrx-driver/*9.4*
 
 	#Symlink all firmware
         for firmware in `cat firmware.txt`; do
@@ -204,6 +201,10 @@ create ( ) {
 		echo "Removing old ISO ${ISOPATH}/${ISONAME}"
 		rm -f "${ISOPATH}/${ISONAME}"
 	fi
+
+	sed -i 's/fglrx-driver//' ${BUILD}/.disk/base_include
+	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
+	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
 
 	#Build the ISO
 	echo "Building ${ISOPATH}/${ISONAME} ..."
