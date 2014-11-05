@@ -81,11 +81,11 @@ obsoletereport ( ) {
 	cd -
 }
 
-#Extract the upstream SteamOSInstaller.zip from repo.steampowered.com
+#Extract the upstream SteamOSDVD.iso from repo.steampowered.com
 extract ( ) {
-	#Download SteamOSInstaller.zip
+	#Download SteamOSDVD.iso
 	steaminstallerurl="${UPSTREAMURL}/download/${STEAMINSTALLFILE}"
-	#Download if the zip doesn't exist or the -d flag was passed
+	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
 		if wget -O ${STEAMINSTALLFILE} ${steaminstallerurl}; then
@@ -98,11 +98,11 @@ extract ( ) {
 		echo "Using existing ${STEAMINSTALLFILE}"
 	fi
 
-	#Unzip SteamOSInstaller.zip into BUILD
+	#Extract SteamOSDVD.iso into BUILD
 	if 7z x ${STEAMINSTALLFILE} -o${BUILD}; then
 		:
 	else
-		echo "Error unzipping ${STEAMINSTALLFILE} into ${BUILD}!"
+		echo "Error extracting ${STEAMINSTALLFILE} into ${BUILD}!"
 		exit 1
 	fi
 	rm -fr ${BUILD}/\[BOOT\]
