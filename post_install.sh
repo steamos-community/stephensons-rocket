@@ -25,14 +25,36 @@ cat - > /target/usr/bin/post_logon.sh << 'EOF'
 #! /bin/bash
 if [[ "$UID" -ne "0" ]]
 then
-  steam
+  #
+  # Wait up to 10 seconds and see if we have a connection. If not, pop the network dialog
+  #
+  nm-online -t 10 -q
+  if [ "$?" -ne "0" ]; then
+    while true;
+    do
+      zenity --info --title="SteamOS Install" --text="SteamOS cannot connect to the internet. An internet connection is required to continue installation. If you have a wireless network, configure it now."
+      nm-connection-editor --type=802-11-wireless --show
+      nm-online -t 30
+      if [ "$?" -eq "0" ]; then 
+        break
+      fi
+      echo "Still waiting for internet connection..."
+    done
+  fi
+  # dummy file to skip the Steam Install Agreement dialog
+  touch ~/.steam/steam_install_agreement.txt
+  # pass -exitsteam so steam doesn't actually run after bootstrapping
+  steam -exitsteam
+  rm ~/.steam/starting
+  cp ~/.local/share/Steam/steam_install_agreement.txt ~/.steam/steam_install_agreement.txt
   sudo /usr/bin/post_logon.sh
   exit
 fi
+
 /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam -s steamos
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User.SetXSession string:gnome
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1001 org.freedesktop.Accounts.User.SetXSession string:steamos
-for i in `sudo dkms status | cut -d, -f1-2 | tr , / | tr -d ' '`; do sudo dkms remove $i --all; done
+(for i in `dkms status | cut -d, -f1-2 | tr , / | tr -d ' '`; do sudo dkms remove $i --all; done) | zenity --progress --no-cancel --pulsate --auto-close --text="Configuring Kernel Modules" --title="SteamOS Installation"
 plymouth-set-default-theme -R steamos
 update-grub
 grub-set-default 0
@@ -83,7 +105,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
 GRUB_BACKGROUND=/usr/share/plymouth/themes/steamos/steam.png
 GRUB_DISABLE_LINUX_RECOVERY="true"
-GRUB_GFXMODE=1280x800-24
+GRUB_GFXMODE=auto
 EOF
 if test "${ISDUALBOOT}" = N; then
 echo "GRUB_TIMEOUT=0" >> /target/etc/default/grub
@@ -113,7 +135,7 @@ if test "${ISEFI}" = "Y"; then
 echo "  fakebios" >> /target/etc/grub.d/40_custom
 fi
 cat - >> /target/etc/grub.d/40_custom << EOF
-  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -q2 -c -j2 -z1p -i 2000 -sc -p true saveparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
+  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -q2 -j2 -z1p -i 2000 -sc -p true saveparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
   initrd /live-hd/initrd.img
 }
 menuentry "Restore System Partition"{
