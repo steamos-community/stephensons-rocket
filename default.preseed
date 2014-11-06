@@ -2,6 +2,36 @@
 # Preseeding only locale sets language, country and locale.
 d-i debian-installer/locale string en_US
 
+# Optionally specify additional locales to be generated.
+d-i localechooser/supported-locales multiselect \
+                en_US.UTF-8, \
+                de_DE.UTF-8, \
+                fr_FR.UTF-8, \
+                it_IT.UTF-8, \
+                ko_KR.UTF-8, \
+                es_ES.UTF-8, \
+                zh_CN.UTF-8, \
+                zh_TW.UTF-8, \
+                ru_RU.UTF-8, \
+                th_TH.UTF-8, \
+                ja_JP.UTF-8, \
+                pt_PT.UTF-8, \
+                pl_PL.UTF-8, \
+                da_DK.UTF-8, \
+                nl_NL.UTF-8, \
+                fi_FI.UTF-8, \
+                nb_NO.UTF-8, \
+                sv_SE.UTF-8, \
+                hu_HU.UTF-8, \
+                cs_CZ.UTF-8, \
+                ro_RO.UTF-8, \
+                tr_TR.UTF-8, \
+                pt_BR.UTF-8, \
+                bg_BG.UTF-8, \
+                el_GR.UTF-8, \
+                ar_AE.UTF-8, \
+                uk_UA.UTF-8
+
 # Keyboard selection.
 # Disable automatic (interactive) keymap detection.
 d-i console-setup/ask_detect boolean false
@@ -86,7 +116,7 @@ d-i apt-setup/local0/source boolean true
 # d-i debian-installer/allow_unauthenticated boolean true
 
 # Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 firmware-linux-nonfree virtualbox-guest-x11 fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 steam-launcher
+d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 steam-launcher 
 
 
 # Whether to upgrade packages after debootstrap.
@@ -176,4 +206,3 @@ d-i partman-auto/expert_recipe string                         \
                       label { steam }                         \
                       mountpoint{ /home }                     \
               .
-
