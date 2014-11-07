@@ -63,22 +63,26 @@ rebuild ( ) {
 
 #Report on obsolete packages
 obsoletereport ( ) {
-	echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
-	REPODIR="`realpath ${REPODIR}`"
-	cd ${BUILD}/pool/
-	for i in */*/*/*.*deb
-		do PKGNAME=`basename $i | cut -f1 -d'_'`
-		ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
-		PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
-		DEBTYPE=`basename $i | sed 's/.*\.//g'`
-		if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
-			then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
-			if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
-				then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+	if [ ! -d ${REPODIR} ]; then
+		echo "No ${REPODIR} directory exists, run archive-mirror.sh if you want this script to report obsolete packages"
+	else
+		echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
+		REPODIR="`realpath ${REPODIR}`"
+		cd ${BUILD}/pool/
+		for i in */*/*/*.*deb
+			do PKGNAME=`basename $i | cut -f1 -d'_'`
+			ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
+			PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
+			DEBTYPE=`basename $i | sed 's/.*\.//g'`
+			if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
+				then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
+				if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
+					then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+				fi
 			fi
-		fi
-	done
-	cd -
+		done
+		cd -
+	fi
 }
 
 #Extract the upstream SteamOSDVD.iso from repo.steampowered.com
