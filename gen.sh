@@ -221,6 +221,18 @@ create ( ) {
 		-no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus ${BUILD}
 }
 
+#Generate a file with the md5 checksum in it
+mkchecksum ( ) {
+	echo "Generating checksum..."
+	md5sum ${ISONAME} > "${ISONAME}.md5"
+	if [ -f ${ISONAME}.md5 ]; then
+		echo "Checksum saved in ${ISONAME}.md5"
+	else
+		echo "Failed to save checksum"
+	fi
+}
+
+
 #Setup command line arguments
 while getopts "hd" OPTION; do
         case ${OPTION} in
@@ -259,6 +271,8 @@ extract
 #Build everything for Rocket installer
 create
 
+#Generate rocket.iso.md5 file
+mkchecksum
+
 #Report on packages where newer is in the archive
 obsoletereport
-
