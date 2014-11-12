@@ -27,7 +27,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget unzip p7zip-full realpath"
+	deps="apt-utils xorriso syslinux rsync wget unzip p7zip-full realpath wget"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
