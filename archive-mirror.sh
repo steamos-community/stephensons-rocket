@@ -1,4 +1,10 @@
 #!/bin/sh
+#This script will download the SteamOS repo into the archive-mirror directory
+
+# Set variables
+$PWD=$(pwd)
+
+# Check if the required dependencies are installed
 deps ( ) {
 	#Check dependencies
 	deps="debmirror"
@@ -19,6 +25,6 @@ deps ( ) {
 
 deps
 mkdir -p archive-mirror/
-debmirror -p --nosource --keyring=./valve-archive-keyring.gpg \
+debmirror -p --nosource --keyring=${PWD}/valve-archive-keyring.gpg \
 	--rsync-extra=none -s main,contrib,non-free,main/debian-installer -a amd64,i386 -v \
 	-d alchemist,alchemist_beta --method=http -h repo.steampowered.com -r steamos archive-mirror/
