@@ -7,11 +7,11 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 98plus1"
+ISOVNAME="Stephensons Rocket 145plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="97af20c00ca5735436f20ce7e99e9a96"
+KNOWNINSTALLER="e0583f17ea8f6d5307b74a0d28a99a5e"
 REPODIR="./archive-mirror/"
 
 #Show how to use gen.sh
@@ -27,7 +27,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget unzip p7zip-full realpath"
+	deps="apt-utils xorriso syslinux rsync wget unzip p7zip-full realpath wget"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
@@ -63,29 +63,33 @@ rebuild ( ) {
 
 #Report on obsolete packages
 obsoletereport ( ) {
-	echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
-	REPODIR="`realpath ${REPODIR}`"
-	cd ${BUILD}/pool/
-	for i in */*/*/*.*deb
-		do PKGNAME=`basename $i | cut -f1 -d'_'`
-		ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
-		PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
-		DEBTYPE=`basename $i | sed 's/.*\.//g'`
-		if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
-			then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
-			if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
-				then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+	if [ ! -d ${REPODIR} ]; then
+		echo "No ${REPODIR} directory exists, run archive-mirror.sh if you want this script to report obsolete packages"
+	else
+		echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
+		REPODIR="`realpath ${REPODIR}`"
+		cd ${BUILD}/pool/
+		for i in */*/*/*.*deb
+			do PKGNAME=`basename $i | cut -f1 -d'_'`
+			ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
+			PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
+			DEBTYPE=`basename $i | sed 's/.*\.//g'`
+			if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
+				then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
+				if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
+					then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+				fi
 			fi
-		fi
-	done
-	cd -
+		done
+		cd -
+	fi
 }
 
-#Extract the upstream SteamOSInstaller.zip from repo.steampowered.com
+#Extract the upstream SteamOSDVD.iso from repo.steampowered.com
 extract ( ) {
-	#Download SteamOSInstaller.zip
+	#Download SteamOSDVD.iso
 	steaminstallerurl="${UPSTREAMURL}/download/${STEAMINSTALLFILE}"
-	#Download if the zip doesn't exist or the -d flag was passed
+	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
 		if wget -O ${STEAMINSTALLFILE} ${steaminstallerurl}; then
@@ -98,11 +102,11 @@ extract ( ) {
 		echo "Using existing ${STEAMINSTALLFILE}"
 	fi
 
-	#Unzip SteamOSInstaller.zip into BUILD
+	#Extract SteamOSDVD.iso into BUILD
 	if 7z x ${STEAMINSTALLFILE} -o${BUILD}; then
 		:
 	else
-		echo "Error unzipping ${STEAMINSTALLFILE} into ${BUILD}!"
+		echo "Error extracting ${STEAMINSTALLFILE} into ${BUILD}!"
 		exit 1
 	fi
 	rm -fr ${BUILD}/\[BOOT\]
@@ -144,7 +148,7 @@ create ( ) {
 
 	#Copy over updated and added debs
 	#First remove uneeded debs
-	debstoremove="pool/main/s/steamos-base-files/steamos-base-files_2.20+bsos1_all.deb pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/lvm2_2.02.95-8_amd64.deb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb pool/main/f/file/file_5.11-2+deb7u2+bsos1_amd64.deb pool/main/f/file/libmagic1_5.11-2+deb7u2+bsos1_amd64.deb pool/main/c/curl/curl_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/c/curl/libcurl3-gnutls_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/c/curl/libcurl3_7.26.0-1+wheezy8+bsos1_amd64.deb pool/main/s/steamos-updatelevel/steamos-updatelevel_96_all.deb pool/main/s/steamos-compositor/steamos-compositor_1.17.3+bsos1_amd64.deb pool/main/o/openssl/libcrypto1.0.0-udeb_1.0.1e-2+deb7u4+bsos1_amd64.udeb pool/main/o/openssl/libssl1.0.0_1.0.1e-2+deb7u4+bsos1_amd64.deb pool/main/o/openssh/openssh-client_6.0p1-4+bsos6_amd64.deb pool/main/o/openssh/openssh-server_6.0p1-4+bsos6_amd64.deb pool/main/o/openssh/openssh-client-udeb_6.0p1-4+bsos6_amd64.udeb pool/main/o/openssh/openssh-server-udeb_6.0p1-4+bsos6_amd64.udeb"
+	debstoremove="pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb"
 	for debremove in ${debstoremove}; do
 		if [ -f ${BUILD}/${debremove} ]; then
 			echo "Removing ${BUILD}/${debremove}..."
@@ -217,6 +221,18 @@ create ( ) {
 		-no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus ${BUILD}
 }
 
+#Generate a file with the md5 checksum in it
+mkchecksum ( ) {
+	echo "Generating checksum..."
+	md5sum ${ISONAME} > "${ISONAME}.md5"
+	if [ -f ${ISONAME}.md5 ]; then
+		echo "Checksum saved in ${ISONAME}.md5"
+	else
+		echo "Failed to save checksum"
+	fi
+}
+
+
 #Setup command line arguments
 while getopts "hd" OPTION; do
         case ${OPTION} in
@@ -255,6 +271,8 @@ extract
 #Build everything for Rocket installer
 create
 
+#Generate rocket.iso.md5 file
+mkchecksum
+
 #Report on packages where newer is in the archive
 obsoletereport
-
