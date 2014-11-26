@@ -132,9 +132,6 @@ d-i finish-install/reboot_in_progress note
 
 d-i preseed/late_command string /bin/sh /cdrom/post_install.sh
 
-libfglrx fglrx-driver/check-for-unsupported-gpu boolean false
-libfglrx fglrx-driver/install-even-if-unsupported-gpu-exists boolean true
-
 ### Partitioning
 # This makes partman automatically partition without confirmation, provided
 # that you told it what to do using one of the methods above.
