@@ -1,9 +1,6 @@
 #!/bin/sh
 #This script will download the SteamOS repo into the archive-mirror directory
 
-# Set variables
-$PWD=$(pwd)
-
 # Check if the required dependencies are installed
 deps ( ) {
 	#Check dependencies
