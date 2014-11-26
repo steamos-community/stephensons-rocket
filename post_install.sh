@@ -25,15 +25,6 @@ cat - > /target/usr/bin/post_logon.sh << 'EOF'
 #! /bin/bash
 if [[ "$UID" -ne "0" ]]
 then
-  # Configure ufw firewall
-  ufw enable
-  ufw limit from 192.168.0.0/16 port ssh/tcp
-  ufw limit from 10.0.0.0/8 port ssh/tcp
-  ufw limit from 172.16.0.0/12 port ssh/tcp
-  
-  # Disallow root login on ssh
-  sed -i "s/PermitRootLogin\ yes/PermitRootLogin\ no/" /etc/ssh/sshd_config
-
   #
   # Wait up to 10 seconds and see if we have a connection. If not, pop the network dialog
   #
@@ -59,6 +50,15 @@ then
   sudo /usr/bin/post_logon.sh
   exit
 fi
+
+# Configure ufw firewall
+ufw enable
+ufw limit from 192.168.0.0/16 port ssh/tcp
+ufw limit from 10.0.0.0/8 port ssh/tcp
+ufw limit from 172.16.0.0/12 port ssh/tcp
+  
+# Disallow root login on ssh
+sed -i "s/PermitRootLogin\ yes/PermitRootLogin\ no/" /etc/ssh/sshd_config
 
 /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam -s steamos
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User.SetXSession string:gnome
