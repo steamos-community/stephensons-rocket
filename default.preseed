@@ -204,4 +204,5 @@ d-i partman-auto/expert_recipe string                         \
                       use_filesystem{ } filesystem{ ext4 }    \
                       label { steam }                         \
                       mountpoint{ /home }                     \
+                      option/noatime{ noatime }               \
               .
