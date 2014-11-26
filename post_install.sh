@@ -53,9 +53,9 @@ fi
 
 # Configure ufw firewall
 ufw enable
-ufw limit from 192.168.0.0/16 port ssh/tcp
-ufw limit from 10.0.0.0/8 port ssh/tcp
-ufw limit from 172.16.0.0/12 port ssh/tcp
+ufw limit proto tcp from 192.168.0.0/16 port ssh
+ufw limit proto tcp from 10.0.0.0/8 port ssh
+ufw limit proto tcp from 172.16.0.0/12 port ssh
   
 # Disallow root login on ssh
 sed -i "s/PermitRootLogin\ yes/PermitRootLogin\ no/" /etc/ssh/sshd_config
