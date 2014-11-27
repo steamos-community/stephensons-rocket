@@ -1,6 +1,6 @@
 This is a list of all package and configuration changes to this repo compared Directhex's repo:
 
-Applications added from steamos repo:
+Applications added from SteamOS repo:
 bash-completion
 file-roller
 gedit
@@ -14,7 +14,7 @@ p7zip-full
 pastebinit
 unzip
 
-Packages added from the SteamOS repo:
+Packages added from SteamOS repo:
 bash-completion_2.0-1+bsos5_all.deb
 python-chardet_2.0.1-2+bsos5_all.deb
 python-configobj_4.7.2+ds-4+bsos1_all.deb
