@@ -8,6 +8,7 @@ htop
 git
 iotop
 lsof
+mesa-utils
 nautilus-open-terminal
 openssh-server
 p7zip-full
@@ -28,6 +29,7 @@ htop_1.0.1-1+bsos1_amd64.deb
 iotop_0.6-1~bpo70+1+bsos1_amd64.deb
 lsof_4.86+dfsg-1+bsos1_amd64.deb
 liberror-perl_0.17-1+bsos5_all.deb
+mesa-utils_8.0.1-2+bsos1_amd64.deb
 nautilus-open-terminal_0.19-2+bsos1_amd64.deb
 p7zip-full_9.20.1~dfsg.1-4+bsos1_amd64.deb
 pastebinit_1.3-4+bsos1_all.deb
