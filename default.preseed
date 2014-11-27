@@ -116,7 +116,7 @@ d-i apt-setup/local0/source boolean true
 # d-i debian-installer/allow_unauthenticated boolean true
 
 # Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree gedit:amd64 file-roller:amd64 nautilus-open-terminal:amd64 bash-completion:amd64 git:amd64 unzip:amd64 pastebinit:amd64 ufw openssh-server:amd64 iotop:amd64 htop:amd64 lsof:amd64
+d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree gedit:amd64 file-roller:amd64 nautilus-open-terminal:amd64 bash-completion:amd64 git:amd64 unzip:amd64 pastebinit:amd64 ufw openssh-server:amd64 iotop:amd64 htop:amd64 lsof:amd64 anacron:amd64
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade

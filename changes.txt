@@ -37,12 +37,14 @@ unzip_6.0-8+bsos5_amd64.deb
 gir1.2-vte-2.90_0.32.2-1+bsos7_amd64.deb
 
 Applications added from the Debian repo:
+anacron
 gdebi
 gksu
 gufw
 ufw
 
 Packages added from the Debian repo:
+anacron_2.3-19_amd64.deb
 gksu_2.0.2-6_amd64.deb
 libgksu2-0_2.0.13~pre1-6_amd64.deb
 gdebi_0.8.7_all.deb
@@ -58,7 +60,6 @@ added scripts for TRIM support from Ubuntu 14.04(The original scripts can be fou
 
 Things which I still want to add:
 disable mouse acceleration
-anacron
 
 Things which I might add:
 xorriso, from debian jessie(might have to manually backport)
