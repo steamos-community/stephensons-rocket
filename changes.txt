@@ -55,7 +55,7 @@ gufw_12.10.0-1_all.deb
 ufw_0.31.1-2_all.deb
 
 Configuration changes:
-configured the ufw firewall to limit ssh and allow in home streaming from local network and block everything else
+configured the ufw firewall, it only allows ssh and in home streaming inbound, but doesn't block anything outbound
 configured openssh-server to not allow root login
 /home mounts with the noatime option
 added scripts for TRIM support from Ubuntu 14.04(The original scripts can be found in the util-linux package in the 14.04 repo)
@@ -65,4 +65,4 @@ disable mouse acceleration
 
 Things which I might add:
 xorriso, from debian jessie(might have to manually backport)
-more up-to-date ufw/gufw for ipv6 support, required python 3
+more up-to-date ufw/gufw for better ipv6 support, required python 3 from jessie
