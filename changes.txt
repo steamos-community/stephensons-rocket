@@ -54,9 +54,9 @@ Configuration changes:
 configured the ufw firewall to limit ssh and allow in home streaming from local network and block everything else
 configured openssh-server to not allow root login
 /home mounts with the noatime option
+added scripts for TRIM support from Ubuntu 14.04(The original scripts can be found in the util-linux package in the 14.04 repo)
 
 Things which I still want to change:
-trim support
 xorriso, from debian jessie(might have to manually backport)
 disable mouse acceleration
 more up-to-date ufw/gufw for ipv6 support, required python 3
