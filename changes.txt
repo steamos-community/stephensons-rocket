@@ -56,7 +56,10 @@ configured openssh-server to not allow root login
 /home mounts with the noatime option
 added scripts for TRIM support from Ubuntu 14.04(The original scripts can be found in the util-linux package in the 14.04 repo)
 
-Things which I still want to change:
-xorriso, from debian jessie(might have to manually backport)
+Things which I still want to add:
 disable mouse acceleration
+anacron
+
+Things which I might add:
+xorriso, from debian jessie(might have to manually backport)
 more up-to-date ufw/gufw for ipv6 support, required python 3
