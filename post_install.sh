@@ -53,23 +53,13 @@ fi
 
 # Configure ufw firewall
 ufw enable
-# Limit ssh from lan
-ufw limit proto tcp from 192.168.0.0/16 port ssh
-ufw limit proto tcp from 10.0.0.0/8 port ssh
-ufw limit proto tcp from 172.16.0.0/12 port ssh
+# Allow ssh, but block brute force attacks
+ufw limit ssh/tcp
 
-# Allow in home streaming from lan
-ufw allow from 192.168.0.0/16 port 21036
-ufw allow from 10.0.0.0/8 port 20136
-ufw allow from 172.16.0.0/12 port 20136
-
-ufw allow proto tcp from 192.168.0.0/16 port 27037
-ufw allow proto tcp from 10.0.0.0/8 port 27037
-ufw allow proto tcp from 172.16.0.0/12 port 27037
-
-ufw allow proto udp from 192.168.0.0/16 port 27031
-ufw allow proto udp from 10.0.0.0/8 port 27031
-ufw allow proto udp from 172.16.0.0/12 port 27031
+# Allow in home streaming
+ufw allow 21036
+ufw allow 27037/tcp
+ufw allow 27031/udp
 
 # Disallow root login on ssh
 sed -i "s/PermitRootLogin\ yes/PermitRootLogin\ no/" /etc/ssh/sshd_config
