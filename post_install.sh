@@ -232,7 +232,7 @@ Terminal=false
 Type=Application
 EOF
 chmod +x /target/home/desktop/Desktop/gufw.desktop
-chown /target/home/desktop/Desktop/gufw.desktop desktop
+chroot /target chown /home/desktop/Desktop/gufw.desktop desktop
 
 #
 # Set set-passwd.sh to run when desktop first logs in
@@ -247,7 +247,7 @@ X-GNOME-Autostart-enabled=true
 Name=set-passwd
 EOF
 chmod +x /target/home/desktop/.config/autostart/set-passwd.desktop
-chown /target/home/desktop/.config/autostart/set-passwd.desktop desktop
+chroot /target chown /home/desktop/.config/autostart/set-passwd.desktop desktop
 
 #
 # Add set-passwd.sh to set the desktop user's password
@@ -261,7 +261,7 @@ rm ~/.config/.autostart/set-passwd.desktop
 rm ~/set-passwd.sh
 EOF
 chmod +x /target/home/desktop/set-passwd.sh
-chown /target/home/desktop/set-passwd.sh desktop
+chroot /target chown /home/desktop/set-passwd.sh desktop
 
 #
 # Boot splash screen and GRUB configuration
