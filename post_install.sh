@@ -226,7 +226,7 @@ cat - > /target/home/desktop/Desktop/gufw.desktop << 'EOF'
 [Desktop Entry]
 Name=Firewall Configuration
 Comment=the gufw interface for the ufw firewall
-Exec=/usr/bin/gufw
+Exec=/usr/bin/gksudo /usr/bin/gufw
 Icon=gufw
 Terminal=false
 Type=Application
@@ -256,8 +256,7 @@ chroot /target chown desktop:desktop  /home/desktop/.config/autostart/set-passwd
 cat - > /target/home/desktop/set-passwd.sh << 'EOF'
 #!/bin/bash
 set -e
-gnome-terminal -x /bin/bash -c "echo 'Choose a password for the desktop account, this password will be used for connecting through ssh and configuring the firewall.'; echo 'Do keep in mind that this machine is running an ssh server.'; until passwd; do echo 'Try again'; done ;"
-touch ~/.Xauthority 
+gnome-terminal -x /bin/bash -c "echo 'Choose a password for the desktop account, this password will be used for connecting through ssh and configuring the firewall.'; echo 'Do keep in mind that this machine is running an ssh server already.'; until passwd; do echo 'Try again'; done ;"
 rm ~/.config/autostart/set-passwd.desktop
 rm ~/set-passwd.sh
 EOF
