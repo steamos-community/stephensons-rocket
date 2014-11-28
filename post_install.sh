@@ -218,6 +218,22 @@ EndSection
 EOF
 
 #
+# Add firewall shortcut to desktop's desktop
+#
+#
+cat - > /target/home/desktop/gufw.desktop << 'EOF'
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Firewall Configuration
+Comment=the gufw interface for the ufw firewall
+Exec=/usr/bin/gufw
+Icon=gufw
+Terminal=false
+Type=Application
+EOF
+chmod +x /target/home/desktop/gufw.desktop
+
+#
 # Boot splash screen and GRUB configuration
 #
 if test `/target/bin/grep -A10000 "### BEGIN /etc/grub.d/30_os-prober ###" /target/boot/grub/grub.cfg | /target/bin/grep -B10000 "### END /etc/grub.d/30_os-prober ###" | wc -l` -gt 4; then
