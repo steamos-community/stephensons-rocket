@@ -226,7 +226,7 @@ cat - > /target/home/desktop/Desktop/gufw.desktop << 'EOF'
 [Desktop Entry]
 Name=Firewall Configuration
 Comment=the gufw interface for the ufw firewall
-Exec=/usr/bin/gksudo /usr/bin/gufw
+Exec=/usr/bin/gufw
 Icon=gufw
 Terminal=false
 Type=Application
