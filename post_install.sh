@@ -234,6 +234,35 @@ EOF
 chmod +x /target/home/desktop/gufw.desktop
 
 #
+# Set set-passwd.sh to run when desktop first logs in
+#
+#
+cat - > /target/home/desktop/.config/autostart/set-passwd.desktop << 'EOF'
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=/home/desktop/set-passwd.sh
+X-GNOME-Autostart-enabled=true
+Name=set-passwd
+EOF
+chmod +x /target/home/desktop/.config/autostart/set-passwd.desktop
+chown /target/home/desktop/.config/autostart/set-passwd.desktop
+
+#
+# Add set-passwd.sh to set the desktop user's password
+#
+#
+cat - > /target/home/desktop/set-passwd.sh << 'EOF'
+#!/bin/bash
+set -e
+gnome-terminal -x /bin/bash -c "while [ $(passwd -S|cut -d" " -f2) = "NP" ]; do passwd; done ; exec /bin/bash"
+rm ~/.config/.autostart/set-passwd.desktop
+rm ~/set-passwd.sh
+EOF
+chmod +x /target/home/desktop/set-passwd.sh
+chown /target/home/desktop/set-passwd.sh
+
+#
 # Boot splash screen and GRUB configuration
 #
 if test `/target/bin/grep -A10000 "### BEGIN /etc/grub.d/30_os-prober ###" /target/boot/grub/grub.cfg | /target/bin/grep -B10000 "### END /etc/grub.d/30_os-prober ###" | wc -l` -gt 4; then
