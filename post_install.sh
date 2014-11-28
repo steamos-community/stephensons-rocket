@@ -256,8 +256,8 @@ chroot /target chown desktop:desktop  /home/desktop/.config/autostart/set-passwd
 cat - > /target/home/desktop/set-passwd.sh << 'EOF'
 #!/bin/bash
 set -e
-gnome-terminal -x /bin/bash -c "while [ $(passwd -S|cut -d" " -f2) = "NP" ]; do passwd; done ; exec /bin/bash"
-rm ~/.config/.autostart/set-passwd.desktop
+gnome-terminal -x /bin/bash -c "until passwd; do echo 'Try again'; done ; exec /bin/bash"
+rm ~/.config/autostart/set-passwd.desktop
 rm ~/set-passwd.sh
 EOF
 chmod +x /target/home/desktop/set-passwd.sh
