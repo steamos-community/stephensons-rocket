@@ -116,8 +116,7 @@ d-i apt-setup/local0/source boolean true
 # d-i debian-installer/allow_unauthenticated boolean true
 
 # Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 steam-launcher 
-
+d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree gedit:amd64 file-roller:amd64 nautilus-open-terminal:amd64 bash-completion git:amd64 unzip:amd64 pastebinit:amd64 ufw gufw gksu:amd64 gdebi openssh-server:amd64 iotop:amd64 htop:amd64 lsof:amd64 anacron:amd64 mesa-utils:amd64 gnome-tweak-tool
 
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
@@ -132,9 +131,6 @@ popularity-contest popularity-contest/participate boolean false
 d-i finish-install/reboot_in_progress note
 
 d-i preseed/late_command string /bin/sh /cdrom/post_install.sh
-
-libfglrx fglrx-driver/check-for-unsupported-gpu boolean false
-libfglrx fglrx-driver/install-even-if-unsupported-gpu-exists boolean true
 
 ### Partitioning
 # This makes partman automatically partition without confirmation, provided
@@ -205,4 +201,5 @@ d-i partman-auto/expert_recipe string                         \
                       use_filesystem{ } filesystem{ ext4 }    \
                       label { steam }                         \
                       mountpoint{ /home }                     \
+                      options/noatime{ noatime }              \
               .

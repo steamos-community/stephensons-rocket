@@ -51,6 +51,19 @@ then
   exit
 fi
 
+# Configure ufw firewall
+ufw enable
+# Allow ssh, but block brute force attacks
+ufw limit ssh/tcp
+
+# Allow in home streaming
+ufw allow 27036
+ufw allow 27037/tcp
+ufw allow 27031/udp
+
+# Disallow root login on ssh
+sed -i "s/PermitRootLogin\ yes/PermitRootLogin\ no/" /etc/ssh/sshd_config
+
 /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam -s steamos
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User.SetXSession string:gnome
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1001 org.freedesktop.Accounts.User.SetXSession string:steamos
@@ -83,6 +96,173 @@ X-GNOME-Autostart-enabled=true
 Name=postlogon
 EOF
 
+#
+# Add fstrim-all script from Ubuntu 14.04
+#
+cat - > /target/sbin/fstrim-all << 'EOF'
+#!/bin/sh
+#
+# Call fstrim on mounted partitions to maintain write performance.
+# This is only relevant for SSD drives, see
+# http://wiki.ubuntuusers.de/SSD/TRIM
+set -e
+
+# needs /proc
+[ -r /proc/mounts ] || exit 0
+
+# these file systems support trimming
+SUPPORTED_FS="ext3 ext4 xfs btrfs"
+
+# arguments: <haystack> <needle>
+contains() {
+    [ "${1#*$2}" != "$1" ]
+}
+
+# As long as there are bugs like https://launchpad.net/bugs/1259829 we only run
+# fstrim on Intel and Samsung drives; with --no-model-check it will run on all
+# drives instead.
+if [ "$1" = "--no-model-check" ]; then
+    NO_MODEL_CHECK=1
+fi
+
+DONE=''
+while read DEV MOUNT FSTYPE OPTIONS REST; do
+    # only consider /dev/*
+    [ "${DEV#/dev}" != "$DEV" ] || continue
+    # ignore mounts with "discard", they TRIM already
+    if contains "$OPTIONS" discard; then continue; fi
+    # only consider supported file systems
+    if ! contains "$SUPPORTED_FS" "$FSTYPE"; then continue; fi
+    # ignore temporary devices which already went away
+    [ -e "$DEV" ] || continue
+
+    # did we see this already? we need to resolve symlinks
+    # for/dev/disks/by-{label,uuid}, etc.; ignore if the device does not exist
+    # any more
+    REALDEV=`readlink -f $DEV` || continue
+    if contains "$DONE" " $REALDEV "; then continue; fi
+    DONE="$DONE $REALDEV "
+
+    #echo "device $DEV real $REALDEV mountpoint $MOUNT fstype $FSTYPE"
+
+    # check if that device supports trim; this does not work for devmapper or
+    # mdadm, though, so just call fstrim on those without the extra check and
+    # ignore errors; for cryptsetup and LVM you also need extra configuration
+    # options to propagate discards, which the admin might have turned off
+    unset SILENT_FAILURE
+    if [ "${REALDEV#/dev/dm-}" != "$REALDEV" ]; then
+        #echo "device $DEV is on devmapper, skipping TRIM feature check"
+        SILENT_FAILURE=1
+    elif [ "${REALDEV#/dev/md}" != "$REALDEV" ]; then
+        #echo "device $DEV is on mdadm, skipping TRIM feature check"
+        SILENT_FAILURE=1
+    elif ! type hdparm >/dev/null 2>&1; then
+        #echo "hdparm not available, cannot TRIM"
+        exit 0
+    else
+        HDPARM="`hdparm -I $REALDEV`" 2>/dev/null || continue
+        if [ -z "$NO_MODEL_CHECK" ]; then
+            if ! contains "$HDPARM" "Intel" && \
+               ! contains "$HDPARM" "INTEL" && \
+               ! contains "$HDPARM" "Samsung" && \
+               ! contains "$HDPARM" "SAMSUNG" && \
+               ! contains "$HDPARM" "OCZ" && \
+               ! contains "$HDPARM" "SanDisk" && \
+               ! contains "$HDPARM" "Patriot"; then
+                #echo "device $DEV is not a drive that is known-safe for trimming"
+                continue
+            fi
+        fi
+        if ! contains "$HDPARM" "TRIM"; then
+            #echo "device $DEV does not support trimming"
+            continue
+        fi
+    fi
+
+    if [ -n "$SILENT_FAILURE" ]; then
+        fstrim $MOUNT 2>/dev/null || true
+    else
+        fstrim $MOUNT
+    fi
+done < /proc/mounts
+EOF
+chmod +x /target/sbin/fstrim-all
+
+#
+# Add fstrim cron script
+#
+cat - > /target/etc/cron.weekly/fstrim << 'EOF'
+#!/bin/sh
+# call fstrim-all to trim all mounted file systems which support it
+set -e
+
+# This only runs on Intel and Samsung SSDs by default, as some SSDs with faulty
+# firmware may encounter data loss problems when running fstrim under high I/O
+# load (e. g.  https://launchpad.net/bugs/1259829). You can append the
+# --no-model-check option here to disable the vendor check and run fstrim on
+# all SSD drives.
+exec fstrim-all
+EOF
+chmod +x /target/etc/cron.weekly/fstrim
+
+#
+# Disable mouse acceleration
+#
+cat - > /target/etc/X11/xorg.conf.d/50-mouse-acceleration.conf << 'EOF'
+Section "InputClass"
+	Identifier "My Mouse"
+	MatchIsPointer "yes"
+	Option "AccelerationProfile" "-1"
+	Option "AccelerationScheme" "none"
+EndSection
+EOF
+
+#
+# Add firewall shortcut to desktop's desktop
+#
+#
+cat - > /target/home/desktop/Desktop/gufw.desktop << 'EOF'
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Firewall Configuration
+Comment=the gufw interface for the ufw firewall
+Exec=/usr/bin/gufw
+Icon=gufw
+Terminal=false
+Type=Application
+EOF
+chmod +x /target/home/desktop/Desktop/gufw.desktop
+chroot /target chown desktop:desktop /home/desktop/Desktop/gufw.desktop 
+
+#
+# Set set-passwd.sh to run when desktop first logs in
+#
+#
+cat - > /target/home/desktop/.config/autostart/set-passwd.desktop << 'EOF'
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Exec=/home/desktop/set-passwd.sh
+X-GNOME-Autostart-enabled=true
+Name=set-passwd
+EOF
+chmod +x /target/home/desktop/.config/autostart/set-passwd.desktop
+chroot /target chown desktop:desktop  /home/desktop/.config/autostart/set-passwd.desktop
+
+#
+# Add set-passwd.sh to set the desktop user's password
+#
+#
+cat - > /target/home/desktop/set-passwd.sh << 'EOF'
+#!/bin/bash
+set -e
+gsettings set org.gnome.shell.overrides button-layout :minimize,maximize,close
+gnome-terminal -x /bin/bash -c "echo 'Choose a password for the desktop account, this password will be used for connecting through ssh and configuring the firewall.'; echo 'Do keep in mind that this machine is running an ssh server already.'; until passwd; do echo 'Try again'; done ;"
+rm ~/.config/autostart/set-passwd.desktop
+rm ~/set-passwd.sh
+EOF
+chmod +x /target/home/desktop/set-passwd.sh
+chroot /target chown desktop:desktop /home/desktop/set-passwd.sh
 
 #
 # Boot splash screen and GRUB configuration

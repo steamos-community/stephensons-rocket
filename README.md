@@ -20,12 +20,17 @@ This kind of collaborative development demonstrates the power of Open Source - a
 - SteamOS requires a Radeon 5000 or newer for ATI users. Stephenson's Rocket will use the Open Source driver instead on older cards.
 - SteamOS is only updated when Valve have time. Stephenson's Rocket comes with the tools to update it with the latest stuff yourself!
 
+- Multiple additional packages are now installed by default: git, gdebi, gksu, pastebinit, gedit, file-roller, ufw, gufw, bash-completion, nautilus-open-terminal, openssh-sever, iotop, lsof, htop
+- A firewall configuration has been added, it only allows a limited amount of ssh connections per half a minute and only and allow in-home streaming to the local network by default.
+- /home is mounted with the noatime option
+
 ![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
 
 # Planned improvements
 
 - Support NVIDIA cards no longer supported in current nvidia-glx driver.
 - Support NVIDIA cards using the new 2014 Maxwell architecture, including the GTX 750 series, with the 334.21 driver.
+- Support for trim when an ssd is installed.
 
 # How to install?
 
@@ -78,7 +83,7 @@ Before you generate a new image you need to ensure that your pull is up to date 
 
 # Known issues and workarounds
 
-- 3D support is broken in Big Picture Mode itself and in 32-bit games in VirtualBox. This is a flaw in the Debian packaging of the VirtualBox guest drivers.
+- Running in Virtualbox is not supported.
 - Crashes and strange behaviours on NVIDIA Maxwell cards with certain OpenGL games and applications. This requires an update to the lastest driver to fix, which has not yet been packaged for APT.
 
 # How can I help?
