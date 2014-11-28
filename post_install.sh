@@ -57,7 +57,7 @@ ufw enable
 ufw limit ssh/tcp
 
 # Allow in home streaming
-ufw allow 21036
+ufw allow 27036
 ufw allow 27037/tcp
 ufw allow 27031/udp
 
@@ -256,6 +256,7 @@ chroot /target chown desktop:desktop  /home/desktop/.config/autostart/set-passwd
 cat - > /target/home/desktop/set-passwd.sh << 'EOF'
 #!/bin/bash
 set -e
+gsettings set org.gnome.shell.overrides button-layout :minimize,maximize,close
 gnome-terminal -x /bin/bash -c "echo 'Choose a password for the desktop account, this password will be used for connecting through ssh and configuring the firewall.'; echo 'Do keep in mind that this machine is running an ssh server already.'; until passwd; do echo 'Try again'; done ;"
 rm ~/.config/autostart/set-passwd.desktop
 rm ~/set-passwd.sh
