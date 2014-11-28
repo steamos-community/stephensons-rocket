@@ -206,6 +206,18 @@ EOF
 chmod +x /target/etc/cron.weekly/fstrim
 
 #
+# Disable mouse acceleration
+#
+cat - > /target/etc/X11/xorg.conf.d/50-mouse-acceleration.conf << 'EOF'
+Section "InputClass"
+	Identifier "My Mouse"
+	MatchIsPointer "yes"
+	Option "AccelerationProfile" "-1"
+	Option "AccelerationScheme" "none"
+EndSection
+EOF
+
+#
 # Boot splash screen and GRUB configuration
 #
 if test `/target/bin/grep -A10000 "### BEGIN /etc/grub.d/30_os-prober ###" /target/boot/grub/grub.cfg | /target/bin/grep -B10000 "### END /etc/grub.d/30_os-prober ###" | wc -l` -gt 4; then

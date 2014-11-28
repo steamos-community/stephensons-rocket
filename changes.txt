@@ -59,9 +59,7 @@ configured the ufw firewall, it only allows ssh and in home streaming inbound, b
 configured openssh-server to not allow root login
 /home mounts with the noatime option
 added scripts for TRIM support from Ubuntu 14.04(The original scripts can be found in the util-linux package in the 14.04 repo)
-
-Things which I still want to add:
-disable mouse acceleration
+disable mouse acceleration by adding the file /etc/X11/xorg.conf.d/50-mouse-acceleration.conf
 
 Things which I might add:
 xorriso, from debian jessie(might have to manually backport)
