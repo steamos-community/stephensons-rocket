@@ -256,7 +256,8 @@ chroot /target chown desktop:desktop  /home/desktop/.config/autostart/set-passwd
 cat - > /target/home/desktop/set-passwd.sh << 'EOF'
 #!/bin/bash
 set -e
-gnome-terminal -x /bin/bash -c "until passwd; do echo 'Try again'; done ; exec /bin/bash"
+gnome-terminal -x /bin/bash -c "echo 'Choose a password for the desktop account, this password will be used for connecting through ssh and configuring the firewall.'; echo 'Do keep in mind that this machine is running an ssh server.'; until passwd; do echo 'Try again'; done ;"
+touch ~/.Xauthority 
 rm ~/.config/autostart/set-passwd.desktop
 rm ~/set-passwd.sh
 EOF
