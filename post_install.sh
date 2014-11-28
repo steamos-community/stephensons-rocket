@@ -57,7 +57,7 @@ ufw enable
 ufw limit ssh/tcp
 
 # Allow in home streaming
-ufw allow 21036
+ufw allow 27036
 ufw allow 27037/tcp
 ufw allow 27031/udp
 
