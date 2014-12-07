@@ -101,7 +101,6 @@ cat - > /target/etc/default/grub << EOF
 GRUB_DEFAULT=saved
 GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
 GRUB_BACKGROUND=/usr/share/plymouth/themes/steamos/steam.png
 GRUB_DISABLE_LINUX_RECOVERY="true"
@@ -126,6 +125,13 @@ if test -d /sys/firmware/efi/; then
 ISEFI=Y
 else
 ISEFI=N
+fi
+
+# enable splash adn set framebuffer size to 1024x768x24 for non-efi systems
+if test "${ISEFI}" = "Y"; then
+echo "GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"" >> /target/etc/default/grub
+else
+echo "GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash vga=0x318\"" >> /target/etc/default/grub
 fi
 cat - >> /target/etc/grub.d/40_custom << EOF
 menuentry "Capture System Partition"{
