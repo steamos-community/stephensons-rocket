@@ -133,6 +133,7 @@ echo "GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"" >> /target/etc/default/grub
 else
 echo "GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash vga=0x318\"" >> /target/etc/default/grub
 fi
+
 cat - >> /target/etc/grub.d/40_custom << EOF
 menuentry "Capture System Partition"{
   search --set -f /live-hd/vmlinuz
