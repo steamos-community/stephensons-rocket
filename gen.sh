@@ -137,7 +137,7 @@ verify ( ) {
 #	Re-build the cdrom installer package repositories
 #	Generate md5sums
 #	Build ISO
-create ( ) {
+createbuildroot ( ) {
 
 	#Delete 32-bit udebs and d-i, as SteamOS is 64-bit only
 	echo "Deleting 32-bit garbage from ${BUILD}..."
@@ -200,16 +200,70 @@ create ( ) {
 	find . -type f -print0 | xargs -0 md5sum > md5sum.txt
 	cd -
 
+	sed -i 's/fglrx-driver//' ${BUILD}/.disk/base_include
+	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
+	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
+}
+
+# Removes old versions of packages before they end up on the iso
+checkduplicates ( ) {
+	echo ""
+	echo "Removing duplicate packages:"
+	
+	# Create a list with all packages
+	files=$(ls buildroot/pool/*/*/*/*|grep -v ":"|grep ".deb")
+	
+	# Find package names which are listed twice
+	duplicates=$(echo $files|tr "\ " "\n"|cut -d"_" -f1|uniq -d)
+
+	for curdupname in ${duplicates}; do
+		curdupfiles=$(ls `echo "$files"|tr "\ " "\n"|grep "${curdupname}\_"|tr "\n" "\ "`)
+		
+		# Seperate packages with different architectures
+		curdupamd64=$(echo $curdupfiles|tr "\ " "\n"|grep amd64)
+		curdupi386=$(echo $curdupfiles|tr "\ " "\n"|grep i386)
+		curdupall=$(echo $curdupfiles|tr "\ " "\n"|grep all)
+		
+		# Check the amount of packages per architecture
+		nramd64=$(echo $curdupamd64|wc -w)
+		nri386=$(echo $curdupi386|wc -w)
+		nrall=$(echo $curdupall|wc -w)
+		
+		# Remove the everything but the latest package, good thing ls sorts alphabethically
+		if [ ${nramd64} -gt 1 ]; then
+			toremove=$(echo $curdupamd64|cut -f1-$((nramd64-1)) -d" ")
+			echo "Removing: $toremove"
+			rm ${toremove}
+			tokeep=$(echo $curdupamd64|cut -f$((nramd64)) -d" ")
+			echo "Keeping: $tokeep"
+		fi
+		if [ ${nri386} -gt 1 ]; then
+			toremove=$(echo $curdupi386|cut -f1-$((nri386-1)) -d" ")
+			echo "Removing: $toremove"
+			rm ${toremove}
+			tokeep=$(echo $curdupi386|cut -f$((nri386)) -d" ")
+			echo "Keeping: $tokeep"
+		fi
+		if [ ${nrall} -gt 1 ]; then
+			toremove=$(echo $curdupall|cut -f1-$((nrall-1)) -d" ")
+			echo "Removing: $toremove"
+			rm ${toremove}
+			tokeep=$(echo $curdupall|cut -f$((nrall)) -d" ")
+			echo "Keeping: $tokeep"
+		fi
+
+	done
+	
+	echo "Done"
+}
+
+createiso ( ) {
 	#Remove old ISO
 	if [ -f ${ISOPATH}/${ISONAME} ]; then
 		echo "Removing old ISO ${ISOPATH}/${ISONAME}"
 		rm -f "${ISOPATH}/${ISONAME}"
 	fi
-
-	sed -i 's/fglrx-driver//' ${BUILD}/.disk/base_include
-	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
-	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
-
+	
 	#Build the ISO
 	echo "Building ${ISOPATH}/${ISONAME} ..."
 	xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
@@ -268,8 +322,14 @@ verify
 #Download and extract the SteamOSInstaller.zip
 extract
 
-#Build everything for Rocket installer
-create
+#Build buildroot for Rocket installer
+createbuildroot
+
+#Remove the oldest versions of duplicate packages
+checkduplicates
+
+#Build ISO for Rocket installer
+createiso
 
 #Generate rocket.iso.md5 file
 mkchecksum
