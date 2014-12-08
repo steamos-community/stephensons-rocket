@@ -183,11 +183,13 @@ createbuildroot ( ) {
 		cp -pfr ${file} ${BUILD}
 	done
 
+	checkduplicates
+
 	#Make sure ${CACHEDIR} exists
 	if [ ! -d ${CACHEDIR} ]; then
 		mkdir -p ${CACHEDIR}
 	fi
-
+	
 	#Generate our new repos
 	echo "Generating Packages.."
 	apt-ftparchive generate ${APTCONF}
@@ -324,9 +326,6 @@ extract
 
 #Build buildroot for Rocket installer
 createbuildroot
-
-#Remove the oldest versions of duplicate packages
-checkduplicates
 
 #Build ISO for Rocket installer
 createiso
