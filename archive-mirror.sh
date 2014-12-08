@@ -4,7 +4,7 @@
 # Check if the required dependencies are installed
 deps ( ) {
 	#Check dependencies
-	deps="debmirror"
+	deps="apt-mirror"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
@@ -21,7 +21,19 @@ deps ( ) {
 }
 
 deps
+
+# Create config file
+cat > mirror.list << EOF
+ set base_path    ${PWD}/archive-mirror
+set nthreads     20
+set _tilde 0
+deb http://repo.steampowered.com/steamos alchemist main contrib non-free
+deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+clean http://repo.steampowered.com/steamos
+EOF
+
 mkdir -p archive-mirror/
-debmirror -p --nosource --keyring=${PWD}/valve-archive-keyring.gpg \
-	--rsync-extra=none -s main,contrib,non-free,main/debian-installer -a amd64,i386 -v \
-	-d alchemist,alchemist_beta --method=http -h repo.steampowered.com -r steamos archive-mirror/
+
+apt-mirror mirror.list
+
+rm mirror.list
