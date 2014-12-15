@@ -34,7 +34,9 @@ deb-i386 http://repo.steampowered.com/steamos alchemist_beta main contrib non-fr
 clean http://repo.steampowered.com/steamos
 EOF
 
-mkdir -p archive-mirror/
+if [ ! -d archive-mirror ]; then
+	mkdir -p archive-mirror/
+fi
 
 apt-mirror mirror.list
 
