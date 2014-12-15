@@ -64,7 +64,7 @@ Download [Win32 Disk Imager](http://sourceforge.net/projects/win32diskimager/) a
 
 Pick the "Automatic Install" option to wipe the first hard disk in your system and install SteamOS to it.
 
-For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" option. Use of this mode is documented in the support video [here](YT).
+For more sophisticated booting - e.g. dual-boot or custom partition sizes - select the "Expert" option. Use of this mode is documented in the support video [here]https://www.youtube.com/watch?v=3MjkfMs-4T4).
 
 Beyond that, just follow Valve's instructions from [their site](http://store.steampowered.com/steamos/buildyourown) - Stephenson's Rocket should behave exactly like the real SteamOS, except it works on more systems
 
