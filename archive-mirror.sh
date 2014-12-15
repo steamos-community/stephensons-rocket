@@ -29,6 +29,8 @@ set nthreads     20
 set _tilde 0
 deb http://repo.steampowered.com/steamos alchemist main contrib non-free
 deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+deb-i386 http://repo.steampowered.com/steamos alchemist main contrib non-free
+deb-i386 http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
 clean http://repo.steampowered.com/steamos
 EOF
 
