@@ -67,6 +67,7 @@ obsoletereport ( ) {
 		echo "No ${REPODIR} directory exists, run archive-mirror.sh if you want this script to report obsolete packages"
 	else
 		echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
+		echo "\nPackagename\t\ttype\tarch\told version\tnew version\n"
 		REPODIR="`realpath ${REPODIR}`"
 		cd ${BUILD}/pool/
 		for i in */*/*/*.*deb
@@ -77,7 +78,7 @@ obsoletereport ( ) {
 			if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
 				then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
 				if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
-					then echo "${PKGNAME}\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
+					then echo "${PKGNAME}\t\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
 				fi
 			fi
 		done
