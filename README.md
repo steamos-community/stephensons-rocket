@@ -25,7 +25,6 @@ This kind of collaborative development demonstrates the power of Open Source - a
 # Planned improvements
 
 - Support NVIDIA cards no longer supported in current nvidia-glx driver.
-- Support NVIDIA cards using the new 2014 Maxwell architecture, including the GTX 750 series, with the 334.21 driver.
 
 # How to install?
 
