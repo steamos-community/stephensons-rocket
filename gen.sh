@@ -275,7 +275,7 @@ createiso ( ) {
 		SYSLINUX="/usr/lib/syslinux/isohdpfx.bin"
 	fi
 	if [ -z $SYSLINUX ]; then
-		echo "Error: isohdpfx not found! If you're a debian user, install the syslinux and syslinux packages from Ubuntu."
+		echo "Error: isohdpfx not found! If you're a debian user, install the syslinux and syslinux-common packages from Ubuntu."
 		exit 1	
 	fi
 	
