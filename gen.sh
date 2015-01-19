@@ -7,12 +7,13 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 145plus1"
+ISOVNAME="Stephensons Rocket 153"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="e0583f17ea8f6d5307b74a0d28a99a5e"
+KNOWNINSTALLER="223022db23d66070f959e464ad2da376"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
+OUTDATEDDIR="removed-from-pool"
 
 #Show how to use gen.sh
 usage ( )
@@ -27,7 +28,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget p7zip-full realpath"
+	deps="apt-utils xorriso syslinux rsync wget p7zip-full"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
@@ -58,31 +59,6 @@ rebuild ( ) {
 	if [ -d "${BUILD}" ]; then
 		echo "Building ${BUILD} from scratch"
 		rm -fr "${BUILD}"
-	fi
-}
-
-#Report on obsolete packages
-obsoletereport ( ) {
-	if [ ! -d ${REPODIR} ]; then
-		echo "No ${REPODIR} directory exists, run archive-mirror.sh if you want this script to report obsolete packages"
-	else
-		echo "Reporting on packages which are different in ${BUILD} than ${REPODIR}"
-		echo "\nPackagename\t\ttype\tarch\told version\tnew version\n"
-		REPODIR="`realpath ${REPODIR}`"
-		cd ${BUILD}/pool/
-		for i in */*/*/*.*deb
-			do PKGNAME=`basename $i | cut -f1 -d'_'`
-			ARCHNAME=`basename $i | cut -f3 -d'_' | cut -f1 -d'.'`
-			PKGPATH=`dirname $i`;PKGVER=`basename $i | cut -f2 -d'_'`
-			DEBTYPE=`basename $i | sed 's/.*\.//g'`
-			if [ `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} 2> /dev/null | wc -l` -gt 0 ]
-				then NEWPKGVER=$(basename `ls -1 ${REPODIR}/pool/${PKGPATH}/${PKGNAME}_*_${ARCHNAME}.${DEBTYPE} | sort -n | tail -1` | cut -f2 -d'_')
-				if [ "x${PKGVER}" != "x${NEWPKGVER}" ]
-					then echo "${PKGNAME}\t\t${DEBTYPE}\t${ARCHNAME}\t${PKGVER}\t${NEWPKGVER}"
-				fi
-			fi
-		done
-		cd -
 	fi
 }
 
@@ -149,13 +125,25 @@ createbuildroot ( ) {
 
 	#Copy over updated and added debs
 	#First remove uneeded debs
-	debstoremove="pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb"
+	debstoremove=""
 	for debremove in ${debstoremove}; do
 		if [ -f ${BUILD}/${debremove} ]; then
 			echo "Removing ${BUILD}/${debremove}..."
 			rm -fr "${BUILD}/${debremove}"
 		fi
 	done
+	
+	# here packages which are both in the iso and the 
+	# ls pool/*/*/*/|grep -v ":"|sort|sed '/^$/d'
+	duplicates=$(ls pool/*/*/*/|grep -v ":"|sed '/^$/d'|xargs ls buildroot/pool/*/*/*/|grep -v ":"|sed '/^$/d')
+	
+	for duplicate in ${duplicates}; do
+		mkdir -p ${OUTDATEDDIR}
+		mv -f pool/*/*/*/${duplicate} ${OUTDATEDDIR}
+	done
+	
+	# remove empty directories from pool
+	find pool -empty -type d -delete
 
 	#Delete all firmware from /firmware/
 	echo "Removing bundled firmware"
@@ -183,15 +171,56 @@ createbuildroot ( ) {
 		echo "Copying ${file} into ${BUILD}"
 		cp -pfr ${file} ${BUILD}
 	done
+}
 
-	checkduplicates
+# Removes old versions of packages before they end up on the iso
+checkduplicates ( ) {
+	echo ""
+	echo "Removing duplicate packages:"
+	echo ""
 
+	# find package names which are listed twice
+	duplicates=$(ls -R buildroot/pool/|grep ".*deb"|cut -d"_" -f1,3|sort|uniq -d)
+
+	for curdupname in ${duplicates}; do
+	        searchname=$(echo ${curdupname}|sed 's/_/_*_/g')
+	        curarch=$(echo ${searchname}|cut -d"_" -f3)
+		curdupfiles=$(ls -1 buildroot/pool/*/*/*/${searchname}|cut -d"_" -f1-2|sort -V|sed "s/\$/_${curarch}/g"|tr "\n" "\ ")
+		echo "current duplicate files: ${curdupfiles}"
+		
+		# check the amount of packages
+		nrdubs=$(echo ${curdupfiles}|wc -w)
+		echo "${curdupname}: ${nrdubs}"
+		
+		# remove the everything but the latest package
+		toremove=$(echo ${curdupfiles}|cut -f1-$((nrdubs-1)) -d" ")
+		echo "Removing: ${toremove}"
+		rm ${toremove}
+		tokeep=$(echo ${curdupfiles}|cut -f$((nrdubs)) -d" ")
+		echo "Keeping: ${tokeep}"
+		
+		# check if packages in toremove are in the pool directory. If they are, move them out.
+		for removed in ${toremove}; do
+			locationinpool=$(echo ${removed}|cut -d"/" -f2-)
+			if [ -f ${locationinpool} ]; then
+				mkdir -p ${OUTDATEDDIR}
+				mv -f ${locationinpool} ${OUTDATEDDIR}
+			fi
+		done
+		
+		# remove empty directories
+		find pool -empty -type d -delete
+	done
+}
+
+createiso ( ) {
 	#Make sure ${CACHEDIR} exists
 	if [ ! -d ${CACHEDIR} ]; then
 		mkdir -p ${CACHEDIR}
 	fi
-	
+
 	#Generate our new repos
+	echo ""
 	echo "Generating Packages.."
 	apt-ftparchive generate ${APTCONF}
 	apt-ftparchive generate ${APTUDEBCONF}
@@ -202,76 +231,37 @@ createbuildroot ( ) {
 	cd ${BUILD}
 	find . -type f -print0 | xargs -0 md5sum > md5sum.txt
 	cd -
-
+	
 	sed -i 's/fglrx-driver//' ${BUILD}/.disk/base_include
 	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
 	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
-}
-
-# Removes old versions of packages before they end up on the iso
-checkduplicates ( ) {
-	echo ""
-	echo "Removing duplicate packages:"
 	
-	# Create a list with all packages
-	files=$(ls buildroot/pool/*/*/*/*|grep -v ":"|grep ".deb")
-	
-	# Find package names which are listed twice
-	duplicates=$(echo $files|tr "\ " "\n"|cut -d"_" -f1|uniq -d)
-
-	for curdupname in ${duplicates}; do
-		curdupfiles=$(ls `echo "$files"|tr "\ " "\n"|grep "${curdupname}\_"|tr "\n" "\ "`)
-		
-		# Seperate packages with different architectures
-		curdupamd64=$(echo $curdupfiles|tr "\ " "\n"|grep amd64)
-		curdupi386=$(echo $curdupfiles|tr "\ " "\n"|grep i386)
-		curdupall=$(echo $curdupfiles|tr "\ " "\n"|grep all)
-		
-		# Check the amount of packages per architecture
-		nramd64=$(echo $curdupamd64|wc -w)
-		nri386=$(echo $curdupi386|wc -w)
-		nrall=$(echo $curdupall|wc -w)
-		
-		# Remove the everything but the latest package, good thing ls sorts alphabethically
-		if [ ${nramd64} -gt 1 ]; then
-			toremove=$(echo $curdupamd64|cut -f1-$((nramd64-1)) -d" ")
-			echo "Removing: $toremove"
-			rm ${toremove}
-			tokeep=$(echo $curdupamd64|cut -f$((nramd64)) -d" ")
-			echo "Keeping: $tokeep"
-		fi
-		if [ ${nri386} -gt 1 ]; then
-			toremove=$(echo $curdupi386|cut -f1-$((nri386-1)) -d" ")
-			echo "Removing: $toremove"
-			rm ${toremove}
-			tokeep=$(echo $curdupi386|cut -f$((nri386)) -d" ")
-			echo "Keeping: $tokeep"
-		fi
-		if [ ${nrall} -gt 1 ]; then
-			toremove=$(echo $curdupall|cut -f1-$((nrall-1)) -d" ")
-			echo "Removing: $toremove"
-			rm ${toremove}
-			tokeep=$(echo $curdupall|cut -f$((nrall)) -d" ")
-			echo "Keeping: $tokeep"
-		fi
-
-	done
-	
-	echo "Done"
-}
-
-createiso ( ) {
 	#Remove old ISO
 	if [ -f ${ISOPATH}/${ISONAME} ]; then
 		echo "Removing old ISO ${ISOPATH}/${ISONAME}"
 		rm -f "${ISOPATH}/${ISONAME}"
 	fi
 	
+	#Find isohdpfx.bin
+	if [ -f "/usr/lib/syslinux/mbr/isohdpfx.bin" ]; then
+		SYSLINUX="/usr/lib/syslinux/mbr/isohdpfx.bin"
+	fi
+	if [ -f "/usr/lib/syslinux/isohdpfx.bin" ]; then
+		SYSLINUX="/usr/lib/syslinux/isohdpfx.bin"
+	fi
+	if [ -f "isohdpfx.bin" ]; then
+		SYSLINUX="isohdpfx.bin"
+	fi
+	if [ -z $SYSLINUX ]; then
+		echo "Error: isohdpfx.bin not found! Try putting it in ${pwd}."
+		exit 1	
+	fi
+	
 	#Build the ISO
 	echo "Building ${ISOPATH}/${ISONAME} ..."
 	xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
 		-V "${ISOVNAME}" -o ${ISOPATH}/${ISONAME} \
-		-J -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
+		-J -isohybrid-mbr ${SYSLINUX} \
 		-joliet-long -b isolinux/isolinux.bin \
 		-c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
 		-boot-info-table -eltorito-alt-boot -e boot/grub/efi.img \
@@ -328,11 +318,11 @@ extract
 #Build buildroot for Rocket installer
 createbuildroot
 
+#Remove all but the latest if multiple versions of a package are present
+checkduplicates
+
 #Build ISO for Rocket installer
 createiso
 
 #Generate rocket.iso.md5 file
 mkchecksum
-
-#Report on packages where newer is in the archive
-obsoletereport
