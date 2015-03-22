@@ -7,11 +7,11 @@ DISTNAME="alchemist"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 145plus1"
+ISOVNAME="Stephensons Rocket 153plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="e0583f17ea8f6d5307b74a0d28a99a5e"
+KNOWNINSTALLER="223022db23d66070f959e464ad2da376"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 #Show how to use gen.sh
