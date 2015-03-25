@@ -31,7 +31,12 @@ deb http://repo.steampowered.com/steamos alchemist main contrib non-free
 deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
 deb-i386 http://repo.steampowered.com/steamos alchemist main contrib non-free
 deb-i386 http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+deb http://download.stephensonsrocket.horse/steamos alchemist main contrib non-free
+deb http://download.stephensonsrocket.horse/steamos alchemist_beta main contrib non-free
+deb-i386 http://download.stephensonsrocket.horse/steamos alchemist main contrib non-free
+deb-i386 http://download.stephensonsrocket.horse/steamos alchemist_beta main contrib non-free
 clean http://repo.steampowered.com/steamos
+clean http://download.stephensonsrocket.horse/steamos
 EOF
 
 mkdir -p archive-mirror/
