@@ -149,7 +149,7 @@ createbuildroot ( ) {
 
 	#Copy over updated and added debs
 	#First remove uneeded debs
-	debstoremove="pool/main/l/lvm2/dmsetup_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/libdevmapper1.02.1-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/dmsetup-udeb_1.02.74-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper-event1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/lvm2-udeb_2.02.95-8+bsos7_amd64.udeb pool/main/l/lvm2/libdevmapper1.02.1_1.02.74-8+bsos7_amd64.deb pool/main/l/lvm2/liblvm2app2.2_2.02.95-8+bsos7_amd64.deb pool/main/g/grub-installer/grub-installer_1.85+bsos1_amd64.udeb"
+	debstoremove=""
 	for debremove in ${debstoremove}; do
 		if [ -f ${BUILD}/${debremove} ]; then
 			echo "Removing ${BUILD}/${debremove}..."
