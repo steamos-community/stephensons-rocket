@@ -10,7 +10,7 @@ pool/non-free/b/bluez-firmware/bluez-firmware_1.2-3_all.deb
 pool/non-free/i/intel-microcode/intel-microcode_1.20130906.1_amd64.deb
 pool/non-free/libe/libertas-firmware/libertas-firmware_9.70.7.p0.0-2_all.deb
 pool/non-free/z/zd1211-firmware/zd1211-firmware_2.21.0.0-1_all.deb
-pool/main/f/firmware-free/firmware-linux-free_3.2+steamos7+bsos1_all.deb
+pool/main/f/firmware-free/firmware-linux-free_3.2+steamos9+bsos1_all.deb
 pool/non-free/f/firmware-nonfree/firmware-adi_0.40+steamos4+bsos1_all.deb
 pool/non-free/f/firmware-nonfree/firmware-atheros_0.40+steamos4+bsos1_all.deb
 pool/non-free/f/firmware-nonfree/firmware-bnx2_0.40+steamos4+bsos1_all.deb
