@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "153plus1"
+date:   2015-03-29 11:55:38
+categories: release
+---
+
+- Rebase against Valve 153 ISO
+- RAID support is no longer tested - I had to remove a disk from my test lab. Use at your own risk
+- Re-added support for ATI cards not supported by proprietary fglrx driver. Tested on Radeon 4550
+- Added support for NVIDIA cards not supported by the latest NVIDIA driver. Tested on GeForce GT210
