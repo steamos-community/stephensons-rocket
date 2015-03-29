@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "2013-12-19 beta 1"
+date:   2013-12-21 16:12:38
+categories: release
+---
+
+- Added "Power User" mode, with dual-boot support
+- Major Github layout changes
+- Rebased against 2013-12-19 Valve release (newer packages including Mesa 10)
+- Fixed crasher in recovery partition stuff on some drivers (e.g. VMware)

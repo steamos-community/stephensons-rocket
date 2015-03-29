@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "1.0 93plus1"
+date:   2014-03-21 23:40:38
+categories: release
+---
+
+- Rebase against Valve 2014-02-17 ISO combined with updatelevel 93 packages from alchemist_beta (Rocket GitHub issue [29](https://github.com/steamos-community/stephensons-rocket/issues/29), [30](https://github.com/steamos-community/stephensons-rocket/issues/30), [33](https://github.com/steamos-community/stephensons-rocket/issues/33))
+- Added support for dmraid (software RAID; tested on Intel only)
+- Added support for ATI cards not supported by proprietary fglrx driver. Tested on Radeon 4550
+- Include patched partman-target.udeb (Valve GitHub issue [161](https://github.com/ValveSoftware/SteamOS/issues/161))

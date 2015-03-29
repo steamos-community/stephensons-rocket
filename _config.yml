@@ -1,0 +1,10 @@
+# Site settings
+title: Stephenson's Rocket
+email: directhex@apebox.org
+description: "a more elegant SteamOS, for a more civilized age. Support for more hardware, including obsolete GPUs and RAID"
+baseurl: ""
+url: "http://stephensonsrocket.horse"
+
+# Build settings
+markdown: kramdown
+permalink: pretty

@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Release4 (20140108u1)"
+date:   2014-01-12 16:09:38
+categories: release
+---
+
+- Rebase against Valve 2014-01-08 release
+- Added support for Logical Volume Management (disables recovery partition if used for /, /boot/recovery, or swap)
+- Added support for md software RAID (disables recovery partition if used for /, /boot/recovery, or swap; may also support FakeRAID but untested!)
