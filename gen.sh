@@ -267,11 +267,23 @@ createiso ( ) {
 		rm -f "${ISOPATH}/${ISONAME}"
 	fi
 	
+	#Find isohdpfx.bin
+	if [ -f "/usr/lib/syslinux/mbr/isohdpfx.bin" ]; then
+		SYSLINUX="/usr/lib/syslinux/mbr/isohdpfx.bin"
+	fi
+	if [ -f "/usr/lib/syslinux/isohdpfx.bin" ]; then
+		SYSLINUX="/usr/lib/syslinux/isohdpfx.bin"
+	fi
+	if [ -z $SYSLINUX ]; then
+		echo "Error: isohdpfx not found! If you're a debian user, install the syslinux and syslinux-common packages from Ubuntu."
+		exit 1	
+	fi
+	
 	#Build the ISO
 	echo "Building ${ISOPATH}/${ISONAME} ..."
 	xorriso -as mkisofs -r -checksum_algorithm_iso md5,sha1,sha256,sha512 \
 		-V "${ISOVNAME}" -o ${ISOPATH}/${ISONAME} \
-		-J -isohybrid-mbr /usr/lib/syslinux/isohdpfx.bin \
+		-J -isohybrid-mbr ${SYSLINUX} \
 		-joliet-long -b isolinux/isolinux.bin \
 		-c isolinux/boot.cat -no-emul-boot -boot-load-size 4 \
 		-boot-info-table -eltorito-alt-boot -e boot/grub/efi.img \
