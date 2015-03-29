@@ -8,3 +8,10 @@ url: "http://stephensonsrocket.horse"
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+exclude:
+ - archive-mirror
+ - buildroot
+ - cache
+ - SteamOSDVD.iso
+ - rocket.iso
