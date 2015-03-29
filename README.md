@@ -14,10 +14,10 @@ This kind of collaborative development demonstrates the power of Open Source - a
 
 # Improvements
 
-- SteamOS only supports Realtek networking, or firmware-free networking. Stephenson's Rocket supports everything a modern Linux does, including WiFi.
 - SteamOS monopolizes drives. Stephenson's Rocket can resize NTFS partitions.
 - SteamOS only supports basic partitions. Stephenson's Rocket supports LVM and RAID.
 - SteamOS requires a Radeon 5000 or newer for ATI users. Stephenson's Rocket will use the Open Source driver instead on older cards.
+- SteamOS requires a Geforce 400 or newer for NVIDIA users. Stephenson's Rocket will use the legacy 340 series driver instead on older cards.
 - SteamOS is only updated when Valve have time. Stephenson's Rocket comes with the tools to update it with the latest stuff yourself!
 
 ![SteamOS on VMware](http://i.imgur.com/a3jnZ6r.png)
@@ -28,7 +28,7 @@ This kind of collaborative development demonstrates the power of Open Source - a
 
 # How to install?
 
-A DVD image is always available via BitTorrent at http://directhex.github.io/steamos-installer/
+A DVD image is always available at http://stephensonsrocket.horse/
 
 To get started, download the torrent.
 
