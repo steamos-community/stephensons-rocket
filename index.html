@@ -1,3 +1,6 @@
+---
+title: "Stephenson's Rocket"
+---
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Stephenson's Rocket</title>
+    <title>{{ page.title }}</title>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -127,55 +130,14 @@
 <h2>Version History</h2>
 
 <ul>
+{% for version in site.versions reversed %}
   <li>
-    <h4>1.0 93plus1</h4>
-    <ul>
-      <li>Rebase against Valve 2014-02-17 ISO combined with updatelevel 93 packages from alchemist_beta (Rocket GitHub issue <a href="https://github.com/steamos-community/stephensons-rocket/issues/29">29</a>, <a href="https://github.com/steamos-community/stephensons-rocket/issues/30">30</a>, <a href="https://github.com/steamos-community/stephensons-rocket/issues/33">33</a>)</li>
-      <li>Added support for dmraid (software RAID; tested on Intel only)</li>
-      <li>Added support for ATI cards not supported by proprietary fglrx driver. Tested on Radeon 4550</li>
-      <li>Include patched partman-target.udeb (Valve GitHub issue <a href="https://github.com/ValveSoftware/SteamOS/issues/161">161</a>)</li>
-    </ul>
+    <h4>{{ version.title }}</h4>
+    {{ version.content }}
   </li>
-  <li>
-    <h4>Release4 (20140108u1)</h4>
-    <ul>
-      <li>Rebase against Valve 2014-01-08 release</li>
-      <li>Added support for Logical Volume Management (disables recovery partition if used for /, /boot/recovery, or swap)</li>
-      <li>Added support for md software RAID (disables recovery partition if used for /, /boot/recovery, or swap; may also support FakeRAID but untested!)</li>
-    </ul>
-  </li>
-  <li>
-    <h4>2013-12-19 beta 2</h4>
-    <ul>
-      <li>Fixed regression in audio between first and second releases (added steam and desktop users to pulse-access group)</li>
-      <li>Modified Pulse config to not force a specific sound card, and to restore card volume on boot</li>
-      <li>Shipped a replacement debootstrap, which will not fail at random on users' systems when generating their own image</li>
-      <li>Included all non-Free firmware from Debian Wheezy</li>
-      <li>Added ntfsprogs-udeb to allow NTFS resizing in the installer (Valve GitHub issue <a href="https://github.com/ValveSoftware/SteamOS/issues/88">88</a>)</li>
-      <li>Deleted unneeded 32-bit installer files, freeing about 300MB from the image size</li>
-      <li>Include pavucontrol in the installation</li>
-    </ul>
-  </li>
-  <li>
-    <h4>2013-12-19 beta 1</h4>
-    <ul>
-      <li>Added "Power User" mode, with dual-boot support</li>
-      <li>Major Github layout changes</li>
-      <li>Rebased against 2013-12-19 Valve release (newer packages including Mesa 10)</li>
-      <li>Fixed crasher in recovery partition stuff on some drivers (e.g. VMware)</li>
-    </ul>
-  </li>
-  <li>
-    <h4>1.0 beta 1 alpha 1</h4>
-    <ul>
-      <li>First release</li>
-      <li>Added virtualbox guest drivers</li>
-      <li>Added GRUB BIOS packages</li>
-      <li>Added patched VMware driver with 3D support</li>
-      <li>Made an Isohybrid installer with BIOS support (ISOLINUX files from Wheezy installer)</li>
-    </ul>
-  </li>
+{% endfor %}
 </ul>
+
 <h2>Special thanks:</h2>
 <p>Michael Waltz (ecliptik) for his continued contributions.</p>
 <p>Anonymized benefactors for their sponsorship (~400 day VMware key; £60; 1 month reddit Gold; Shoot Many Robots game; Civ5 gold upgrade).</p>
