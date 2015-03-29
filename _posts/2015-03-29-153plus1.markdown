@@ -6,6 +6,7 @@ categories: release
 ---
 
 - Rebase against Valve 153 ISO
+- Package repository, so all future updates can be issued via SteamOS's existing update mechanism
 - RAID support is no longer tested - I had to remove a disk from my test lab. Use at your own risk
 - Re-added support for ATI cards not supported by proprietary fglrx driver. Tested on Radeon 4550
 - Added support for NVIDIA cards not supported by the latest NVIDIA driver. Tested on GeForce GT210
