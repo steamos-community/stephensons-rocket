@@ -1,0 +1,7 @@
+collections:
+  - versions
+
+exclude:
+  - CNAME
+  - README.md
+  - Gemfile*
