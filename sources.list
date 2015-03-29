@@ -1,0 +1,22 @@
+# This is the sources.list file used by both download-updates.sh and addtopool.sh when downloading package lists
+# If you want debian-installer packages to be downloaded, uncomment them.
+
+# SteamOS repos
+deb http://repo.steampowered.com/steamos alchemist main contrib non-free
+deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+
+# Debian repo
+deb ftp://mirror.nl.leaseweb.net/debian wheezy main contrib non-free
+
+# Debian security
+deb http://security.debian.org/ wheezy/updates main contrib non-free
+
+# Debian backports repo
+#deb ftp://mirror.nl.leaseweb.net/debian wheezy-backports main contrib non-free
+
+# Debian-installer from SteamOS repo
+#deb http://repo.steampowered.com/steamos alchemist main/debian-installer
+#deb http://repo.steampowered.com/steamos alchemist_beta main/debian-installer
+
+# Debian-installer from Debian repo
+#deb ftp://mirror.nl.leaseweb.net/debian wheezy main/debian-installer
