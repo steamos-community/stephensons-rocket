@@ -207,6 +207,7 @@ createbuildroot ( ) {
 	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
 	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
 	sed -i 's/nvidia-driver//' ${BUILD}/.disk/base_include
+	echo "keyboard-configuration" >> ${BUILD}/.disk/base_include
 }
 
 # Removes old versions of packages before they end up on the iso
