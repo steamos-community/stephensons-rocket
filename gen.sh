@@ -21,6 +21,7 @@ usage ( )
 	$0 [OPTION]
 	-h                Print this message
 	-d		  Re-Download ${STEAMINSTALLFILE}
+	-n		  Set the name for the iso
 EOF
 }
 
@@ -306,7 +307,7 @@ mkchecksum ( ) {
 
 
 #Setup command line arguments
-while getopts "hd" OPTION; do
+while getopts "hdn" OPTION; do
         case ${OPTION} in
         h)
                 usage
@@ -314,6 +315,11 @@ while getopts "hd" OPTION; do
         ;;
         d)
                 redownload="1"
+        ;;
+        n)
+        	shift
+        	ISOVNAME="$1"
+        	ISONAME=$(echo "${ISOVNAME}.iso"|tr '[:upper:]' '[:lower:]'|tr "\ " "-")
         ;;
         *)
                 echo "${OPTION} - Unrecongnized option"
