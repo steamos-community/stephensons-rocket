@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "153plus2"
+date:   2015-03-30 20:23:38
+categories: release
+---
+
+- Fix NVIDIA detection bug where only cards supported by both the legacy AND current driver (e.g. 600-series) would allow installation. There is now no blocker at all on NVIDIA cards (e.g. cards not supported by *either* driver will not block installation, they will simply fail)
