@@ -18,7 +18,7 @@ REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 usage ( )
 {
 	cat <<EOF
-	$0 [OPTION]
+	$0 [OPTION] [MOD1] [MOD2] [MOD3] ...
 	-h                Print this message
 	-d		  Re-Download ${STEAMINSTALLFILE}
 	-n		  Set the name for the iso
@@ -244,6 +244,52 @@ checkduplicates ( ) {
 	echo "Done"
 }
 
+addmod ( ) {
+	echo "Added mod ${1}..."
+
+	# check if the mod has been set and exists
+	if [ -z ${1} ];then
+		echo "No mod specified"
+		return
+	fi
+	if [ ! -d ./${1} ];then
+		echo "Mod directory ./${1} doesn't exist"
+		return
+	fi
+	
+	# read install from config file 
+	modinstall=$(grep '^install' ${1}/config|cut -d"=" -f2-)
+	modremove=$(grep '^remove' ${1}/config|cut -d"=" -f2-)
+	
+	# remove unwanted packages
+	for rmpkg in ${modremove};do
+		rm ${BUILD}/pool/*/*/*/${rmpkg}*
+	done
+	
+	# add install to default.preseed of the build
+	sed -i "/^d-i pkgsel\/include/ s/$/ ${modinstall}/" ${BUILD}/default.preseed
+	
+	# create a list with packages in packages directory of mod
+	modpackages=$(ls ${1}/packages|grep 'deb$')
+	
+	# add packages to pool
+	for modpkg in ${modpackages}; do
+		modpkgname=$(echo ${modpkg}|cut -d"_" -f1)
+		modpkgchar=$(echo ${modpkg}|cut -c1)
+		
+		# create mew directory for new package and copy the package
+		mkdir -p ${BUILD}/pool/main/${modpkgchar}/${modpkgname}
+		cp ${1}/packages/${modpkg} ${BUILD}/pool/main/${modpkgchar}/${modpkgname}
+	done
+	
+	# use post_install script from mod, if available
+	if [ -f ${1}/post_install.sh ];then
+		cp -f ${1}/post_install.sh ${BUILD}
+	fi
+	
+	
+}
+
 createiso ( ) {
 	#Make sure ${CACHEDIR} exists
 	if [ ! -d ${CACHEDIR} ]; then
@@ -307,7 +353,7 @@ mkchecksum ( ) {
 
 
 #Setup command line arguments
-while getopts "hdn" OPTION; do
+while getopts "hdn:" OPTION; do
         case ${OPTION} in
         h)
                 usage
@@ -317,9 +363,8 @@ while getopts "hdn" OPTION; do
                 redownload="1"
         ;;
         n)
-        	shift
-        	ISOVNAME="$1"
-        	ISONAME=$(echo "${ISOVNAME}.iso"|tr '[:upper:]' '[:lower:]'|tr "\ " "-")
+        	ISOVNAME="${OPTARG}"
+        	ISONAME=$(echo "${OPTARG}.iso"|tr '[:upper:]' '[:lower:]'|tr "\ " "-")
         ;;
         *)
                 echo "${OPTION} - Unrecongnized option"
@@ -328,6 +373,8 @@ while getopts "hdn" OPTION; do
         ;;
         esac
 done
+shift $((OPTIND-1))
+MODSTOADD="$@"
 
 #Check dependencies
 deps
@@ -348,6 +395,11 @@ extract
 
 #Build buildroot for Rocket installer
 createbuildroot
+
+#Add mods to the iso
+for MOD in ${MODSTOADD}; do
+	addmod ${MOD}
+done
 
 #Check if there are multiple versions of packages in the buildroot
 checkduplicates
