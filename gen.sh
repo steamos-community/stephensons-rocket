@@ -185,25 +185,6 @@ createbuildroot ( ) {
 		cp -pfr ${file} ${BUILD}
 	done
 
-	checkduplicates
-
-	#Make sure ${CACHEDIR} exists
-	if [ ! -d ${CACHEDIR} ]; then
-		mkdir -p ${CACHEDIR}
-	fi
-	
-	#Generate our new repos
-	echo "Generating Packages.."
-	apt-ftparchive generate ${APTCONF}
-	apt-ftparchive generate ${APTUDEBCONF}
-	echo "Generating Release for ${DISTNAME}"
-	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
-
-	#gpg --default-key "0E1FAD0C" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
-	cd ${BUILD}
-	find . -type f -print0 | xargs -0 md5sum > md5sum.txt
-	cd -
-
 	sed -i 's/fglrx-driver//' ${BUILD}/.disk/base_include
 	sed -i 's/fglrx-modules-dkms//' ${BUILD}/.disk/base_include
 	sed -i 's/libgl1-fglrx-glx//' ${BUILD}/.disk/base_include
@@ -264,6 +245,23 @@ checkduplicates ( ) {
 }
 
 createiso ( ) {
+	#Make sure ${CACHEDIR} exists
+	if [ ! -d ${CACHEDIR} ]; then
+		mkdir -p ${CACHEDIR}
+	fi
+	
+	#Generate our new repos
+	echo "Generating Packages.."
+	apt-ftparchive generate ${APTCONF}
+	apt-ftparchive generate ${APTUDEBCONF}
+	echo "Generating Release for ${DISTNAME}"
+	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
+
+	#gpg --default-key "0E1FAD0C" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
+	cd ${BUILD}
+	find . -type f -print0 | xargs -0 md5sum > md5sum.txt
+	cd -
+	
 	#Remove old ISO
 	if [ -f ${ISOPATH}/${ISONAME} ]; then
 		echo "Removing old ISO ${ISOPATH}/${ISONAME}"
@@ -350,6 +348,9 @@ extract
 
 #Build buildroot for Rocket installer
 createbuildroot
+
+#Check if there are multiple versions of packages in the buildroot
+checkduplicates
 
 #Build ISO for Rocket installer
 createiso
