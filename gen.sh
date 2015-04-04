@@ -258,8 +258,8 @@ addmod ( ) {
 	fi
 	
 	# read install from config file 
-	modinstall=$(grep '^install' ${1}/config|cut -d"=" -f2-)
-	modremove=$(grep '^remove' ${1}/config|cut -d"=" -f2-)
+	modinstall=$(grep '^install' ./${1}/config|cut -d"=" -f2-)
+	modremove=$(grep '^remove' ./${1}/config|cut -d"=" -f2-)
 	
 	# remove unwanted packages
 	for rmpkg in ${modremove};do
@@ -269,25 +269,20 @@ addmod ( ) {
 	# add install to default.preseed of the build
 	sed -i "/^d-i pkgsel\/include/ s/$/ ${modinstall}/" ${BUILD}/default.preseed
 	
-	# create a list with packages in packages directory of mod
-	modpackages=$(ls ${1}/packages|grep 'deb$')
+	# select sources.list file to use for mod
+	if [ -f ./${1}/sources.list ];then
+		modsources="./${1}/sources.list"
+	else
+		modsources="./sources.list"
+	fi
 	
 	# add packages to pool
-	for modpkg in ${modpackages}; do
-		modpkgname=$(echo ${modpkg}|cut -d"_" -f1)
-		modpkgchar=$(echo ${modpkg}|cut -c1)
-		
-		# create mew directory for new package and copy the package
-		mkdir -p ${BUILD}/pool/main/${modpkgchar}/${modpkgname}
-		cp ${1}/packages/${modpkg} ${BUILD}/pool/main/${modpkgchar}/${modpkgname}
-	done
+	./move-to-pool.sh -u -s "${modsources}" "./${1}/packages" "${BUILD}"
 	
 	# use post_install script from mod, if available
 	if [ -f ${1}/post_install.sh ];then
 		cp -f ${1}/post_install.sh ${BUILD}
 	fi
-	
-	
 }
 
 createiso ( ) {
