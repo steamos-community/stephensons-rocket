@@ -42,7 +42,10 @@ Just burn the ISO to a blank DVD from your favourite tool, and boot it.
 
 Open a Terminal window from the Utilities section of Applications.
 
-Type `diskutil list` to get a list of devices - one of them will be your USB stick (e.g. `/dev/disk2`). Follow the Linux instructions below, with this `/dev/rdiskX` entry instead of `/dev/sdX`
+Type `diskutil list` to get a list of devices - one of them will be your USB stick (e.g. `/dev/disk2`). Follow the Linux instructions below but change:
+
+* `/dev/sdX` to `/dev/rdiskX`
+* `bs=1M` to `bs=1m`
 
 ## Installing from USB (Linux)
 
