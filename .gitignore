@@ -1,8 +1,9 @@
 # make your own goddamn ISO.
 
 *.iso
+*.iso.md5
 buildroot
 cache
 archive-mirror
 source-packages
-
+_site
