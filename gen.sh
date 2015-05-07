@@ -316,6 +316,9 @@ createiso ( ) {
 	if [ -f "/usr/lib/syslinux/isohdpfx.bin" ]; then
 		SYSLINUX="/usr/lib/syslinux/isohdpfx.bin"
 	fi
+	if [ -f "/usr/lib/ISOLINUX/isohdpfx.bin" ]; then
+		SYSLINUX="/usr/lib/ISOLINUX/isohdpfx.bin"
+	fi
 	if [ -f "isohdpfx.bin" ]; then
 		SYSLINUX="isohdpfx.bin"
 	fi
