@@ -11,7 +11,7 @@ ISOVNAME="Stephensons Rocket 153plus2"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="223022db23d66070f959e464ad2da376"
+KNOWNINSTALLER="66ab128367e03e49548bb5b20f475eb2"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 #Show how to use gen.sh
