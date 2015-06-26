@@ -27,14 +27,14 @@ cat > mirror.list << EOF
  set base_path    ${PWD}/archive-mirror
 set nthreads     20
 set _tilde 0
-deb http://repo.steampowered.com/steamos alchemist main contrib non-free
-deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
-deb-i386 http://repo.steampowered.com/steamos alchemist main contrib non-free
-deb-i386 http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
-deb http://download.stephensonsrocket.horse/steamos alchemist main contrib non-free
-deb http://download.stephensonsrocket.horse/steamos alchemist_beta main contrib non-free
-deb-i386 http://download.stephensonsrocket.horse/steamos alchemist main contrib non-free
-deb-i386 http://download.stephensonsrocket.horse/steamos alchemist_beta main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster_beta main contrib non-free
+deb-i386 http://repo.steampowered.com/steamos brewmaster main contrib non-free
+deb-i386 http://repo.steampowered.com/steamos brewmaster_beta main contrib non-free
+deb http://download.stephensonsrocket.horse/steamos brewmaster main contrib non-free
+deb http://download.stephensonsrocket.horse/steamos brewmaster_beta main contrib non-free
+deb-i386 http://download.stephensonsrocket.horse/steamos brewmaster main contrib non-free
+deb-i386 http://download.stephensonsrocket.horse/steamos brewmaster_beta main contrib non-free
 clean http://repo.steampowered.com/steamos
 clean http://download.stephensonsrocket.horse/steamos
 EOF

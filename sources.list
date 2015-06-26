@@ -2,8 +2,8 @@
 # If you want debian-installer packages to be downloaded, uncomment them.
 
 # SteamOS repos
-deb http://repo.steampowered.com/steamos alchemist main contrib non-free
-deb http://repo.steampowered.com/steamos alchemist_beta main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster main contrib non-free
+deb http://repo.steampowered.com/steamos brewmaster_beta main contrib non-free
 
 # Debian repo
 #deb ftp://mirror.nl.leaseweb.net/debian wheezy main contrib non-free

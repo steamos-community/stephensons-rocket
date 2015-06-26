@@ -3,7 +3,7 @@
 BUILD="./buildroot"
 APTCONF="./ftparchive/apt-ftparchive.conf"
 APTUDEBCONF="./ftparchive/apt-ftparchive-udeb.conf"
-DISTNAME="alchemist"
+DISTNAME="brewmaster"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
