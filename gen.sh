@@ -11,7 +11,7 @@ ISOVNAME="Stephensons Rocket 159plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="66ab128367e03e49548bb5b20f475eb2"
+KNOWNINSTALLER="6fb5a10c234ef1910a2e9394a62cefe9"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 #Show how to use gen.sh
@@ -90,7 +90,7 @@ obsoletereport ( ) {
 #Extract the upstream SteamOSDVD.iso from repo.steampowered.com
 extract ( ) {
 	#Download SteamOSDVD.iso
-	steaminstallerurl="${UPSTREAMURL}/download/${STEAMINSTALLFILE}"
+	steaminstallerurl="${UPSTREAMURL}/download/${DISTNAME}/${STEAMINSTALLFILE}"
 	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
