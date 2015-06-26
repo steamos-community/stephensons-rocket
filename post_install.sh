@@ -12,7 +12,13 @@ fi
 chroot /target adduser --gecos "" --disabled-password steam
 chroot /target usermod -a -G desktop,audio,dip,video,plugdev,netdev,bluetooth,pulse-access steam
 chroot /target usermod -a -G pulse-access desktop
-chroot /target /usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam
+cat - > /target/usr/share/lightdm/lightdm.conf.d/20_steamos.conf << 'EOF'
+[SeatDefaults]
+pam-service=lightdm-autologin
+autologin-user=steam
+autologin-user-timeout=0
+EOF
+
 cp -r /cdrom/recovery /target/boot > /target/var/log/post_install.log
 mv /target/boot/recovery/live /target/boot/recovery/live-hd
 chroot /target date > /target/etc/skel/.imageversion
@@ -41,6 +47,7 @@ then
       echo "Still waiting for internet connection..."
     done
   fi
+
   # dummy file to skip the Steam Install Agreement dialog
   touch ~/.steam/steam_install_agreement.txt
   # pass -exitsteam so steam doesn't actually run after bootstrapping
@@ -50,8 +57,6 @@ then
   sudo /usr/bin/post_logon.sh
   exit
 fi
-
-/usr/lib/x86_64-linux-gnu/lightdm/lightdm-set-defaults -a steam -s steamos
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User.SetXSession string:gnome
 dbus-send --system --type=method_call --print-reply --dest=org.freedesktop.Accounts /org/freedesktop/Accounts/User1001 org.freedesktop.Accounts.User.SetXSession string:steamos
 (for i in `dkms status | cut -d, -f1-2 | tr , / | tr -d ' '`; do sudo dkms remove $i --all; done) | zenity --progress --no-cancel --pulsate --auto-close --text="Configuring Kernel Modules" --title="SteamOS Installation"
@@ -83,6 +88,14 @@ X-GNOME-Autostart-enabled=true
 Name=postlogon
 EOF
 
+#
+# Run aticonfig if an AMD card is present
+#
+if [ -n "$(lspci|grep VGA|grep -i 'AMD\|ATI')" ]; then
+	if [ ! -n "$(lspci|grep VGA|grep NVIDIA)" ]; then
+		chroot /target update-alternatives --set glx /usr/lib/fglrx
+	fi
+fi
 
 #
 # Boot splash screen and GRUB configuration
@@ -101,8 +114,9 @@ cat - > /target/etc/default/grub << EOF
 GRUB_DEFAULT=saved
 GRUB_HIDDEN_TIMEOUT_QUIET=true
 GRUB_DISTRIBUTOR=\`lsb_release -i -s 2> /dev/null || echo Debian\`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
-GRUB_BACKGROUND=/usr/share/plymouth/themes/steamos/steam.png
+GRUB_BACKGROUND=/usr/share/plymouth/themes/steamos/steamos_branded.png
 GRUB_DISABLE_LINUX_RECOVERY="true"
 GRUB_GFXMODE=auto
 EOF
@@ -142,7 +156,7 @@ if test "${ISEFI}" = "Y"; then
 echo "  fakebios" >> /target/etc/grub.d/40_custom
 fi
 cat - >> /target/etc/grub.d/40_custom << EOF
-  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -q2 -j2 -z1p -i 2000 -sc -p true saveparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
+  linux /live-hd/vmlinuz boot=live union=overlay username=user config components quiet noswap edd=on nomodeset nodmraid noeject noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -q2 -j2 -z1p -i 2000 -sc -p true saveparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
   initrd /live-hd/initrd.img
 }
 menuentry "Restore System Partition"{
@@ -152,7 +166,7 @@ if test "${ISEFI}" = "Y"; then
 echo "  fakebios" >> /target/etc/grub.d/40_custom
 fi
 cat - >> /target/etc/grub.d/40_custom << EOF
-  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -e1 auto -e2 -r -j2 -k -p reboot restoreparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
+  linux /live-hd/vmlinuz boot=live union=overlay username=user config components quiet noswap edd=on nomodeset nodmraid noeject noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-sr -e1 auto -e2 -r -j2 -k -p reboot restoreparts steambox ${ROOTPARTITION}" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia   live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
   initrd /live-hd/initrd.img
 }
 menuentry "Clonezilla live"{
@@ -162,7 +176,7 @@ if test "${ISEFI}" = "Y"; then
 echo "  fakebios" >> /target/etc/grub.d/40_custom
 fi
 cat - >> /target/etc/grub.d/40_custom << EOF
-  linux /live-hd/vmlinuz boot=live config  noswap edd=on nomodeset noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia  nosplash  live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
+  linux /live-hd/vmlinuz boot=live union=overlay username=user config components quiet noswap edd=on nomodeset nodmraid noeject noprompt locales="en_US.UTF-8" keyboard-layouts=NONE ocs_prerun="mount ${RECOVERYPARTITION} /home/partimag" ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no vga=788 ip=frommedia  nosplash  live-media-path=/live-hd bootfrom=${SWAPPARTITION} toram=filesystem.squashfs i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=no
   initrd /live-hd/initrd.img
 }
 EOF

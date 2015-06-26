@@ -36,8 +36,7 @@ d-i localechooser/supported-locales multiselect \
 # Disable automatic (interactive) keymap detection.
 d-i console-setup/ask_detect boolean false
 # Keyboard selection.
-# keymap is an alias for keyboard-configuration/xkb-keymap
-d-i keymap select us
+d-i keyboard-configuration/xkb-keymap select us
 
 ### Network configuration
 # Disable network configuration entirely. This is useful for cdrom
@@ -101,7 +100,7 @@ d-i apt-setup/services-select string
 #d-i apt-setup/volatile_host string volatile.debian.org
 
 # Additional repositories, local[0-9] available
-d-i apt-setup/local0/repository string http://repo.steampowered.com/steamos alchemist main contrib non-free
+d-i apt-setup/local0/repository string http://repo.steampowered.com/steamos brewmaster main contrib non-free
 d-i apt-setup/local0/comment string internal SteamOS repo
 # Enable deb-src lines
 d-i apt-setup/local0/source boolean true
@@ -116,7 +115,7 @@ d-i apt-setup/local0/source boolean true
 # d-i debian-installer/allow_unauthenticated boolean true
 
 # Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 firmware-linux-nonfree fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 steam-launcher nvidia-driver nvidia-legacy-340xx-driver libgl1-nvidia-legacy-340xx-glx:i386 nvidia-legacy-340xx-vdpau-driver:i386 rocket-init-scripts rocket-repo rocket-archive-keyring
+d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 nvidia-driver nvidia-legacy-340xx-driver libgl1-nvidia-legacy-340xx-glx:i386 nvidia-legacy-340xx-vdpau-driver:i386 rocket-init-scripts rocket-repo rocket-archive-keyring
 
 
 # Whether to upgrade packages after debootstrap.
@@ -210,3 +209,4 @@ d-i partman-auto/expert_recipe string                         \
                       label { steam }                         \
                       mountpoint{ /home }                     \
               .
+
