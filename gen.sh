@@ -7,14 +7,13 @@ DISTNAME="brewmaster"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-#         12345678901234567890123456789012
-ISOVNAME="Stephensons Rocket 2 2.9plus1"
+ISOVNAME="Stephensons Rocket 2.0plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
 KNOWNINSTALLER="6fb5a10c234ef1910a2e9394a62cefe9"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
-
+set -x
 #Show how to use gen.sh
 usage ( )
 {
@@ -91,7 +90,7 @@ obsoletereport ( ) {
 #Extract the upstream SteamOSDVD.iso from repo.steampowered.com
 extract ( ) {
 	#Download SteamOSDVD.iso
-	steaminstallerurl="${UPSTREAMURL}/download/${DISTNAME}/${STEAMINSTALLFILE}"
+	steaminstallerurl="${UPSTREAMURL}/download/brewmaster/${STEAMINSTALLFILE}"
 	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
@@ -117,7 +116,7 @@ extract ( ) {
 
 verify ( ) {
 	#Does this installer look familiar?
-	upstreaminstallermd5sum=` wget --quiet -O- ${UPSTREAMURL}/download/${MD5SUMFILE} | grep SteamOSDVD.iso$ | cut -f1 -d' '`
+	upstreaminstallermd5sum=` wget --quiet -O- ${UPSTREAMURL}/download/brewmaster/${MD5SUMFILE} | grep SteamOSDVD.iso$ | cut -f1 -d' '`
 	localinstallermd5sum=`md5sum ${STEAMINSTALLFILE} | cut -f1 -d' '`
 	if test "${localinstallermd5sum}" = "${KNOWNINSTALLER}"; then
 		echo "Downloaded installer matches this version of gen.sh"
