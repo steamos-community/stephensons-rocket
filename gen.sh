@@ -13,7 +13,7 @@ STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
 KNOWNINSTALLER="6fb5a10c234ef1910a2e9394a62cefe9"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
-set -x
+
 #Show how to use gen.sh
 usage ( )
 {
