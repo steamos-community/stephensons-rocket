@@ -144,7 +144,7 @@ createbuildroot ( ) {
 	#Delete 32-bit udebs and d-i, as SteamOS is 64-bit only
 	echo "Deleting 32-bit garbage from ${BUILD}..."
 	find ${BUILD} -name "*_i386.udeb" -type f -exec rm -rf {} \;
-	find ${BUILD} -name "*_i386.deb" | egrep -v "(\/glibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.9\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/|\/udev\/|\/libxshmfence\/|\/steam\/|\/intel-vaapi-driver\/)" | xargs rm -f
+	find ${BUILD} -name "*_i386.deb" | egrep -v "(\/steamos-modeswitch-inhibitor\/|\/glibc\/|\/elfutils\/|\/expat\/|\/fglrx-driver\/|\/gcc-4.9\/|\/libdrm\/|\/libffi\/|\/libpciaccess\/|\/libvdpau\/|\/libx11\/|\/libxau\/|\/libxcb\/|\/libxdamage\/|\/libxdmcp\/|\/libxext\/|\/libxfixes\/|\/libxxf86vm\/|\/llvm-toolchain-3.3\/|\/mesa\/|\/nvidia-graphics-drivers\/|\/s2tc\/|\/zlib\/|\/udev\/|\/libxshmfence\/|\/steam\/|\/intel-vaapi-driver\/)" | xargs rm -f
 	rm -fr "${BUILD}/install.386"
 	rm -fr "${BUILD}/dists/*/main/debian-installer/binary-i386/"
 
