@@ -277,7 +277,14 @@ addmod ( ) {
 	fi
 	
 	# add packages to pool
-	./move-to-pool.sh -u -s "${modsources}" "./${1}/packages" "${BUILD}"
+	cd ${1}
+	if rsync -av --exclude 'pool/your-packages-here' ${pooldir} ../${BUILD}; then
+		:
+	else
+		echo "Error copying ${1}/packages to ${BUILD}"
+		exit 1
+	fi
+	cd - > /dev/null
 	
 	# use post_install script from mod, if available
 	if [ -f ${1}/post_install.sh ];then
