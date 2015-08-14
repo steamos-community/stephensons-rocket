@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "2.26plus1"
+date:   2015-08-14 22:24:36
+categories: release
+---
+
+- First Brewmaster-based release
+- Updated Mesa to 10.6 with statically-compiled libstdc++, which works around problems with Mesa on Brewmaster
