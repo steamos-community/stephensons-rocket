@@ -28,7 +28,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget p7zip-full realpath"
+	deps="apt-utils xorriso syslinux rsync wget lftp p7zip-full realpath"
 	for dep in ${deps}; do
 		if dpkg-query -s ${dep} >/dev/null 2>&1; then
 			:
@@ -94,7 +94,7 @@ extract ( ) {
 	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
 		echo "Downloading ${steaminstallerurl} ..."
-		if wget -O ${STEAMINSTALLFILE} ${steaminstallerurl}; then
+		if lftp -e "pget -n 8 ${steaminstallerurl}"; then
 			:
 		else
 			echo "Error downloading ${steaminstallerurl}!"
