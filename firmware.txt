@@ -26,3 +26,7 @@ pool/non-free/f/firmware-nonfree/firmware-samsung_20151018-2+steamos6+bsos1_all.
 pool/non-free/f/firmware-nonfree/firmware-ti-connectivity_20151018-2+steamos6+bsos1_all.deb
 pool/non-free/i/intel-microcode/intel-microcode_3.20150121.1_amd64.deb
 pool/non-free/z/zd1211-firmware/firmware-zd1211_3.0.0.56-3_all.deb
+pool/non-free/a/amd64-microcode/amd64-microcode_2.20141028.1_amd64.deb
+pool/non-free/a/atmel-firmware/atmel-firmware_1.3-4_all.deb
+pool/non-free/b/bluez-firmware/bluez-firmware_1.2-3_all.deb
+
