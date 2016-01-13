@@ -115,7 +115,7 @@ d-i apt-setup/local0/source boolean true
 # d-i debian-installer/allow_unauthenticated boolean true
 
 # Individual additional packages to install
-d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 nvidia-driver nvidia-legacy-340xx-driver libgl1-nvidia-legacy-340xx-glx:i386 nvidia-legacy-340xx-vdpau-driver:i386 rocket-init-scripts rocket-repo rocket-archive-keyring nvidia-legacy-340xx-kernel-support
+d-i pkgsel/include string libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libgl1-nvidia-glx:i386 steamos-modeswitch-inhibitor:i386 steam:i386 nvidia-vdpau-driver:i386 libtxc-dxtn-s2tc0:i386 libgl1-fglrx-glx:i386 i965-va-driver:i386 fglrx-driver:amd64 fglrx-modules-dkms:amd64 libgl1-fglrx-glx:amd64 nvidia-driver nvidia-legacy-340xx-driver libgl1-nvidia-legacy-340xx-glx:i386 nvidia-legacy-340xx-vdpau-driver:i386 rocket-init-scripts rocket-repo rocket-archive-keyring nvidia-legacy-340xx-kernel-support libnvidia-encode1:i386
 
 
 # Whether to upgrade packages after debootstrap.
