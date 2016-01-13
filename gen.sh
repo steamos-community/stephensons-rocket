@@ -7,11 +7,11 @@ DISTNAME="brewmaster"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 2.49plus1"
+ISOVNAME="Stephensons Rocket 2.60plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="0ce45b175a2e453553e38c3ea8824c02"
+KNOWNINSTALLER="e476adef556895d511c4ba52d6c6880f"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 #Show how to use gen.sh
@@ -93,6 +93,9 @@ extract ( ) {
 	steaminstallerurl="${UPSTREAMURL}/download/brewmaster/${STEAMINSTALLFILE}"
 	#Download if the iso doesn't exist or the -d flag was passed
 	if [ ! -f ${STEAMINSTALLFILE} ] || [ -n "${redownload}" ]; then
+		if [ -f ${STEAMINSTALLFILE} ];then
+			rm ${STEAMINSTALLFILE}
+		fi
 		echo "Downloading ${steaminstallerurl} ..."
 		if lftp -e "pget -n 8 ${steaminstallerurl}"; then
 			:
