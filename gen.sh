@@ -97,7 +97,7 @@ extract ( ) {
 			rm ${STEAMINSTALLFILE}
 		fi
 		echo "Downloading ${steaminstallerurl} ..."
-		if lftp -e "pget -n 8 ${steaminstallerurl}"; then
+		if lftp -e "pget -n 8 ${steaminstallerurl};exit"; then
 			:
 		else
 			echo "Error downloading ${steaminstallerurl}!"
