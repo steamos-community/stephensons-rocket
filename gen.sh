@@ -7,11 +7,11 @@ DISTNAME="brewmaster"
 CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket 2.60plus1"
+ISOVNAME="Stephensons Rocket 2.64plus1"
 UPSTREAMURL="http://repo.steampowered.com"
 STEAMINSTALLFILE="SteamOSDVD.iso"
 MD5SUMFILE="MD5SUMS"
-KNOWNINSTALLER="e476adef556895d511c4ba52d6c6880f"
+KNOWNINSTALLER="2b5341fb2843e83471838ba6bf05da17"
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 #Show how to use gen.sh
