@@ -25,7 +25,7 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="reprepro xorriso rsync wget lftp 7z realpath dasdasdw"
+	deps="reprepro xorriso rsync wget lftp 7z realpath"
 	for dep in ${deps}; do
 		if which ${dep} >/dev/null 2>&1; then
 			:
