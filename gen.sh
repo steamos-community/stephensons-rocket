@@ -25,30 +25,20 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="reprepro xorriso rsync wget lftp 7z realpath"
+	deps="reprepro xorriso rsync wget lftp 7z realpath dasdasdw"
 	for dep in ${deps}; do
 		if which ${dep} >/dev/null 2>&1; then
 			:
 		else
 			echo "Missing dependency: ${dep}"
-			echo "Make sure all required dependencies are installed."
-			echo "In Debian/Ubuntu: sudo apt-get install reprepro xorriso rsync wget lftp p7zip-full realpath"
-			echo "In Fedora:"
+			echo ""
+			echo "For instructions on how to install the dependencies, take a look at:"
+			echo "https://github.com/steamos-community/stephensons-rocket/blob/brewmaster/REQUIREMENTS.md"
 			exit 1
 		fi
 	done
 	if test "`expr length \"$ISOVNAME\"`" -gt "32"; then
 		echo "Volume ID is more than 32 characters: ${ISOVNAME}"
-		exit 1
-	fi
-
-	#Check xorriso version is compatible, must be 1.2.4 or higher
-	xorrisover=`xorriso --version 2>&1 | egrep -e "^xorriso version" | awk '{print $4}'`
-	reqxorrisover=1.2.4
-	if dpkg --compare-versions ${xorrisover} ge ${reqxorrisover} >/dev/null 2>&1; then
-		echo "PASS: xorriso version ${xorrisover} supports required functions."
-	else
-		echo "ERROR: xorriso version ${xorrisover} is too to old. Please upgrade to xorriso version ${reqxorrisover} or higher."
 		exit 1
 	fi
 }
