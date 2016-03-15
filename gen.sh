@@ -1,10 +1,7 @@
 #!/bin/sh
 #Basic variables
 BUILD="./buildroot"
-APTCONF="./ftparchive/apt-ftparchive.conf"
-APTUDEBCONF="./ftparchive/apt-ftparchive-udeb.conf"
 DISTNAME="brewmaster"
-CACHEDIR="./cache"
 ISOPATH="."
 ISONAME="rocket.iso"
 ISOVNAME="Stephensons Rocket 2.64plus1"
@@ -28,13 +25,15 @@ EOF
 #Check some basic dependencies this script needs to run
 deps ( ) {
 	#Check dependencies
-	deps="apt-utils xorriso syslinux rsync wget lftp p7zip-full realpath"
+	deps="reprepro xorriso rsync wget lftp 7z realpath"
 	for dep in ${deps}; do
-		if dpkg-query -s ${dep} >/dev/null 2>&1; then
+		if which ${dep} >/dev/null 2>&1; then
 			:
 		else
 			echo "Missing dependency: ${dep}"
-			echo "Install with: sudo apt-get install ${dep}"
+			echo "Make sure all required dependencies are installed."
+			echo "In Debian/Ubuntu: sudo apt-get install reprepro xorriso rsync wget lftp p7zip-full realpath"
+			echo "In Fedora:"
 			exit 1
 		fi
 	done
@@ -303,10 +302,13 @@ createiso ( ) {
 	
 	#Generate our new repos
 	echo "Generating Packages.."
-	apt-ftparchive generate ${APTCONF}
-	apt-ftparchive generate ${APTUDEBCONF}
-	echo "Generating Release for ${DISTNAME}"
-	apt-ftparchive -c ${APTCONF} release ${BUILD}/dists/${DISTNAME} > ${BUILD}/dists/${DISTNAME}/Release
+	mv ${BUILD}/pool ${BUILD}/poolbase
+	rm -rf ${BUILD}/dists
+	mkdir ${BUILD}/conf
+	/bin/echo -e "Origin: Valve Software LLC\nSuite: testing\nCodename: ${DISTNAME}\nComponents: main contrib non-free\nUDebComponents: main\nArchitectures: i386 amd64\nDescription: SteamOS distribution based on Debian 8.0 Jessie\nContents: udebs . .gz\nUDebIndices: Packages . .gz" > ${BUILD}/conf/distributions
+	reprepro -Vb ${BUILD} includedeb ${DISTNAME} ${BUILD}/poolbase/*/*/*/*.deb
+	reprepro -Vb ${BUILD} includeudeb ${DISTNAME} ${BUILD}/poolbase/*/*/*/*.udeb
+	rm -rf ${BUILD}/poolbase ${BUILD}/db ${BUILD}/conf
 
 	#gpg --default-key "0E1FAD0C" --output $BUILD/dists/$DISTNAME/Release.gpg -ba $BUILD/dists/$DISTNAME/Release
 	cd ${BUILD}
