@@ -8,10 +8,12 @@ Stephenson's Rocket is currently the easiest to build on these distos, because a
 
 `sudo apt-get install reprepro xorriso rsync wget lftp p7zip-full realpath`
 
-## Fedora/Centos
+## Fedora/Centos/RHEL
 Building Stephenson's Rocket on Fedora is possible, but requires you to manually compile xorriso (the version in the repo doesn't have what we need) and reprepro. First you'll need to install the dependencies found in the repo:
 
 `sudo dnf install p7zip p7zip-plugins`
+
+Note: on Centos or RHEL, replace all instances of the dnf command with yum.
 
 You can compile reprepro like this:
 ````
